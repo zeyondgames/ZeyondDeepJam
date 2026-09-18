@@ -3,66 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zeyond Games</title>
+  <title>Zeyond GDD</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <nav>
-    <a href="#anasayfa" class="logo">Zeyond</a>
-    <button class="hamburger" id="hamburger" aria-label="Menüyü aç">☰</button>
-    <ul class="menu" id="menu">
-      <li><a href="#anasayfa">Ana Sayfa</a></li>
-      <li><a href="#oyunlar">Oyunlar</a></li>
-      <li><a href="#hakkimizda">Hakkımızda</a></li>
-      <li><a href="#iletisim">İletişim</a></li>
-    </ul>
-  </nav>
+  <div class="toolbar">
+    <button class="btn" id="modeBtn">Sunum modu</button>
+    <button class="btn" id="exportBtn">JSON indir</button>
+    <label class="btn" for="importFile">JSON yükle</label>
+    <input type="file" id="importFile" accept="application/json" hidden>
+  </div>
 
-  <header class="hero" id="anasayfa">
-    <h1>Zeyond <span>Games</span></h1>
-    <p>Cebinize sığan eğlence. Mobil oyunlar geliştiriyoruz.</p>
-    <a href="#oyunlar" class="btn">Oyunlarımız</a>
-  </header>
+  <nav class="dots" id="dots" aria-label="Slayt gezinme"></nav>
 
-  <section id="oyunlar">
-    <h2>Oyunlarımız</h2>
-    <div class="games">
-      <div class="card">
-        <div class="thumb">🚀</div>
-        <div class="body">
-          <h3>Galaxy Dash</h3>
-          <p>Yıldızlar arasında hızla ilerle, engellerden kaç.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="thumb">🧩</div>
-        <div class="body">
-          <h3>Puzzle Pop</h3>
-          <p>Renkli blokları eşleştir, seviyeleri geç.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="thumb">🏎️</div>
-        <div class="body">
-          <h3>Turbo Rush</h3>
-          <p>Kısa, hızlı ve bağımlılık yapan yarışlar.</p>
-        </div>
-      </div>
+  <!-- 01 — Kapak -->
+  <section class="slide cover" id="s1" data-title="Kapak">
+    <span class="kicker">Tek Sayfa GDD</span>
+    <h1 class="field empty" contenteditable="true" data-field="oyunAdi"
+        data-placeholder="Oyun Adı"></h1>
+    <p class="lead field empty" contenteditable="true" data-field="slogan"
+       data-placeholder="Oyunu tek cümlede anlatan tanım"></p>
+    <div class="chips" id="chips">
+      <button class="chip on" data-tag="Level-Based">Level-Based</button>
+      <button class="chip on" data-tag="Puzzle">Puzzle</button>
+      <button class="chip on" data-tag="Stealth">Stealth</button>
+      <button class="chip on" data-tag="Tactical">Tactical</button>
+      <button class="chip" data-tag="Shooter">Shooter</button>
+      <button class="chip" data-tag="Sci-fi">Sci-fi</button>
+      <button class="chip" data-tag="Robots">Robots</button>
+      <button class="chip" data-tag="Isometric">Isometric</button>
+      <button class="chip on" data-tag="Mobile">Mobile</button>
+    </div>
+    <span class="hint">Aşağı kaydır</span>
+  </section>
+
+  <!-- 02 — Oyun Konsepti -->
+  <section class="slide" id="s2" data-title="Konsept">
+    <div class="panel">
+      <span class="num">02</span>
+      <h2>Oyun Konsepti</h2>
+      <div class="field empty" contenteditable="true" data-field="konsept"
+           data-placeholder="Oyun hangi türde, hangi dünyada geçiyor, oyuncu kim ve ne yapıyor? Hedef platform ve oturum uzunluğu."></div>
     </div>
   </section>
 
-  <section class="about" id="hakkimizda">
-    <h2>Hakkımızda</h2>
-    <p>Küçük ama tutkulu bir ekibiz. Herkesin kolayca oynayabileceği, kısa sürede keyif veren mobil oyunlar yapmayı seviyoruz.</p>
+  <!-- 03 — Temel Oynanış -->
+  <section class="slide" id="s3" data-title="Oynanış">
+    <div class="panel">
+      <span class="num">03</span>
+      <h2>Temel Oynanış</h2>
+      <div class="field empty" contenteditable="true" data-field="oynanis"
+           data-placeholder="Kontroller nasıl çalışıyor? Oyuncu her karşılaşmada hangi kararı veriyor? Bir seviye nasıl tamamlanıyor?"></div>
+    </div>
   </section>
 
-  <section class="contact" id="iletisim">
-    <h2>İletişim</h2>
-    <a href="mailto:hello@zeyond.games">hello@zeyond.games</a>
+  <!-- 04 — Oyun Döngüsü -->
+  <section class="slide" id="s4" data-title="Döngü">
+    <div class="panel">
+      <span class="num">04</span>
+      <h2>Oyun Döngüsü</h2>
+      <ol class="loop">
+        <li><span class="step">1</span><div class="field empty" contenteditable="true" data-field="dongu1" data-placeholder="Seviyeye gir"></div></li>
+        <li><span class="step">2</span><div class="field empty" contenteditable="true" data-field="dongu2" data-placeholder="Düzeni oku"></div></li>
+        <li><span class="step">3</span><div class="field empty" contenteditable="true" data-field="dongu3" data-placeholder="Gizlen ya da çatış"></div></li>
+        <li><span class="step">4</span><div class="field empty" contenteditable="true" data-field="dongu4" data-placeholder="İlerle ve saklan"></div></li>
+        <li><span class="step">5</span><div class="field empty" contenteditable="true" data-field="dongu5" data-placeholder="Çıkışa ulaş"></div></li>
+        <li><span class="step">6</span><div class="field empty" contenteditable="true" data-field="dongu6" data-placeholder="Sonraki seviye"></div></li>
+      </ol>
+      <div class="field empty note" contenteditable="true" data-field="donguNot"
+           data-placeholder="Döngüyle ilgili ek not: ölünce ne oluyor, tekrar oynanabilirliği ne sağlıyor?"></div>
+    </div>
   </section>
 
-  <footer>© 2026 Zeyond Games. Tüm hakları saklıdır.</footer>
+  <!-- 05 — Oyun Seviyesi -->
+  <section class="slide" id="s5" data-title="Seviye">
+    <div class="panel">
+      <span class="num">05</span>
+      <h2>Oyun Seviyesi</h2>
+      <div class="field empty" contenteditable="true" data-field="seviye"
+           data-placeholder="Bir seviye neyden oluşuyor? Başlangıç, hedef, düşmanlar, örtü ve engeller. Zorluk neye göre artıyor?"></div>
+    </div>
+  </section>
+
+  <!-- 06 — İlerleyiş -->
+  <section class="slide" id="s6" data-title="İlerleyiş">
+    <div class="panel">
+      <span class="num">06</span>
+      <h2>İlerleyiş</h2>
+      <div class="field empty" contenteditable="true" data-field="ilerleyis"
+           data-placeholder="Oyuncu nasıl ilerliyor? Seviyeler nasıl açılıyor, performans nasıl ölçülüyor? Meta ilerleme var mı?"></div>
+    </div>
+  </section>
+
+  <!-- 07 — Ekonomi -->
+  <section class="slide" id="s7" data-title="Ekonomi">
+    <div class="panel">
+      <span class="num">07</span>
+      <h2>Ekonomi</h2>
+      <div class="games">
+        <div class="card">
+          <div class="thumb">▮</div>
+          <div class="body">
+            <h3 class="field empty" contenteditable="true" data-field="kaynak1Ad" data-placeholder="Şarjör"></h3>
+            <p class="field empty" contenteditable="true" data-field="kaynak1Not" data-placeholder="Bu kaynak ne işe yarıyor, nasıl tükeniyor?"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">◈</div>
+          <div class="body">
+            <h3 class="field empty" contenteditable="true" data-field="kaynak2Ad" data-placeholder="Enerji"></h3>
+            <p class="field empty" contenteditable="true" data-field="kaynak2Not" data-placeholder="Bu kaynak ne işe yarıyor, nasıl tükeniyor?"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">◍</div>
+          <div class="body">
+            <h3 class="field empty" contenteditable="true" data-field="kaynak3Ad" data-placeholder="Dayanıklılık"></h3>
+            <p class="field empty" contenteditable="true" data-field="kaynak3Not" data-placeholder="Bu kaynak ne işe yarıyor, nasıl tükeniyor?"></p>
+          </div>
+        </div>
+      </div>
+      <div class="field empty note" contenteditable="true" data-field="ekonomi"
+           data-placeholder="Ekonominin bütünü: meta para var mı, her karşılaşma nasıl bir harcama kararına dönüşüyor?"></div>
+    </div>
+  </section>
+
+  <!-- 08 — Stüdyo -->
+  <section class="slide outro" id="s8" data-title="Stüdyo">
+    <span class="kicker">Zeyond Games</span>
+    <h2 class="field empty" contenteditable="true" data-field="studyoBaslik"
+        data-placeholder="Stüdyo başlığı"></h2>
+    <p class="lead field empty" contenteditable="true" data-field="studyo"
+       data-placeholder="Ekip kim, neye inanıyor, ne tür oyunlar yapıyor?"></p>
+    <a class="mail field empty" contenteditable="true" data-field="iletisim"
+       data-placeholder="iletisim@ornek.com"></a>
+  </section>
 
   <script src="script.js"></script>
 </body>
