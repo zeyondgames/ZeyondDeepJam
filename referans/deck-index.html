@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deep Jam Başvuru Sunumu</title>
+<meta name="description" content="GameDev.ist Deep Jam hızlandırma programı başvuru sunumu — ekip, oyun konsepti, teknik, iş modeli ve taahhütler.">
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span id="brandteam">⟨Takım Adı⟩</span>
+      <span class="sep">·</span>
+      <span class="ev" id="brandev">GameDev.ist · Deep Jam</span>
+    </div>
+    <span class="spacer"></span>
+    <span class="chip" id="phchip" title="Sıradaki doldurulacak alana git"></span>
+    <button class="btn" id="print" title="Yazdır / PDF olarak kaydet">⬇ PDF</button>
+  </header>
+
+  <main id="deck"></main>
+
+  <nav class="nav">
+    <button class="btn" id="prev" aria-label="Önceki slayt">‹</button>
+    <button class="btn" id="next" aria-label="Sonraki slayt">›</button>
+    <div class="dots" id="dots"></div>
+    <div class="counter" id="counter"></div>
+  </nav>
+
+  <script src="content.js"></script>
+  <script src="deck.js"></script>
+</body>
+</html>
