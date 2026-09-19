@@ -14,7 +14,7 @@ window.GDD = window.GDD || {};
     const blob = new Blob([JSON.stringify(GDD.topla(), null, 2)], { type: "application/json" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "zeyond-gdd.json";
+    link.download = "deep-jam-basvurusu.json";
     link.click();
     URL.revokeObjectURL(link.href);
   }
@@ -29,7 +29,7 @@ window.GDD = window.GDD || {};
         GDD.uygula(JSON.parse(okuyucu.result));
         GDD.kaydet();
       } catch (err) {
-        alert("Dosya okunamadı. Geçerli bir GDD JSON dosyası mı?");
+        alert("Dosya okunamadı. Geçerli bir başvuru JSON dosyası mı?");
       }
     };
     okuyucu.readAsText(dosya);

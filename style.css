@@ -171,6 +171,25 @@ h2 {
 body.sunum .chip { cursor: default; }
 body.sunum .chip:not(.on) { display: none; }
 
+/* ---------- Onay listesi ---------- */
+/* Çiplerin üzerine kurulu: işaretler etiketlerle aynı yerde saklanır,
+   ayrı bir modüle gerek kalmaz. */
+.check { display: grid; gap: 8px; margin-top: 8px; }
+.check .chip {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-radius: 3px;
+  padding: 9px 14px;
+  font-family: inherit;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+.check .chip::before { content: "☐"; margin-right: 10px; color: var(--accent2); }
+.check .chip.on::before { content: "☑"; color: var(--accent); }
+/* Kontrol listesi bir çalışma aracı; sunum modunda da tamamı görünsün */
+body.sunum .check .chip:not(.on) { display: block; }
+
 /* ---------- Düzenlenebilir alanlar ---------- */
 .field {
   white-space: pre-wrap;
@@ -199,6 +218,25 @@ body:not(.sunum) .field:focus {
   color: var(--muted);
   border-left: 2px solid var(--line);
   padding-left: 16px;
+}
+
+/* ---------- Etiket / değer satırları ---------- */
+/* Başvurudaki "alan adı + cevap" kalıbı: solda sabit etiket, sağda
+   düzenlenebilir alan. */
+.kv { display: grid; gap: 18px; }
+.kv > div {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 6px 22px;
+  align-items: start;
+}
+.kv dt {
+  font-family: var(--mono);
+  font-size: .74rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 5px;
 }
 
 /* ---------- Oyun döngüsü ---------- */
@@ -300,6 +338,9 @@ body.sunum #modeBtn { color: var(--accent); border-color: var(--accent); }
   .toolbar { top: 10px; right: 10px; left: 10px; justify-content: center; }
   .btn { padding: 6px 10px; font-size: .68rem; }
   .loop li { gap: 12px; }
+  /* Dar ekranda etiket üstte, cevap altta */
+  .kv > div { grid-template-columns: 1fr; }
+  .kv { gap: 22px; }
 }
 
 /* ---------- Yazdırma (tema ne olursa olsun beyaz) ---------- */
@@ -317,5 +358,7 @@ body.sunum #modeBtn { color: var(--accent); border-color: var(--accent); }
   .step { background: #111; color: #fff; }
   .field.empty::before { content: ""; }
   .field { outline: none !important; }
-  .lead, .note, .card p { color: #444; }
+  .lead, .note, .card p, .kv dt { color: #444; }
+  .check .chip { border-color: #ccc; color: #111; background: none; box-shadow: none; }
+  .check .chip::before, .check .chip.on::before { color: #111; }
 }

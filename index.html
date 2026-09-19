@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zeyond GDD</title>
+  <title>Deep Jam Başvurusu · Zeyond Games</title>
   <link rel="stylesheet" href="style.css">
   <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner -->
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}catch(e){}</script>
@@ -20,125 +20,461 @@
 
   <nav class="dots" id="dots" aria-label="Slayt gezinme"></nav>
 
-  <!-- 01 — Kapak -->
+  <!-- ============ Kapak ============ -->
   <section class="slide cover" id="s1" data-title="Kapak">
-    <span class="kicker">Tek Sayfa GDD</span>
+    <span class="kicker">GameDev.ist · Deep Jam Başvurusu</span>
     <h1 class="field empty" contenteditable="true" data-field="oyunAdi"
         data-placeholder="Oyun Adı"></h1>
-    <p class="lead field empty" contenteditable="true" data-field="slogan"
-       data-placeholder="Oyunu tek cümlede anlatan tanım"></p>
+    <p class="lead field" contenteditable="true" data-field="slogan">İzometrik, hex-grid tabanlı taktiksel gizlilik-aksiyon · Mobil</p>
     <div class="chips" id="chips">
-      <button class="chip on" data-tag="Level-Based">Level-Based</button>
-      <button class="chip on" data-tag="Puzzle">Puzzle</button>
+      <button class="chip on" data-tag="Sız ya da Harca">Sız ya da Harca</button>
       <button class="chip on" data-tag="Stealth">Stealth</button>
       <button class="chip on" data-tag="Tactical">Tactical</button>
+      <button class="chip on" data-tag="Level-Based">Level-Based</button>
+      <button class="chip on" data-tag="Isometric">Isometric</button>
+      <button class="chip on" data-tag="Mobile">Mobile</button>
+      <button class="chip" data-tag="Puzzle">Puzzle</button>
       <button class="chip" data-tag="Shooter">Shooter</button>
       <button class="chip" data-tag="Sci-fi">Sci-fi</button>
       <button class="chip" data-tag="Robots">Robots</button>
-      <button class="chip" data-tag="Isometric">Isometric</button>
-      <button class="chip on" data-tag="Mobile">Mobile</button>
     </div>
     <span class="hint">Aşağı kaydır</span>
   </section>
 
-  <!-- 02 — Oyun Konsepti -->
-  <section class="slide" id="s2" data-title="Konsept">
+  <!-- ============ 1.0 Takım Bilgileri ============ -->
+  <section class="slide" id="s2" data-title="Takım">
     <div class="panel">
-      <span class="num">02</span>
-      <h2>Oyun Konsepti</h2>
-      <div class="field empty" contenteditable="true" data-field="konsept"
-           data-placeholder="Oyun hangi türde, hangi dünyada geçiyor, oyuncu kim ve ne yapıyor? Hedef platform ve oturum uzunluğu."></div>
+      <span class="num">1.0 · TAKIM BİLGİLERİ</span>
+      <h2>Takım ve İletişim</h2>
+      <dl class="kv">
+        <div>
+          <dt>Oyun Stüdyosu / Takım Adı</dt>
+          <dd class="field empty" contenteditable="true" data-field="takimAdi"
+              data-placeholder="takımının ticari adı — bir marka gibi düşün"></dd>
+        </div>
+        <div>
+          <dt>Proje Yöneticisi</dt>
+          <dd class="field empty" contenteditable="true" data-field="yonetici"
+              data-placeholder="ad soyad — birincil iletişim kişisi"></dd>
+        </div>
+        <div>
+          <dt>E-posta Adresi</dt>
+          <dd class="field empty" contenteditable="true" data-field="eposta"
+              data-placeholder="aktif olarak kontrol ettiğin adres"></dd>
+        </div>
+        <div>
+          <dt>Telefon Numarası</dt>
+          <dd class="field empty" contenteditable="true" data-field="telefon"
+              data-placeholder="+90 5XX XXX XX XX"></dd>
+        </div>
+        <div>
+          <dt>Takım Büyüklüğü</dt>
+          <dd class="field empty" contenteditable="true" data-field="takimBoyu"
+              data-placeholder="örn. 1–2 kişi (solo / çekirdek ekip)"></dd>
+        </div>
+      </dl>
     </div>
   </section>
 
-  <!-- 03 — Temel Oynanış -->
-  <section class="slide" id="s3" data-title="Oynanış">
+  <section class="slide" id="s3" data-title="Roller">
     <div class="panel">
-      <span class="num">03</span>
-      <h2>Temel Oynanış</h2>
-      <div class="field empty" contenteditable="true" data-field="oynanis"
-           data-placeholder="Kontroller nasıl çalışıyor? Oyuncu her karşılaşmada hangi kararı veriyor? Bir seviye nasıl tamamlanıyor?"></div>
-    </div>
-  </section>
-
-  <!-- 04 — Oyun Döngüsü -->
-  <section class="slide" id="s4" data-title="Döngü">
-    <div class="panel">
-      <span class="num">04</span>
-      <h2>Oyun Döngüsü</h2>
-      <ol class="loop">
-        <li><span class="step">1</span><div class="field empty" contenteditable="true" data-field="dongu1" data-placeholder="Seviyeye gir"></div></li>
-        <li><span class="step">2</span><div class="field empty" contenteditable="true" data-field="dongu2" data-placeholder="Düzeni oku"></div></li>
-        <li><span class="step">3</span><div class="field empty" contenteditable="true" data-field="dongu3" data-placeholder="Gizlen ya da çatış"></div></li>
-        <li><span class="step">4</span><div class="field empty" contenteditable="true" data-field="dongu4" data-placeholder="İlerle ve saklan"></div></li>
-        <li><span class="step">5</span><div class="field empty" contenteditable="true" data-field="dongu5" data-placeholder="Çıkışa ulaş"></div></li>
-        <li><span class="step">6</span><div class="field empty" contenteditable="true" data-field="dongu6" data-placeholder="Sonraki seviye"></div></li>
-      </ol>
-      <div class="field empty note" contenteditable="true" data-field="donguNot"
-           data-placeholder="Döngüyle ilgili ek not: ölünce ne oluyor, tekrar oynanabilirliği ne sağlıyor?"></div>
-    </div>
-  </section>
-
-  <!-- 05 — Oyun Seviyesi -->
-  <section class="slide" id="s5" data-title="Seviye">
-    <div class="panel">
-      <span class="num">05</span>
-      <h2>Oyun Seviyesi</h2>
-      <div class="field empty" contenteditable="true" data-field="seviye"
-           data-placeholder="Bir seviye neyden oluşuyor? Başlangıç, hedef, düşmanlar, örtü ve engeller. Zorluk neye göre artıyor?"></div>
-    </div>
-  </section>
-
-  <!-- 06 — İlerleyiş -->
-  <section class="slide" id="s6" data-title="İlerleyiş">
-    <div class="panel">
-      <span class="num">06</span>
-      <h2>İlerleyiş</h2>
-      <div class="field empty" contenteditable="true" data-field="ilerleyis"
-           data-placeholder="Oyuncu nasıl ilerliyor? Seviyeler nasıl açılıyor, performans nasıl ölçülüyor? Meta ilerleme var mı?"></div>
-    </div>
-  </section>
-
-  <!-- 07 — Ekonomi -->
-  <section class="slide" id="s7" data-title="Ekonomi">
-    <div class="panel">
-      <span class="num">07</span>
-      <h2>Ekonomi</h2>
+      <span class="num">1.0 · TAKIM BİLGİLERİ</span>
+      <h2>Takım Üyeleri ve Rolleri</h2>
       <div class="games">
         <div class="card">
-          <div class="thumb">▮</div>
+          <div class="thumb">◆</div>
           <div class="body">
-            <h3 class="field empty" contenteditable="true" data-field="kaynak1Ad" data-placeholder="Şarjör"></h3>
-            <p class="field empty" contenteditable="true" data-field="kaynak1Not" data-placeholder="Bu kaynak ne işe yarıyor, nasıl tükeniyor?"></p>
+            <h3 class="field empty" contenteditable="true" data-field="uye1Ad" data-placeholder="Ad Soyad"></h3>
+            <p class="field" contenteditable="true" data-field="uye1Rol">Oyun Programcısı / Sistem Tasarımcısı — çekirdek döngü, hex sistemi, WorldBuilder.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">◇</div>
+          <div class="body">
+            <h3 class="field empty" contenteditable="true" data-field="uye2Ad" data-placeholder="Ad Soyad"></h3>
+            <p class="field" contenteditable="true" data-field="uye2Rol">Teknik Sanat / UI-UX — izometrik varlıklar, okunabilirlik, arayüz.</p>
           </div>
         </div>
         <div class="card">
           <div class="thumb">◈</div>
           <div class="body">
-            <h3 class="field empty" contenteditable="true" data-field="kaynak2Ad" data-placeholder="Enerji"></h3>
-            <p class="field empty" contenteditable="true" data-field="kaynak2Not" data-placeholder="Bu kaynak ne işe yarıyor, nasıl tükeniyor?"></p>
+            <h3 class="field empty" contenteditable="true" data-field="uye3Ad" data-placeholder="gerekiyorsa"></h3>
+            <p class="field" contenteditable="true" data-field="uye3Rol">Ses / Müzik veya ek destek — program süresince dış destek.</p>
+          </div>
+        </div>
+      </div>
+      <div class="field note" contenteditable="true" data-field="takimNot">Küçük ekip bir zayıflık değil, bir kanıt: çalışan çekirdek döngü ve kendi seviye editörümüz, projeyi tek başımıza bitirebildiğimizi gösteriyor.</div>
+    </div>
+  </section>
+
+  <!-- ============ 2.0 Oyun Konsepti ============ -->
+  <section class="slide" id="s4" data-title="Ad ve Tür">
+    <div class="panel">
+      <span class="num">2.0 · OYUN KONSEPTİ</span>
+      <h2>Oyunun Adı ve Türü</h2>
+      <dl class="kv">
+        <div>
+          <dt>Ad</dt>
+          <dd class="field empty" contenteditable="true" data-field="oyunAdiKesin"
+              data-placeholder="kesinleştirilecek"></dd>
+        </div>
+        <div>
+          <dt>Ad Önerileri</dt>
+          <dd class="field" contenteditable="true" data-field="adOnerileri">GRID · Hexfall · Sızıntı (Leak) · Sessiz Devre (Silent Circuit)</dd>
+        </div>
+        <div>
+          <dt>Ana Tür</dt>
+          <dd class="field" contenteditable="true" data-field="oyunTuru">Taktiksel Gizlilik-Aksiyon — izometrik, hex-grid tabanlı, seviye bazlı, mobil.</dd>
+        </div>
+        <div>
+          <dt>Denge</dt>
+          <dd class="field" contenteditable="true" data-field="denge">Gizlilik-öncelikli: fark edilmeden geçmek varsayılan yol; çatışma bilinçli bir kaynak-harcama tercihi.</dd>
+        </div>
+      </dl>
+      <div class="field note" contenteditable="true" data-field="adNot">Ad kesinleşmeden önce ticari marka benzersizliği ve alan adı uygunluğu kontrol edilecek.</div>
+    </div>
+  </section>
+
+  <section class="slide" id="s5" data-title="Hook">
+    <div class="panel">
+      <span class="num">2.0 · OYUN KONSEPTİ</span>
+      <h2>Özet ve Hikâye (Hook)</h2>
+      <div class="field" contenteditable="true" data-field="konsept">Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.</div>
+      <div class="field note" contenteditable="true" data-field="oynanis">Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen “sız mı, harca mı” kararıdır: 60 saniyelik keskin turlarda tekrar tekrar oynanan taktiksel bir gerilim.</div>
+    </div>
+  </section>
+
+  <section class="slide" id="s6" data-title="Döngü">
+    <div class="panel">
+      <span class="num">2.0 · OYUN KONSEPTİ</span>
+      <h2>Çekirdek Döngü · ~60 saniye</h2>
+      <ol class="loop">
+        <li><span class="step">1</span><div class="field" contenteditable="true" data-field="dongu1">Seviyeye gir</div></li>
+        <li><span class="step">2</span><div class="field" contenteditable="true" data-field="dongu2">Arenayı oku: bot devriyeleri, ot örtüsü, yükselti</div></li>
+        <li><span class="step">3</span><div class="field" contenteditable="true" data-field="dongu3">Görüş hattını kır — gizlen ya da çatış</div></li>
+        <li><span class="step">4</span><div class="field" contenteditable="true" data-field="dongu4">Sız ya da harca: Şarjör / Enerji / Dayanıklılık</div></li>
+        <li><span class="step">5</span><div class="field" contenteditable="true" data-field="dongu5">Çıkış asansörüne ulaş</div></li>
+        <li><span class="step">6</span><div class="field" contenteditable="true" data-field="dongu6">Skor ve yıldız — sonraki arena daha karmaşık</div></li>
+      </ol>
+      <div class="field note" contenteditable="true" data-field="seviye">Bir seviye: başlangıç noktası, çıkış asansörü, devriye gezen botlar, ot örtüsü ve yükselti. Zorluk; arena boyutuyla değil, düzen karmaşıklığı ve bot davranışıyla artar.</div>
+    </div>
+  </section>
+
+  <section class="slide" id="s7" data-title="Kaynaklar">
+    <div class="panel">
+      <span class="num">2.0 · OYUN KONSEPTİ</span>
+      <h2>Kaynaklar ve Ekonomi</h2>
+      <div class="games">
+        <div class="card">
+          <div class="thumb">▮</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="kaynak1Ad">Şarjör</h3>
+            <p class="field" contenteditable="true" data-field="kaynak1Not">Çatışmanın bedeli. Her atış geri dönüşü olmayan bir harcama.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">◈</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="kaynak2Ad">Enerji</h3>
+            <p class="field" contenteditable="true" data-field="kaynak2Not">Hız ve özel hareketler. Bitince sızma yavaşlar, risk artar.</p>
           </div>
         </div>
         <div class="card">
           <div class="thumb">◍</div>
           <div class="body">
-            <h3 class="field empty" contenteditable="true" data-field="kaynak3Ad" data-placeholder="Dayanıklılık"></h3>
-            <p class="field empty" contenteditable="true" data-field="kaynak3Not" data-placeholder="Bu kaynak ne işe yarıyor, nasıl tükeniyor?"></p>
+            <h3 class="field" contenteditable="true" data-field="kaynak3Ad">Dayanıklılık</h3>
+            <p class="field" contenteditable="true" data-field="kaynak3Not">Hata payı. Fark edilmenin doğrudan karşılığı.</p>
           </div>
         </div>
       </div>
-      <div class="field empty note" contenteditable="true" data-field="ekonomi"
-           data-placeholder="Ekonominin bütünü: meta para var mı, her karşılaşma nasıl bir harcama kararına dönüşüyor?"></div>
+      <div class="field note" contenteditable="true" data-field="ekonomi">Meta para, loot ve kalıcı yükseltme yok. Üç kaynak seviye içinde kıt; ekonominin tamamı tek bir soruya iniyor: bu karşılaşmada neyi gözden çıkarıyorsun?</div>
     </div>
   </section>
 
-  <!-- 08 — Stüdyo -->
-  <section class="slide outro" id="s8" data-title="Stüdyo">
+  <section class="slide" id="s8" data-title="Aşama ve Stil">
+    <div class="panel">
+      <span class="num">2.0 · OYUN KONSEPTİ</span>
+      <h2>Mevcut Aşama ve Grafik Stili</h2>
+      <dl class="kv">
+        <div>
+          <dt>Geliştirme Aşaması</dt>
+          <dd class="field empty" contenteditable="true" data-field="asama"
+              data-placeholder="Prototip / Vertical Slice — gerçek aşamanı onayla, abartma"></dd>
+        </div>
+        <div>
+          <dt>Aşamayı Destekleyen</dt>
+          <dd class="field" contenteditable="true" data-field="asamaDestek">Çalışan çekirdek döngü ve seviyeleri hızla üreten kendi WorldBuilder editörümüz.</dd>
+        </div>
+      </dl>
+      <div class="field" contenteditable="true" data-field="grafikStili">İzometrik, stilize / düşük-poli sci-fi robot estetiği. Birincil öncelik okunabilirlik: ot örtüsü, yükselti ve bot görüş hatları anında ayırt edilebilir olmalı — bunlar dekor değil, doğrudan oynanış bilgisi.</div>
+      <div class="field note" contenteditable="true" data-field="stilNot">Sade stil, küçük ekip için sanat bütçesini gerçekçi tutarken gizlilik mekaniğinin netliğini artırıyor: vizyon ile teknik ve bütçe sınırları örtüşüyor.</div>
+    </div>
+  </section>
+
+  <section class="slide" id="s9" data-title="USP">
+    <div class="panel">
+      <span class="num">2.0 · OYUN KONSEPTİ</span>
+      <h2>Benzersiz Satış Teklifi (USP)</h2>
+      <div class="games">
+        <div class="card">
+          <div class="thumb">◆</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="usp1Ad">Kısa seansa sığmış saf taktik</h3>
+            <p class="field" contenteditable="true" data-field="usp1Not">Her karşılaşma bir kaynak-harcama kararı: Şarjör / Enerji / Dayanıklılık.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">◇</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="usp2Ad">Kazandıran tek şey: karar</h3>
+            <p class="field" contenteditable="true" data-field="usp2Not">Meta-ilerleme, loot ya da pay-to-win yok.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">⬡</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="usp3Ad">Mobilde nadir kombinasyon</h3>
+            <p class="field" contenteditable="true" data-field="usp3Not">El yapımı hex arenalarda ot temelli görüş-hattı gizliliği.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">▲</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="usp4Ad">Genişlik değil, derinlik</h3>
+            <p class="field" contenteditable="true" data-field="usp4Not">Zorluk; düzen karmaşıklığı, bot davranışı ve kaynak kıtlığıyla artıyor.</p>
+          </div>
+        </div>
+      </div>
+      <div class="field note" contenteditable="true" data-field="ilerleyis">İlerleyiş: seviyeler sırayla açılır, performans yıldız ve skorla ölçülür. Kalıcı güç artışı yok — oyuncu ilerledikçe oyun değil, oyuncunun kendisi gelişir.</div>
+    </div>
+  </section>
+
+  <!-- ============ 3.0 Teknik & Portfolyo ============ -->
+  <section class="slide" id="s10" data-title="Teknik">
+    <div class="panel">
+      <span class="num">3.0 · TEKNİK & PORTFOLYO</span>
+      <h2>Oyun Motoru ve Ana Teknolojiler</h2>
+      <dl class="kv">
+        <div>
+          <dt>Motor</dt>
+          <dd class="field empty" contenteditable="true" data-field="motor"
+              data-placeholder="motorunu onayla — öneri: Unity"></dd>
+        </div>
+        <div>
+          <dt>Gerekçe</dt>
+          <dd class="field" contenteditable="true" data-field="motorGerekce">Mobil dağıtım, izometrik / 2.5D render ve hex-grid için olgun araç ve topluluk desteği; küçük ekipte hızlı iterasyon.</dd>
+        </div>
+      </dl>
+      <div class="field" contenteditable="true" data-field="worldbuilder">Öne çıkan teknik güç — WorldBuilder: Kendi seviye editörümüz. Başlangıç, çıkış asansörü, botlar, ot ve yükselti yerleşimini el yapımı ve hızlı üretmemizi sağlıyor. Hem teknik yetkinlik hem “bitirebiliriz” kanıtı.</div>
+      <div class="field note" contenteditable="true" data-field="teknikNot">8 haftada 20+ seviye hedefini mümkün kılan şey bu editör: içerik üretimi bizde darboğaz değil.</div>
+    </div>
+  </section>
+
+  <section class="slide" id="s11" data-title="Portfolyo">
+    <div class="panel">
+      <span class="num">3.0 · TEKNİK & PORTFOLYO</span>
+      <h2>Prototip, Video ve Portfolyo</h2>
+      <dl class="kv">
+        <div>
+          <dt>Oynanabilir Prototip</dt>
+          <dd class="field empty" contenteditable="true" data-field="prototipLink"
+              data-placeholder="herkese açık WebGL / itch.io linki"></dd>
+        </div>
+        <div>
+          <dt>Video Pitch</dt>
+          <dd class="field empty" contenteditable="true" data-field="videoLink"
+              data-placeholder="en fazla 3 dk, YouTube / Vimeo"></dd>
+        </div>
+        <div>
+          <dt>Geçmiş Projeler</dt>
+          <dd class="field empty" contenteditable="true" data-field="portfolyoLink"
+              data-placeholder="GitHub / ArtStation / itch.io"></dd>
+        </div>
+      </dl>
+      <div class="field note" contenteditable="true" data-field="portfolyoNot">Çalışan prototip, jüri için konsept riskini kaldırmanın en etkili yolu — somut kanıt sunmayan başvuruların önüne geçirir.</div>
+    </div>
+  </section>
+
+  <!-- ============ 4.0 İş Modeli ve Finans ============ -->
+  <section class="slide" id="s12" data-title="Gelir Modeli">
+    <div class="panel">
+      <span class="num">4.0 · İŞ MODELİ VE FİNANS</span>
+      <h2>Ana Gelir Modeli</h2>
+      <div class="field empty" contenteditable="true" data-field="gelirKarar"
+           data-placeholder="Hibrit: F2P + Ödüllü Reklam + Tek Seferlik Premium Kilit — nihai kararı ver"></div>
+      <div class="games">
+        <div class="card">
+          <div class="thumb">○</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="gelir1Ad">Serbest giriş</h3>
+            <p class="field" contenteditable="true" data-field="gelir1Not">İlk seviyeler ücretsiz; kurulum hunisini genişletir.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">▷</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="gelir2Ad">Ödüllü reklam</h3>
+            <p class="field" contenteditable="true" data-field="gelir2Not">Yalnızca opsiyonel, örn. tekrar denerken ekstra hak. Asla zorunlu değil, adaleti bozmaz.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">★</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="gelir3Ad">Tek seferlik IAP</h3>
+            <p class="field" contenteditable="true" data-field="gelir3Not">“Reklamsız + Tüm Seviye Paketleri”. İçerik satıyoruz, güç değil.</p>
+          </div>
+        </div>
+      </div>
+      <div class="field note" contenteditable="true" data-field="gelirGerekce">Gerekçe: Meta-ekonomi ve loot olmadığı için abonelik ya da gacha uygun değil; bu hibrit hem erişilebilirlik hem sürdürülebilir gelir sağlar, “saf beceri” kimliğiyle çelişmez. Alternatif: saf premium — daha temiz ama kurulum edinimi zor, PC / Steam için daha uygun.</div>
+    </div>
+  </section>
+
+  <section class="slide" id="s13" data-title="Pazara Giriş">
+    <div class="panel">
+      <span class="num">4.0 · İŞ MODELİ VE FİNANS</span>
+      <h2>Pazara Giriş Stratejisi</h2>
+      <dl class="kv">
+        <div>
+          <dt>Platform</dt>
+          <dd class="field" contenteditable="true" data-field="platform">Mobil öncelikli (iOS + Android); orta vadede opsiyonel PC / Steam.</dd>
+        </div>
+        <div>
+          <dt>12 Aylık Plan</dt>
+          <dd class="field" contenteditable="true" data-field="plan12ay">Soft launch → metrik optimizasyonu (D1 / D7 retention, seans) → global launch → düzenli içerik (yeni seviye paketleri).</dd>
+        </div>
+        <div>
+          <dt>Coğrafya</dt>
+          <dd class="field" contenteditable="true" data-field="cografya">Önce düşük CPI test pazarları (örn. TR ve benzeri), doğrulanınca Tier-1'e ölçekleme.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="slide" id="s14" data-title="Yol Haritası">
+    <div class="panel">
+      <span class="num">4.0 · İŞ MODELİ VE FİNANS</span>
+      <h2>8 Haftalık Yol Haritası</h2>
+      <ol class="loop">
+        <li><span class="step">1</span><div class="field" contenteditable="true" data-field="hafta12">Hafta 1–2 · Vertical Slice: çekirdek döngü (hareket, auto-aim, ot ile görüş-hattı, üç kaynak) tam sağlam; en az 3 oynanabilir seviye.</div></li>
+        <li><span class="step">2</span><div class="field" contenteditable="true" data-field="hafta34">Hafta 3–4 · Derinlik: bot davranışı (devriye / nöbet / alarm); WorldBuilder ile 10–12 seviye ve zorluk eğrisi.</div></li>
+        <li><span class="step">3</span><div class="field" contenteditable="true" data-field="hafta56">Hafta 5–6 · His & Test: “juice” (geri bildirim, ses, kamera, UI), yıldız ve skor; ilk kapalı playtest ve metrik.</div></li>
+        <li><span class="step">4</span><div class="field" contenteditable="true" data-field="hafta7">Hafta 7 · Para Kazanma & Mağaza: reklam ve IAP testi; App Store / Google Play ve ASO hazırlığı; 20+ seviye.</div></li>
+        <li><span class="step">5</span><div class="field" contenteditable="true" data-field="hafta8">Hafta 8 · Soft Launch: 1–2 ülkede yayın; analytics (retention / seans / huni); 3 dk pitch videosu ve basın kiti.</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="slide" id="s15" data-title="Finansman">
+    <div class="panel">
+      <span class="num">4.0 · İŞ MODELİ VE FİNANS</span>
+      <h2>Program Sonrası Finansman ve Yayıncılık</h2>
+      <dl class="kv">
+        <div>
+          <dt>Toplam Tahmini Bütçe</dt>
+          <dd class="field empty" contenteditable="true" data-field="butce" data-placeholder="miktar + para birimi"></dd>
+        </div>
+        <div>
+          <dt>Kullanıcı Edinme (UA)</dt>
+          <dd class="field empty" contenteditable="true" data-field="butceUA" data-placeholder="%"></dd>
+        </div>
+        <div>
+          <dt>Sanat &amp; İçerik Üretimi</dt>
+          <dd class="field empty" contenteditable="true" data-field="butceSanat" data-placeholder="%"></dd>
+        </div>
+        <div>
+          <dt>Ses / Müzik</dt>
+          <dd class="field empty" contenteditable="true" data-field="butceSes" data-placeholder="%"></dd>
+        </div>
+        <div>
+          <dt>QA &amp; Canlı Operasyon</dt>
+          <dd class="field empty" contenteditable="true" data-field="butceQA" data-placeholder="%"></dd>
+        </div>
+        <div>
+          <dt>Beklenmedik Giderler</dt>
+          <dd class="field empty" contenteditable="true" data-field="butceEkstra" data-placeholder="%"></dd>
+        </div>
+        <div>
+          <dt>UA / Pazarlama Planı</dt>
+          <dd class="field empty" contenteditable="true" data-field="uaPlani" data-placeholder="kısa özet ekle"></dd>
+        </div>
+      </dl>
+      <div class="field note" contenteditable="true" data-field="yayincilik">Yayıncılık: başlangıçta self-publishing (düşük bariyer, tam kontrol); doğru şartlarda mobil odaklı yayıncı veya UA ortağına açığız. Aranan profil: mobil UA ve ASO uzmanlığı, performans pazarlaması bütçesi.</div>
+    </div>
+  </section>
+
+  <!-- ============ 5.0 Taahhüt & Uygunluk ============ -->
+  <section class="slide" id="s16" data-title="Neden Deep Jam">
+    <div class="panel">
+      <span class="num">5.0 · TAAHHÜT &amp; UYGUNLUK</span>
+      <h2>Neden Deep Jam?</h2>
+      <div class="field" contenteditable="true" data-field="nedenGiris">Deep Jam'e, programın kaynaklarının projemizdeki boşlukları tam olarak tamamladığı için başvuruyoruz. En güçlü yanımız üretim ve sistem tasarımı: çalışan çekirdek döngü, kendi WorldBuilder editörümüz ve hızlı içerik üretme kapasitemiz — yani “bitirme” becerisi.</div>
+      <div class="games">
+        <div class="card">
+          <div class="thumb">1</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="bosluk1Ad">Monetizasyon &amp; UA</h3>
+            <p class="field" contenteditable="true" data-field="bosluk1Not">Mobil para kazanma ve kullanıcı edinme deneyimi → Hafta 7 mentorluğuna bağlanacak.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">2</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="bosluk2Ad">Pazara giriş ağı</h3>
+            <p class="field" contenteditable="true" data-field="bosluk2Not">Yayıncı ve UA ortağı bağlantıları → Hafta 8 soft launch desteğine bağlanacak.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">3</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="bosluk3Ad">Üretim disiplini</h3>
+            <p class="field" contenteditable="true" data-field="bosluk3Not">8 haftalık yoğun sprintte dış takip ve mentorluk.</p>
+          </div>
+        </div>
+      </div>
+      <div class="field note" contenteditable="true" data-field="motivasyonKisisel"
+           data-placeholder="Ekibin kendi hikâyesi ve motivasyonu — 1–2 cümle. Jüri “neden bu ekip” sorusunun cevabını burada arıyor.">Bu fırsatı finansal bir işlemden çok stratejik bir ortaklık olarak görüyoruz. Amacımız, program sonunda yayına hazır ve ölçülebilir metriklere sahip bir soft-launch sürümüyle çıkmak.</div>
+    </div>
+  </section>
+
+  <section class="slide" id="s17" data-title="Beyanlar">
+    <div class="panel">
+      <span class="num">5.0 · TAAHHÜT &amp; UYGUNLUK</span>
+      <h2>Telif Hakkı ve KVKK Beyanları</h2>
+      <div class="field" contenteditable="true" data-field="telifBeyan">Telif Hakkı ve Özgünlük: Bu başvurudaki tüm fikri mülkiyetin, oyun içeriğinin, görsel varlıkların ve kodun ya tamamen ekibimizin özgün yaratımı olduğunu ya da kullanımı için gerekli tüm lisans ve izinlere sahip olduğumuzu beyan ederiz.</div>
+      <div class="field note" contenteditable="true" data-field="kvkkBeyan">KVKK / GDPR: Sağladığımız kişisel verilerin (Ad, Soyad, E-posta, Telefon) KVKK'ya uygun olarak yalnızca başvuru değerlendirmesi, program yönetimi ve yasal yükümlülükler için işleneceğini okuduk; koşulları anladık ve veri işlenmesine açık rıza gösteriyoruz.</div>
+      <div class="check">
+        <button class="chip" data-tag="onay-telif">Telif hakkı ve özgünlük beyanını onaylıyorum.</button>
+        <button class="chip" data-tag="onay-kvkk">KVKK / GDPR kapsamında veri işlenmesine açık rıza gösteriyorum.</button>
+      </div>
+      <div class="field note" contenteditable="true" data-field="telifNot">Motor, eklentiler, fontlar, ses / müzik ve üçüncü taraf varlıkların lisanslarının ticari kullanıma uygun olduğundan emin ol — yanlış beyan diskalifiye sebebi.</div>
+    </div>
+  </section>
+
+  <!-- ============ Kontrol Listesi ============ -->
+  <section class="slide" id="s18" data-title="Kontrol Listesi">
+    <div class="panel">
+      <span class="num">KONTROL LİSTESİ</span>
+      <h2>Göndermeden Önce</h2>
+      <div class="check">
+        <button class="chip" data-tag="k-takim">Takım bilgileri: ad, e-posta, telefon, üyeler ve roller</button>
+        <button class="chip" data-tag="k-ad">Oyun adı + marka / alan adı kontrolü</button>
+        <button class="chip" data-tag="k-asama">Gerçek geliştirme aşamasının onayı</button>
+        <button class="chip" data-tag="k-motor">Motor onayı ve gerekçesi</button>
+        <button class="chip" data-tag="k-gelir">Para kazanma modelinin nihai kararı</button>
+        <button class="chip" data-tag="k-prototip">Oynanabilir prototip linki</button>
+        <button class="chip" data-tag="k-video">En fazla 3 dk pitch videosu</button>
+        <button class="chip" data-tag="k-portfolyo">Portfolyo linkleri</button>
+        <button class="chip" data-tag="k-butce">Toplam bütçe + para birimi ve dağılımı</button>
+        <button class="chip" data-tag="k-motivasyon">Motivasyon mektubunun kişiselleştirilmesi</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Kapanış ============ -->
+  <section class="slide outro" id="s19" data-title="Kapanış">
     <span class="kicker">Zeyond Games</span>
-    <h2 class="field empty" contenteditable="true" data-field="studyoBaslik"
-        data-placeholder="Stüdyo başlığı"></h2>
-    <p class="lead field empty" contenteditable="true" data-field="studyo"
-       data-placeholder="Ekip kim, neye inanıyor, ne tür oyunlar yapıyor?"></p>
+    <h2 class="field" contenteditable="true" data-field="studyoBaslik">Sız ya da harca.</h2>
+    <p class="lead field" contenteditable="true" data-field="studyo">Küçük bir ekip, net bir fikir ve bitirilmiş bir çekirdek döngü. Deep Jam'de aradığımız şey para değil, bu oyunu pazara taşıyacak yol arkadaşlığı.</p>
     <a class="mail field empty" contenteditable="true" data-field="iletisim"
        data-placeholder="iletisim@ornek.com"></a>
   </section>

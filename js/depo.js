@@ -6,7 +6,9 @@ window.GDD = window.GDD || {};
 
 (function (GDD) {
 
-  const KEY = "zeyond-gdd";
+  // Belge GDD'den başvuru sunumuna dönüştüğünde anahtar da yenilendi:
+  // eski kayıttaki boş alanlar yeni hazır metinlerin üzerine yazılmasın.
+  const KEY = "zeyond-basvuru";
 
   // main.js depoKur() çağırınca doldurulur
   GDD.alanlar = [];
