@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zeyond GDD</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner -->
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}catch(e){}</script>
 </head>
 <body>
 
   <div class="toolbar">
+    <button class="btn" id="themeBtn">Tema</button>
     <button class="btn" id="modeBtn">Sunum modu</button>
     <button class="btn" id="exportBtn">JSON indir</button>
     <label class="btn" for="importFile">JSON yükle</label>
@@ -140,6 +143,13 @@
        data-placeholder="iletisim@ornek.com"></a>
   </section>
 
-  <script src="script.js"></script>
+  <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
+  <script src="js/depo.js"></script>
+  <script src="js/alanlar.js"></script>
+  <script src="js/etiketler.js"></script>
+  <script src="js/aktarim.js"></script>
+  <script src="js/gorunum.js"></script>
+  <script src="js/gezinme.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
