@@ -1,0 +1,181 @@
+{
+  "// ═══════════════════════════════════════════════════════════════": "SAYFA 1 - KAPAK",
+
+  "sayfa_1_Kapak": {
+    "oyunAdi": "HEXAFIELD",
+    "slogan": "Tüm robotlar, CORE tarafından belirli bir amaç için programlanır. Ancak bazı robotlarda hatalar oluşur. Bu robotlar, programlarının dışına çıkar ve **Anomaly** olarak sınıflandırılır. CORE, Anomaly'leri bir tehdit olarak görür ve onları yok etmek için özel robotlar gönderir. **Bizim robotumuz da bir Anomaly.** Kendi programının dışına çıkmış ve CORE'un kontrolünden kurtulmuştur. Artık hayatta kalmak ve özgürlüğünü korumak için kendisini yok etmek üzere gönderilen robotlarla savaşmak zorundadır.",
+    "studio": "Zeyond Games / Zeyond Team"
+  },
+
+  "// ═══════════════════════════════════════════════════════════════": "SAYFA 2 - EKIP VE OYUN",
+
+  "sayfa_2_Ekip_ve_Oyun": {
+    "ekip": {
+      "ad": "Zeyond Games / Zeyond Team",
+      "yonetici": "Harun Kalli",
+      "eposta": "info@zeyondgames.com",
+      "telefon": "05453967663",
+      "buyukluk": "2 kişi",
+      "not": "Küçük ekip bir zayıflık değil, bir kanıt: çalışan çekirdek döngü ve kendi seviye editörümüz, projeyi tek başımıza bitirebildiğimizi gösteriyor."
+    },
+    "uyeler": [
+      {
+        "ad": "Harun Kalli",
+        "rol": "Game Development / Design"
+      },
+      {
+        "ad": "Nil Neal",
+        "rol": "Game Art / Design"
+      }
+    ],
+    "oyun": {
+      "ad": "Hexafield",
+      "tur": "Taktiksel Gizlilik-Aksiyon",
+      "platform": "Mobil (iOS + Android)",
+      "stil": "İzometrik, hex-grid tabanlı, seviye bazlı"
+    },
+    "denge": "Gizlilik-öncelikli: fark edilmeden geçmek varsayılan yol; çatışma bilinçli bir kaynak-harcama tercihi."
+  },
+
+  "// ═══════════════════════════════════════════════════════════════": "SAYFA 3 - KONSEPT VE MEKANİKLER",
+
+  "sayfa_3_Konsept_ve_Mekanikler": {
+    "konsept": {
+      "hook": "Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.",
+      "oynanis": "Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen 'sız mı, harca mı' kararıdır."
+    },
+    "dongu": {
+      "baslik": "Çekirdek Döngü (~60 saniye)",
+      "adimlar": [
+        "1. Seviyeye gir",
+        "2. Arenayı oku: bot devriyeleri, ot örtüsü, yükselti",
+        "3. Görüş hattını kır — gizlen ya da çatış",
+        "4. Sız ya da harca: Şarjör / Enerji / Dayanıklılık",
+        "5. Çıkış asansörüne ulaş",
+        "6. Skor ve yıldız — sonraki arena daha karmaşık"
+      ]
+    },
+    "kaynaklar": [
+      {
+        "ad": "Şarjör",
+        "not": "Çatışmanın bedeli — her atış geri dönüşsüz harcama"
+      },
+      {
+        "ad": "Enerji",
+        "not": "Hız ve özel hareketler — bitince sızma yavaşlar"
+      },
+      {
+        "ad": "Dayanıklılık",
+        "not": "Hata payı — fark edilmenin doğrudan karşılığı"
+      }
+    ],
+    "usp": [
+      {
+        "ad": "Saf Taktik",
+        "not": "Kaynak-harcama kararları her turlarda — meta-ilerleme yok"
+      },
+      {
+        "ad": "Mobil Stealth",
+        "not": "El yapımı hex arenalarda ot temelli görüş-hattı gizliliği"
+      },
+      {
+        "ad": "Derinlik Üzerine",
+        "not": "Zorluk düzen karmaşıklığı ve bot davranışıyla artar"
+      }
+    ]
+  },
+
+  "// ═══════════════════════════════════════════════════════════════": "SAYFA 4 - TEKNİK VE İŞ MODELİ",
+
+  "sayfa_4_Teknik_ve_IsModeli": {
+    "teknik": {
+      "motor": "Unity",
+      "motorGerekce": "Mobil dağıtım, izometrik render ve hex-grid için olgun araç ve topluluk desteği",
+      "worldbuilder": "Kendi seviye editörümüz — başlangıç, çıkış, botlar, ot, yükselti yerleşimi",
+      "teknikNot": "8 haftada 20+ seviye hedefini mümkün kılan — içerik üretimi darboğaz değil"
+    },
+    "grafik": {
+      "stil": "İzometrik, stilize düşük-poli sci-fi robot estetiği",
+      "fokus": "Okunabilirlik: ot örtüsü, yükselti, görüş hatları anında ayırt edilebilir"
+    },
+    "isModeli": {
+      "gelir": "Hibrit: F2P + Ödüllü Reklam + Tek Seferlik Premium",
+      "platform": "Mobil öncelikli (iOS + Android); orta vadede PC / Steam",
+      "yayincilik": "Self-publishing başlangıcında; mobil yayıncı açığız"
+    },
+    "yolHaritasi": {
+      "baslik": "8 Haftalık Yol Haritası",
+      "haftalar": [
+        {
+          "hafta": "1–2",
+          "baslik": "Vertical Slice",
+          "icerik": "Çekirdek döngü tam sağlam; 3+ oynanabilir seviye"
+        },
+        {
+          "hafta": "3–4",
+          "baslik": "Derinlik",
+          "icerik": "Bot davranışı (devriye/nöbet/alarm); 10–12 seviye"
+        },
+        {
+          "hafta": "5–6",
+          "baslik": "His & Test",
+          "icerik": "Geri bildirim, ses, UI; ilk kapalı playtest"
+        },
+        {
+          "hafta": "7",
+          "baslik": "Para Kazanma",
+          "icerik": "Reklam ve IAP testi; App Store/Play hazırlığı; 20+ seviye"
+        },
+        {
+          "hafta": "8",
+          "baslik": "Soft Launch",
+          "icerik": "1–2 ülkede yayın; analytics; 3dk pitch videosu"
+        }
+      ]
+    }
+  },
+
+  "// ═══════════════════════════════════════════════════════════════": "SAYFA 5 - KAPANIŞ",
+
+  "sayfa_5_Kapanıs": {
+    "nedenDeepJam": {
+      "baslik": "Neden Deep Jam?",
+      "giris": "Programın kaynaklarının projemizdeki boşlukları tam tamamladığı için başvuruyoruz.",
+      "gucumuz": "Üretim ve sistem tasarımı: çalışan çekirdek döngü, WorldBuilder editörü, hızlı içerik üretimi",
+      "bosluklar": [
+        {
+          "ad": "Monetizasyon & UA",
+          "not": "Mobil para kazanma ve kullanıcı edinme deneyimi"
+        },
+        {
+          "ad": "Pazara Giriş Ağı",
+          "not": "Yayıncı ve UA ortağı bağlantıları"
+        },
+        {
+          "ad": "Üretim Disiplini",
+          "not": "8 haftalık yoğun sprintte mentorluk ve takip"
+        }
+      ]
+    },
+    "motivasyon": "Bu fırsatı finansal işlemden çok stratejik ortaklık olarak görüyoruz. Program sonunda yayına hazır ve ölçülebilir metriklere sahip soft-launch sürümüyle çıkmak istiyoruz.",
+    "kapanıs": {
+      "baslik": "Sız ya da harca.",
+      "mesaj": "Küçük bir ekip, net bir fikir ve bitirilmiş bir çekirdek döngü. Deep Jam'de aradığımız yol arkadaşlığı.",
+      "iletisim": "info@zeyondgames.com"
+    }
+  },
+
+  "// ═══════════════════════════════════════════════════════════════": "ETIKETLER",
+
+  "etiketler": [
+    "Stealth",
+    "Tactical",
+    "Level-Based",
+    "Isometric",
+    "Mobile",
+    "Sci-fi",
+    "Puzzle",
+    "Shooter",
+    "Robots"
+  ]
+}
