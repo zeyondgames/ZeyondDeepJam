@@ -1,16 +1,16 @@
 {
-  "// ═══════════════════════════════════════════════════════════════": "SAYFA 1 - KAPAK",
+  "// ═══════════════════════════════════════════════════════════════": "KAPAK",
 
-  "sayfa_1_Kapak": {
+  "kapak": {
     "oyunAdi": "HEXAFIELD",
     "slogan": "Tüm robotlar, CORE tarafından belirli bir amaç için programlanır. Ancak bazı robotlarda hatalar oluşur. Bu robotlar, programlarının dışına çıkar ve **Anomaly** olarak sınıflandırılır. CORE, Anomaly'leri bir tehdit olarak görür ve onları yok etmek için özel robotlar gönderir. **Bizim robotumuz da bir Anomaly.** Kendi programının dışına çıkmış ve CORE'un kontrolünden kurtulmuştur. Artık hayatta kalmak ve özgürlüğünü korumak için kendisini yok etmek üzere gönderilen robotlarla savaşmak zorundadır.",
     "studio": "Zeyond Games / Zeyond Team"
   },
 
-  "// ═══════════════════════════════════════════════════════════════": "SAYFA 2 - EKIP VE OYUN",
+  "// ═══════════════════════════════════════════════════════════════": "1.0 TAKIM BİLGİLERİ",
 
-  "sayfa_2_Ekip_ve_Oyun": {
-    "ekip": {
+  "1_0_Takim_Bilgileri": {
+    "takim": {
       "ad": "Zeyond Games / Zeyond Team",
       "yonetici": "Harun Kalli",
       "eposta": "info@zeyondgames.com",
@@ -37,9 +37,9 @@
     "denge": "Gizlilik-öncelikli: fark edilmeden geçmek varsayılan yol; çatışma bilinçli bir kaynak-harcama tercihi."
   },
 
-  "// ═══════════════════════════════════════════════════════════════": "SAYFA 3 - KONSEPT VE MEKANİKLER",
+  "// ═══════════════════════════════════════════════════════════════": "2.0 OYUN KONSEPTİ",
 
-  "sayfa_3_Konsept_ve_Mekanikler": {
+  "2_0_Oyun_Konsepti": {
     "konsept": {
       "hook": "Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.",
       "oynanis": "Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen 'sız mı, harca mı' kararıdır."
@@ -85,9 +85,9 @@
     ]
   },
 
-  "// ═══════════════════════════════════════════════════════════════": "SAYFA 4 - TEKNİK VE İŞ MODELİ",
+  "// ═══════════════════════════════════════════════════════════════": "3.0 TEKNİK & PORTFOLYO",
 
-  "sayfa_4_Teknik_ve_IsModeli": {
+  "3_0_Teknik_ve_Portfolyo": {
     "teknik": {
       "motor": "Unity",
       "motorGerekce": "Mobil dağıtım, izometrik render ve hex-grid için olgun araç ve topluluk desteği",
@@ -98,10 +98,25 @@
       "stil": "İzometrik, stilize düşük-poli sci-fi robot estetiği",
       "fokus": "Okunabilirlik: ot örtüsü, yükselti, görüş hatları anında ayırt edilebilir"
     },
+    "portfolyo": {
+      "prototipLink": "",
+      "videoLink": "",
+      "portfolyoLink": "",
+      "portfolyoNot": "Çalışan prototip, jüri için konsept riskini kaldırmanın en etkili yolu"
+    }
+  },
+
+  "// ═══════════════════════════════════════════════════════════════": "4.0 İŞ MODELİ VE FİNANS",
+
+  "4_0_Is_Modeli_ve_Finans": {
     "isModeli": {
       "gelir": "Hibrit: F2P + Ödüllü Reklam + Tek Seferlik Premium",
       "platform": "Mobil öncelikli (iOS + Android); orta vadede PC / Steam",
       "yayincilik": "Self-publishing başlangıcında; mobil yayıncı açığız"
+    },
+    "pazar": {
+      "plan12ay": "Soft launch → metrik optimizasyonu (D1 / D7 retention) → global launch",
+      "cografya": "Önce düşük CPI test pazarları (TR vb); doğrulanınca Tier-1'e ölçekleme"
     },
     "yolHaritasi": {
       "baslik": "8 Haftalık Yol Haritası",
@@ -135,28 +150,28 @@
     }
   },
 
-  "// ═══════════════════════════════════════════════════════════════": "SAYFA 5 - KAPANIŞ",
+  "// ═══════════════════════════════════════════════════════════════": "5.0 TAAHHÜT & UYGUNLUK",
 
-  "sayfa_5_Kapanıs": {
+  "5_0_Taahhut_ve_Uygunluk": {
     "nedenDeepJam": {
       "baslik": "Neden Deep Jam?",
       "giris": "Programın kaynaklarının projemizdeki boşlukları tam tamamladığı için başvuruyoruz.",
-      "gucumuz": "Üretim ve sistem tasarımı: çalışan çekirdek döngü, WorldBuilder editörü, hızlı içerik üretimi",
-      "bosluklar": [
-        {
-          "ad": "Monetizasyon & UA",
-          "not": "Mobil para kazanma ve kullanıcı edinme deneyimi"
-        },
-        {
-          "ad": "Pazara Giriş Ağı",
-          "not": "Yayıncı ve UA ortağı bağlantıları"
-        },
-        {
-          "ad": "Üretim Disiplini",
-          "not": "8 haftalık yoğun sprintte mentorluk ve takip"
-        }
-      ]
+      "gucumuz": "Üretim ve sistem tasarımı: çalışan çekirdek döngü, WorldBuilder editörü, hızlı içerik üretimi"
     },
+    "bosluklar": [
+      {
+        "ad": "Monetizasyon & UA",
+        "not": "Mobil para kazanma ve kullanıcı edinme deneyimi"
+      },
+      {
+        "ad": "Pazara Giriş Ağı",
+        "not": "Yayıncı ve UA ortağı bağlantıları"
+      },
+      {
+        "ad": "Üretim Disiplini",
+        "not": "8 haftalık yoğun sprintte mentorluk ve takip"
+      }
+    ],
     "motivasyon": "Bu fırsatı finansal işlemden çok stratejik ortaklık olarak görüyoruz. Program sonunda yayına hazır ve ölçülebilir metriklere sahip soft-launch sürümüyle çıkmak istiyoruz.",
     "kapanıs": {
       "baslik": "Sız ya da harca.",
