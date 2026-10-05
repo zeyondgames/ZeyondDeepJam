@@ -25,7 +25,7 @@
 
 /*═══════════════════  TEMA · AYDINLIK  ═══════════════════*/
 /* Varsayılan görünüm: beyaz zemin, siyah yazı, sade. Hex deseni ve
-   kapak atmosferi burada neredeyse yok; vurguyu teal ve turuncu taşır. */
+   kapak atmosferi burada yok; vurguyu teal ve turuncu taşır. */
 
 :root[data-theme="light"] {
   --bg: #ffffff;
@@ -41,8 +41,11 @@
   --glow-soft: rgba(0, 94, 108, .04);
   --glow2: rgba(184, 98, 0, .08);
   --shell: rgba(255, 255, 255, .9);
-  --atmosfer: rgba(0, 94, 108, .05);
-  --ufuk: rgba(184, 98, 0, .05);
+  /* Beyaz görünümde kapak atmosferi kapalı: alt kenardaki turuncu ufuk
+     slaydın sınırında kesiliyor ve zemin rengiyle arasında bant gibi
+     görünen bir fark bırakıyordu. */
+  --atmosfer: transparent;
+  --ufuk: transparent;
   --vinyet: transparent;
   --hex: none;
 }
@@ -60,7 +63,6 @@
 html {
   --cubuk-boy: 5.6rem;
   font-size: clamp(15px, 11px + .36vw, 21px);
-  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -72,15 +74,43 @@ body {
   background-image: var(--hex);
   color: var(--text);
   line-height: 1.65;
-  transition: background-color .25s, color .25s;
+  transition: background-color .7s ease, color .25s;
 }
 
+
+/* Bölüme özel sayfa zemini. Ekranın ortasındaki slayt data-zemin
+   taşıyorsa gezinme.js aynı değeri body'ye yazar ve tüm sayfanın zemini
+   yumuşakça değişir; slayttan çıkınca varsayılana döner.
+
+   "sicak": üst çubuktaki vurguyla aynı #FF1500 → #FFB700 gradyanı.
+   Gradyanlar arasında geçiş yapılamadığı için zemin, sayfanın arkasına
+   sabitlenmiş ayrı bir katmandır ve opaklığıyla belirip kaybolur. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(135deg, #ff1500, #ffb700);
+  opacity: 0;
+  transition: opacity .7s ease;
+}
+body[data-zemin="sicak"]::before { opacity: 1; }
+
+/* Gradyanın üstünde metin iki temada da koyu kalır; teal ve gri vurgular
+   kırmızı-turuncu zeminde okunmuyor. */
+body[data-zemin="sicak"] .slide[data-zemin="sicak"] {
+  --text: #1a0b00;
+  --muted: #3a1c00;
+  --accent: #1a0b00;
+  --soft: rgba(26, 11, 0, .45);
+  color: var(--text);
+}
 
 /*═══════════════════  SLAYT · ORTAK YERLEŞİM  ═══════════════════*/
 
 .slide {
   min-height: 100svh;
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -230,7 +260,13 @@ body {
 
 /*═══════════════════  SLAYT TİPİ · BÖLÜM KAPAĞI  ═══════════════════*/
 /* JSON'da tip: "bolumKapagi" — 01, 03, 08, 10, 13.
-   Panel yok: büyük numara, başlık ve tek satır alt başlık. */
+   Panel yok: büyük numara, başlık ve tek satır alt başlık.
+   Şu an index.html'de "hidden" ile gizliler. */
+
+/* Bileşenlerin kendi display değeri "hidden" özniteliğini ezer; gizleme
+   bu kuralla yapılır. Gizli öğeler DOM'da kalır, JSON dışa aktarımı
+   onları okumaya devam eder. */
+[hidden] { display: none !important; }
 
 .bolum {
   align-items: center;
@@ -317,6 +353,43 @@ h2 {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 20px;
+}
+
+
+/*═══════════════════  SLAYT TİPİ · SERBEST (KUTUSUZ, ORTALI)  ═══════════════════*/
+/* .slide.serbest: içerik panelin kutusuna alınmaz, sayfaya doğrudan ve
+   ortalanarak yayılır — üstte ortalı başlık, altında dar bir sütunda
+   bilgiler, onun altında ortalı kart sırası. Şu an "Biz Kimiz" (02). */
+
+.serbest .panel {
+  max-width: 62rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: center;
+}
+.serbest .panel::before { display: none; }
+.serbest .panel > .num { display: block; }
+.serbest .panel > h2 { margin-bottom: 2.2rem; }
+
+/* Etiket/değer satırları ortada dar bir sütun; satırların kendi içi
+   okunaklı kalsın diye sola yaslı */
+.serbest .kv {
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.serbest .kisiler {
+  max-width: 46rem;
+  margin: 2.8rem auto 0;
+}
+
+.serbest .note {
+  max-width: 40rem;
+  margin: 2.4rem auto 0;
+  padding: 0;
+  border: 0;
 }
 
 
@@ -575,6 +648,91 @@ body:not(.sunum) .step.field { outline-offset: 2px; }
 .card .body { padding: 16px; }
 .card h3 { font-size: 1rem; margin-bottom: 6px; color: var(--accent2); }
 .card p { color: var(--muted); font-size: .88rem; }
+
+
+/*═══════════════════  BİLEŞEN · KİŞİ KARTLARI  ═══════════════════*/
+/* Takım üyeleri: yuvarlak köşeli uzun bir fotoğraf kartı ve alt kenarına
+   oturan beyaz hap etiket — koyu hapta ad, yanında rol. Kartlar yan yana
+   durur; kaydırırken kademeli başlayıp hizalanır. Fotoğraf yokken siluet
+   görünür. */
+
+/* --kayma: kaydirma.js yazar. Kartlar ekranın altındayken 1, ortasındayken
+   0, üstündeyken -1. Kartlar 1'de kademeli durur (tek sıradakiler yukarıda,
+   çift sıradakiler aşağıda), 0'da hizalanır, -1'e doğru ters yönde ayrışır.
+   Script çalışmazsa değer 0'da kalır: kartlar hizalı görünür. */
+.kisiler {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+.kisi {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.6rem;
+  background: color-mix(in srgb, var(--text) 9%, var(--panel));
+}
+.kisi { transform: translateY(calc(var(--kayma, 0) * -2.5rem)); will-change: transform; }
+.kisi:nth-child(even) { transform: translateY(calc(var(--kayma, 0) * 7rem)); }
+
+.kisi-foto {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.kisi-foto img,
+.kisi-foto svg {
+  display: block;
+  width: 100%; height: 100%;
+}
+.kisi-foto img { object-fit: cover; object-position: center top; }
+.kisi-foto svg { fill: color-mix(in srgb, var(--text) 22%, var(--panel)); }
+
+.kisi-etiket {
+  position: absolute;
+  left: 50%; bottom: .9rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: .2rem;
+  width: max-content;
+  max-width: calc(100% - 1.4rem);
+  padding: .28rem;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+}
+.kisi-ad, .kisi-rol {
+  font-size: .92rem;
+  line-height: 1.25;
+  border-radius: 999px;
+}
+.kisi-ad {
+  flex: none;
+  padding: .42rem .95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #a8dcff;
+  background: #0f1035;
+}
+.kisi-rol {
+  padding: .42rem .8rem .42rem .5rem;
+  color: #111111;
+}
+/* Kesikli düzenleme çerçevesi hapların içinde kalsın */
+body:not(.sunum) .kisi-etiket .field { outline-offset: -2px; }
+body:not(.sunum) .kisi-etiket .field:hover,
+body:not(.sunum) .kisi-etiket .kisi-rol:focus { background: rgba(0, 0, 0, .06); }
+body:not(.sunum) .kisi-etiket .kisi-ad:hover,
+body:not(.sunum) .kisi-etiket .kisi-ad:focus { background: #0f1035; }
+
+/* Telefonda yan yana iki kart etikete yer bırakmıyor: alt alta, kaymasız */
+@media (max-width: 600px) {
+  .kisiler { grid-template-columns: 1fr; }
+  .kisi { aspect-ratio: 1 / 1; }
+  .kisi, .kisi:nth-child(even) { transform: none; }
+}
 
 
 /*═══════════════════  BİLEŞEN · ETİKET ÇİPLERİ  ═══════════════════*/
@@ -931,6 +1089,38 @@ body.sunum #modeBtn { --c1: var(--g1); --c2: var(--g2); }
 }
 
 
+/*═══════════════════  UYARLAMA · SAĞ / SOL DİZİLİM  ═══════════════════*/
+/* Geniş ekranda içerik slaytları ortada durmak yerine sırayla bir sola
+   bir sağa yaslanır: ilki solda, sonraki sağda. Sıra yalnızca içerik
+   slaytları arasında sayılır ("of" seçicisi); kapaklar, bölüm kapakları
+   ve serbest (kutusuz, ortalı) slaytlar ortada kalır ve sırayı bozmaz.
+   Dar ekranda panel zaten tüm genişliği kapladığı için bu dizilim
+   uygulanmaz.
+
+   Sağdaki panellerde başlık, düz metin ve notlar da sağa yaslanır;
+   etiket/değer satırları, kaydıraçlar ve kartlar okunaklı kalsın diye
+   kendi hizasını korur. */
+
+@media (min-width: 1100px) {
+  .slide:not(.cover, .bolum, .outro, .serbest) { padding-inline: clamp(40px, 7vw, 10rem); }
+
+  .slide:nth-child(odd of .slide:not(.cover, .bolum, .outro, .serbest)) .panel { margin-left: 0; }
+
+  .slide:nth-child(even of .slide:not(.cover, .bolum, .outro, .serbest)) .panel { margin-right: 0; }
+  .slide:nth-child(even of .slide:not(.cover, .bolum, .outro, .serbest)) .panel::before { left: auto; right: -1px; }
+  .slide:nth-child(even of .slide:not(.cover, .bolum, .outro, .serbest)) .panel > :is(.num, h2, .altbaslik, .field) {
+    display: block;
+    text-align: right;
+  }
+  .slide:nth-child(even of .slide:not(.cover, .bolum, .outro, .serbest)) .panel > .note {
+    border-left: 0;
+    border-right: 2px solid var(--line);
+    padding-left: 0;
+    padding-right: 16px;
+  }
+}
+
+
 /*═══════════════════  UYARLAMA · MOBİL  ═══════════════════*/
 
 @media (max-width: 700px), (max-height: 560px) {
@@ -960,8 +1150,9 @@ body.sunum #modeBtn { --c1: var(--g1); --c2: var(--g2); }
 /* Tema ne olursa olsun beyaz zemin, her slayt yeni sayfa */
 
 @media print {
-  html { scroll-snap-type: none; }
   body { background: #fff; background-image: none; color: #111; }
+  body::before { display: none; }
+  .kisi, .kisi:nth-child(even) { transform: none; }
   .toolbar, .menu, .dots, .hint { display: none; }
   .slide {
     min-height: auto;
@@ -974,6 +1165,7 @@ body.sunum #modeBtn { --c1: var(--g1); --c2: var(--g2); }
   .cover::before, .cover::after { display: none; }
   .cover { padding: 24px 0; }
   .cover h1 { font-size: 3rem; }
+  .kisi { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
   h2, .num, .kicker, .mail, .card h3, .altbaslik, .imza, .bolum .no, .loop .govde h4 { color: #111; }
   .step { background: #111; color: #fff; }
   .field.empty::before { content: ""; }

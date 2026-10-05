@@ -13,5 +13,6 @@
   GDD.temayiKur();
   GDD.sunumuKur();
   GDD.gezinmeyiKur();
+  GDD.kaydirmayiKur();
 
 })(window.GDD);

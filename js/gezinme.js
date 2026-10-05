@@ -8,7 +8,8 @@ window.GDD = window.GDD || {};
   let aktif = 0;
 
   GDD.gezinmeyiKur = function () {
-    const slaytlar = document.querySelectorAll(".slide");
+    // Gizli slaytlar (bölüm kapakları) nokta ve klavye sırasına girmez
+    const slaytlar = document.querySelectorAll(".slide:not([hidden])");
     const kap = document.getElementById("dots");
 
     slaytlar.forEach(function (s) {
@@ -30,6 +31,10 @@ window.GDD = window.GDD || {};
           if (!giris.isIntersecting) return;
           aktif = Array.prototype.indexOf.call(slaytlar, giris.target);
           noktalar.forEach(function (n, i) { n.classList.toggle("active", i === aktif); });
+
+          // Slayt kendi zemin rengini isteyebilir (data-zemin); yoksa sayfa
+          // varsayılan zemine döner. Geçişi style.css yumuşatır.
+          document.body.dataset.zemin = giris.target.dataset.zemin || "";
 
           // Kapakların numarası yok: orada hiçbir bölüm işaretlenmez
           const bolum = (giris.target.dataset.numara || "").charAt(0);
