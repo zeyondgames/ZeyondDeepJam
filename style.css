@@ -727,11 +727,25 @@ body:not(.sunum) .kisi-etiket .kisi-rol:focus { background: rgba(0, 0, 0, .06); 
 body:not(.sunum) .kisi-etiket .kisi-ad:hover,
 body:not(.sunum) .kisi-etiket .kisi-ad:focus { background: #0f1035; }
 
-/* Telefonda yan yana iki kart etikete yer bırakmıyor: alt alta, kaymasız */
+/* Telefonda kartlar yine yan yana ama küçük. Etiket tek satıra sığmadığı
+   için dikleşir: üstte ad hapı, altında rol. Kayma da ekrana göre azalır. */
 @media (max-width: 600px) {
-  .kisiler { grid-template-columns: 1fr; }
-  .kisi { aspect-ratio: 1 / 1; }
-  .kisi, .kisi:nth-child(even) { transform: none; }
+  .kisiler { gap: .7rem; }
+  .kisi { aspect-ratio: 3 / 4; border-radius: 1.1rem; }
+  .kisi { transform: translateY(calc(var(--kayma, 0) * -1rem)); }
+  .kisi:nth-child(even) { transform: translateY(calc(var(--kayma, 0) * 3rem)); }
+
+  .kisi-etiket {
+    bottom: .5rem;
+    flex-direction: column;
+    gap: .1rem;
+    max-width: calc(100% - .8rem);
+    padding: .25rem;
+    border-radius: 1rem;
+  }
+  .kisi-ad, .kisi-rol { font-size: .78rem; }
+  .kisi-ad { padding: .3rem .8rem; }
+  .kisi-rol { padding: .15rem .45rem .25rem; text-align: center; }
 }
 
 
