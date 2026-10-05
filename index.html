@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deep Jam Başvurusu · Zeyond Games</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner -->
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}catch(e){}</script>
+  <!-- Temayı sayfa çizilmeden uygular; aksi halde karanlık temada bir an beyaz yanıp söner. Varsayılan beyaz. -->
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-2")||"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 </head>
 
 <!--
@@ -17,13 +17,36 @@
 
 <body>
 
+  <!--
+    Araç menüsü. Düğmeler hep görünmez: sağ köşedeki simgenin üzerine
+    gelince (ya da klavyeyle odaklanınca) açılır. Açma-kapama tamamen
+    CSS'te: .toolbar:hover / :focus-within.
+  -->
   <div class="toolbar">
-    <button class="btn" id="themeBtn">Tema</button>
-    <button class="btn" id="modeBtn">Sunum modu</button>
-    <button class="btn" id="exportBtn">JSON indir</button>
-    <label class="btn" for="importFile">JSON yükle</label>
-    <input type="file" id="importFile" accept="application/json" hidden>
+    <button class="arac" type="button" aria-label="Araçlar" aria-haspopup="true"><img src="img/araclar.png" alt=""></button>
+    <div class="arac-liste">
+      <button class="btn" id="themeBtn">Tema</button>
+      <button class="btn" id="modeBtn">Sunum modu</button>
+      <button class="btn" id="exportBtn">JSON indir</button>
+      <label class="btn" for="importFile">JSON yükle</label>
+      <input type="file" id="importFile" accept="application/json" hidden>
+    </div>
   </div>
+
+  <!--
+    Bölüm menüsü. Her bağlantı ilgili bölüm kapağına iner; data-bolum
+    slaytların data-numara değerinin ilk hanesiyle eşleşir, gezinme.js
+    aktif bölümü buradan işaretler. Etiketler menüye özeldir: slayt
+    başlıkları ve JSON resmi başvuru başlıklarını korur.
+  -->
+  <nav class="menu" id="menu" aria-label="Bölümler">
+    <a class="logo" href="#s00" aria-label="Zeyond Games · Sayfanın başına dön"><img src="img/logo.png" alt="Zeyond Games"></a>
+    <a href="#s01" data-bolum="1">Biz Kimiz</a>
+    <a href="#s03" data-bolum="2">Oyunumuz</a>
+    <a href="#s08" data-bolum="3">Teknik ve Portfolyo</a>
+    <a href="#s10" data-bolum="4">İş Modeli ve Finans</a>
+    <a href="#s13" data-bolum="5">Taahhüt ve Uygunluğumuz</a>
+  </nav>
 
   <nav class="dots" id="dots" aria-label="Slayt gezinme"></nav>
 

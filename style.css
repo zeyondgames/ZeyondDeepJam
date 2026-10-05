@@ -24,26 +24,27 @@
 
 
 /*═══════════════════  TEMA · AYDINLIK  ═══════════════════*/
-/* Teknik çizim / blueprint hissi: soğuk açık zemin, koyu teal vurgu */
+/* Varsayılan görünüm: beyaz zemin, siyah yazı, sade. Hex deseni ve
+   kapak atmosferi burada neredeyse yok; vurguyu teal ve turuncu taşır. */
 
 :root[data-theme="light"] {
-  --bg: #e9f1f2;
-  --panel: #ffffff;
-  --panel2: #f4f9fa;
+  --bg: #ffffff;
+  --panel: #f7f7f9;
+  --panel2: #ffffff;
   --accent: #005e6c;
-  --accent2: #a45b00;
-  --text: #0c1a1e;
-  --muted: #7ab4dd;
-  --line: rgba(0, 108, 94, .22);
-  --soft: rgba(77, 106, 113, .35);
-  --glow: rgba(0, 108, 94, .10);
-  --glow-soft: rgba(0, 108, 94, .05);
-  --glow2: rgba(164, 91, 0, .09);
-  --shell: rgba(255, 255, 255, .85);
-  --atmosfer: rgba(0, 108, 94, .14);
-  --ufuk: rgba(164, 91, 0, .15);
-  --vinyet: rgba(12, 26, 30, .13);
-  --hex: url("data:image/svg+xml,%3Csvg width='28' height='49' viewBox='0 0 28 49' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23006c5e' fill-opacity='0.07' fill-rule='evenodd' d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81V33.5zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/svg%3E");
+  --accent2: #b86200;
+  --text: #1d1d1f;
+  --muted: #5f6368;
+  --line: rgba(0, 0, 0, .12);
+  --soft: rgba(0, 0, 0, .22);
+  --glow: rgba(0, 94, 108, .08);
+  --glow-soft: rgba(0, 94, 108, .04);
+  --glow2: rgba(184, 98, 0, .08);
+  --shell: rgba(255, 255, 255, .9);
+  --atmosfer: rgba(0, 94, 108, .05);
+  --ufuk: rgba(184, 98, 0, .05);
+  --vinyet: transparent;
+  --hex: none;
 }
 
 
@@ -74,7 +75,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 88px 24px 72px;
+  padding: 116px 24px 72px;
 }
 
 
@@ -107,7 +108,7 @@ body {
   align-items: center;
   text-align: center;
   justify-content: space-between;
-  padding: 76px 24px 96px;
+  padding: 112px 24px 96px;
 }
 
 /* Üstte teal gökyüzü, altta turuncu ufuk */
@@ -613,32 +614,192 @@ body.sunum .chip:not(.on) { display: none; }
 body.sunum .check .chip:not(.on) { display: block; }
 
 
-/*═══════════════════  ARAYÜZ · ARAÇ ÇUBUĞU  ═══════════════════*/
+/*═══════════════════  ARAYÜZ · ÜST ÇUBUK  ═══════════════════*/
+/* Çubuk temadan bağımsızdır: her zaman beyaz zemin, siyah yazı. Bu yüzden
+   renkleri tema değişkenlerinden değil buradaki sabitlerden gelir. Solda
+   logo ve bölüm menüsü, sağda araç menüsünü açan simge. */
+
+.menu, .toolbar {
+  --cubuk: #ffffff;
+  --cubuk-yazi: #111111;
+  --cubuk-cizgi: rgba(0, 0, 0, .14);
+  --cubuk-boy: 90px;
+}
+
+.menu {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 20;
+  height: var(--cubuk-boy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 20px;
+  background: var(--cubuk);
+  border-bottom: 1px solid var(--cubuk-cizgi);
+}
+.menu a {
+  display: flex;
+  padding: 8px 13px;
+  border-radius: 6px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--cubuk-yazi);
+  text-decoration: none;
+}
+
+/* Çubuk boyunca soldan sağa #FF1500 → #FFB700 uzanan tek bir gradyan
+   varmış gibi: her bağlantı o gradyanın kendi beşte birlik dilimini
+   (--g1 → --g2) taşır. Arka plan hiç değişmez; yalnızca yazı renklenir.
+
+   Yazı her zaman yazıya kırpılmış bir gradyanla boyanır: beklerken iki
+   ucu da siyah, üzerine gelince ya da o bölümdeyken dilimin renkleri.
+   --c1 / --c2 renk olarak kayıtlı olduğu için bu geçiş yumuşar; siyah
+   yazının altında renkli bir katman bekletmek kenarlarda kızıl saçak
+   bırakıyordu. */
+@property --c1 { syntax: "<color>"; inherits: false; initial-value: #111111; }
+@property --c2 { syntax: "<color>"; inherits: false; initial-value: #111111; }
+
+.menu a[data-bolum] {
+  background-image: linear-gradient(90deg, var(--c1, #111111), var(--c2, #111111));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: --c1 .2s, --c2 .2s;
+}
+.menu a[data-bolum="1"] { --g1: #ff1500; --g2: #ff3500; }
+.menu a[data-bolum="2"] { --g1: #ff3500; --g2: #ff5600; }
+.menu a[data-bolum="3"] { --g1: #ff5600; --g2: #ff7600; }
+.menu a[data-bolum="4"] { --g1: #ff7600; --g2: #ff9700; }
+.menu a[data-bolum="5"] { --g1: #ff9700; --g2: #ffb700; }
+.menu a[data-bolum]:hover,
+.menu a[data-bolum].active { --c1: var(--g1); --c2: var(--g2); }
+.menu a:focus-visible { outline: 2px solid var(--cubuk-yazi); outline-offset: 1px; }
+
+/* Logo: sayfanın başına döner. Akışın dışında durur ki bağlantılar
+   çubuğun değil sayfanın ortasına hizalansın. Görselin kendi beyaz payı
+   var, o yüzden dolgusuz ve çubuk yüksekliğine yakın. */
+.menu .logo {
+  position: absolute;
+  left: 16px; top: 0; bottom: 0;
+  align-items: center;
+  padding: 0;
+}
+.menu .logo img { display: block; width: 82px; height: 82px; }
 
 .toolbar {
   position: fixed;
-  top: 16px; right: 20px;
-  z-index: 20;
+  top: 0; right: 20px;
+  z-index: 21;
+  height: var(--cubuk-boy);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 8px;
+  align-items: center;
 }
-.btn {
-  font-family: var(--mono);
-  font-size: .74rem;
-  letter-spacing: .06em;
-  padding: 7px 14px;
-  border-radius: 3px;
-  border: 1px solid var(--line);
-  background: var(--shell);
-  backdrop-filter: blur(8px);
-  color: var(--muted);
+
+/* Simge: araç menüsünü açan tek görünür parça */
+.arac {
+  position: relative;
+  display: flex;
+  padding: 10px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--cubuk);
   cursor: pointer;
-  transition: all .15s;
 }
-.btn:hover { color: var(--accent); border-color: var(--accent); }
-body.sunum #modeBtn { color: var(--accent); border-color: var(--accent); }
+.arac img { display: block; width: 28px; height: 28px; }
+
+/* Logo ve araç simgesi de aynı gradyanın iki ucunu taşır: logo en soldaki
+   kırmızıyı, simge en sağdaki sarıyı. İkisi de siyah-beyaz görsel olduğu
+   için renk, üstlerine "screen" karışımıyla binen bir katmandan gelir:
+   siyah gradyana döner, beyaz beyaz kalır. Karışımın beyaz bir zemine
+   ihtiyacı var; .arac bu yüzden çubuk rengini kendi zemini olarak taşır. */
+.menu .logo::after,
+.arac::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--g1), var(--g2));
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.menu .logo { --g1: #ff1500; --g2: #ff2a00; }
+.arac { --g1: #ffa200; --g2: #ffb700; }
+/* Katman düğmenin beyaz zemininden taşarsa kenarda renkli çizgi kalır */
+.arac::after { inset: 2px; }
+.menu .logo:hover::after,
+.toolbar:hover .arac::after,
+.toolbar:focus-within .arac::after { opacity: 1; }
+.arac:focus-visible { outline: 2px solid var(--cubuk-yazi); outline-offset: 1px; }
+
+/* Liste çubuğun hemen altına yapışık açılır; arada boşluk olsaydı
+   fare simgeden listeye inerken menü kapanırdı. */
+.arac-liste {
+  position: absolute;
+  top: 100%; right: 0;
+  display: grid;
+  gap: 2px;
+  min-width: 200px;
+  padding: 8px;
+  border: 1px solid var(--cubuk-cizgi);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: var(--cubuk);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .15s, transform .15s, visibility .15s;
+}
+.toolbar:hover .arac-liste,
+.toolbar:focus-within .arac-liste {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .arac-liste { transition: none; }
+}
+
+/* Açılır menü satırları bölüm adlarıyla aynı yazı ve aynı davranış:
+   üzerine gelince zemin değişmez, yazı gradyanın sağ ucundaki rengi alır.
+   Sunum modu açıkken o satır renkli kalır. */
+.btn {
+  --g1: #ff8a00; --g2: #ffb700;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  /* "JSON yükle" bir label; gövdenin satır yüksekliğini almasın */
+  line-height: 1.3;
+  text-align: left;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--c1, #111111), var(--c2, #111111));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  cursor: pointer;
+  transition: --c1 .2s, --c2 .2s;
+}
+.btn:hover,
+body.sunum #modeBtn { --c1: var(--g1); --c2: var(--g2); }
+.btn:focus-visible { outline: 2px solid var(--cubuk-yazi); outline-offset: -2px; }
+
+/* Bağlantılar logoyla çakışacak kadar daralınca ortalama bırakılır:
+   logo akışa girer, bağlantılar yanında yatay kaydırılır. Sağdaki
+   dolgu araç simgesine yer açar. */
+@media (max-width: 1100px) {
+  .menu { justify-content: flex-start; padding: 0 60px 0 8px; overflow-x: auto; scrollbar-width: none; }
+  .menu::-webkit-scrollbar { display: none; }
+  .menu .logo { position: relative; left: auto; flex: none; margin-right: 4px; }
+  /* Kaydırılan bağlantılar simgenin altından görünmesin */
+  .toolbar { right: 0; padding: 0 10px; height: calc(var(--cubuk-boy) - 1px); background: var(--cubuk); }
+}
+
 
 
 /*═══════════════════  ARAYÜZ · NOKTA GEZİNME  ═══════════════════*/
@@ -673,12 +834,14 @@ body.sunum #modeBtn { color: var(--accent); border-color: var(--accent); }
 /*═══════════════════  UYARLAMA · MOBİL  ═══════════════════*/
 
 @media (max-width: 600px) {
-  .slide { padding: 92px 16px 56px; }
+  .slide { padding: 90px 16px 56px; }
   .panel { padding: 24px 20px; }
   .dots { right: 10px; gap: 10px; }
   .dot { width: 7px; height: 7px; }
-  .toolbar { top: 10px; right: 10px; left: 10px; justify-content: center; }
-  .btn { padding: 6px 10px; font-size: .68rem; }
+  .menu, .toolbar { --cubuk-boy: 66px; }
+  .menu { padding: 0 50px 0 4px; }
+  .menu a { padding: 7px 10px; font-size: .95rem; }
+  .menu .logo img { width: 60px; height: 60px; }
   .loop li { gap: 12px; }
   /* Dar ekranda etiket üstte, cevap altta */
   .kv > div { grid-template-columns: 1fr; }
@@ -694,7 +857,7 @@ body.sunum #modeBtn { color: var(--accent); border-color: var(--accent); }
 @media print {
   html { scroll-snap-type: none; }
   body { background: #fff; background-image: none; color: #111; }
-  .toolbar, .dots, .hint { display: none; }
+  .toolbar, .menu, .dots, .hint { display: none; }
   .slide {
     min-height: auto;
     page-break-after: always;

@@ -4,7 +4,9 @@ window.GDD = window.GDD || {};
 
 (function (GDD) {
 
-  const TEMA_KEY = "zeyond-tema";
+  // Varsayılan beyaz görünüme geçince anahtar yenilendi: eski kayıtlı
+  // karanlık tercih yeni varsayılanı gizlemesin.
+  const TEMA_KEY = "zeyond-tema-2";
 
   GDD.temayiKur = function () {
     const dugme = document.getElementById("themeBtn");
@@ -19,9 +21,8 @@ window.GDD = window.GDD || {};
       }
     }
 
-    // false: kullanıcı henüz seçim yapmadıysa sistem tercihi kaydedilmesin,
-    // böylece işletim sistemi temasını değiştirdiğinde site de takip eder.
-    uygula(document.documentElement.dataset.theme || "dark", false);
+    // false: kullanıcı henüz seçim yapmadıysa varsayılan kaydedilmesin.
+    uygula(document.documentElement.dataset.theme || "light", false);
 
     dugme.addEventListener("click", function () {
       uygula(document.documentElement.dataset.theme === "light" ? "dark" : "light", true);
