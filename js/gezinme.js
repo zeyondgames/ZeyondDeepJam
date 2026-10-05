@@ -36,8 +36,10 @@ window.GDD = window.GDD || {};
     slaytlar.forEach(function (s) { gozlemci.observe(s); });
 
     document.addEventListener("keydown", function (e) {
-      // Metin yazarken ok tuşları slayt değiştirmesin
-      if (document.activeElement && document.activeElement.isContentEditable) return;
+      // Metin yazarken ya da kaydıraç odaktayken ok tuşları slayt değiştirmesin;
+      // kaydıraçta ok tuşları değeri değiştirir.
+      const odak = document.activeElement;
+      if (odak && (odak.isContentEditable || odak.type === "range")) return;
 
       let hedef = null;
       if (e.key === "ArrowDown" || e.key === "PageDown") hedef = aktif + 1;

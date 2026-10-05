@@ -34,6 +34,8 @@ window.GDD = window.GDD || {};
     dugme.addEventListener("click", function () {
       const sunum = document.body.classList.toggle("sunum");
       GDD.alanlar.forEach(function (f) { GDD.duzenlenebilir(f, !sunum); });
+      // Sunumda kaydıraçlar salt okunur bir grafiğe dönüşür
+      GDD.skalalar.forEach(function (s) { s.disabled = sunum; });
       dugme.textContent = sunum ? "Düzenleme modu" : "Sunum modu";
     });
   };

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Düzenli JSON Rehberi</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --border: #e0e0e0;
+            --code-bg: #f5f5f5;
+            --accent: #0066cc;
+            --good: #27ae60;
+            --bad: #e74c3c;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #1a1a1a;
+                --text: #e0e0e0;
+                --border: #333333;
+                --code-bg: #2a2a2a;
+                --accent: #66b3ff;
+                --good: #2ecc71;
+                --bad: #ff6b6b;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 { color: var(--accent); }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 4px solid var(--accent);
+            background: var(--code-bg);
+            border-radius: 4px;
+        }
+        .example {
+            margin: 15px 0;
+            padding: 15px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        code {
+            color: var(--accent);
+        }
+        .good {
+            border-left-color: var(--good);
+        }
+        .bad {
+            border-left-color: var(--bad);
+        }
+        .tip {
+            background: var(--code-bg);
+            padding: 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border-left: 3px solid var(--accent);
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+        .label {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 Düzenli ve Kategorik JSON Yazma Rehberi</h1>
+
+    <div class="section">
+        <h2>1. Temel Prensipler</h2>
+        <div class="tip">
+            ✓ <strong>Hiyerarşik Düzen:</strong> Verilerinizi mantıksal seviyeler halinde organize edin
+        </div>
+        <div class="tip">
+            ✓ <strong>Kategori Gruplandırması:</strong> İlişkili verileri alt nesnelerde toplayın
+        </div>
+        <div class="tip">
+            ✓ <strong>Tutarlı Yapı:</strong> Aynı türdeki veriler aynı şekilde gösterilsin
+        </div>
+        <div class="tip">
+            ✓ <strong>Net Adlandırma:</strong> Açık ve özlü anahtar isimleri kullanın
+        </div>
+    </div>
+
+    <div class="section good">
+        <h2>2. ✓ DOĞRU: İyi Örgütlenmiş Örnek</h2>
+        <div class="example">
+            <div class="label">Yapılandırılmış ve kategorik JSON</div>
+            <pre>{
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2026-09-20",
+    "author": "Harun Kalli"
+  },
+  "users": [
+    {
+      "id": "user_001",
+      "profile": {
+        "firstName": "Harun",
+        "lastName": "Kalli",
+        "email": "harun@example.com"
+      },
+      "settings": {
+        "theme": "dark",
+        "notifications": true,
+        "language": "tr"
+      },
+      "stats": {
+        "posts": 42,
+        "followers": 128,
+        "joinedDate": "2024-01-15"
+      }
+    }
+  ],
+  "categories": {
+    "products": {
+      "active": [...],
+      "archived": [...]
+    },
+    "services": {
+      "premium": [...],
+      "free": [...]
+    }
+  }
+}</pre>
+        </div>
+    </div>
+
+    <div class="section bad">
+        <h2>3. ✗ YANLIŞ: Düzensiz Örnek</h2>
+        <div class="example">
+            <div class="label">Karışık ve belirsiz yapı</div>
+            <pre">{
+  "user_001": "Harun",
+  "email": "harun@example.com",
+  "theme": "dark",
+  "posts": 42,
+  "followers": 128,
+  "joined": "2024-01-15",
+  "notif": true,
+  "lang": "tr",
+  "product1": {...},
+  "product2": {...},
+  "archived_product1": {...}
+}</pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. Kategorik Yapılandırma Şablonları</h2>
+
+        <h3>A) Metadata + İçerik Ayrımı</h3>
+        <div class="example">
+            <pre>{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-09-20",
+    "updated": "2026-09-20"
+  },
+  "content": {
+    "title": "Başlık",
+    "description": "Açıklama",
+    "body": "İçerik"
+  },
+  "settings": {
+    "isActive": true,
+    "visibility": "public"
+  }
+}</pre>
+        </div>
+
+        <h3>B) Durum Bazlı Gruplandırma</h3>
+        <div class="example">
+            <pre>{
+  "items": {
+    "active": [
+      { "id": 1, "name": "Aktif 1" },
+      { "id": 2, "name": "Aktif 2" }
+    ],
+    "pending": [
+      { "id": 3, "name": "Beklemede 1" }
+    ],
+    "archived": [
+      { "id": 4, "name": "Arşiv 1" }
+    ]
+  }
+}</pre>
+        </div>
+
+        <h3>C) Türe Göre Kategorileme</h3>
+        <div class="example">
+            <pre>{
+  "resources": {
+    "documents": [
+      { "id": "doc_1", "title": "Rapor" }
+    ],
+    "images": [
+      { "id": "img_1", "url": "/images/1.jpg" }
+    ],
+    "videos": [
+      { "id": "vid_1", "url": "/videos/1.mp4" }
+    ]
+  }
+}</pre>
+        </div>
+
+        <h3>D) Profil + Tercihler + İstatistikler</h3>
+        <div class="example">
+            <pre>{
+  "users": [
+    {
+      "id": "u001",
+      "profile": {
+        "firstName": "Harun",
+        "lastName": "Kalli",
+        "avatar": "/avatars/u001.jpg"
+      },
+      "contact": {
+        "email": "harun@example.com",
+        "phone": "+90123456789"
+      },
+      "preferences": {
+        "theme": "dark",
+        "language": "tr",
+        "notifications": {
+          "email": true,
+          "push": false,
+          "sms": true
+        }
+      },
+      "statistics": {
+        "loginCount": 157,
+        "lastLogin": "2026-09-20",
+        "createdAt": "2024-01-15"
+      }
+    }
+  ]
+}</pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>5. Adlandırma Kuralları</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr style="border-bottom: 1px solid var(--border);">
+                <th style="text-align: left; padding: 10px;">Kural</th>
+                <th style="text-align: left; padding: 10px;">Doğru ✓</th>
+                <th style="text-align: left; padding: 10px;">Yanlış ✗</th>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px;">camelCase kullanın</td>
+                <td style="padding: 10px;"><code>firstName</code></td>
+                <td style="padding: 10px;"><code>first_name</code>, <code>FirstName</code></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px;">Çoğul liste adları</td>
+                <td style="padding: 10px;"><code>users</code>, <code>posts</code></td>
+                <td style="padding: 10px;"><code>user</code>, <code>post</code></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px;">Boolean öneki</td>
+                <td style="padding: 10px;"><code>isActive</code>, <code>hasPermission</code></td>
+                <td style="padding: 10px;"><code>active</code>, <code>permission</code></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px;">Açık ve anlaşılır</td>
+                <td style="padding: 10px;"><code>createdAt</code>, <code>description</code></td>
+                <td style="padding: 10px;"><code>c</code>, <code>desc</code>, <code>d</code></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>6. Uygulamalı Örnek: Blog Platformu</h2>
+        <div class="example">
+            <div class="label">Tam yapılandırılmış JSON yapısı</div>
+            <pre>{
+  "metadata": {
+    "apiVersion": "2.0",
+    "timestamp": "2026-09-20T10:30:00Z",
+    "requestId": "req_abc123"
+  },
+  "blog": {
+    "info": {
+      "title": "Teknoloji Blogu",
+      "description": "Yazılım ve teknoloji hakkında yazılar",
+      "owner": "Harun Kalli",
+      "foundedAt": "2024-01-01"
+    },
+    "posts": {
+      "published": [
+        {
+          "id": "post_001",
+          "title": "JSON Düzenleme Rehberi",
+          "author": "Harun Kalli",
+          "metadata": {
+            "createdAt": "2026-09-15",
+            "updatedAt": "2026-09-20",
+            "viewCount": 1523
+          },
+          "content": {
+            "summary": "JSON'u düzenli şekilde yapılandırma rehberi",
+            "body": "Detaylı içerik burada...",
+            "tags": ["json", "programming"]
+          },
+          "status": {
+            "isPublished": true,
+            "isFeatured": true,
+            "commentCount": 42
+          }
+        }
+      ],
+      "draft": [
+        {
+          "id": "post_002",
+          "title": "Gelecek Yazı",
+          "author": "Harun Kalli",
+          "metadata": {
+            "createdAt": "2026-09-19",
+            "updatedAt": "2026-09-20"
+          },
+          "content": {
+            "summary": "Taslak",
+            "body": "Henüz yazılmadı",
+            "tags": []
+          },
+          "status": {
+            "isPublished": false,
+            "isFeatured": false,
+            "commentCount": 0
+          }
+        }
+      ]
+    },
+    "settings": {
+      "appearance": {
+        "theme": "dark",
+        "postsPerPage": 10,
+        "showComments": true
+      },
+      "notifications": {
+        "emailOnNewComment": true,
+        "emailOnNewFollower": false
+      }
+    }
+  }
+}</pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>7. Kontrol Listesi</h2>
+        <ul>
+            <li>✓ Verileri mantıksal kategorilere bölün</li>
+            <li>✓ İlişkili verileri iç nesnelerde toplayın</li>
+            <li>✓ Metadata ve içeriği ayırın</li>
+            <li>✓ Durum ve veri tipine göre gruplandırın</li>
+            <li>✓ Tutarlı camelCase adlandırma kullanın</li>
+            <li>✓ İç içe sayısını 3-4 seviyeyle sınırlandırın</li>
+            <li>✓ Boolean alanlar için <code>is</code> veya <code>has</code> öneki kullanın</li>
+            <li>✓ Açık ve özlü anahtar isimleri seçin</li>
+            <li>✓ Çoklu öğeler için çoğul isimler kullanın</li>
+            <li>✓ Tarihler için ISO 8601 formatını kullanın</li>
+        </ul>
+    </div>
+
+</body>
+</html>
