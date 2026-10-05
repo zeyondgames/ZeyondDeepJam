@@ -38,14 +38,21 @@
     slaytların data-numara değerinin ilk hanesiyle eşleşir, gezinme.js
     aktif bölümü buradan işaretler. Etiketler menüye özeldir: slayt
     başlıkları ve JSON resmi başvuru başlıklarını korur.
+
+    Geniş ekranda bağlantılar çubuğun ortasında yan yana durur. Dar
+    ekranda .baglar çubuğun altına açılan bir listeye döner ve #menuBtn
+    ile açılıp kapanır (gezinme.js).
   -->
   <nav class="menu" id="menu" aria-label="Bölümler">
     <a class="logo" href="#s00" aria-label="Zeyond Games · Sayfanın başına dön"><img src="img/logo.png" alt="Zeyond Games"></a>
-    <a href="#s01" data-bolum="1">Biz Kimiz</a>
-    <a href="#s03" data-bolum="2">Oyunumuz</a>
-    <a href="#s08" data-bolum="3">Teknik ve Portfolyo</a>
-    <a href="#s10" data-bolum="4">İş Modeli ve Finans</a>
-    <a href="#s13" data-bolum="5">Taahhüt ve Uygunluğumuz</a>
+    <div class="baglar" id="baglar">
+      <a href="#s01" data-bolum="1">Biz Kimiz</a>
+      <a href="#s03" data-bolum="2">Oyunumuz</a>
+      <a href="#s08" data-bolum="3">Teknik ve Portfolyo</a>
+      <a href="#s10" data-bolum="4">İş Modeli ve Finans</a>
+      <a href="#s13" data-bolum="5">Taahhüt ve Uygunluğumuz</a>
+    </div>
+    <button class="menu-dugme" id="menuBtn" type="button" aria-label="Bölümler" aria-controls="baglar" aria-expanded="false"><span></span></button>
   </nav>
 
   <nav class="dots" id="dots" aria-label="Slayt gezinme"></nav>

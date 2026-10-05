@@ -1,4 +1,5 @@
-// Sağdaki nokta gezinme, üstteki bölüm menüsü ve klavye kısayolları.
+// Sağdaki nokta gezinme, üstteki bölüm menüsü (dar ekranda açılır liste)
+// ve klavye kısayolları.
 
 window.GDD = window.GDD || {};
 
@@ -44,6 +45,31 @@ window.GDD = window.GDD || {};
     );
 
     slaytlar.forEach(function (s) { gozlemci.observe(s); });
+
+    // ---------- Dar ekran bölüm menüsü ----------
+    // Geniş ekranda bağlantılar zaten görünür; düğme yalnızca dar ekranda
+    // (style.css) ortaya çıkar. Bir bölüme gidince, dışarı tıklayınca ya
+    // da Esc'e basınca liste kapanır.
+    const menu = document.getElementById("menu");
+    const menuDugme = document.getElementById("menuBtn");
+
+    function menuyuAyarla(acik) {
+      menu.classList.toggle("acik", acik);
+      menuDugme.setAttribute("aria-expanded", acik ? "true" : "false");
+    }
+
+    menuDugme.addEventListener("click", function () {
+      menuyuAyarla(!menu.classList.contains("acik"));
+    });
+    baglar.forEach(function (b) {
+      b.addEventListener("click", function () { menuyuAyarla(false); });
+    });
+    document.addEventListener("click", function (e) {
+      if (!menu.contains(e.target)) menuyuAyarla(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") menuyuAyarla(false);
+    });
 
     document.addEventListener("keydown", function (e) {
       // Metin yazarken ya da kaydıraç odaktayken ok tuşları slayt değiştirmesin;
