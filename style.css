@@ -663,7 +663,7 @@ body:not(.sunum) .step.field { outline-offset: 2px; }
 .kisiler {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
+  gap: 2.4rem;
   margin-top: 1.8rem;
 }
 .kisi {
@@ -736,7 +736,7 @@ body:not(.sunum) .kisi-etiket .kisi-ad:focus { background: #0f1035; }
 /* Telefonda kartlar yine yan yana ama küçük. Etiket tek satıra sığmadığı
    için dikleşir: üstte ad hapı, altında rol. */
 @media (max-width: 600px) {
-  .kisiler { gap: .7rem; }
+  .kisiler { gap: 1.1rem; }
   .kisi { aspect-ratio: 3 / 4; border-radius: 1.1rem; }
 
   .kisi-etiket {
