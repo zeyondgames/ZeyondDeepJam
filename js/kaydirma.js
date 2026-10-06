@@ -1,9 +1,9 @@
-// Kaydırmaya bağlı hareket: "Biz Kimiz" bölümündeki kişi kartları.
-// Kartlar farklı hızlarda kayar: bölüm ekrana girerken biri yukarıda biri
-// aşağıdadır, ekranın ortasında aynı hizaya gelir, kaydırmaya devam
-// edince ters yönde yeniden ayrışırlar. Buradaki kod yalnızca
-// ilerlemeyi ölçer ve --kayma (1 → 0 → -1) olarak yazar; kartların ne kadar
-// kayacağına style.css karar verir.
+// Kaydırınca oynayan hareket: "Biz Kimiz" bölümündeki kişi kartları.
+// Kartlar bölüm ekrana gelene kadar ortada üst üste ve küçük bekler;
+// bölüm görününce tek noktadan dışarı açılıp yerlerine oturur, ardından
+// etiketleri belirir. Buradaki kod yalnızca her kartın ortaya olan uzaklığını
+// (--dx, --dy) ölçer ve .acik sınıfını açıp kapatır; hareketin kendisi
+// style.css'tedir.
 
 window.GDD = window.GDD || {};
 
@@ -11,33 +11,39 @@ window.GDD = window.GDD || {};
 
   GDD.kaydirmayiKur = function () {
     const kap = document.querySelector(".kisiler");
-    if (!kap) return;
+    if (!kap || !("IntersectionObserver" in window)) return;
 
-    // Hareketi azalt tercihi açıksa kartlar hep hizalı kalır (--kayma: 0)
+    // Hareketi azalt tercihi açıksa kartlar hep yerinde durur
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let bekliyor = false;
+    const kartlar = Array.from(kap.querySelectorAll(".kisi"));
 
+    // offset* değerleri transform'dan etkilenmez: kartlar toplanmışken de
+    // asıl yerlerini verir. Kap konumlandırılmış olmadığından kartlarla
+    // aynı atadan ölçülür.
     function olc() {
-      bekliyor = false;
-      const kutu = kap.getBoundingClientRect();
-      const yari = innerHeight / 2;
-      // Kartların ortası ekranın altındayken 1, ortasındayken 0, üstündeyken
-      // -1: hareket bölüm boyunca kesintisiz sürer.
-      const uzaklik = (kutu.top + kutu.height / 2 - yari) / yari;
-      const kayma = Math.min(1, Math.max(-1, uzaklik));
-      kap.style.setProperty("--kayma", kayma.toFixed(3));
+      const ortaX = kap.offsetLeft + kap.offsetWidth / 2;
+      const ortaY = kap.offsetTop + kap.offsetHeight / 2;
+      kartlar.forEach(function (kart) {
+        const dx = ortaX - (kart.offsetLeft + kart.offsetWidth / 2);
+        const dy = ortaY - (kart.offsetTop + kart.offsetHeight / 2);
+        kart.style.setProperty("--dx", dx.toFixed(1) + "px");
+        kart.style.setProperty("--dy", dy.toFixed(1) + "px");
+      });
     }
 
-    function iste() {
-      if (bekliyor) return;
-      bekliyor = true;
-      requestAnimationFrame(olc);
-    }
-
-    addEventListener("scroll", iste, { passive: true });
-    addEventListener("resize", iste);
     olc();
+    addEventListener("resize", olc);
+    kap.classList.add("patlama");
+
+    // Dörtte biri görününce açılır; tamamen ekrandan çıkınca yeniden
+    // toplanır, böylece bölüme her dönüşte bir daha oynar.
+    new IntersectionObserver(function (kayitlar) {
+      kayitlar.forEach(function (kayit) {
+        if (!kayit.isIntersecting) kap.classList.remove("acik");
+        else if (kayit.intersectionRatio >= .25) kap.classList.add("acik");
+      });
+    }, { threshold: [0, .25] }).observe(kap);
   };
 
 })(window.GDD);

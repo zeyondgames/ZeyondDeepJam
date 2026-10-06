@@ -653,13 +653,13 @@ body:not(.sunum) .step.field { outline-offset: 2px; }
 /*═══════════════════  BİLEŞEN · KİŞİ KARTLARI  ═══════════════════*/
 /* Takım üyeleri: yuvarlak köşeli uzun bir fotoğraf kartı ve alt kenarına
    oturan beyaz hap etiket — koyu hapta ad, yanında rol. Kartlar yan yana
-   durur; kaydırırken kademeli başlayıp hizalanır. Fotoğraf yokken siluet
-   görünür. */
+   durur; bölüm ekrana gelince tek noktadan açılarak yerlerine oturur.
+   Fotoğraf yokken siluet görünür. */
 
-/* --kayma: kaydirma.js yazar. Kartlar ekranın altındayken 1, ortasındayken
-   0, üstündeyken -1. Kartlar 1'de kademeli durur (tek sıradakiler yukarıda,
-   çift sıradakiler aşağıda), 0'da hizalanır, -1'e doğru ters yönde ayrışır.
-   Script çalışmazsa değer 0'da kalır: kartlar hizalı görünür. */
+/* .patlama ve .acik: kaydirma.js ekler. .patlama varken kartlar ortada üst
+   üste ve küçük bekler (--dx/--dy: kartın ortaya uzaklığı); .acik gelince
+   yerlerine açılır, etiketler onlar oturunca belirir. Script çalışmazsa
+   sınıflar eklenmez: kartlar yerinde görünür. */
 .kisiler {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -672,8 +672,14 @@ body:not(.sunum) .step.field { outline-offset: 2px; }
   border-radius: 1.6rem;
   background: color-mix(in srgb, var(--text) 9%, var(--panel));
 }
-.kisi { transform: translateY(calc(var(--kayma, 0) * -2.5rem)); will-change: transform; }
-.kisi:nth-child(even) { transform: translateY(calc(var(--kayma, 0) * 7rem)); }
+.kisiler.patlama .kisi {
+  transform: translate(var(--dx, 0), var(--dy, 0)) scale(.6);
+  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+  will-change: transform;
+}
+.kisiler.patlama.acik .kisi { transform: none; }
+.kisiler.patlama .kisi-etiket { opacity: 0; transition: opacity .3s ease; }
+.kisiler.patlama.acik .kisi-etiket { opacity: 1; transition-delay: .4s; }
 
 .kisi-foto {
   position: absolute;
@@ -728,12 +734,10 @@ body:not(.sunum) .kisi-etiket .kisi-ad:hover,
 body:not(.sunum) .kisi-etiket .kisi-ad:focus { background: #0f1035; }
 
 /* Telefonda kartlar yine yan yana ama küçük. Etiket tek satıra sığmadığı
-   için dikleşir: üstte ad hapı, altında rol. Kayma da ekrana göre azalır. */
+   için dikleşir: üstte ad hapı, altında rol. */
 @media (max-width: 600px) {
   .kisiler { gap: .7rem; }
   .kisi { aspect-ratio: 3 / 4; border-radius: 1.1rem; }
-  .kisi { transform: translateY(calc(var(--kayma, 0) * -1rem)); }
-  .kisi:nth-child(even) { transform: translateY(calc(var(--kayma, 0) * 3rem)); }
 
   .kisi-etiket {
     bottom: .5rem;
@@ -1166,7 +1170,8 @@ body.sunum #modeBtn { --c1: var(--g1); --c2: var(--g2); }
 @media print {
   body { background: #fff; background-image: none; color: #111; }
   body::before { display: none; }
-  .kisi, .kisi:nth-child(even) { transform: none; }
+  .kisiler.patlama .kisi { transform: none; }
+  .kisiler.patlama .kisi-etiket { opacity: 1; }
   .toolbar, .menu, .dots, .hint { display: none; }
   .slide {
     min-height: auto;
