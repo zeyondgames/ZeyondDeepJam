@@ -6,9 +6,14 @@
   <title>Deep Jam Başvurusu · Zeyond Games</title>
   <!-- ?v=: telefonlar eski stil ve scriptleri 10 dakikaya kadar önbellekten
        okuyor; dosyalar değişince bu sayıyı artırmak yenisini hemen indirtir. -->
-  <link rel="stylesheet" href="style.css?v=13">
-  <!-- Temayı sayfa çizilmeden uygular; aksi halde karanlık temada bir an beyaz yanıp söner. Varsayılan beyaz. -->
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-2")||"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <!-- Başlıklar Chakra Petch, küçük etiketler JetBrains Mono. Yüklenemezse
+       style.css'teki yedek sistem yazı tipleri devreye girer. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css?v=14">
+  <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner. Varsayılan karanlık. -->
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-3")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 </head>
 
 <!--
@@ -47,7 +52,7 @@
     ile açılıp kapanır (gezinme.js).
   -->
   <nav class="menu" id="menu" aria-label="Bölümler">
-    <a class="logo" href="#s00" aria-label="Zeyond Games · Sayfanın başına dön"><img src="img/logo.png" alt="Zeyond Games"></a>
+    <a class="logo" href="#s00" aria-label="Zeyond Games · Sayfanın başına dön"><img src="img/logo-maske.png" alt="Zeyond Games"></a>
     <div class="baglar" id="baglar">
       <a href="#s02" data-bolum="1">Biz Kimiz</a>
       <a href="#s04" data-bolum="2">Oyunumuz</a>
@@ -65,19 +70,44 @@
 
   <!--
     Tam genişlikte hero. Üç şerit: üstte etkinlik satırı, ortada oyun adı
-    ve slogan, altta hikâye + etiketler + imza. Atmosfer katmanları
-    (teal parıltı, turuncu ufuk, vinyet) CSS'te .cover::before / ::after.
+    ve slogan, altta hikâye + etiketler + imza. Arkada .hero-sahne: iç içe
+    dönen altıgen halkalar ve ortada tek hücresi yanan bir petek. Yalnızca
+    süs; hareketi ve renkleri style.css'te (ÖN KAPAK).
   -->
   <section class="slide cover" id="s00" data-title="00 · Kapak"
            data-slide="00_Slide_On_Kapagi" data-tip="kapak">
 
+    <div class="hero-sahne" aria-hidden="true">
+      <svg viewBox="0 0 600 600">
+        <defs><polygon id="hs-hucre" points="31.2,18 0,36 -31.2,18 -31.2,-18 0,-36 31.2,-18"/></defs>
+        <g class="hs-don">
+          <circle cx="300" cy="300" r="268" stroke-dasharray="2 12"/>
+          <polygon points="542.5,440 300,580 57.5,440 57.5,160 300,20 542.5,160"/>
+        </g>
+        <g class="hs-don hs-ters">
+          <polygon class="hs-vurgu" stroke-dasharray="70 26" points="490.5,410 300,520 109.5,410 109.5,190 300,80 490.5,190"/>
+        </g>
+        <polygon class="hs-soguk" stroke-dasharray="4 8" points="429.9,375 300,450 170.1,375 170.1,225 300,150 429.9,225"/>
+        <path d="M300 0v16M300 584v16M0 300h16M584 300h16"/>
+        <g class="hs-petek">
+          <use href="#hs-hucre" x="369.3" y="300"/>
+          <use href="#hs-hucre" x="334.6" y="360"/>
+          <use href="#hs-hucre" x="265.4" y="360"/>
+          <use href="#hs-hucre" x="230.7" y="300"/>
+          <use href="#hs-hucre" x="265.4" y="240"/>
+          <use href="#hs-hucre" x="334.6" y="240"/>
+          <use href="#hs-hucre" x="300" y="300" class="hs-anomali"/>
+        </g>
+      </svg>
+    </div>
+
     <div class="hero-ust">
-      <span class="kicker field" contenteditable="true"
+      <span class="kicker field" lang="en" contenteditable="true"
             data-field="00_Slide_On_Kapagi.etkinlik">GameDev.ist · Deep Jam Başvurusu</span>
     </div>
 
     <div class="hero-orta">
-      <h1 class="field" contenteditable="true"
+      <h1 class="field" lang="en" contenteditable="true"
           data-field="00_Slide_On_Kapagi.oyunAdi">HEXAFIELD</h1>
 
       <p class="lead field" contenteditable="true"
@@ -88,7 +118,7 @@
       <p class="story field" contenteditable="true"
          data-field="00_Slide_On_Kapagi.aciklama">Tüm robotlar, CORE tarafından belirli bir amaç için programlanır. Ancak bazı robotlarda hatalar oluşur. Bu robotlar, programlarının dışına çıkar ve Anomaly olarak sınıflandırılır. CORE, Anomaly'leri bir tehdit olarak görür ve onları yok etmek için özel robotlar gönderir. Bizim robotumuz da bir Anomaly. Kendi programının dışına çıkmış ve CORE'un kontrolünden kurtulmuştur. Artık hayatta kalmak ve özgürlüğünü korumak için kendisini yok etmek üzere gönderilen robotlarla savaşmak zorundadır.</p>
 
-      <div class="chips" id="chips">
+      <div class="chips" id="chips" lang="en">
         <button class="chip on" data-tag="Stealth">Stealth</button>
         <button class="chip on" data-tag="Tactical">Tactical</button>
         <button class="chip on" data-tag="Level-Based">Level-Based</button>
@@ -178,8 +208,8 @@
       </dl>
 
       <!--
-        Kişi kartları: yuvarlak köşeli uzun kart, altta beyaz hap etiket
-        (koyu hapta ad, yanında rol). Kartlar bölüm ekrana gelince tek
+        Kişi kartları: iki köşesi kesik uzun kart, alt kenarda koyu bir
+        şerit (üstte ad, altında rol). Kartlar bölüm ekrana gelince tek
         noktadan açılarak yerlerine oturur (js/kaydirma.js).
         Fotoğraf düzenleme modunda karttaki "Fotoğraf seç" düğmesiyle eklenir
         (js/fotolar.js); data-foto, JSON'daki konumdur. Herkese görünmesi için
@@ -196,7 +226,7 @@
           <figcaption class="kisi-etiket">
             <span class="field kisi-ad" contenteditable="true"
                   data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.0.ad">Harun Kalli</span>
-            <span class="field kisi-rol" contenteditable="true"
+            <span class="field kisi-rol" lang="en" contenteditable="true"
                   data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.0.rol">Game Development / Design</span>
           </figcaption>
         </figure>
@@ -209,7 +239,7 @@
           <figcaption class="kisi-etiket">
             <span class="field kisi-ad" contenteditable="true"
                   data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.1.ad">Nil Neal</span>
-            <span class="field kisi-rol" contenteditable="true"
+            <span class="field kisi-rol" lang="en" contenteditable="true"
                   data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.1.rol">Game Art / Design</span>
           </figcaption>
         </figure>
@@ -241,10 +271,11 @@
     kaynaklar, hedef kapsam) JSON dışa aktarımı hâlâ oradan okur. Bir
     bloğu geri getirmek için 04'ün içine taşımak yeterli.
 
-    İçerik slaytları "manset" tipindedir: kutusuz, sola yaslı; büyük ince
-    başlık, turuncu ara başlıklar ve altlarında iri gövde metni
-    (style.css · MANŞET). Başlıklar da düzenlenebilir: h2 slaytın "baslik"
-    alanına, <dt> başlıkları "basliklar" altına yazar.
+    İçerik slaytları "manset" tipindedir: kutusuz, sola yaslı; üstte
+    numara ve büyük başlık, altında sütunlar (style.css · MANŞET).
+    .bloklar içindeki her .blok bir ara başlık + paragraf çiftidir ve
+    geniş ekranda yan yana dizilir. Başlıklar da düzenlenebilir: h2
+    slaytın "baslik" alanına, <dt> başlıkları "basliklar" altına yazar.
   -->
   <!-- 04 · Oyunumuz (tek sayfa) -->
   <section class="slide manset" id="s04" data-title="2 · Oyunumuz"
@@ -256,20 +287,26 @@
       <h2 class="field" lang="en" contenteditable="true"
           data-field="04_2_1_Oyunun_Adi.ad">Hexafield</h2>
 
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="05_2_2_Oyunun_Turu.anaTur">Taktiksel Gizlilik-Aksiyon</h3>
-      <div class="field" contenteditable="true"
-           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozet">Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.</div>
-
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikayeBaslik">Hikâye</h3>
-      <div class="field" contenteditable="true"
-           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikaye">Tüm robotlar CORE tarafından programlanır. Hata veren robotlar programının dışına çıkar ve Anomaly olarak sınıflandırılır. Bizim robotumuz bir Anomaly — CORE onu yok etmek için avcı botlar gönderiyor.</div>
-
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanisBaslik">Oynanış</h3>
-      <div class="field" contenteditable="true"
-           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanis">Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen 'sız mı, harca mı' kararıdır.</div>
+      <div class="bloklar">
+        <div class="blok">
+          <h3 class="altbaslik field" contenteditable="true"
+              data-field="05_2_2_Oyunun_Turu.anaTur">Taktiksel Gizlilik-Aksiyon</h3>
+          <div class="field" contenteditable="true"
+               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozet">Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.</div>
+        </div>
+        <div class="blok">
+          <h3 class="altbaslik field" contenteditable="true"
+              data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikayeBaslik">Hikâye</h3>
+          <div class="field" contenteditable="true"
+               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikaye">Tüm robotlar CORE tarafından programlanır. Hata veren robotlar programının dışına çıkar ve Anomaly olarak sınıflandırılır. Bizim robotumuz bir Anomaly — CORE onu yok etmek için avcı botlar gönderiyor.</div>
+        </div>
+        <div class="blok">
+          <h3 class="altbaslik field" contenteditable="true"
+              data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanisBaslik">Oynanış</h3>
+          <div class="field" contenteditable="true"
+               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanis">Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen 'sız mı, harca mı' kararıdır.</div>
+        </div>
+      </div>
 
       <h3 class="altbaslik field" contenteditable="true"
           data-field="07_2_4_Proje_Kapsami.uspBaslik">Benzersiz Satış Teklifi</h3>
@@ -568,19 +605,24 @@
         </div>
       </dl>
 
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="09_3_1_Proof_of_Concept.worldBuilder.ad">WorldBuilder — kendi seviye editörümüz</h3>
-      <div class="field" contenteditable="true"
-           data-field="09_3_1_Proof_of_Concept.worldBuilder.icerik">Başlangıç, çıkış asansörü, botlar, ot örtüsü ve yükselti yerleşimi</div>
-      <div class="field note" contenteditable="true"
-           data-field="09_3_1_Proof_of_Concept.worldBuilder.not">8 haftada 20+ seviye hedefini mümkün kılan şey bu editör: içerik üretimi bizde darboğaz değil.</div>
-
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="09_3_1_Proof_of_Concept.grafikStili.baslik">Grafik Stili</h3>
-      <div class="field" contenteditable="true"
-           data-field="09_3_1_Proof_of_Concept.grafikStili.stil">İzometrik, stilize düşük-poli sci-fi robot estetiği</div>
-      <div class="field note" contenteditable="true"
-           data-field="09_3_1_Proof_of_Concept.grafikStili.oncelik">Okunabilirlik: ot örtüsü, yükselti ve bot görüş hatları anında ayırt edilebilir</div>
+      <div class="bloklar">
+        <div class="blok">
+          <h3 class="altbaslik field" contenteditable="true"
+              data-field="09_3_1_Proof_of_Concept.worldBuilder.ad">WorldBuilder — kendi seviye editörümüz</h3>
+          <div class="field" contenteditable="true"
+               data-field="09_3_1_Proof_of_Concept.worldBuilder.icerik">Başlangıç, çıkış asansörü, botlar, ot örtüsü ve yükselti yerleşimi</div>
+          <div class="field note" contenteditable="true"
+               data-field="09_3_1_Proof_of_Concept.worldBuilder.not">8 haftada 20+ seviye hedefini mümkün kılan şey bu editör: içerik üretimi bizde darboğaz değil.</div>
+        </div>
+        <div class="blok">
+          <h3 class="altbaslik field" contenteditable="true"
+              data-field="09_3_1_Proof_of_Concept.grafikStili.baslik">Grafik Stili</h3>
+          <div class="field" contenteditable="true"
+               data-field="09_3_1_Proof_of_Concept.grafikStili.stil">İzometrik, stilize düşük-poli sci-fi robot estetiği</div>
+          <div class="field note" contenteditable="true"
+               data-field="09_3_1_Proof_of_Concept.grafikStili.oncelik">Okunabilirlik: ot örtüsü, yükselti ve bot görüş hatları anında ayırt edilebilir</div>
+        </div>
+      </div>
 
       <h3 class="altbaslik field" contenteditable="true"
           data-field="09_3_1_Proof_of_Concept.linkler.baslik">Linkler</h3>
@@ -593,7 +635,7 @@
               data-placeholder="herkese açık WebGL / itch.io linki"></dd>
         </div>
         <div>
-          <dt class="field" contenteditable="true"
+          <dt class="field" lang="en" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.basliklar.linkler_video">Video Pitch</dt>
           <dd class="field empty" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.linkler.video"
@@ -854,15 +896,15 @@
 
 
   <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
-  <script src="js/depo.js?v=13"></script>
-  <script src="js/alanlar.js?v=13"></script>
-  <script src="js/skala.js?v=13"></script>
-  <script src="js/fotolar.js?v=13"></script>
-  <script src="js/etiketler.js?v=13"></script>
-  <script src="js/aktarim.js?v=13"></script>
-  <script src="js/gorunum.js?v=13"></script>
-  <script src="js/gezinme.js?v=13"></script>
-  <script src="js/kaydirma.js?v=13"></script>
-  <script src="js/main.js?v=13"></script>
+  <script src="js/depo.js?v=14"></script>
+  <script src="js/alanlar.js?v=14"></script>
+  <script src="js/skala.js?v=14"></script>
+  <script src="js/fotolar.js?v=14"></script>
+  <script src="js/etiketler.js?v=14"></script>
+  <script src="js/aktarim.js?v=14"></script>
+  <script src="js/gorunum.js?v=14"></script>
+  <script src="js/gezinme.js?v=14"></script>
+  <script src="js/kaydirma.js?v=14"></script>
+  <script src="js/main.js?v=14"></script>
 </body>
 </html>

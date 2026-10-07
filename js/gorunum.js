@@ -4,9 +4,10 @@ window.GDD = window.GDD || {};
 
 (function (GDD) {
 
-  // Varsayılan beyaz görünüme geçince anahtar yenilendi: eski kayıtlı
-  // karanlık tercih yeni varsayılanı gizlemesin.
-  const TEMA_KEY = "zeyond-tema-2";
+  // Varsayılan karanlık görünüme geçince anahtar yenilendi: eski kayıtlı
+  // aydınlık tercih yeni varsayılanı gizlemesin. index.html'in başındaki
+  // satır da aynı anahtarı okur.
+  const TEMA_KEY = "zeyond-tema-3";
 
   GDD.temayiKur = function () {
     const dugme = document.getElementById("themeBtn");
@@ -22,7 +23,7 @@ window.GDD = window.GDD || {};
     }
 
     // false: kullanıcı henüz seçim yapmadıysa varsayılan kaydedilmesin.
-    uygula(document.documentElement.dataset.theme || "light", false);
+    uygula(document.documentElement.dataset.theme || "dark", false);
 
     dugme.addEventListener("click", function () {
       uygula(document.documentElement.dataset.theme === "light" ? "dark" : "light", true);

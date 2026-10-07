@@ -1,13 +1,49 @@
-// Kaydırınca oynayan hareket: "Biz Kimiz" bölümündeki kişi kartları.
-// Kartlar bölüm ekrana gelene kadar ortada üst üste ve küçük bekler;
-// bölüm görününce tek noktadan dışarı açılıp yerlerine oturur, ardından
-// etiketleri belirir. Buradaki kod yalnızca her kartın ortaya olan uzaklığını
-// (--dx, --dy) ölçer ve .acik sınıfını açıp kapatır; hareketin kendisi
-// style.css'tedir.
+// Kaydırınca oynayan hareketler. Buradaki kod yalnızca sınıf ve ölçü
+// yazar; hareketlerin kendisi style.css'tedir.
+//
+// Belirme: her slaydın blokları, slayt ekrana ilk girdiğinde sırayla
+// aşağıdan yerlerine oturur.
+//
+// Kişi kartları ("Biz Kimiz"): kartlar bölüm ekrana gelene kadar ortada
+// üst üste ve küçük bekler; bölüm görününce tek noktadan dışarı açılıp
+// yerlerine oturur, ardından etiketleri belirir. Kod her kartın ortaya
+// olan uzaklığını (--dx, --dy) ölçer ve .acik sınıfını açıp kapatır.
 
 window.GDD = window.GDD || {};
 
 (function (GDD) {
+
+  GDD.belirmeyiKur = function () {
+    if (!("IntersectionObserver" in window)) return;
+
+    // Hareketi azalt tercihi açıksa içerik hep yerinde durur
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const gozlemci = new IntersectionObserver(function (kayitlar) {
+      kayitlar.forEach(function (kayit) {
+        if (!kayit.isIntersecting) return;
+        kayit.target.classList.add("gorundu");
+        // Bir kez oynar; geri dönüşte içerik yerinde bekler
+        gozlemci.unobserve(kayit.target);
+      });
+    }, { rootMargin: "0px 0px -15% 0px" });
+
+    document.querySelectorAll(".slide:not([hidden])").forEach(function (slayt) {
+      // İçerik slaytlarında bloklar panelin içindedir; kapaklarda slaydın
+      // doğrudan çocuklarıdır.
+      const kap = slayt.querySelector(":scope > .panel") || slayt;
+      let sira = 0;
+
+      Array.from(kap.children).forEach(function (blok) {
+        // Kişi kartlarının kendi açılma hareketi var; kapak sahnesi süs
+        if (blok.hidden || blok.matches(".kisiler, .hero-sahne")) return;
+        blok.classList.add("belir");
+        blok.style.setProperty("--sira", sira++);
+      });
+
+      gozlemci.observe(slayt);
+    });
+  };
 
   GDD.kaydirmayiKur = function () {
     const kap = document.querySelector(".kisiler");
