@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="style.css?v=21">
   <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner. Varsayılan karanlık. -->
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-3")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 </head>
@@ -264,12 +264,13 @@
   </section>
 
   <!--
-    "Oyunumuz" tek sayfadır: 04 görünür ve oyunun adını, türünü, özetini,
-    hikâyesini, oynanışını ve benzersiz yanlarını taşır; alanlar kendi
-    slaytlarının yoluyla (05_, 06_, 07_) kaydedilmeye devam eder. 05–07
-    "hidden" ile gizlidir: kalan alanları (tür skalası, çekirdek döngü,
-    kaynaklar, hedef kapsam) JSON dışa aktarımı hâlâ oradan okur. Bir
-    bloğu geri getirmek için 04'ün içine taşımak yeterli.
+    Bölüm 2 başvuru kılavuzundaki sayfaları izler: 04 oyunun adı, 05 tür
+    (ana tür + tür kaydıraçları), 06 özet ve hikâye, 07 proje kapsamı
+    (geliştirme aşaması, grafik stili, benzersiz satış teklifi).
+
+    Bir alan hangi slaytta görünürse görünsün kendi yoluyla kaydedilir:
+    07'deki geliştirme aşaması ve grafik stili JSON'da hâlâ 09_ altında
+    durur. Alanı başka bir slayda taşımak dışa aktarılan dosyayı değiştirmez.
 
     İçerik slaytları "manset" tipindedir: kutusuz, sola yaslı; üstte
     numara ve büyük başlık, altında sütunlar (style.css · MANŞET).
@@ -277,87 +278,45 @@
     geniş ekranda yan yana dizilir. Başlıklar da düzenlenebilir: h2
     slaytın "baslik" alanına, <dt> başlıkları "basliklar" altına yazar.
   -->
-  <!-- 04 · Oyunumuz (tek sayfa) -->
-  <section class="slide manset" id="s04" data-title="2 · Oyunumuz"
+  <!-- 04 · 2.1 Oyunun Adı -->
+  <section class="slide manset" id="s04" data-title="2.1 Oyunun Adı"
            data-slide="04_2_1_Oyunun_Adi" data-tip="icerik"
            data-numara="2.1" data-baslik="Oyunun Adı">
     <div class="panel">
-      <span class="num">2 · OYUNUMUZ</span>
+      <span class="num">2.1 · OYUN KONSEPTİ</span>
       <!-- lang="en": ad İngilizce; Türkçe büyük harf kuralı "i"yi "İ" yapmasın -->
       <h2 class="field" lang="en" contenteditable="true"
           data-field="04_2_1_Oyunun_Adi.ad">Hexafield</h2>
 
-      <div class="bloklar">
-        <div class="blok">
-          <h3 class="altbaslik field" contenteditable="true"
-              data-field="05_2_2_Oyunun_Turu.anaTur">Taktiksel Gizlilik-Aksiyon</h3>
-          <div class="field" contenteditable="true"
-               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozet">Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.</div>
+      <dl class="kv">
+        <div>
+          <dt class="field" contenteditable="true"
+              data-field="04_2_1_Oyunun_Adi.basliklar.alternatifler_0">Alternatif 1</dt>
+          <dd class="field" contenteditable="true"
+              data-field="04_2_1_Oyunun_Adi.alternatifler.0">Hexacore</dd>
         </div>
-        <div class="blok">
-          <h3 class="altbaslik field" contenteditable="true"
-              data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikayeBaslik">Hikâye</h3>
-          <div class="field" contenteditable="true"
-               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikaye">Tüm robotlar CORE tarafından programlanır. Hata veren robotlar programının dışına çıkar ve Anomaly olarak sınıflandırılır. Bizim robotumuz bir Anomaly — CORE onu yok etmek için avcı botlar gönderiyor.</div>
+        <div>
+          <dt class="field" contenteditable="true"
+              data-field="04_2_1_Oyunun_Adi.basliklar.alternatifler_1">Alternatif 2</dt>
+          <dd class="field" contenteditable="true"
+              data-field="04_2_1_Oyunun_Adi.alternatifler.1">BlueNation</dd>
         </div>
-        <div class="blok">
-          <h3 class="altbaslik field" contenteditable="true"
-              data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanisBaslik">Oynanış</h3>
-          <div class="field" contenteditable="true"
-               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanis">Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen 'sız mı, harca mı' kararıdır.</div>
-        </div>
-      </div>
+      </dl>
 
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="07_2_4_Proje_Kapsami.uspBaslik">Benzersiz Satış Teklifi</h3>
-      <div class="games">
-        <div class="card">
-          <div class="thumb">◆</div>
-          <div class="body">
-            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.0.ad">Saf Taktik</h3>
-            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.0.not">Kaynak-harcama kararları her turda — meta-ilerleme yok</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="thumb">⬡</div>
-          <div class="body">
-            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.1.ad">Mobil Stealth</h3>
-            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.1.not">El yapımı hex arenalarda ot temelli görüş-hattı gizliliği</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="thumb">▲</div>
-          <div class="body">
-            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.ad">Derinlik Üzerine</h3>
-            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.not">Zorluk düzen karmaşıklığı ve bot davranışıyla artar</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sayfada gösterilmeyen alanlar: ad notu ve alternatif adlar -->
-      <div hidden>
-        <div class="field" contenteditable="true"
-             data-field="04_2_1_Oyunun_Adi.not">Ad kesinleşmeden önce ticari marka benzersizliği ve alan adı uygunluğu kontrol edilecek.</div>
-        <dl class="kv">
-          <div>
-            <dt class="field" contenteditable="true"
-                data-field="04_2_1_Oyunun_Adi.basliklar.alternatifler_0">Alternatif 1</dt>
-            <dd class="field" contenteditable="true"
-                data-field="04_2_1_Oyunun_Adi.alternatifler.0">Hexacore</dd>
-          </div>
-          <div>
-            <dt class="field" contenteditable="true"
-                data-field="04_2_1_Oyunun_Adi.basliklar.alternatifler_1">Alternatif 2</dt>
-            <dd class="field" contenteditable="true"
-                data-field="04_2_1_Oyunun_Adi.alternatifler.1">BlueNation</dd>
-          </div>
-        </dl>
-      </div>
+      <div class="field note" contenteditable="true"
+           data-field="04_2_1_Oyunun_Adi.not">Ad kesinleşmeden önce ticari marka benzersizliği ve alan adı uygunluğu kontrol edilecek.</div>
     </div>
   </section>
 
-  <!-- 05 · 2.2 Oyunun Türü -->
-  <section class="slide manset" hidden id="s05" data-title="2.2 Oyunun Türü"
+  <!--
+    05 · 2.2 Oyunun Türü. Solda ana tür ve tür haritası, sağda tür skalası:
+    başvuru kılavuzundaki dokuz türün kaydıraçları. Harita kaydıraçlardan
+    çizilir: her tür bir köşe, değer arttıkça köşe dışarı uzar. Tür adları kılavuzdaki
+    listeyle aynı sırada; her satırın değeri JSON'da turSkalasi dizisinde
+    { tur, deger } olarak durur. Kaydıraçlar düzenleme modunda sürüklenir,
+    sunum modunda salt okunur bir grafiğe döner (js/skala.js).
+  -->
+  <section class="slide manset" id="s05" data-title="2.2 Oyunun Türü"
            data-slide="05_2_2_Oyunun_Turu" data-tip="icerik"
            data-numara="2.2" data-baslik="Oyunun Türü">
     <div class="panel">
@@ -365,11 +324,102 @@
       <h2 class="field" contenteditable="true"
           data-field="05_2_2_Oyunun_Turu.baslik">Oyunun Türü</h2>
 
+      <div class="ikili">
+        <div>
+          <!--
+            Ana tür elle yazılmaz: kaydıraçlardan üretilir (js/skala.js ·
+            turAdiYenile). data-metin, üretilen metni JSON'da eski yerine
+            (anaTur) yazar. Buradaki metin kaydıraçların ilk değerlerinin
+            karşılığıdır; script çalışmazsa o görünür.
+          -->
+          <h3 class="altbaslik" id="turAdi" aria-live="polite"
+              data-metin="05_2_2_Oyunun_Turu.anaTur">Strateji-Aksiyon · Bulmaca destekli</h3>
+
+          <!-- Tür haritası: sağdaki kaydıraçlardan çizilen örümcek ağı
+               grafiği. İçini js/skala.js doldurur. -->
+          <figure class="radar" id="turRadar" aria-hidden="true"></figure>
+        </div>
+
+        <div class="skala-kutu">
+          <h3 class="altbaslik field" contenteditable="true"
+              data-field="05_2_2_Oyunun_Turu.turSkalasiBaslik">Tür Skalası</h3>
+
+          <p class="field skala-ipucu" contenteditable="true"
+             data-field="05_2_2_Oyunun_Turu.turSkalasiNotu">Başvuru kılavuzundaki tür listesi: her çizgi, oyunun o türe ne kadar yaslandığını gösterir.</p>
+
+          <div class="skalalar">
+            <div class="skala-satir">
+              <span class="field skala-ad" id="tur-ad-0" contenteditable="true"
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.0.tur">Aksiyon</span>
+              <span class="skala-deger" aria-hidden="true">70</span>
+              <input class="skala" type="range" min="0" max="100" step="5" value="70"
+                     aria-labelledby="tur-ad-0" data-field="05_2_2_Oyunun_Turu.turSkalasi.0.deger">
+            </div>
+            <div class="skala-satir">
+              <span class="field skala-ad" id="tur-ad-1" contenteditable="true"
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.1.tur">Macera</span>
+              <span class="skala-deger" aria-hidden="true">35</span>
+              <input class="skala" type="range" min="0" max="100" step="5" value="35"
+                     aria-labelledby="tur-ad-1" data-field="05_2_2_Oyunun_Turu.turSkalasi.1.deger">
+            </div>
+            <div class="skala-satir">
+              <span class="field skala-ad" id="tur-ad-2" contenteditable="true"
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.2.tur">Rol Yapma Oyunu (RYO)</span>
+              <span class="skala-deger" aria-hidden="true">20</span>
+              <input class="skala" type="range" min="0" max="100" step="5" value="20"
+                     aria-labelledby="tur-ad-2" data-field="05_2_2_Oyunun_Turu.turSkalasi.2.deger">
+            </div>
+            <div class="skala-satir">
+              <span class="field skala-ad" id="tur-ad-3" contenteditable="true"
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.3.tur">Strateji</span>
+              <span class="skala-deger" aria-hidden="true">80</span>
+              <input class="skala" type="range" min="0" max="100" step="5" value="80"
+                     aria-labelledby="tur-ad-3" data-field="05_2_2_Oyunun_Turu.turSkalasi.3.deger">
+            </div>
+            <div class="skala-satir">
+              <span class="field skala-ad" id="tur-ad-4" contenteditable="true"
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.4.tur">Simülasyon</span>
+              <span class="skala-deger" aria-hidden="true">10</span>
+              <input class="skala" type="range" min="0" max="100" step="5" value="10"
+                     aria-labelledby="tur-ad-4" data-field="05_2_2_Oyunun_Turu.turSkalasi.4.deger">
+            </div>
+            <div class="skala-satir">
+              <span class="field skala-ad" id="tur-ad-5" contenteditable="true"
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.5.tur">Bulmaca / Mantık</span>
+              <span class="skala-deger" aria-hidden="true">65</span>
+              <input class="skala" type="range" min="0" max="100" step="5" value="65"
+                     aria-labelledby="tur-ad-5" data-field="05_2_2_Oyunun_Turu.turSkalasi.5.deger">
+            </div>
+            <div class="skala-satir">
+              <span class="field skala-ad" id="tur-ad-6" contenteditable="true"
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.6.tur">Platform</span>
+              <span class="skala-deger" aria-hidden="true">15</span>
+              <input class="skala" type="range" min="0" max="100" step="5" value="15"
+                     aria-labelledby="tur-ad-6" data-field="05_2_2_Oyunun_Turu.turSkalasi.6.deger">
+            </div>
+            <div class="skala-satir">
+              <span class="field skala-ad" id="tur-ad-7" contenteditable="true"
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.7.tur">Spor / Yarış</span>
+              <span class="skala-deger" aria-hidden="true">0</span>
+              <input class="skala" type="range" min="0" max="100" step="5" value="0"
+                     aria-labelledby="tur-ad-7" data-field="05_2_2_Oyunun_Turu.turSkalasi.7.deger">
+            </div>
+            <div class="skala-satir">
+              <span class="field skala-ad" id="tur-ad-8" lang="en" contenteditable="true"
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.8.tur">Hyper-Casual</span>
+              <span class="skala-deger" aria-hidden="true">25</span>
+              <input class="skala" type="range" min="0" max="100" step="5" value="25"
+                     aria-labelledby="tur-ad-8" data-field="05_2_2_Oyunun_Turu.turSkalasi.8.deger">
+            </div>
+          </div>
+        </div>
+      </div>
+
       <dl class="kv">
         <div>
           <dt class="field" contenteditable="true"
               data-field="05_2_2_Oyunun_Turu.basliklar.altTurler">Alt Türler</dt>
-          <dd class="satir">
+          <dd class="satir" lang="en">
             <span class="field" contenteditable="true"
                   data-field="05_2_2_Oyunun_Turu.altTurler.0">Stealth</span>
             <span class="field" contenteditable="true"
@@ -392,90 +442,13 @@
         </div>
       </dl>
 
-      <!--
-        Başvuru kılavuzunun tür kaydıraçlarının karşılığı. Tür adları
-        kılavuzdaki listeyle aynı sırada; her satırın değeri JSON'da
-        turSkalasi dizisinde { tur, deger } olarak durur.
-      -->
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="05_2_2_Oyunun_Turu.turSkalasiBaslik">Tür Skalası</h3>
-
-      <p class="field skala-ipucu" contenteditable="true"
-         data-field="05_2_2_Oyunun_Turu.turSkalasiNotu">Başvuru kılavuzundaki tür listesi: her çizgi, oyunun o türe ne kadar yaslandığını gösterir.</p>
-
-      <div class="skalalar">
-        <div class="skala-satir">
-          <span class="field skala-ad" id="tur-ad-0" contenteditable="true"
-                data-field="05_2_2_Oyunun_Turu.turSkalasi.0.tur">Aksiyon</span>
-          <span class="skala-deger" aria-hidden="true">70</span>
-          <input class="skala" type="range" min="0" max="100" step="5" value="70"
-                 aria-labelledby="tur-ad-0" data-field="05_2_2_Oyunun_Turu.turSkalasi.0.deger">
-        </div>
-        <div class="skala-satir">
-          <span class="field skala-ad" id="tur-ad-1" contenteditable="true"
-                data-field="05_2_2_Oyunun_Turu.turSkalasi.1.tur">Macera</span>
-          <span class="skala-deger" aria-hidden="true">35</span>
-          <input class="skala" type="range" min="0" max="100" step="5" value="35"
-                 aria-labelledby="tur-ad-1" data-field="05_2_2_Oyunun_Turu.turSkalasi.1.deger">
-        </div>
-        <div class="skala-satir">
-          <span class="field skala-ad" id="tur-ad-2" contenteditable="true"
-                data-field="05_2_2_Oyunun_Turu.turSkalasi.2.tur">Rol Yapma Oyunu (RYO)</span>
-          <span class="skala-deger" aria-hidden="true">20</span>
-          <input class="skala" type="range" min="0" max="100" step="5" value="20"
-                 aria-labelledby="tur-ad-2" data-field="05_2_2_Oyunun_Turu.turSkalasi.2.deger">
-        </div>
-        <div class="skala-satir">
-          <span class="field skala-ad" id="tur-ad-3" contenteditable="true"
-                data-field="05_2_2_Oyunun_Turu.turSkalasi.3.tur">Strateji</span>
-          <span class="skala-deger" aria-hidden="true">80</span>
-          <input class="skala" type="range" min="0" max="100" step="5" value="80"
-                 aria-labelledby="tur-ad-3" data-field="05_2_2_Oyunun_Turu.turSkalasi.3.deger">
-        </div>
-        <div class="skala-satir">
-          <span class="field skala-ad" id="tur-ad-4" contenteditable="true"
-                data-field="05_2_2_Oyunun_Turu.turSkalasi.4.tur">Simülasyon</span>
-          <span class="skala-deger" aria-hidden="true">10</span>
-          <input class="skala" type="range" min="0" max="100" step="5" value="10"
-                 aria-labelledby="tur-ad-4" data-field="05_2_2_Oyunun_Turu.turSkalasi.4.deger">
-        </div>
-        <div class="skala-satir">
-          <span class="field skala-ad" id="tur-ad-5" contenteditable="true"
-                data-field="05_2_2_Oyunun_Turu.turSkalasi.5.tur">Bulmaca / Mantık</span>
-          <span class="skala-deger" aria-hidden="true">65</span>
-          <input class="skala" type="range" min="0" max="100" step="5" value="65"
-                 aria-labelledby="tur-ad-5" data-field="05_2_2_Oyunun_Turu.turSkalasi.5.deger">
-        </div>
-        <div class="skala-satir">
-          <span class="field skala-ad" id="tur-ad-6" contenteditable="true"
-                data-field="05_2_2_Oyunun_Turu.turSkalasi.6.tur">Platform</span>
-          <span class="skala-deger" aria-hidden="true">15</span>
-          <input class="skala" type="range" min="0" max="100" step="5" value="15"
-                 aria-labelledby="tur-ad-6" data-field="05_2_2_Oyunun_Turu.turSkalasi.6.deger">
-        </div>
-        <div class="skala-satir">
-          <span class="field skala-ad" id="tur-ad-7" contenteditable="true"
-                data-field="05_2_2_Oyunun_Turu.turSkalasi.7.tur">Spor / Yarış</span>
-          <span class="skala-deger" aria-hidden="true">0</span>
-          <input class="skala" type="range" min="0" max="100" step="5" value="0"
-                 aria-labelledby="tur-ad-7" data-field="05_2_2_Oyunun_Turu.turSkalasi.7.deger">
-        </div>
-        <div class="skala-satir">
-          <span class="field skala-ad" id="tur-ad-8" contenteditable="true"
-                data-field="05_2_2_Oyunun_Turu.turSkalasi.8.tur">Hyper-Casual</span>
-          <span class="skala-deger" aria-hidden="true">25</span>
-          <input class="skala" type="range" min="0" max="100" step="5" value="25"
-                 aria-labelledby="tur-ad-8" data-field="05_2_2_Oyunun_Turu.turSkalasi.8.deger">
-        </div>
-      </div>
-
       <div class="field note" contenteditable="true"
            data-field="05_2_2_Oyunun_Turu.denge">Gizlilik-öncelikli: fark edilmeden geçmek varsayılan yol; çatışma bilinçli bir kaynak-harcama tercihi.</div>
     </div>
   </section>
 
   <!-- 06 · 2.3 Oyunun Özeti ve Hikayesi -->
-  <section class="slide manset" hidden id="s06" data-title="2.3 Özet ve Hikaye"
+  <section class="slide manset" id="s06" data-title="2.3 Özet ve Hikaye"
            data-slide="06_2_3_Oyunun_Ozeti_ve_Hikayesi" data-tip="icerik"
            data-numara="2.3" data-baslik="Oyunun Özeti ve Hikayesi">
     <div class="panel">
@@ -483,15 +456,35 @@
       <h2 class="field" contenteditable="true"
           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.baslik">Oyunun Özeti ve Hikayesi</h2>
 
-
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozetBaslik">Özet</h3>
-
+      <div class="bloklar">
+        <div class="blok">
+          <h3 class="altbaslik field" contenteditable="true"
+              data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozetBaslik">Özet</h3>
+          <div class="field" contenteditable="true"
+               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozet">Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.</div>
+        </div>
+        <div class="blok">
+          <h3 class="altbaslik field" contenteditable="true"
+              data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikayeBaslik">Hikâye</h3>
+          <div class="field" contenteditable="true"
+               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikaye">Tüm robotlar CORE tarafından programlanır. Hata veren robotlar programının dışına çıkar ve Anomaly olarak sınıflandırılır. Bizim robotumuz bir Anomaly — CORE onu yok etmek için avcı botlar gönderiyor.</div>
+        </div>
+        <div class="blok">
+          <h3 class="altbaslik field" contenteditable="true"
+              data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanisBaslik">Oynanış</h3>
+          <div class="field" contenteditable="true"
+               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanis">Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen 'sız mı, harca mı' kararıdır.</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 07 · 2.4 Proje Kapsamı -->
-  <section class="slide manset" hidden id="s07" data-title="2.4 Proje Kapsamı"
+  <!--
+    07 · 2.4 Proje Kapsamı. Kılavuzdaki üç madde, büyük sıra numaralarıyla
+    alt alta: geliştirme aşaması, grafik stili, benzersiz satış teklifi.
+    Numaralar CSS sayacından gelir (style.css · NUMARALI MADDELER).
+  -->
+  <section class="slide manset" id="s07" data-title="2.4 Proje Kapsamı"
            data-slide="07_2_4_Proje_Kapsami" data-tip="icerik"
            data-numara="2.4" data-baslik="Proje Kapsamı">
     <div class="panel">
@@ -499,67 +492,125 @@
       <h2 class="field" contenteditable="true"
           data-field="07_2_4_Proje_Kapsami.baslik">Proje Kapsamı</h2>
 
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="07_2_4_Proje_Kapsami.cekirdekDongu.baslik">Çekirdek Döngü (~60 saniye)</h3>
-      <ol class="loop">
-        <li><span class="step">1</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.0">1. Seviyeye gir</div></li>
-        <li><span class="step">2</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.1">2. Arenayı oku: bot devriyeleri, ot örtüsü, yükselti</div></li>
-        <li><span class="step">3</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.2">3. Görüş hattını kır — gizlen ya da çatış</div></li>
-        <li><span class="step">4</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.3">4. Sız ya da harca: Şarjör / Enerji / Dayanıklılık</div></li>
-        <li><span class="step">5</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.4">5. Çıkış asansörüne ulaş</div></li>
-        <li><span class="step">6</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.5">6. Skor ve yıldız — sonraki arena daha karmaşık</div></li>
+      <ol class="maddeler">
+        <li>
+          <div class="madde-govde">
+            <h3 class="altbaslik field" contenteditable="true"
+                data-field="09_3_1_Proof_of_Concept.basliklar.gelistirmeAsamasi">Mevcut Geliştirme Aşaması</h3>
+            <div class="field" contenteditable="true"
+                 data-field="09_3_1_Proof_of_Concept.gelistirmeAsamasi">Vertical Slice — çekirdek döngü çalışıyor</div>
+          </div>
+        </li>
+        <li>
+          <div class="madde-govde">
+            <h3 class="altbaslik field" contenteditable="true"
+                data-field="09_3_1_Proof_of_Concept.grafikStili.baslik">Oyunun Grafik Stili</h3>
+            <div class="field" contenteditable="true"
+                 data-field="09_3_1_Proof_of_Concept.grafikStili.stil">İzometrik, stilize düşük-poli sci-fi robot estetiği</div>
+            <div class="field note" contenteditable="true"
+                 data-field="09_3_1_Proof_of_Concept.grafikStili.oncelik">Okunabilirlik: ot örtüsü, yükselti ve bot görüş hatları anında ayırt edilebilir</div>
+          </div>
+        </li>
+        <li>
+          <div class="madde-govde">
+            <h3 class="altbaslik field" contenteditable="true"
+                data-field="07_2_4_Proje_Kapsami.uspBaslik">Benzersiz Satış Teklifi (USP)</h3>
+            <div class="games">
+              <div class="card">
+                <div class="thumb">◆</div>
+                <div class="body">
+                  <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.0.ad">Saf Taktik</h3>
+                  <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.0.not">Kaynak-harcama kararları her turda — meta-ilerleme yok</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="thumb">⬡</div>
+                <div class="body">
+                  <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.1.ad">Mobil Stealth</h3>
+                  <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.1.not">El yapımı hex arenalarda ot temelli görüş-hattı gizliliği</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="thumb">▲</div>
+                <div class="body">
+                  <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.ad">Derinlik Üzerine</h3>
+                  <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.not">Zorluk düzen karmaşıklığı ve bot davranışıyla artar</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
       </ol>
 
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="07_2_4_Proje_Kapsami.kaynaklarBaslik">Kaynaklar</h3>
-      <div class="games">
-        <div class="card">
-          <div class="thumb">▮</div>
-          <div class="body">
-            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.0.ad">Şarjör</h3>
-            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.0.not">Çatışmanın bedeli — her atış geri dönüşsüz harcama</p>
+      <!--
+        Sayfada gösterilmeyen alanlar: çekirdek döngü, kaynaklar ve hedef
+        kapsam. Silinmediler, çünkü JSON dışa aktarımı bu alanları hâlâ
+        buradan okur; geri getirmek için "hidden" özniteliğini kaldırmak
+        yeterli.
+      -->
+      <div hidden>
+        <h3 class="altbaslik field" contenteditable="true"
+            data-field="07_2_4_Proje_Kapsami.cekirdekDongu.baslik">Çekirdek Döngü (~60 saniye)</h3>
+        <ol class="loop">
+          <li><span class="step">1</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.0">1. Seviyeye gir</div></li>
+          <li><span class="step">2</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.1">2. Arenayı oku: bot devriyeleri, ot örtüsü, yükselti</div></li>
+          <li><span class="step">3</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.2">3. Görüş hattını kır — gizlen ya da çatış</div></li>
+          <li><span class="step">4</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.3">4. Sız ya da harca: Şarjör / Enerji / Dayanıklılık</div></li>
+          <li><span class="step">5</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.4">5. Çıkış asansörüne ulaş</div></li>
+          <li><span class="step">6</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.5">6. Skor ve yıldız — sonraki arena daha karmaşık</div></li>
+        </ol>
+
+        <h3 class="altbaslik field" contenteditable="true"
+            data-field="07_2_4_Proje_Kapsami.kaynaklarBaslik">Kaynaklar</h3>
+        <div class="games">
+          <div class="card">
+            <div class="thumb">▮</div>
+            <div class="body">
+              <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.0.ad">Şarjör</h3>
+              <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.0.not">Çatışmanın bedeli — her atış geri dönüşsüz harcama</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="thumb">◈</div>
+            <div class="body">
+              <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.1.ad">Enerji</h3>
+              <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.1.not">Hız ve özel hareketler — bitince sızma yavaşlar</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="thumb">◍</div>
+            <div class="body">
+              <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.2.ad">Dayanıklılık</h3>
+              <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.2.not">Hata payı — fark edilmenin doğrudan karşılığı</p>
+            </div>
           </div>
         </div>
-        <div class="card">
-          <div class="thumb">◈</div>
-          <div class="body">
-            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.1.ad">Enerji</h3>
-            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.1.not">Hız ve özel hareketler — bitince sızma yavaşlar</p>
+
+        <h3 class="altbaslik field" contenteditable="true"
+            data-field="07_2_4_Proje_Kapsami.hedefKapsam.baslik">Hedef Kapsam</h3>
+        <dl class="kv">
+          <div>
+            <dt class="field" contenteditable="true"
+                data-field="07_2_4_Proje_Kapsami.basliklar.hedefKapsam_seviyeSayisi">Seviye Sayısı</dt>
+            <dd class="field" contenteditable="true"
+                data-field="07_2_4_Proje_Kapsami.hedefKapsam.seviyeSayisi">8 hafta sonunda 20+ el yapımı seviye</dd>
           </div>
-        </div>
-        <div class="card">
-          <div class="thumb">◍</div>
-          <div class="body">
-            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.2.ad">Dayanıklılık</h3>
-            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.kaynaklar.2.not">Hata payı — fark edilmenin doğrudan karşılığı</p>
+          <div>
+            <dt class="field" contenteditable="true"
+                data-field="07_2_4_Proje_Kapsami.basliklar.hedefKapsam_seansSuresi">Seans Süresi</dt>
+            <dd class="field" contenteditable="true"
+                data-field="07_2_4_Proje_Kapsami.hedefKapsam.seansSuresi">Seviye başına ~60 saniye</dd>
           </div>
-        </div>
+          <div>
+            <dt class="field" contenteditable="true"
+                data-field="07_2_4_Proje_Kapsami.basliklar.hedefKapsam_ekonomi">Ekonomi</dt>
+            <dd class="field" contenteditable="true"
+                data-field="07_2_4_Proje_Kapsami.hedefKapsam.ekonomi">Meta para, loot ve kalıcı yükseltme yok</dd>
+          </div>
+        </dl>
       </div>
-
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="07_2_4_Proje_Kapsami.hedefKapsam.baslik">Hedef Kapsam</h3>
-      <dl class="kv">
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="07_2_4_Proje_Kapsami.basliklar.hedefKapsam_seviyeSayisi">Seviye Sayısı</dt>
-          <dd class="field" contenteditable="true"
-              data-field="07_2_4_Proje_Kapsami.hedefKapsam.seviyeSayisi">8 hafta sonunda 20+ el yapımı seviye</dd>
-        </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="07_2_4_Proje_Kapsami.basliklar.hedefKapsam_seansSuresi">Seans Süresi</dt>
-          <dd class="field" contenteditable="true"
-              data-field="07_2_4_Proje_Kapsami.hedefKapsam.seansSuresi">Seviye başına ~60 saniye</dd>
-        </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="07_2_4_Proje_Kapsami.basliklar.hedefKapsam_ekonomi">Ekonomi</dt>
-          <dd class="field" contenteditable="true"
-              data-field="07_2_4_Proje_Kapsami.hedefKapsam.ekonomi">Meta para, loot ve kalıcı yükseltme yok</dd>
-        </div>
-      </dl>
-
     </div>
+  </section>
   </section>
 
 
@@ -584,13 +635,8 @@
       <h2 class="field" contenteditable="true"
           data-field="09_3_1_Proof_of_Concept.baslik">Proof of Concept (PoC)</h2>
 
+      <!-- Geliştirme aşaması ve grafik stili 07'de (Proje Kapsamı) gösterilir -->
       <dl class="kv">
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="09_3_1_Proof_of_Concept.basliklar.gelistirmeAsamasi">Geliştirme Aşaması</dt>
-          <dd class="field" contenteditable="true"
-              data-field="09_3_1_Proof_of_Concept.gelistirmeAsamasi">Vertical Slice — çekirdek döngü çalışıyor</dd>
-        </div>
         <div>
           <dt class="field" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.basliklar.motor_ad">Motor</dt>
@@ -613,14 +659,6 @@
                data-field="09_3_1_Proof_of_Concept.worldBuilder.icerik">Başlangıç, çıkış asansörü, botlar, ot örtüsü ve yükselti yerleşimi</div>
           <div class="field note" contenteditable="true"
                data-field="09_3_1_Proof_of_Concept.worldBuilder.not">8 haftada 20+ seviye hedefini mümkün kılan şey bu editör: içerik üretimi bizde darboğaz değil.</div>
-        </div>
-        <div class="blok">
-          <h3 class="altbaslik field" contenteditable="true"
-              data-field="09_3_1_Proof_of_Concept.grafikStili.baslik">Grafik Stili</h3>
-          <div class="field" contenteditable="true"
-               data-field="09_3_1_Proof_of_Concept.grafikStili.stil">İzometrik, stilize düşük-poli sci-fi robot estetiği</div>
-          <div class="field note" contenteditable="true"
-               data-field="09_3_1_Proof_of_Concept.grafikStili.oncelik">Okunabilirlik: ot örtüsü, yükselti ve bot görüş hatları anında ayırt edilebilir</div>
         </div>
       </div>
 
@@ -896,15 +934,15 @@
 
 
   <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
-  <script src="js/depo.js?v=14"></script>
-  <script src="js/alanlar.js?v=14"></script>
-  <script src="js/skala.js?v=14"></script>
-  <script src="js/fotolar.js?v=14"></script>
-  <script src="js/etiketler.js?v=14"></script>
-  <script src="js/aktarim.js?v=14"></script>
-  <script src="js/gorunum.js?v=14"></script>
-  <script src="js/gezinme.js?v=14"></script>
-  <script src="js/kaydirma.js?v=14"></script>
-  <script src="js/main.js?v=14"></script>
+  <script src="js/depo.js?v=21"></script>
+  <script src="js/alanlar.js?v=21"></script>
+  <script src="js/skala.js?v=21"></script>
+  <script src="js/fotolar.js?v=21"></script>
+  <script src="js/etiketler.js?v=21"></script>
+  <script src="js/aktarim.js?v=21"></script>
+  <script src="js/gorunum.js?v=21"></script>
+  <script src="js/gezinme.js?v=21"></script>
+  <script src="js/kaydirma.js?v=21"></script>
+  <script src="js/main.js?v=21"></script>
 </body>
 </html>
