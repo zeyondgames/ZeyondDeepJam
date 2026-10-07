@@ -1233,7 +1233,9 @@ body:not(.sunum) .step.field { outline-offset: 2px; }
   display: block;
   width: 100%; height: 100%;
 }
-.kisi-foto img { object-fit: cover; object-position: center top; }
+/* --odak: fotoğrafın dikeyde kadraja alınacak yeri (0% üst, 100% alt).
+   Yüz üstte değilse <img>'nin style'ında verilir; pencere de onu kullanır. */
+.kisi-foto img { object-fit: cover; object-position: center var(--odak, 0%); }
 .kisi-foto svg { fill: color-mix(in srgb, var(--text) 16%, var(--kati)); }
 
 /* Sıra numarası */
@@ -1398,7 +1400,7 @@ body.sunum .kisi-araclar { display: none; }
   display: block;
   width: 100%; height: 100%;
 }
-.pencere-foto img { object-fit: cover; object-position: center top; }
+.pencere-foto img { object-fit: cover; object-position: center var(--odak, 0%); }
 .pencere-foto svg { fill: color-mix(in srgb, var(--text) 16%, var(--kati)); }
 
 .pencere-govde {
@@ -1469,10 +1471,13 @@ body.sunum .pencere-bolum:has(.field.empty) { display: none; }
 .pencere-kapat:hover::before,
 .pencere-kapat:hover::after { background: var(--accent); }
 
-/* Dar ekranda fotoğraf üstte, metin altında */
+/* Dar ekranda fotoğraf üstte, metin altında. Kutu kare: daha basık olursa
+   dikey çekilmiş fotoğrafta baş kadrajın dışında kalıyor. */
 @media (max-width: 700px) {
   .pencere[open] { grid-template-columns: 1fr; }
-  .pencere-foto { aspect-ratio: 4 / 3; min-height: 0; }
+  .pencere-foto { aspect-ratio: 1; min-height: 0; }
+  /* Kare kutu karttan basık: aynı baş boşluğu için odak biraz yukarı alınır */
+  .pencere-foto img { object-position: center calc(var(--odak, 0%) * .7); }
 }
 @media (prefers-reduced-motion: reduce) {
   .pencere[open], .pencere::backdrop { animation: none; }
