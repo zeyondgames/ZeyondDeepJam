@@ -372,8 +372,8 @@ h2 {
 .serbest .panel > .num { display: block; }
 .serbest .panel > h2 { margin-bottom: 2.2rem; }
 
-/* Etiket/değer satırları ortada dar bir sütun; satırların kendi içi
-   okunaklı kalsın diye sola yaslı */
+/* Başlık + açıklama blokları ortada dar bir sütun; kendi içi okunaklı
+   kalsın diye sola yaslı */
 .serbest .kv {
   max-width: 36rem;
   margin-inline: auto;
@@ -391,6 +391,68 @@ h2 {
   padding: 0;
   border: 0;
 }
+
+
+/*═══════════════════  SLAYT TİPİ · MANŞET (KUTUSUZ, SOLA YASLI)  ═══════════════════*/
+/* .slide.manset: içerik kutuya alınmaz, beyaz zeminde sola yaslı durur —
+   büyük, ince, büyük harfli başlık; altında kalın turuncu ara başlıklar
+   ve iri gövde metni. "Biz Kimiz" dışındaki tüm içerik slaytları. */
+
+.manset { --manset-vurgu: #ff8a00; }
+
+.manset .panel {
+  max-width: 58rem;
+  margin-left: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.manset .panel::before { display: none; }
+
+.manset h2 {
+  font-size: clamp(2.6rem, 7vw, 4.8rem);
+  font-weight: 200;
+  line-height: 1.05;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  margin: .4rem 0 1.8rem;
+}
+
+.manset .altbaslik {
+  font-size: clamp(1.35rem, 2.8vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: .01em;
+  color: var(--manset-vurgu);
+  margin: 2.8rem 0 .9rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.manset h2 + .altbaslik { margin-top: 0; }
+
+/* Gövde metni: paragraflar okunur satır uzunluğunda kalsın */
+.manset .panel > div.field,
+.manset .panel > p.field {
+  max-width: 44rem;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+.manset .panel > .note { font-size: 1.1rem; }
+.manset .kv dt {
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  color: var(--manset-vurgu);
+}
+.manset .kv dd.field {
+  max-width: 44rem;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+.manset .loop .field { font-size: 1.2rem; }
+.manset .loop .govde h4 { font-size: 1.2rem; color: var(--manset-vurgu); }
+.manset .loop .govde p { font-size: 1.05rem; }
+.manset .card h3 { font-size: 1.2rem; color: var(--manset-vurgu); }
+.manset .card p { font-size: 1.02rem; }
+.manset .card .thumb { color: var(--manset-vurgu); }
 
 
 /*═══════════════════  BİLEŞEN · DÜZENLENEBİLİR ALANLAR  ═══════════════════*/
@@ -432,23 +494,17 @@ body:not(.sunum) .field:focus {
 
 
 /*═══════════════════  BİLEŞEN · ETİKET / DEĞER SATIRLARI  ═══════════════════*/
-/* Başvurudaki "alan adı + cevap" kalıbı: solda sabit etiket, sağda
-   düzenlenebilir alan. */
+/* Başlık + açıklama kalıbı: üstte kalın bir başlık, altında paragraf.
+   İkisi de düzenlenebilir. (Eskiden solda etiket, sağda değer duran
+   satırlardı; sınıf adı oradan kalma.) */
 
-.kv { display: grid; gap: 18px; }
-.kv > div {
-  display: grid;
-  grid-template-columns: minmax(8rem, 13rem) 1fr;
-  gap: 6px 22px;
-  align-items: start;
-}
+.kv { display: grid; gap: 1.7rem; }
 .kv dt {
-  font-family: var(--mono);
-  font-size: .74rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding-top: 5px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--accent2);
+  margin-bottom: .45rem;
 }
 
 /* Tek satırda yan yana duran kısa değerler (örn. alt türler) */
@@ -678,8 +734,10 @@ body:not(.sunum) .step.field { outline-offset: 2px; }
   will-change: transform;
 }
 .kisiler.patlama.acik .kisi { transform: none; }
-.kisiler.patlama .kisi-etiket { opacity: 0; transition: opacity .3s ease; }
-.kisiler.patlama.acik .kisi-etiket { opacity: 1; transition-delay: .4s; }
+.kisiler.patlama .kisi-etiket,
+.kisiler.patlama .kisi-araclar { opacity: 0; transition: opacity .3s ease; }
+.kisiler.patlama.acik .kisi-etiket,
+.kisiler.patlama.acik .kisi-araclar { opacity: 1; transition-delay: .4s; }
 
 .kisi-foto {
   position: absolute;
@@ -733,6 +791,34 @@ body:not(.sunum) .kisi-etiket .kisi-rol:focus { background: rgba(0, 0, 0, .06); 
 body:not(.sunum) .kisi-etiket .kisi-ad:hover,
 body:not(.sunum) .kisi-etiket .kisi-ad:focus { background: #0f1035; }
 
+/* Fotoğraf düğmeleri: fotolar.js ekler, yalnızca düzenleme modunda görünür.
+   .dolu: kartta fotoğraf var; siluet gizlenir, "Kaldır" açılır. */
+.kisi-foto.dolu svg { display: none; }
+.kisi-araclar {
+  position: absolute;
+  top: .8rem; right: .8rem;
+  display: flex;
+  gap: .35rem;
+}
+.kisi-araclar button {
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  line-height: 1.25;
+  padding: .38rem .8rem;
+  border: 0;
+  border-radius: 999px;
+  color: #111111;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+.kisi-araclar button:hover { background: #f0f0f0; }
+.kisi-araclar button:focus-visible { outline: 2px solid #0f1035; outline-offset: 2px; }
+.kisi-kaldir { display: none; }
+.kisi-foto.dolu ~ .kisi-araclar .kisi-kaldir { display: block; }
+body.sunum .kisi-araclar { display: none; }
+
 /* Telefonda kartlar yine yan yana ama küçük. Etiket tek satıra sığmadığı
    için dikleşir: üstte ad hapı, altında rol. */
 @media (max-width: 600px) {
@@ -750,6 +836,9 @@ body:not(.sunum) .kisi-etiket .kisi-ad:focus { background: #0f1035; }
   .kisi-ad, .kisi-rol { font-size: .78rem; }
   .kisi-ad { padding: .3rem .8rem; }
   .kisi-rol { padding: .15rem .45rem .25rem; text-align: center; }
+
+  .kisi-araclar { top: .45rem; right: .45rem; left: .45rem; flex-wrap: wrap; justify-content: flex-end; gap: .25rem; }
+  .kisi-araclar button { font-size: .72rem; padding: .28rem .6rem; }
 }
 
 
@@ -1107,35 +1196,11 @@ body.sunum #modeBtn { --c1: var(--g1); --c2: var(--g2); }
 }
 
 
-/*═══════════════════  UYARLAMA · SAĞ / SOL DİZİLİM  ═══════════════════*/
-/* Geniş ekranda içerik slaytları ortada durmak yerine sırayla bir sola
-   bir sağa yaslanır: ilki solda, sonraki sağda. Sıra yalnızca içerik
-   slaytları arasında sayılır ("of" seçicisi); kapaklar, bölüm kapakları
-   ve serbest (kutusuz, ortalı) slaytlar ortada kalır ve sırayı bozmaz.
-   Dar ekranda panel zaten tüm genişliği kapladığı için bu dizilim
-   uygulanmaz.
-
-   Sağdaki panellerde başlık, düz metin ve notlar da sağa yaslanır;
-   etiket/değer satırları, kaydıraçlar ve kartlar okunaklı kalsın diye
-   kendi hizasını korur. */
+/*═══════════════════  UYARLAMA · GENİŞ EKRAN  ═══════════════════*/
+/* Geniş ekranda içerik slaytları kenardan daha içeride başlar */
 
 @media (min-width: 1100px) {
   .slide:not(.cover, .bolum, .outro, .serbest) { padding-inline: clamp(40px, 7vw, 10rem); }
-
-  .slide:nth-child(odd of .slide:not(.cover, .bolum, .outro, .serbest)) .panel { margin-left: 0; }
-
-  .slide:nth-child(even of .slide:not(.cover, .bolum, .outro, .serbest)) .panel { margin-right: 0; }
-  .slide:nth-child(even of .slide:not(.cover, .bolum, .outro, .serbest)) .panel::before { left: auto; right: -1px; }
-  .slide:nth-child(even of .slide:not(.cover, .bolum, .outro, .serbest)) .panel > :is(.num, h2, .altbaslik, .field) {
-    display: block;
-    text-align: right;
-  }
-  .slide:nth-child(even of .slide:not(.cover, .bolum, .outro, .serbest)) .panel > .note {
-    border-left: 0;
-    border-right: 2px solid var(--line);
-    padding-left: 0;
-    padding-right: 16px;
-  }
 }
 
 
@@ -1156,9 +1221,6 @@ body.sunum #modeBtn { --c1: var(--g1); --c2: var(--g2); }
   body:not(.sunum) .field { outline-offset: 3px; }
   .cover h1, .bolum h2, h2 { overflow-wrap: anywhere; }
   .loop li { gap: 12px; }
-  /* Dar ekranda etiket üstte, cevap altta */
-  .kv > div { grid-template-columns: 1fr; }
-  .kv { gap: 22px; }
   /* Parmakla sürüklemek için daha geniş tutamak */
   .skala { --tutamak: 16px; --ray: 26px; }
 }
@@ -1172,7 +1234,7 @@ body.sunum #modeBtn { --c1: var(--g1); --c2: var(--g2); }
   body::before { display: none; }
   .kisiler.patlama .kisi { transform: none; }
   .kisiler.patlama .kisi-etiket { opacity: 1; }
-  .toolbar, .menu, .dots, .hint { display: none; }
+  .toolbar, .menu, .dots, .hint, .kisi-araclar { display: none; }
   .slide {
     min-height: auto;
     page-break-after: always;
@@ -1189,7 +1251,8 @@ body.sunum #modeBtn { --c1: var(--g1); --c2: var(--g2); }
   .step { background: #111; color: #fff; }
   .field.empty::before { content: ""; }
   .field { outline: none !important; }
-  .lead, .note, .story, .card p, .kv dt, .loop .govde p { color: #444; }
+  .lead, .note, .story, .card p, .loop .govde p { color: #444; }
+  .kv dt { color: #111; }
   .kv .satir .field { border-color: #ccc; color: #444; }
   .check .chip { border-color: #ccc; color: #111; background: none; box-shadow: none; }
   .check .chip::before, .check .chip.on::before { color: #111; }

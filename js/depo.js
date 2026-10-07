@@ -14,11 +14,13 @@ window.GDD = window.GDD || {};
   GDD.alanlar = [];
   GDD.cipler = [];
   GDD.skalalar = [];
+  GDD.fotolar = [];
 
   GDD.depoKur = function () {
     GDD.alanlar = document.querySelectorAll(".field");
     GDD.cipler = document.querySelectorAll(".chip");
     GDD.skalalar = document.querySelectorAll(".skala");
+    GDD.fotolar = document.querySelectorAll("[data-foto]");
 
     try {
       const kayit = localStorage.getItem(KEY);
@@ -80,6 +82,10 @@ window.GDD = window.GDD || {};
     // Kaydıraçlar metin değil sayı yazar: JSON'da 0–100 arası bir değer durur
     GDD.skalalar.forEach(function (s) { yaz(veri, s.dataset.field, Number(s.value)); });
 
+    // Fotoğraflar görselin adresini yazar: seçilmiş dosyada veri adresi,
+    // elle konmuş görselde "img/..." yolu, yoksa boş metin
+    GDD.fotolar.forEach(function (k) { yaz(veri, k.dataset.foto, GDD.fotoOku(k)); });
+
     const etiketler = [];
     GDD.cipler.forEach(function (c) {
       if (c.classList.contains("on")) etiketler.push(c.dataset.tag);
@@ -106,6 +112,13 @@ window.GDD = window.GDD || {};
     GDD.skalalar.forEach(function (s) {
       const deger = oku(veri, s.dataset.field);
       if (deger !== undefined && deger !== null && deger !== "") s.value = deger;
+    });
+
+    // Kayıtta alan yoksa (eski kayıt) ya da boşsa karttaki görsele
+    // dokunulmaz: HTML'e konmuş sabit fotoğraf yerinde kalır
+    GDD.fotolar.forEach(function (k) {
+      const deger = oku(veri, k.dataset.foto);
+      if (typeof deger === "string" && deger) GDD.fotoYaz(k, deger);
     });
 
     if (Array.isArray(veri.etiketler)) {

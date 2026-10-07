@@ -25,11 +25,13 @@
     "takimUyeleri": [
       {
         "ad": "Harun Kalli",
-        "rol": "Game Development / Design"
+        "rol": "Game Development / Design",
+        "foto": "img/kisiler/harun.jpeg"
       },
       {
         "ad": "Nil Neal",
-        "rol": "Game Art / Design"
+        "rol": "Game Art / Design",
+        "foto": "img/kisiler/nil.jpeg"
       }
     ],
     "not": "Küçük ekip bir zayıflık değil, bir kanıt: çalışan çekirdek döngü ve kendi seviye editörümüz, projeyi tek başımıza bitirebildiğimizi gösteriyor."

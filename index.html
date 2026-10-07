@@ -6,7 +6,7 @@
   <title>Deep Jam Başvurusu · Zeyond Games</title>
   <!-- ?v=: telefonlar eski stil ve scriptleri 10 dakikaya kadar önbellekten
        okuyor; dosyalar değişince bu sayıyı artırmak yenisini hemen indirtir. -->
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=13">
   <!-- Temayı sayfa çizilmeden uygular; aksi halde karanlık temada bir an beyaz yanıp söner. Varsayılan beyaz. -->
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-2")||"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 </head>
@@ -131,7 +131,8 @@
            data-numara="1.1" data-baslik="Girişim ve İletişim Bilgileri">
     <div class="panel">
       <span class="num">1.1 · TAKIM BİLGİLERİ</span>
-      <h2>Girişim ve İletişim Bilgileri</h2>
+      <h2 class="field" contenteditable="true"
+          data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.baslik">Girişim ve İletişim Bilgileri</h2>
 
       <!--
         İletişim satırları sayfada gösterilmez: "hidden" ile gizlidir.
@@ -140,31 +141,36 @@
       -->
       <dl class="kv" hidden>
         <div>
-          <dt>Oyun Stüdyosu</dt>
+          <dt class="field" contenteditable="true"
+              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.oyunStudyosu">Oyun Stüdyosu</dt>
           <dd class="field" contenteditable="true"
               data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.oyunStudyosu"
               data-placeholder="takımının ticari adı">Zeyond Games / Zeyond Team</dd>
         </div>
         <div>
-          <dt>Proje Yöneticisi</dt>
+          <dt class="field" contenteditable="true"
+              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.projeYoneticisi">Proje Yöneticisi</dt>
           <dd class="field" contenteditable="true"
               data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.projeYoneticisi"
               data-placeholder="ad soyad">Harun Kalli</dd>
         </div>
         <div>
-          <dt>E-posta</dt>
+          <dt class="field" contenteditable="true"
+              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.eposta">E-posta</dt>
           <dd class="field" contenteditable="true"
               data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.eposta"
               data-placeholder="aktif adres">info@zeyondgames.com</dd>
         </div>
         <div>
-          <dt>Telefon</dt>
+          <dt class="field" contenteditable="true"
+              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.telefon">Telefon</dt>
           <dd class="field" contenteditable="true"
               data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.telefon"
               data-placeholder="+90 5XX XXX XX XX">05453967663</dd>
         </div>
         <div>
-          <dt>Takım Büyüklüğü</dt>
+          <dt class="field" contenteditable="true"
+              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.takimBuyuklugu">Takım Büyüklüğü</dt>
           <dd class="field" contenteditable="true"
               data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimBuyuklugu"
               data-placeholder="örn. 2 kişi">2 kişi</dd>
@@ -175,12 +181,16 @@
         Kişi kartları: yuvarlak köşeli uzun kart, altta beyaz hap etiket
         (koyu hapta ad, yanında rol). Kartlar bölüm ekrana gelince tek
         noktadan açılarak yerlerine oturur (js/kaydirma.js).
-        Fotoğraf gelince .kisi-foto içindeki <svg> yerine
-        <img src="img/..." alt=""> koymak yeterli; kart onu kırparak doldurur.
+        Fotoğraf düzenleme modunda karttaki "Fotoğraf seç" düğmesiyle eklenir
+        (js/fotolar.js); data-foto, JSON'daki konumdur. Herkese görünmesi için
+        .kisi-foto içine, <svg>'den önce <img src="img/..." alt=""> koymak
+        gerekir; kart onu kırparak doldurur.
       -->
       <div class="kisiler">
         <figure class="kisi">
-          <div class="kisi-foto" aria-hidden="true">
+          <div class="kisi-foto" aria-hidden="true"
+               data-foto="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.0.foto">
+            <img src="img/kisiler/harun.jpeg" alt="" style="object-position: center 60%">
             <svg viewBox="0 0 100 125" preserveAspectRatio="xMidYMax meet"><circle cx="50" cy="46" r="19"/><path d="M12 125c0-26 16-42 38-42s38 16 38 42z"/></svg>
           </div>
           <figcaption class="kisi-etiket">
@@ -191,7 +201,9 @@
           </figcaption>
         </figure>
         <figure class="kisi">
-          <div class="kisi-foto" aria-hidden="true">
+          <div class="kisi-foto" aria-hidden="true"
+               data-foto="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.1.foto">
+            <img src="img/kisiler/nil.jpeg" alt="">
             <svg viewBox="0 0 100 125" preserveAspectRatio="xMidYMax meet"><circle cx="50" cy="46" r="19"/><path d="M12 125c0-26 16-42 38-42s38 16 38 42z"/></svg>
           </div>
           <figcaption class="kisi-etiket">
@@ -221,53 +233,105 @@
        data-field="03_2_0_Oyun_Konsepti.altBaslik">Ad, tür, hikâye ve proje kapsamı</p>
   </section>
 
-  <!-- 04 · 2.1 Oyunun Adı -->
-  <section class="slide" id="s04" data-title="2.1 Oyunun Adı"
+  <!--
+    "Oyunumuz" tek sayfadır: 04 görünür ve oyunun adını, türünü, özetini,
+    hikâyesini, oynanışını ve benzersiz yanlarını taşır; alanlar kendi
+    slaytlarının yoluyla (05_, 06_, 07_) kaydedilmeye devam eder. 05–07
+    "hidden" ile gizlidir: kalan alanları (tür skalası, çekirdek döngü,
+    kaynaklar, hedef kapsam) JSON dışa aktarımı hâlâ oradan okur. Bir
+    bloğu geri getirmek için 04'ün içine taşımak yeterli.
+
+    İçerik slaytları "manset" tipindedir: kutusuz, sola yaslı; büyük ince
+    başlık, turuncu ara başlıklar ve altlarında iri gövde metni
+    (style.css · MANŞET). Başlıklar da düzenlenebilir: h2 slaytın "baslik"
+    alanına, <dt> başlıkları "basliklar" altına yazar.
+  -->
+  <!-- 04 · Oyunumuz (tek sayfa) -->
+  <section class="slide manset" id="s04" data-title="2 · Oyunumuz"
            data-slide="04_2_1_Oyunun_Adi" data-tip="icerik"
            data-numara="2.1" data-baslik="Oyunun Adı">
     <div class="panel">
-      <span class="num">2.1 · OYUN KONSEPTİ</span>
-      <h2>Oyunun Adı</h2>
+      <span class="num">2 · OYUNUMUZ</span>
+      <!-- lang="en": ad İngilizce; Türkçe büyük harf kuralı "i"yi "İ" yapmasın -->
+      <h2 class="field" lang="en" contenteditable="true"
+          data-field="04_2_1_Oyunun_Adi.ad">Hexafield</h2>
 
-      <dl class="kv">
-        <div>
-          <dt>Ad</dt>
-          <dd class="field" contenteditable="true"
-              data-field="04_2_1_Oyunun_Adi.ad">Hexafield</dd>
-        </div>
-        <div>
-          <dt>Alternatif 1</dt>
-          <dd class="field" contenteditable="true"
-              data-field="04_2_1_Oyunun_Adi.alternatifler.0">Hexacore</dd>
-        </div>
-        <div>
-          <dt>Alternatif 2</dt>
-          <dd class="field" contenteditable="true"
-              data-field="04_2_1_Oyunun_Adi.alternatifler.1">BlueNation</dd>
-        </div>
-      </dl>
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="05_2_2_Oyunun_Turu.anaTur">Taktiksel Gizlilik-Aksiyon</h3>
+      <div class="field" contenteditable="true"
+           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozet">Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.</div>
 
-      <div class="field note" contenteditable="true"
-           data-field="04_2_1_Oyunun_Adi.not">Ad kesinleşmeden önce ticari marka benzersizliği ve alan adı uygunluğu kontrol edilecek.</div>
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikayeBaslik">Hikâye</h3>
+      <div class="field" contenteditable="true"
+           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikaye">Tüm robotlar CORE tarafından programlanır. Hata veren robotlar programının dışına çıkar ve Anomaly olarak sınıflandırılır. Bizim robotumuz bir Anomaly — CORE onu yok etmek için avcı botlar gönderiyor.</div>
+
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanisBaslik">Oynanış</h3>
+      <div class="field" contenteditable="true"
+           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanis">Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen 'sız mı, harca mı' kararıdır.</div>
+
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="07_2_4_Proje_Kapsami.uspBaslik">Benzersiz Satış Teklifi</h3>
+      <div class="games">
+        <div class="card">
+          <div class="thumb">◆</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.0.ad">Saf Taktik</h3>
+            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.0.not">Kaynak-harcama kararları her turda — meta-ilerleme yok</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">⬡</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.1.ad">Mobil Stealth</h3>
+            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.1.not">El yapımı hex arenalarda ot temelli görüş-hattı gizliliği</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb">▲</div>
+          <div class="body">
+            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.ad">Derinlik Üzerine</h3>
+            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.not">Zorluk düzen karmaşıklığı ve bot davranışıyla artar</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sayfada gösterilmeyen alanlar: ad notu ve alternatif adlar -->
+      <div hidden>
+        <div class="field" contenteditable="true"
+             data-field="04_2_1_Oyunun_Adi.not">Ad kesinleşmeden önce ticari marka benzersizliği ve alan adı uygunluğu kontrol edilecek.</div>
+        <dl class="kv">
+          <div>
+            <dt class="field" contenteditable="true"
+                data-field="04_2_1_Oyunun_Adi.basliklar.alternatifler_0">Alternatif 1</dt>
+            <dd class="field" contenteditable="true"
+                data-field="04_2_1_Oyunun_Adi.alternatifler.0">Hexacore</dd>
+          </div>
+          <div>
+            <dt class="field" contenteditable="true"
+                data-field="04_2_1_Oyunun_Adi.basliklar.alternatifler_1">Alternatif 2</dt>
+            <dd class="field" contenteditable="true"
+                data-field="04_2_1_Oyunun_Adi.alternatifler.1">BlueNation</dd>
+          </div>
+        </dl>
+      </div>
     </div>
   </section>
 
   <!-- 05 · 2.2 Oyunun Türü -->
-  <section class="slide" id="s05" data-title="2.2 Oyunun Türü"
+  <section class="slide manset" hidden id="s05" data-title="2.2 Oyunun Türü"
            data-slide="05_2_2_Oyunun_Turu" data-tip="icerik"
            data-numara="2.2" data-baslik="Oyunun Türü">
     <div class="panel">
       <span class="num">2.2 · OYUN KONSEPTİ</span>
-      <h2>Oyunun Türü</h2>
+      <h2 class="field" contenteditable="true"
+          data-field="05_2_2_Oyunun_Turu.baslik">Oyunun Türü</h2>
 
       <dl class="kv">
         <div>
-          <dt>Ana Tür</dt>
-          <dd class="field" contenteditable="true"
-              data-field="05_2_2_Oyunun_Turu.anaTur">Taktiksel Gizlilik-Aksiyon</dd>
-        </div>
-        <div>
-          <dt>Alt Türler</dt>
+          <dt class="field" contenteditable="true"
+              data-field="05_2_2_Oyunun_Turu.basliklar.altTurler">Alt Türler</dt>
           <dd class="satir">
             <span class="field" contenteditable="true"
                   data-field="05_2_2_Oyunun_Turu.altTurler.0">Stealth</span>
@@ -278,12 +342,14 @@
           </dd>
         </div>
         <div>
-          <dt>Perspektif</dt>
+          <dt class="field" contenteditable="true"
+              data-field="05_2_2_Oyunun_Turu.basliklar.perspektif">Perspektif</dt>
           <dd class="field" contenteditable="true"
               data-field="05_2_2_Oyunun_Turu.perspektif">İzometrik, hex-grid tabanlı</dd>
         </div>
         <div>
-          <dt>Platform</dt>
+          <dt class="field" contenteditable="true"
+              data-field="05_2_2_Oyunun_Turu.basliklar.platform">Platform</dt>
           <dd class="field" contenteditable="true"
               data-field="05_2_2_Oyunun_Turu.platform">Mobil (iOS + Android)</dd>
         </div>
@@ -294,7 +360,8 @@
         kılavuzdaki listeyle aynı sırada; her satırın değeri JSON'da
         turSkalasi dizisinde { tur, deger } olarak durur.
       -->
-      <h3 class="altbaslik">Tür Skalası</h3>
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="05_2_2_Oyunun_Turu.turSkalasiBaslik">Tür Skalası</h3>
 
       <p class="field skala-ipucu" contenteditable="true"
          data-field="05_2_2_Oyunun_Turu.turSkalasiNotu">Başvuru kılavuzundaki tür listesi: her çizgi, oyunun o türe ne kadar yaslandığını gösterir.</p>
@@ -371,33 +438,29 @@
   </section>
 
   <!-- 06 · 2.3 Oyunun Özeti ve Hikayesi -->
-  <section class="slide" id="s06" data-title="2.3 Özet ve Hikaye"
+  <section class="slide manset" hidden id="s06" data-title="2.3 Özet ve Hikaye"
            data-slide="06_2_3_Oyunun_Ozeti_ve_Hikayesi" data-tip="icerik"
            data-numara="2.3" data-baslik="Oyunun Özeti ve Hikayesi">
     <div class="panel">
       <span class="num">2.3 · OYUN KONSEPTİ</span>
-      <h2>Oyunun Özeti ve Hikayesi</h2>
+      <h2 class="field" contenteditable="true"
+          data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.baslik">Oyunun Özeti ve Hikayesi</h2>
 
-      <h3 class="altbaslik">Hikâye</h3>
-      <div class="field" contenteditable="true"
-           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikaye">Tüm robotlar CORE tarafından programlanır. Hata veren robotlar programının dışına çıkar ve Anomaly olarak sınıflandırılır. Bizim robotumuz bir Anomaly — CORE onu yok etmek için avcı botlar gönderiyor.</div>
 
-      <h3 class="altbaslik">Özet</h3>
-      <div class="field" contenteditable="true"
-           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozet">Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.</div>
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozetBaslik">Özet</h3>
 
-      <div class="field note" contenteditable="true"
-           data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.oynanis">Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen 'sız mı, harca mı' kararıdır.</div>
     </div>
   </section>
 
   <!-- 07 · 2.4 Proje Kapsamı -->
-  <section class="slide" id="s07" data-title="2.4 Proje Kapsamı"
+  <section class="slide manset" hidden id="s07" data-title="2.4 Proje Kapsamı"
            data-slide="07_2_4_Proje_Kapsami" data-tip="icerik"
            data-numara="2.4" data-baslik="Proje Kapsamı">
     <div class="panel">
       <span class="num">2.4 · OYUN KONSEPTİ</span>
-      <h2>Proje Kapsamı</h2>
+      <h2 class="field" contenteditable="true"
+          data-field="07_2_4_Proje_Kapsami.baslik">Proje Kapsamı</h2>
 
       <h3 class="altbaslik field" contenteditable="true"
           data-field="07_2_4_Proje_Kapsami.cekirdekDongu.baslik">Çekirdek Döngü (~60 saniye)</h3>
@@ -410,7 +473,8 @@
         <li><span class="step">6</span><div class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.cekirdekDongu.adimlar.5">6. Skor ve yıldız — sonraki arena daha karmaşık</div></li>
       </ol>
 
-      <h3 class="altbaslik">Kaynaklar</h3>
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="07_2_4_Proje_Kapsami.kaynaklarBaslik">Kaynaklar</h3>
       <div class="games">
         <div class="card">
           <div class="thumb">▮</div>
@@ -435,49 +499,29 @@
         </div>
       </div>
 
-      <h3 class="altbaslik">Hedef Kapsam</h3>
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="07_2_4_Proje_Kapsami.hedefKapsam.baslik">Hedef Kapsam</h3>
       <dl class="kv">
         <div>
-          <dt>Seviye Sayısı</dt>
+          <dt class="field" contenteditable="true"
+              data-field="07_2_4_Proje_Kapsami.basliklar.hedefKapsam_seviyeSayisi">Seviye Sayısı</dt>
           <dd class="field" contenteditable="true"
               data-field="07_2_4_Proje_Kapsami.hedefKapsam.seviyeSayisi">8 hafta sonunda 20+ el yapımı seviye</dd>
         </div>
         <div>
-          <dt>Seans Süresi</dt>
+          <dt class="field" contenteditable="true"
+              data-field="07_2_4_Proje_Kapsami.basliklar.hedefKapsam_seansSuresi">Seans Süresi</dt>
           <dd class="field" contenteditable="true"
               data-field="07_2_4_Proje_Kapsami.hedefKapsam.seansSuresi">Seviye başına ~60 saniye</dd>
         </div>
         <div>
-          <dt>Ekonomi</dt>
+          <dt class="field" contenteditable="true"
+              data-field="07_2_4_Proje_Kapsami.basliklar.hedefKapsam_ekonomi">Ekonomi</dt>
           <dd class="field" contenteditable="true"
               data-field="07_2_4_Proje_Kapsami.hedefKapsam.ekonomi">Meta para, loot ve kalıcı yükseltme yok</dd>
         </div>
       </dl>
 
-      <h3 class="altbaslik">Benzersiz Satış Teklifi</h3>
-      <div class="games">
-        <div class="card">
-          <div class="thumb">◆</div>
-          <div class="body">
-            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.0.ad">Saf Taktik</h3>
-            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.0.not">Kaynak-harcama kararları her turda — meta-ilerleme yok</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="thumb">⬡</div>
-          <div class="body">
-            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.1.ad">Mobil Stealth</h3>
-            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.1.not">El yapımı hex arenalarda ot temelli görüş-hattı gizliliği</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="thumb">▲</div>
-          <div class="body">
-            <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.ad">Derinlik Üzerine</h3>
-            <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.not">Zorluk düzen karmaşıklığı ve bot davranışıyla artar</p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -495,26 +539,30 @@
   </section>
 
   <!-- 09 · 3.1 Proof of Concept (PoC) -->
-  <section class="slide" id="s09" data-title="3.1 Proof of Concept"
+  <section class="slide manset" id="s09" data-title="3.1 Proof of Concept"
            data-slide="09_3_1_Proof_of_Concept" data-tip="icerik"
            data-numara="3.1" data-baslik="Proof of Concept (PoC)">
     <div class="panel">
       <span class="num">3.1 · TEKNİK VE PORTFOLYO</span>
-      <h2>Proof of Concept (PoC)</h2>
+      <h2 class="field" contenteditable="true"
+          data-field="09_3_1_Proof_of_Concept.baslik">Proof of Concept (PoC)</h2>
 
       <dl class="kv">
         <div>
-          <dt>Geliştirme Aşaması</dt>
+          <dt class="field" contenteditable="true"
+              data-field="09_3_1_Proof_of_Concept.basliklar.gelistirmeAsamasi">Geliştirme Aşaması</dt>
           <dd class="field" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.gelistirmeAsamasi">Vertical Slice — çekirdek döngü çalışıyor</dd>
         </div>
         <div>
-          <dt>Motor</dt>
+          <dt class="field" contenteditable="true"
+              data-field="09_3_1_Proof_of_Concept.basliklar.motor_ad">Motor</dt>
           <dd class="field" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.motor.ad">Unity</dd>
         </div>
         <div>
-          <dt>Motor Gerekçesi</dt>
+          <dt class="field" contenteditable="true"
+              data-field="09_3_1_Proof_of_Concept.basliklar.motor_gerekce">Motor Gerekçesi</dt>
           <dd class="field" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.motor.gerekce">Mobil dağıtım, izometrik render ve hex-grid için olgun araç ve topluluk desteği</dd>
         </div>
@@ -527,28 +575,33 @@
       <div class="field note" contenteditable="true"
            data-field="09_3_1_Proof_of_Concept.worldBuilder.not">8 haftada 20+ seviye hedefini mümkün kılan şey bu editör: içerik üretimi bizde darboğaz değil.</div>
 
-      <h3 class="altbaslik">Grafik Stili</h3>
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="09_3_1_Proof_of_Concept.grafikStili.baslik">Grafik Stili</h3>
       <div class="field" contenteditable="true"
            data-field="09_3_1_Proof_of_Concept.grafikStili.stil">İzometrik, stilize düşük-poli sci-fi robot estetiği</div>
       <div class="field note" contenteditable="true"
            data-field="09_3_1_Proof_of_Concept.grafikStili.oncelik">Okunabilirlik: ot örtüsü, yükselti ve bot görüş hatları anında ayırt edilebilir</div>
 
-      <h3 class="altbaslik">Linkler</h3>
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="09_3_1_Proof_of_Concept.linkler.baslik">Linkler</h3>
       <dl class="kv">
         <div>
-          <dt>Oynanabilir Prototip</dt>
+          <dt class="field" contenteditable="true"
+              data-field="09_3_1_Proof_of_Concept.basliklar.linkler_prototip">Oynanabilir Prototip</dt>
           <dd class="field empty" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.linkler.prototip"
               data-placeholder="herkese açık WebGL / itch.io linki"></dd>
         </div>
         <div>
-          <dt>Video Pitch</dt>
+          <dt class="field" contenteditable="true"
+              data-field="09_3_1_Proof_of_Concept.basliklar.linkler_video">Video Pitch</dt>
           <dd class="field empty" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.linkler.video"
               data-placeholder="en fazla 3 dk, YouTube / Vimeo"></dd>
         </div>
         <div>
-          <dt>Portfolyo</dt>
+          <dt class="field" contenteditable="true"
+              data-field="09_3_1_Proof_of_Concept.basliklar.linkler_portfolyo">Portfolyo</dt>
           <dd class="field empty" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.linkler.portfolyo"
               data-placeholder="GitHub / ArtStation / itch.io"></dd>
@@ -574,12 +627,13 @@
   </section>
 
   <!-- 11 · 4.1 Ana Gelir Modeli -->
-  <section class="slide" id="s11" data-title="4.1 Ana Gelir Modeli"
+  <section class="slide manset" id="s11" data-title="4.1 Ana Gelir Modeli"
            data-slide="11_4_1_Ana_Gelir_Modeli" data-tip="icerik"
            data-numara="4.1" data-baslik="Ana Gelir Modeli">
     <div class="panel">
       <span class="num">4.1 · İŞ MODELİ VE FİNANS</span>
-      <h2>Ana Gelir Modeli</h2>
+      <h2 class="field" contenteditable="true"
+          data-field="11_4_1_Ana_Gelir_Modeli.baslik">Ana Gelir Modeli</h2>
 
       <div class="field" contenteditable="true"
            data-field="11_4_1_Ana_Gelir_Modeli.model">Hibrit: F2P + Ödüllü Reklam + Tek Seferlik Premium</div>
@@ -614,31 +668,36 @@
   </section>
 
   <!-- 12 · 4.2 Pazara Giriş Stratejisi -->
-  <section class="slide" id="s12" data-title="4.2 Pazara Giriş"
+  <section class="slide manset" id="s12" data-title="4.2 Pazara Giriş"
            data-slide="12_4_2_Pazara_Giris_Stratejisi" data-tip="icerik"
            data-numara="4.2" data-baslik="Pazara Giriş Stratejisi">
     <div class="panel">
       <span class="num">4.2 · İŞ MODELİ VE FİNANS</span>
-      <h2>Pazara Giriş Stratejisi</h2>
+      <h2 class="field" contenteditable="true"
+          data-field="12_4_2_Pazara_Giris_Stratejisi.baslik">Pazara Giriş Stratejisi</h2>
 
       <dl class="kv">
         <div>
-          <dt>Platform</dt>
+          <dt class="field" contenteditable="true"
+              data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.platform">Platform</dt>
           <dd class="field" contenteditable="true"
               data-field="12_4_2_Pazara_Giris_Stratejisi.platform">Mobil öncelikli (iOS + Android); orta vadede opsiyonel PC / Steam</dd>
         </div>
         <div>
-          <dt>12 Aylık Plan</dt>
+          <dt class="field" contenteditable="true"
+              data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.plan12Ay">12 Aylık Plan</dt>
           <dd class="field" contenteditable="true"
               data-field="12_4_2_Pazara_Giris_Stratejisi.plan12Ay">Soft launch → metrik optimizasyonu (D1 / D7 retention, seans) → global launch → düzenli içerik</dd>
         </div>
         <div>
-          <dt>Coğrafya</dt>
+          <dt class="field" contenteditable="true"
+              data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.cografya">Coğrafya</dt>
           <dd class="field" contenteditable="true"
               data-field="12_4_2_Pazara_Giris_Stratejisi.cografya">Önce düşük CPI test pazarları (TR ve benzeri); doğrulanınca Tier-1'e ölçekleme</dd>
         </div>
         <div>
-          <dt>Yayıncılık</dt>
+          <dt class="field" contenteditable="true"
+              data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.yayincilik">Yayıncılık</dt>
           <dd class="field" contenteditable="true"
               data-field="12_4_2_Pazara_Giris_Stratejisi.yayincilik">Başlangıçta self-publishing; doğru şartlarda mobil odaklı yayıncı veya UA ortağına açığız</dd>
         </div>
@@ -700,12 +759,13 @@
   </section>
 
   <!-- 14 · 5.1 Motivasyon Mektubu -->
-  <section class="slide" id="s14" data-title="5.1 Motivasyon Mektubu"
+  <section class="slide manset" id="s14" data-title="5.1 Motivasyon Mektubu"
            data-slide="14_5_1_Motivasyon_Mektubu" data-tip="icerik"
            data-numara="5.1" data-baslik="Motivasyon Mektubu / Neden Deep Jam">
     <div class="panel">
       <span class="num">5.1 · TAAHHÜT &amp; UYGUNLUK</span>
-      <h2>Motivasyon Mektubu / Neden Deep Jam</h2>
+      <h2 class="field" contenteditable="true"
+          data-field="14_5_1_Motivasyon_Mektubu.baslik">Motivasyon Mektubu / Neden Deep Jam</h2>
 
       <div class="field" contenteditable="true"
            data-field="14_5_1_Motivasyon_Mektubu.giris">Deep Jam'e, programın kaynaklarının projemizdeki boşlukları tam olarak tamamladığı için başvuruyoruz.</div>
@@ -713,7 +773,8 @@
       <div class="field note" contenteditable="true"
            data-field="14_5_1_Motivasyon_Mektubu.gucluYanimiz">Üretim ve sistem tasarımı: çalışan çekirdek döngü, kendi WorldBuilder editörümüz ve hızlı içerik üretme kapasitemiz — yani 'bitirme' becerisi.</div>
 
-      <h3 class="altbaslik">Programın Kapatacağı Boşluklar</h3>
+      <h3 class="altbaslik field" contenteditable="true"
+          data-field="14_5_1_Motivasyon_Mektubu.bosluklarBaslik">Programın Kapatacağı Boşluklar</h3>
       <div class="games">
         <div class="card">
           <div class="thumb">1</div>
@@ -744,12 +805,13 @@
   </section>
 
   <!-- 15 · 5.2 Şartlar ve Gizlilik Politikası -->
-  <section class="slide" id="s15" data-title="5.2 Şartlar ve Gizlilik"
+  <section class="slide manset" id="s15" data-title="5.2 Şartlar ve Gizlilik"
            data-slide="15_5_2_Sartlar_ve_Gizlilik_Politikasi" data-tip="icerik"
            data-numara="5.2" data-baslik="Şartlar ve Gizlilik Politikası">
     <div class="panel">
       <span class="num">5.2 · TAAHHÜT &amp; UYGUNLUK</span>
-      <h2>Şartlar ve Gizlilik Politikası</h2>
+      <h2 class="field" contenteditable="true"
+          data-field="15_5_2_Sartlar_ve_Gizlilik_Politikasi.baslik">Şartlar ve Gizlilik Politikası</h2>
 
       <div class="field" contenteditable="true"
            data-field="15_5_2_Sartlar_ve_Gizlilik_Politikasi.telifHakki">Telif Hakkı ve Özgünlük: Bu başvurudaki tüm fikri mülkiyetin, oyun içeriğinin, görsel varlıkların ve kodun ya tamamen ekibimizin özgün yaratımı olduğunu ya da kullanımı için gerekli tüm lisans ve izinlere sahip olduğumuzu beyan ederiz.</div>
@@ -792,14 +854,15 @@
 
 
   <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
-  <script src="js/depo.js?v=7"></script>
-  <script src="js/alanlar.js?v=7"></script>
-  <script src="js/skala.js?v=7"></script>
-  <script src="js/etiketler.js?v=7"></script>
-  <script src="js/aktarim.js?v=7"></script>
-  <script src="js/gorunum.js?v=7"></script>
-  <script src="js/gezinme.js?v=7"></script>
-  <script src="js/kaydirma.js?v=7"></script>
-  <script src="js/main.js?v=7"></script>
+  <script src="js/depo.js?v=13"></script>
+  <script src="js/alanlar.js?v=13"></script>
+  <script src="js/skala.js?v=13"></script>
+  <script src="js/fotolar.js?v=13"></script>
+  <script src="js/etiketler.js?v=13"></script>
+  <script src="js/aktarim.js?v=13"></script>
+  <script src="js/gorunum.js?v=13"></script>
+  <script src="js/gezinme.js?v=13"></script>
+  <script src="js/kaydirma.js?v=13"></script>
+  <script src="js/main.js?v=13"></script>
 </body>
 </html>
