@@ -198,7 +198,7 @@ body[data-zemin="sicak"]::after { opacity: 1; }
 
 /*═══════════════════  SLAYT TİPİ · ÖN KAPAK (HERO)  ═══════════════════*/
 /* JSON'da tip: "kapak" — 00. Tam ekran açılış: arkada dönen altıgen
-   nişangâh (.hero-sahne), üstte etkinlik satırı, ortada oyun adı ve
+   nişangâh (.hero-sahne), üstte etkinlik satırı, ortada stüdyo adı ve
    çerçeveli slogan, altta hikâye + etiketler + imza. */
 
 .cover {
@@ -273,7 +273,7 @@ body[data-zemin="sicak"]::after { opacity: 1; }
 }
 .cover .kicker { margin-bottom: 0; }
 
-/* Oyun adı: geniş aralıklı, büyük harf, arkasında hafif ışıma.
+/* Kapak başlığı (stüdyo adı): geniş aralıklı, büyük harf, arkasında hafif ışıma.
    text-indent, harf aralığının sondaki boşluğunu ortalamaya geri verir. */
 .cover h1 {
   font-family: var(--display);
@@ -355,7 +355,18 @@ body[data-zemin="sicak"]::after { opacity: 1; }
     border-left: 1px solid var(--accent);
   }
   .cover .chips { justify-content: flex-start; }
+
+  /* Tanıtım metni boşsa sol sütun yok: etiketler ve imza ortalanır */
+  .hero-alt:has(.story.empty) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .hero-alt:has(.story.empty) .chips { justify-content: center; }
 }
+
+/* Boş tanıtım metni yer tutmaz; boş bir düzenleme kutusu da bırakmaz */
+.story.empty { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .cover .hint, .hs-don, .hero-sahne .hs-petek .hs-anomali { animation: none; }
@@ -1309,6 +1320,165 @@ body:not(.sunum) .kisi-etiket .field:focus { background: rgba(255, 255, 255, .1)
 .kisi-foto.dolu ~ .kisi-araclar .kisi-kaldir { display: block; }
 body.sunum .kisi-araclar { display: none; }
 
+/* Kart tıklanınca kişi penceresi açılır (js/pencere.js). Sağ alttaki
+   altıgen artı bunu belli eder; üzerine gelince fotoğraf hafifçe yaklaşır. */
+.kisi { cursor: pointer; }
+.kisi-foto img { transition: transform .5s cubic-bezier(.16, 1, .3, 1); }
+.kisi:hover .kisi-foto img { transform: scale(1.04); }
+.kisi-ac {
+  position: absolute;
+  right: 1.9rem; bottom: 1.15rem;
+  width: 2.1rem; height: 2.35rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  font-family: var(--mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #05070a;
+  background: linear-gradient(135deg, #ff2a00, #ffb700);
+  clip-path: var(--altigen);
+  cursor: pointer;
+  transition: transform .2s;
+}
+.kisi:hover .kisi-ac,
+.kisi-ac:focus-visible { transform: scale(1.15) rotate(90deg); }
+.kisiler.patlama .kisi-ac { opacity: 0; transition: opacity .3s ease, transform .2s; }
+.kisiler.patlama.acik .kisi-ac { opacity: 1; transition-delay: .4s, 0s; }
+
+
+/*═══════════════════  BİLEŞEN · KİŞİ PENCERESİ  ═══════════════════*/
+/* Karta tıklanınca açılan pop-up: solda fotoğraf, sağda numara, ad, rol
+   ve "Hakkında" metni. Sayfanın üstünde, arkası karartılıp bulandırılmış
+   bir <dialog>; ortadan büyüyerek açılır. Kapalıyken tarayıcı gizler:
+   display yalnızca [open] iken verilir. */
+
+.pencere {
+  width: min(56rem, calc(100vw - 2rem));
+  max-height: calc(100svh - 2rem);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  text-align: left;
+  color: var(--text);
+  background: var(--kati);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  box-shadow: 0 2rem 5rem var(--golge), 0 0 4rem var(--glow-soft);
+}
+.pencere:focus { outline: none; }
+.pencere[open] {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1fr);
+  animation: pencere-ac .4s cubic-bezier(.16, 1, .3, 1);
+}
+.pencere::backdrop {
+  background: rgba(3, 5, 8, .74);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: pencere-zemin .3s ease;
+}
+@keyframes pencere-ac {
+  from { opacity: 0; transform: scale(.9) translateY(1.5rem); }
+}
+@keyframes pencere-zemin {
+  from { opacity: 0; }
+}
+
+.pencere-foto {
+  min-height: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--yuzey2);
+}
+.pencere-foto img,
+.pencere-foto svg {
+  display: block;
+  width: 100%; height: 100%;
+}
+.pencere-foto img { object-fit: cover; object-position: center top; }
+.pencere-foto svg { fill: color-mix(in srgb, var(--text) 16%, var(--kati)); }
+
+.pencere-govde {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(1.4rem, 4vw, 2.8rem);
+}
+.pencere-ad {
+  margin-top: .9rem;
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: .02em;
+}
+.pencere-rol {
+  margin-top: .5rem;
+  font-family: var(--mono);
+  font-size: .8rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.pencere-bolum {
+  align-self: stretch;
+  margin-top: 1.8rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+}
+.pencere-etiket {
+  margin-bottom: .7rem;
+  font-family: var(--mono);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pencere-bolum .field { font-size: 1.08rem; line-height: 1.65; }
+/* Sunumda boş "Hakkında" başlığıyla birlikte gizlenir */
+body.sunum .pencere-bolum:has(.field.empty) { display: none; }
+
+/* Çarpı: iki ince çizgi */
+.pencere-kapat {
+  position: absolute;
+  top: .8rem; right: .8rem;
+  width: 2.4rem; height: 2.4rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--kati) 80%, transparent);
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.pencere-kapat::before,
+.pencere-kapat::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 1.1rem; height: 1px;
+  background: var(--text);
+  transition: background-color .2s;
+}
+.pencere-kapat::before { transform: translate(-50%, -50%) rotate(45deg); }
+.pencere-kapat::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.pencere-kapat:hover,
+.pencere-kapat:focus-visible { border-color: var(--accent); outline: none; }
+.pencere-kapat:hover::before,
+.pencere-kapat:hover::after { background: var(--accent); }
+
+/* Dar ekranda fotoğraf üstte, metin altında */
+@media (max-width: 700px) {
+  .pencere[open] { grid-template-columns: 1fr; }
+  .pencere-foto { aspect-ratio: 4 / 3; min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pencere[open], .pencere::backdrop { animation: none; }
+  .kisi-foto img, .kisi-ac { transition: none; }
+}
+
 /* Telefonda kartlar yine yan yana ama küçük */
 @media (max-width: 600px) {
   .kisiler { gap: 1rem; }
@@ -1321,6 +1491,7 @@ body.sunum .kisi-araclar { display: none; }
 
   .kisi-araclar { top: 2.1rem; right: .45rem; left: .45rem; flex-wrap: wrap; justify-content: flex-end; gap: .25rem; }
   .kisi-araclar button { font-size: .58rem; padding: .28rem .5rem; }
+  .kisi-ac { right: 1.2rem; bottom: .7rem; width: 1.6rem; height: 1.8rem; font-size: 1rem; }
 }
 
 
@@ -1738,7 +1909,7 @@ body.sunum #modeBtn { color: var(--accent); }
   .belir { opacity: 1; transform: none; }
   .kisiler.patlama .kisi { transform: none; }
   .kisiler.patlama .kisi-etiket { opacity: 1; }
-  .toolbar, .menu, .dots, .hint, .kisi-araclar, .hero-sahne { display: none; }
+  .toolbar, .menu, .dots, .hint, .kisi-araclar, .kisi-ac, .hero-sahne { display: none; }
   .slide {
     min-height: auto;
     page-break-after: always;

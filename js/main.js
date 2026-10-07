@@ -9,6 +9,7 @@
   GDD.alanlariKur();
   GDD.skalalariKur();
   GDD.fotolariKur();
+  GDD.pencereleriKur();
   GDD.etiketleriKur();
   GDD.aktarimiKur();
   GDD.temayiKur();

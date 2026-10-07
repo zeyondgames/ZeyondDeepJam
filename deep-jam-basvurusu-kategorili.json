@@ -3,9 +3,9 @@
 
   "00_Slide_On_Kapagi": {
     "tip": "kapak",
-    "oyunAdi": "HEXAFIELD",
-    "slogan": "Sız ya da harca.",
-    "aciklama": "Tüm robotlar, CORE tarafından belirli bir amaç için programlanır. Ancak bazı robotlarda hatalar oluşur. Bu robotlar, programlarının dışına çıkar ve Anomaly olarak sınıflandırılır. CORE, Anomaly'leri bir tehdit olarak görür ve onları yok etmek için özel robotlar gönderir. Bizim robotumuz da bir Anomaly. Kendi programının dışına çıkmış ve CORE'un kontrolünden kurtulmuştur. Artık hayatta kalmak ve özgürlüğünü korumak için kendisini yok etmek üzere gönderilen robotlarla savaşmak zorundadır.",
+    "baslik": "ZEYOND GAMES",
+    "slogan": "MOBILE GAMES STUDIO",
+    "aciklama": "",
     "studyo": "Zeyond Games / Zeyond Team",
     "etkinlik": "GameDev.ist · Deep Jam Başvurusu"
   },
@@ -32,12 +32,14 @@
       {
         "ad": "Harun Kalli",
         "rol": "Game Development / Design",
-        "foto": "img/kisiler/harun.jpeg"
+        "foto": "img/kisiler/harun.jpeg",
+        "hakkinda": ""
       },
       {
         "ad": "Nil Neal",
         "rol": "Game Art / Design",
-        "foto": "img/kisiler/nil.jpeg"
+        "foto": "img/kisiler/nil.jpeg",
+        "hakkinda": ""
       }
     ],
     "not": "Küçük ekip bir zayıflık değil, bir kanıt: çalışan çekirdek döngü ve kendi seviye editörümüz, projeyi tek başımıza bitirebildiğimizi gösteriyor."

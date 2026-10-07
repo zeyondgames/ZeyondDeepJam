@@ -81,6 +81,8 @@ window.GDD = window.GDD || {};
       // kaydıraçta ok tuşları değeri değiştirir.
       const odak = document.activeElement;
       if (odak && (odak.isContentEditable || odak.type === "range")) return;
+      // Açık bir pencerenin arkasında sayfa kaymasın
+      if (document.querySelector("dialog[open]")) return;
 
       let hedef = null;
       if (e.key === "ArrowDown" || e.key === "PageDown") hedef = aktif + 1;

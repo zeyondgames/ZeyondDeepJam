@@ -35,8 +35,9 @@ window.GDD = window.GDD || {};
       let sira = 0;
 
       Array.from(kap.children).forEach(function (blok) {
-        // Kişi kartlarının kendi açılma hareketi var; kapak sahnesi süs
-        if (blok.hidden || blok.matches(".kisiler, .hero-sahne")) return;
+        // Kişi kartlarının kendi açılma hareketi var; kapak sahnesi süs;
+        // pencereler sayfa akışında değil
+        if (blok.hidden || blok.matches(".kisiler, .hero-sahne, dialog")) return;
         blok.classList.add("belir");
         blok.style.setProperty("--sira", sira++);
       });
