@@ -6,9 +6,11 @@ window.GDD = window.GDD || {};
 
 (function (GDD) {
 
-  // Belge slayt bazlı iç içe yapıya geçtiğinde anahtar yenilendi:
-  // eski düz kayıt yeni ağacın üzerine yazılmasın.
-  const KEY = "zeyond-basvuru-slayt";
+  // Tarayıcıdaki kayıt sayfadaki metinlerin önüne geçer. Sayfanın kendi
+  // metinleri değiştiğinde (kapak, bölüm 2) anahtar yenilenir: eski kayıt
+  // yeni metinlerin üzerine yazılmasın. Eski kayıt silinmez, yalnızca
+  // okunmaz.
+  const KEY = "zeyond-basvuru-slayt-2";
 
   // main.js depoKur() çağırınca doldurulur
   GDD.alanlar = [];
