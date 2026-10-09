@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=36">
+  <link rel="stylesheet" href="style.css?v=37">
   <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner. Varsayılan karanlık. -->
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-3")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 </head>
@@ -936,27 +936,16 @@ https://www.artstation.com/nilneal</dd>
               data-field="11_4_1_Ana_Gelir_Modeli.metrikler.donusum">%2–3 · en az bir kez ödeme yapan oyuncular</dd>
         </div>
       </dl>
-
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="11_4_1_Ana_Gelir_Modeli.butce.baslik">Bütçe</h3>
-      <dl class="kv">
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="11_4_1_Ana_Gelir_Modeli.basliklar.butce_miktar">Talep Edilen Bütçe</dt>
-          <dd class="field" contenteditable="true"
-              data-field="11_4_1_Ana_Gelir_Modeli.butce.miktar">1.500.000 TRY</dd>
-        </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="11_4_1_Ana_Gelir_Modeli.basliklar.butce_kullanim">Kullanım Alanı</dt>
-          <dd class="field" contenteditable="true"
-              data-field="11_4_1_Ana_Gelir_Modeli.butce.kullanim">LLM aboneliği, Adobe aboneliği, home office giderleri</dd>
-        </div>
-      </dl>
     </div>
   </section>
 
-  <!-- 12 · 4.2 Pazara Giriş Stratejisi -->
+  <!--
+    12 · 4.2 Pazara Giriş Stratejisi. Başvuru kılavuzundaki dört madde,
+    büyük sıra numaralarıyla alt alta (2.4 ile aynı bileşen): iş planı
+    özeti (kanallar, coğrafya, 12 aylık plan), 8 haftalık yol haritası,
+    program sonrası finansman (tutar, harcama alanları, büyümeye etkisi)
+    ve program sonrası yayıncılık (model, aranan ortak).
+  -->
   <section class="slide manset" id="s12" data-title="4.2 Pazara Giriş"
            data-slide="12_4_2_Pazara_Giris_Stratejisi" data-tip="icerik"
            data-numara="4.2" data-baslik="Pazara Giriş Stratejisi">
@@ -965,38 +954,41 @@ https://www.artstation.com/nilneal</dd>
       <h2 class="field" contenteditable="true"
           data-field="12_4_2_Pazara_Giris_Stratejisi.baslik">Pazara Giriş Stratejisi</h2>
 
-      <dl class="kv">
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.platform">Platform</dt>
-          <dd class="field" contenteditable="true"
-              data-field="12_4_2_Pazara_Giris_Stratejisi.platform">Google Play ve App Store (F2P); ardından Steam (Premium)</dd>
-        </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.plan12Ay">12 Aylık Plan</dt>
-          <dd class="field" contenteditable="true"
-              data-field="12_4_2_Pazara_Giris_Stratejisi.plan12Ay">0–3. ay, lansman: Google Play ve App Store'da F2P çıkış; ilk hedef D1 retention %40.
+      <ol class="maddeler">
+        <li>
+          <div class="madde-govde">
+            <h3 class="altbaslik field" contenteditable="true"
+                data-field="12_4_2_Pazara_Giris_Stratejisi.isPlaniBaslik">İş Planı Özeti</h3>
+            <dl class="kv">
+              <div>
+                <dt class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.platform">Kanallar</dt>
+                <dd class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.platform">Google Play ve App Store (F2P); ardından Steam (Premium)</dd>
+              </div>
+              <div>
+                <dt class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.cografya">Coğrafya</dt>
+                <dd class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.cografya">Global</dd>
+              </div>
+              <div class="kv-genis">
+                <dt class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.plan12Ay">Lansman Sonrası 12 Aylık Büyüme</dt>
+                <dd class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.plan12Ay">0–3. ay, lansman: Google Play ve App Store'da F2P çıkış; ilk hedef D1 retention %40.
 3–6. ay, büyüme: güncellemelerle D7 retention %12–15.
 6–12. ay, ölçekleme: ikinci platform olarak Steam'de premium satış.</dd>
-        </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.cografya">Coğrafya</dt>
-          <dd class="field" contenteditable="true"
-              data-field="12_4_2_Pazara_Giris_Stratejisi.cografya">Global</dd>
-        </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.yayincilik">Yayıncılık</dt>
-          <dd class="field" contenteditable="true"
-              data-field="12_4_2_Pazara_Giris_Stratejisi.yayincilik">Yayıncı ile çalışmayı hedefliyoruz</dd>
-        </div>
-      </dl>
+              </div>
+            </dl>
+          </div>
+        </li>
 
-      <h3 class="altbaslik field" contenteditable="true"
-          data-field="12_4_2_Pazara_Giris_Stratejisi.yolHaritasi.baslik">8 Haftalık Yol Haritası</h3>
-      <ol class="loop">
+        <li>
+          <div class="madde-govde">
+            <h3 class="altbaslik field" contenteditable="true"
+                data-field="12_4_2_Pazara_Giris_Stratejisi.yolHaritasi.baslik">8 Haftalık Yol Haritası (Kilometre Taşları)</h3>
+            <ol class="loop">
         <li>
           <span class="step field" contenteditable="true" data-field="12_4_2_Pazara_Giris_Stratejisi.yolHaritasi.haftalar.0.hafta">1–2</span>
           <div class="govde">
@@ -1023,6 +1015,53 @@ https://www.artstation.com/nilneal</dd>
           <div class="govde">
             <h4 class="field" contenteditable="true" data-field="12_4_2_Pazara_Giris_Stratejisi.yolHaritasi.haftalar.3.baslik">Fragman &amp; Sunum</h4>
             <p class="field" contenteditable="true" data-field="12_4_2_Pazara_Giris_Stratejisi.yolHaritasi.haftalar.3.icerik">Fragman ve sunum dosyası</p>
+          </div>
+        </li>
+            </ol>
+          </div>
+        </li>
+
+        <li>
+          <div class="madde-govde">
+            <h3 class="altbaslik field" contenteditable="true"
+                data-field="12_4_2_Pazara_Giris_Stratejisi.finansman.baslik">Program Sonrası Finansman Gereklilikleri</h3>
+            <p class="tutar field" contenteditable="true"
+               data-field="12_4_2_Pazara_Giris_Stratejisi.finansman.miktar">1.500.000 TRY</p>
+            <dl class="kv">
+              <div>
+                <dt class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.finansman_kullanim">Harcama Alanları</dt>
+                <dd class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.finansman.kullanim">LLM aboneliği, Adobe aboneliği, home office giderleri</dd>
+              </div>
+              <div>
+                <dt class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.finansman_etki">Büyümeye Etkisi</dt>
+                <dd class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.finansman.etki">Araç ve çalışma giderleri karşılanınca ekip tam zamanlı üretime odaklanır; oyun testi, demo ve mağaza hedefleri hızlanır.</dd>
+              </div>
+            </dl>
+          </div>
+        </li>
+
+        <li>
+          <div class="madde-govde">
+            <h3 class="altbaslik field" contenteditable="true"
+                data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.yayincilik">Program Sonrası Yayıncılık Gereklilikleri</h3>
+            <dl class="kv">
+              <div>
+                <dt class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.yayincilikModel">Model</dt>
+                <dd class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.yayincilik">Yayıncı ile çalışmayı hedefliyoruz</dd>
+              </div>
+              <div>
+                <dt class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.basliklar.yayincilikOrtak">Aranan Ortak</dt>
+                <dd class="field" contenteditable="true"
+                    data-field="12_4_2_Pazara_Giris_Stratejisi.yayincilikOrtak">Mobil F2P'de kullanıcı edinme (UA) ve canlı operasyon deneyimi olan, global yayın yapan bir yayıncı</dd>
+              </div>
+            </dl>
           </div>
         </li>
       </ol>
@@ -1138,17 +1177,17 @@ https://www.artstation.com/nilneal</dd>
 
 
   <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
-  <script src="js/depo.js?v=36"></script>
-  <script src="js/alanlar.js?v=36"></script>
-  <script src="js/skala.js?v=36"></script>
-  <script src="js/fotolar.js?v=36"></script>
-  <script src="js/etiketler.js?v=36"></script>
-  <script src="js/aktarim.js?v=36"></script>
-  <script src="js/gorunum.js?v=36"></script>
-  <script src="js/gezinme.js?v=36"></script>
-  <script src="js/pencere.js?v=36"></script>
-  <script src="js/kaydirma.js?v=36"></script>
-  <script src="js/hexalan.js?v=36"></script>
-  <script src="js/main.js?v=36"></script>
+  <script src="js/depo.js?v=37"></script>
+  <script src="js/alanlar.js?v=37"></script>
+  <script src="js/skala.js?v=37"></script>
+  <script src="js/fotolar.js?v=37"></script>
+  <script src="js/etiketler.js?v=37"></script>
+  <script src="js/aktarim.js?v=37"></script>
+  <script src="js/gorunum.js?v=37"></script>
+  <script src="js/gezinme.js?v=37"></script>
+  <script src="js/pencere.js?v=37"></script>
+  <script src="js/kaydirma.js?v=37"></script>
+  <script src="js/hexalan.js?v=37"></script>
+  <script src="js/main.js?v=37"></script>
 </body>
 </html>

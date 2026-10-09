@@ -290,32 +290,29 @@
       "metrikler_d1": "D1 Retention",
       "metrikler_d7": "D7 Retention",
       "metrikler_d30": "D30 Retention",
-      "metrikler_donusum": "Conversion",
-      "butce_miktar": "Talep Edilen Bütçe",
-      "butce_kullanim": "Kullanım Alanı"
-    },
-    "butce": {
-      "baslik": "Bütçe",
-      "miktar": "1.500.000 TRY",
-      "kullanim": "LLM aboneliği, Adobe aboneliği, home office giderleri"
+      "metrikler_donusum": "Conversion"
     }
   },
   "12_4_2_Pazara_Giris_Stratejisi": {
     "tip": "icerik",
     "numara": "4.2",
     "baslik": "Pazara Giriş Stratejisi",
+    "isPlaniBaslik": "İş Planı Özeti",
     "basliklar": {
-      "platform": "Platform",
-      "plan12Ay": "12 Aylık Plan",
+      "platform": "Kanallar",
       "cografya": "Coğrafya",
-      "yayincilik": "Yayıncılık"
+      "plan12Ay": "Lansman Sonrası 12 Aylık Büyüme",
+      "finansman_kullanim": "Harcama Alanları",
+      "finansman_etki": "Büyümeye Etkisi",
+      "yayincilik": "Program Sonrası Yayıncılık Gereklilikleri",
+      "yayincilikModel": "Model",
+      "yayincilikOrtak": "Aranan Ortak"
     },
     "platform": "Google Play ve App Store (F2P); ardından Steam (Premium)",
-    "plan12Ay": "0–3. ay, lansman: Google Play ve App Store'da F2P çıkış; ilk hedef D1 retention %40.\n3–6. ay, büyüme: güncellemelerle D7 retention %12–15.\n6–12. ay, ölçekleme: ikinci platform olarak Steam'de premium satış.",
     "cografya": "Global",
-    "yayincilik": "Yayıncı ile çalışmayı hedefliyoruz",
+    "plan12Ay": "0–3. ay, lansman: Google Play ve App Store'da F2P çıkış; ilk hedef D1 retention %40.\n3–6. ay, büyüme: güncellemelerle D7 retention %12–15.\n6–12. ay, ölçekleme: ikinci platform olarak Steam'de premium satış.",
     "yolHaritasi": {
-      "baslik": "8 Haftalık Yol Haritası",
+      "baslik": "8 Haftalık Yol Haritası (Kilometre Taşları)",
       "haftalar": [
         {
           "hafta": "1–2",
@@ -338,7 +335,15 @@
           "icerik": "Fragman ve sunum dosyası"
         }
       ]
-    }
+    },
+    "finansman": {
+      "baslik": "Program Sonrası Finansman Gereklilikleri",
+      "miktar": "1.500.000 TRY",
+      "kullanim": "LLM aboneliği, Adobe aboneliği, home office giderleri",
+      "etki": "Araç ve çalışma giderleri karşılanınca ekip tam zamanlı üretime odaklanır; oyun testi, demo ve mağaza hedefleri hızlanır."
+    },
+    "yayincilik": "Yayıncı ile çalışmayı hedefliyoruz",
+    "yayincilikOrtak": "Mobil F2P'de kullanıcı edinme (UA) ve canlı operasyon deneyimi olan, global yayın yapan bir yayıncı"
   },
   "13_5_0_Taahhut_ve_Uygunluk": {
     "tip": "bolumKapagi",

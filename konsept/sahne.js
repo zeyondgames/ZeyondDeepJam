@@ -1,7 +1,11 @@
 // Hexafield konsept sahnesi: oyun içinden çekilmiş gibi görünen 1080×1920
-// bir kare. 3D, sabit açılı, yukarıdan eğik kameradan hex-grid arena, katlar, çimen, kaya,
-// asansör, lootbox, çıkış, düşmanlar ve görüş konileri, savaş sisi (FOW)
-// ve HUD. Renkler ve yazı tipleri sitenin style.css'iyle aynı.
+// bir kare. 3D, sabit açılı, yukarıdan eğik perspektif kamera: dünya
+// gerçekten üç boyutlu tutulur ve her nokta kameradan perspektifle ekrana
+// izdüşürülür. Uzaktaki hücreler küçülür, arena kenarları uzağa doğru
+// birbirine yaklaşır, robotlar ve nesneler derinliğe göre ölçeklenir.
+// Sahnede hex-grid arena, katlar, çimen, kaya, asansör, lootbox, çıkış,
+// düşmanlar ve görüş konileri, savaş sisi (FOW) ve HUD var. Renkler ve
+// yazı tipleri sitenin style.css'iyle aynı.
 //
 // HexafieldSahne(kap, { numaralar: true }) kabın içine kareyi kurar;
 // numaralar açıksa panodaki mekanik açıklamalarına bağlanan numaralı
@@ -18,10 +22,29 @@
     dusman: "#e5322d"
   };
 
-  // Izgara: sivri olmayan (düz tepeli) altıgen, eğik kamera için dikeyde K
-  // oranında basık. Ekran merkezi OX, OY; oyuncu (0, 1) hücresinde.
-  const R = 44, K = .62, OX = 540, OY = 980;
-  const CS = 1.5 * R, RS = Math.sqrt(3) * R * K;
+  // ---------- Dünya ve kamera ----------
+  // Dünya: x sağa, y yukarı, z kameraya doğru. Hücreler düz tepeli altıgen
+  // (R yarıçap), (c, j) ofset koordinatlı. Oyuncu (0, 1) hücresinde.
+  const R = 44;
+  const CS = 1.5 * R, RS = Math.sqrt(3) * R;
+
+  // Kamera oyuncuya D uzaklıktan, yataya göre ACI derece eğik bakar
+  // (LoL benzeri). F odak uzaklığı; oyuncu ekranda (OX, OY) noktasında.
+  const ACI = 50 * Math.PI / 180;
+  const SIN = Math.sin(ACI), COS = Math.cos(ACI);
+  const D = 1600, F = D * .85;
+  const OX = 540, OY = 1000;
+  const HEDEF_Z = RS * 1;      // oyuncunun z'si
+  const BOY = 1 / .85;         // robotlar oyuncu derinliğinde ~1 ölçekte çizilsin
+
+  // Dünya noktası → ekran noktası ve o derinlikteki ölçek
+  function izd(x, y, z) {
+    const dz = z - HEDEF_Z;
+    const derinlik = D - SIN * y - COS * dz;
+    return { x: OX + F * x / derinlik, y: OY - F * (COS * y - SIN * dz) / derinlik, s: F / derinlik, d: derinlik };
+  }
+  const dunya = function (c, j) { return { x: CS * c, z: RS * (j + (c & 1) * .5) }; };
+  const hucreNoktasi = function (c, j, h) { const w = dunya(c, j); return izd(w.x, h || 0, w.z); };
 
   const el = function (ad, oz, ust) {
     const e = document.createElementNS(NS, ad);
@@ -33,12 +56,20 @@
     const h = Math.sin(a * 127.1 + b * 311.7) * 43758.5453;
     return h - Math.floor(h);
   };
-  const merkez = function (c, j) { return { x: OX + CS * c, y: OY + RS * (j + (c & 1) * .5) }; };
-  const kose = function (x, y, h, i, r) {
-    const a = Math.PI / 3 * i;
-    return [x + r * Math.cos(a), y + r * Math.sin(a) * K - h];
+  const nokta = function (dizi) {
+    return dizi.map(function (p) { return (p.x === undefined ? p[0] : p.x).toFixed(1) + "," + (p.y === undefined ? p[1] : p.y).toFixed(1); }).join(" ");
   };
-  const nokta = function (dizi) { return dizi.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "); };
+  // Dünyada (x, z) merkezli, h yüksekliğinde, r yarıçaplı altıgenin i. köşesi
+  const kose = function (x, z, h, i, r) {
+    const a = Math.PI / 3 * i;
+    return izd(x + r * Math.cos(a), h, z + r * Math.sin(a));
+  };
+  // Dünyada yerde bir çember (FOW halkası için)
+  function cember(x, z, r, adet) {
+    const p = [];
+    for (let i = 0; i < adet; i++) { const a = 2 * Math.PI * i / adet; p.push(izd(x + r * Math.cos(a), 0, z + r * Math.sin(a))); }
+    return p;
+  }
 
   // ---------- Arazi ----------
   const kume = function (liste) { const s = new Set(); liste.forEach(function (p) { s.add(p[0] + "," + p[1]); }); return s; };
@@ -58,55 +89,59 @@
   }
 
   const UST = { zemin: ["#1b2530", "#1f2a36"], plato: ["#2a3848", "#2e3d4f"], kaya: ["#3f4a5b", "#465264"] };
-  const YAN = ["#151b23", "#1d2530", "#28313d"];
+  const YAN = { karanlik: "#151b23", orta: "#1d2530", acik: "#28313d" };
+
+  // Kamera dünyada (0, D·sin, hedef + D·cos) noktasında
+  const KAMERA = { x: 0, y: D * SIN, z: HEDEF_Z + D * COS };
 
   // ---------- Çizim parçaları ----------
-  function hucreCiz(g, x, y, a) {
+  function hucreCiz(g, x, z, a) {
     if (a.h > 0) {
-      for (let i = 0; i < 3; i++) {
+      // Yalnızca kameraya bakan yan yüzler çizilir; perspektifte ekranın
+      // kenarlarındaki sütunların yanları da görünür
+      for (let i = 0; i < 6; i++) {
+        const orta = Math.PI / 3 * (i + .5);
+        const nx = Math.cos(orta), nz = Math.sin(orta);
+        const mx = x + R * .866 * nx, mz = z + R * .866 * nz;
+        if (nx * (KAMERA.x - mx) + nz * (KAMERA.z - mz) <= 0) continue;
+        const ton = nx > .3 ? YAN.karanlik : nx < -.3 ? YAN.acik : YAN.orta;
         el("polygon", {
-          points: nokta([kose(x, y, a.h, i, R), kose(x, y, a.h, i + 1, R), kose(x, y, 0, i + 1, R), kose(x, y, 0, i, R)]),
-          fill: YAN[i], stroke: "#141a22", "stroke-width": 1
+          points: nokta([kose(x, z, a.h, i, R), kose(x, z, a.h, i + 1, R), kose(x, z, 0, i + 1, R), kose(x, z, 0, i, R)]),
+          fill: ton, stroke: "#141a22", "stroke-width": 1
         }, g);
       }
     }
-    const ust = UST[a.tip][hash(x, y) > .5 ? 1 : 0];
-    const noktalar = [];
-    for (let i = 0; i < 6; i++) noktalar.push(kose(x, y, a.h, i, R));
-    el("polygon", { points: nokta(noktalar), fill: ust, stroke: "#0c1117", "stroke-width": 2 }, g);
-    // Üst kenarda ince bir ışık
-    el("polyline", { points: nokta([noktalar[3], noktalar[4], noktalar[5], noktalar[0]]), fill: "none",
-      stroke: "rgba(255,255,255,.05)", "stroke-width": 1.5 }, g);
+    const ust = UST[a.tip][hash(x, z) > .5 ? 1 : 0];
+    const n = [];
+    for (let i = 0; i < 6; i++) n.push(kose(x, z, a.h, i, R));
+    const s = n[0].s;
+    el("polygon", { points: nokta(n), fill: ust, stroke: "#0c1117", "stroke-width": (2 * s / .85).toFixed(2) }, g);
+    el("polyline", { points: nokta([n[3], n[4], n[5], n[0]]), fill: "none", stroke: "rgba(255,255,255,.05)", "stroke-width": 1.5 }, g);
   }
 
-  function cimenCiz(g, x, y, h, tohum) {
-    const parca = 7;
+  function cimenCiz(g, x, z, h, tohum) {
     const yapraklar = [];
-    for (let i = 0; i < parca; i++) {
-      yapraklar.push({
-        bx: x + (hash(tohum, i) - .5) * 52,
-        by: y - h + (hash(i, tohum) - .5) * 22,
-        boy: 34 + hash(tohum + i, 3) * 26,
-        egim: (hash(i * 3, tohum) - .5) * 30
-      });
+    for (let i = 0; i < 7; i++) {
+      const p = izd(x + (hash(tohum, i) - .5) * 52, h, z + (hash(i, tohum) - .5) * 34);
+      yapraklar.push({ bx: p.x, by: p.y, s: p.s * BOY, boy: 34 + hash(tohum + i, 3) * 26, egim: (hash(i * 3, tohum) - .5) * 30 });
     }
     yapraklar.sort(function (a, b) { return a.by - b.by; });
     yapraklar.forEach(function (p) {
       for (let k = -1; k <= 1; k++) {
-        const e = p.egim + k * 12, b = p.boy * (1 - Math.abs(k) * .18);
+        const e = (p.egim + k * 12) * p.s, b = p.boy * (1 - Math.abs(k) * .18) * p.s, w = 5 * p.s, o = k * 4 * p.s;
         el("path", {
-          d: "M" + (p.bx - 5 + k * 4) + "," + p.by +
-             " Q" + (p.bx + e * .4 - 7) + "," + (p.by - b * .55) + " " + (p.bx + e) + "," + (p.by - b) +
-             " Q" + (p.bx + e * .4 + 5) + "," + (p.by - b * .5) + " " + (p.bx + 5 + k * 4) + "," + p.by + " Z",
+          d: "M" + (p.bx - w + o) + "," + p.by +
+             " Q" + (p.bx + e * .4 - 7 * p.s) + "," + (p.by - b * .55) + " " + (p.bx + e) + "," + (p.by - b) +
+             " Q" + (p.bx + e * .4 + w) + "," + (p.by - b * .5) + " " + (p.bx + w + o) + "," + p.by + " Z",
           fill: "url(#cimen)", stroke: "#a84600", "stroke-width": .8
         }, g);
       }
     });
   }
 
-  function robotCiz(g, x, y, dusman, olcek) {
-    const s = olcek || 1;
-    const r = el("g", { transform: "translate(" + x + " " + y + ") scale(" + s + ")" }, g);
+  function robotCiz(g, p, dusman, olcek) {
+    const s = p.s * BOY * (olcek || 1);
+    const r = el("g", { transform: "translate(" + p.x.toFixed(1) + " " + p.y.toFixed(1) + ") scale(" + s.toFixed(3) + ")" }, g);
     el("ellipse", { cx: 0, cy: 0, rx: 28, ry: 10, fill: "rgba(0,0,0,.5)" }, r);
     const bacak = dusman ? "#7d1a1a" : "#b97f00";
     const govde = dusman ? RENK.dusman : RENK.isi2;
@@ -119,11 +154,10 @@
     el("rect", { x: -21, y: -104, width: 42, height: 10, rx: 5, fill: "rgba(255,255,255,.12)" }, r);
     el("rect", { x: -15, y: -92, width: 30, height: 15, rx: 3, fill: RENK.kati }, r);
     el("circle", { cx: 5, cy: -84.5, r: 4.2, fill: dusman ? "#ff3b30" : RENK.accent }, r);
-    // Silah
     el("rect", { x: 12, y: -58, width: 34, height: 10, rx: 2, fill: "#9aa5b3" }, r);
     el("rect", { x: 40, y: -56, width: 14, height: 5, fill: "#6b7684" }, r);
     if (!dusman) el("rect", { x: -3, y: -116, width: 3, height: 12, fill: RENK.muted }, r);
-    return r;
+    return s;
   }
 
   function barCiz(g, x, y, deger, renk, ikinci) {
@@ -134,56 +168,66 @@
     el("text", { x: x, y: y - 7, "text-anchor": "middle", class: "sv-sayi" }, g).textContent = deger;
   }
 
-  function koniCiz(g, defs, x, y, aci, yay, boy, renk, id) {
-    const grad = el("radialGradient", { id: id, gradientUnits: "userSpaceOnUse", cx: x, cy: y, r: boy }, defs);
+  // Görüş konisi: dünyada yerde bir dilim, perspektifle izdüşürülür
+  function koniCiz(g, defs, w, aci, yay, boy, renk, id) {
+    const m = izd(w.x, 0, w.z);
+    const p = [m];
+    for (let i = 0; i <= 20; i++) {
+      const t = (aci - yay / 2 + yay * i / 20) * Math.PI / 180;
+      p.push(izd(w.x + boy * Math.cos(t), 0, w.z + boy * Math.sin(t)));
+    }
+    const grad = el("radialGradient", { id: id, gradientUnits: "userSpaceOnUse", cx: m.x, cy: m.y, r: boy * m.s }, defs);
     el("stop", { offset: "0", "stop-color": renk, "stop-opacity": ".55" }, grad);
     el("stop", { offset: "1", "stop-color": renk, "stop-opacity": "0" }, grad);
-    const p = [[x, y]];
-    for (let i = 0; i <= 16; i++) {
-      const t = (aci - yay / 2 + yay * i / 16) * Math.PI / 180;
-      p.push([x + boy * Math.cos(t), y + boy * Math.sin(t) * K]);
-    }
     el("polygon", { points: nokta(p), fill: "url(#" + id + ")" }, g);
     el("polyline", { points: nokta(p.slice(1)), fill: "none", stroke: renk, "stroke-opacity": ".5", "stroke-width": 1.5, "stroke-dasharray": "4 6" }, g);
   }
 
   function etiketCiz(g, x, y, metin, renk, koyu) {
     const w = metin.length * 10.6 + 26;
-    const t = el("g", { transform: "translate(" + x + " " + y + ")" }, g);
+    const t = el("g", { transform: "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ")" }, g);
     el("polygon", { points: nokta([[-w / 2 + 8, -17], [w / 2, -17], [w / 2, 9], [w / 2 - 8, 17], [-w / 2, 17], [-w / 2, -9]]),
       fill: koyu ? renk : "rgba(5,7,10,.88)", stroke: renk, "stroke-width": 1.5 }, t);
     el("text", { x: 0, y: 6, "text-anchor": "middle", class: "sv-etiket", fill: koyu ? RENK.bg : renk }, t).textContent = metin;
   }
 
-  function isinCiz(g, x, y, boy, renk, gen) {
-    el("rect", { x: x - gen / 2, y: y - boy, width: gen, height: boy, fill: "url(#isin-" + renk.replace("#", "") + ")" }, g);
+  // Dikey ışık sütunu: dünyada h0'dan h1'e, ekranda o derinliğin ölçeğiyle
+  function isinCiz(g, w, h0, h1, renk, gen) {
+    const alt = izd(w.x, h0, w.z), ust = izd(w.x, h1, w.z);
+    const g2 = gen * alt.s;
+    el("rect", { x: alt.x - g2 / 2, y: ust.y, width: g2, height: alt.y - ust.y, fill: "url(#isin-" + renk.replace("#", "") + ")" }, g);
+    return ust;
   }
 
-  function yuvaCiz(g, x, y, h, renk, ic) {
+  function yuvaCiz(g, w, h, renk, ic) {
     const dis = [], ici = [];
-    for (let i = 0; i < 6; i++) { dis.push(kose(x, y, h, i, R * .9)); ici.push(kose(x, y, h, i, R * .5)); }
+    for (let i = 0; i < 6; i++) { dis.push(kose(w.x, w.z, h, i, R * .9)); ici.push(kose(w.x, w.z, h, i, R * .5)); }
     el("polygon", { points: nokta(dis), fill: renk, "fill-opacity": ".22", stroke: renk, "stroke-width": 3.5 }, g);
     el("polygon", { points: nokta(ici), fill: "none", stroke: ic, "stroke-width": 2 }, g);
+    const m = izd(w.x, h, w.z), s = m.s * BOY;
     for (let k = 0; k < 2; k++) {
-      const yy = y - h - 4 - k * 9;
-      el("polyline", { points: nokta([[x - 9, yy + 4], [x, yy - 3], [x + 9, yy + 4]]), fill: "none", stroke: ic, "stroke-width": 2.5,
-        "stroke-linecap": "round", "stroke-linejoin": "round" }, g);
+      const yy = m.y - (4 + k * 9) * s;
+      el("polyline", { points: nokta([[m.x - 9 * s, yy + 4 * s], [m.x, yy - 3 * s], [m.x + 9 * s, yy + 4 * s]]), fill: "none", stroke: ic,
+        "stroke-width": 2.5, "stroke-linecap": "round", "stroke-linejoin": "round" }, g);
     }
   }
 
-  function sandikCiz(g, x, y) {
-    el("ellipse", { cx: x, cy: y + 2, rx: 46, ry: 18, fill: "url(#loot-isik)" }, g);
-    const w = 26, d = 15, hh = 34;
-    // eğik kameradan görülen kutu: sol ön, sağ ön, üst
-    el("polygon", { points: nokta([[x - w, y - d * .4], [x, y + d * .4], [x, y + d * .4 - hh], [x - w, y - d * .4 - hh]]), fill: "#1e2732", stroke: "#0c1117" }, g);
-    el("polygon", { points: nokta([[x, y + d * .4], [x + w, y - d * .4], [x + w, y - d * .4 - hh], [x, y + d * .4 - hh]]), fill: "#161d26", stroke: "#0c1117" }, g);
-    el("polygon", { points: nokta([[x - w, y - d * .4 - hh], [x, y + d * .4 - hh], [x + w, y - d * .4 - hh], [x, y - d * 1.2 - hh]]), fill: "#2c3846", stroke: "#0c1117" }, g);
-    el("polyline", { points: nokta([[x - w, y - d * .4 - hh * .5], [x, y + d * .4 - hh * .5], [x + w, y - d * .4 - hh * .5]]), fill: "none", stroke: RENK.accent2, "stroke-width": 3 }, g);
-    el("polygon", { points: nokta([[x - 6, y - hh - 4], [x, y - hh - 8], [x + 6, y - hh - 4], [x, y - hh]]), fill: RENK.accent2 }, g);
+  function sandikCiz(g, w) {
+    const m = izd(w.x, 0, w.z);
+    const sc = m.s * BOY;
+    const k = el("g", { transform: "translate(" + m.x.toFixed(1) + " " + m.y.toFixed(1) + ") scale(" + sc.toFixed(3) + ")" }, g);
+    const W = 26, d = 15, hh = 34;
+    el("ellipse", { cx: 0, cy: 2, rx: 46, ry: 18, fill: "url(#loot-isik)" }, k);
+    el("polygon", { points: nokta([[-W, -d * .4], [0, d * .4], [0, d * .4 - hh], [-W, -d * .4 - hh]]), fill: "#1e2732", stroke: "#0c1117" }, k);
+    el("polygon", { points: nokta([[0, d * .4], [W, -d * .4], [W, -d * .4 - hh], [0, d * .4 - hh]]), fill: "#161d26", stroke: "#0c1117" }, k);
+    el("polygon", { points: nokta([[-W, -d * .4 - hh], [0, d * .4 - hh], [W, -d * .4 - hh], [0, -d * 1.2 - hh]]), fill: "#2c3846", stroke: "#0c1117" }, k);
+    el("polyline", { points: nokta([[-W, -d * .4 - hh * .5], [0, d * .4 - hh * .5], [W, -d * .4 - hh * .5]]), fill: "none", stroke: RENK.accent2, "stroke-width": 3 }, k);
+    el("polygon", { points: nokta([[-6, -hh - 4], [0, -hh - 8], [6, -hh - 4], [0, -hh]]), fill: RENK.accent2 }, k);
+    return m;
   }
 
   function numaraCiz(g, x, y, n) {
-    const t = el("g", { transform: "translate(" + x + " " + y + ")" }, g);
+    const t = el("g", { transform: "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ")" }, g);
     const p = [];
     for (let i = 0; i < 6; i++) { const a = Math.PI / 3 * i - Math.PI / 2; p.push([25 * Math.cos(a), 25 * Math.sin(a)]); }
     el("polygon", { points: nokta(p), fill: "url(#isi)", stroke: RENK.bg, "stroke-width": 3 }, t);
@@ -205,104 +249,107 @@
     const rg = el("radialGradient", { id: "loot-isik" }, defs);
     el("stop", { offset: 0, "stop-color": RENK.accent2, "stop-opacity": .55 }, rg);
     el("stop", { offset: 1, "stop-color": RENK.accent2, "stop-opacity": 0 }, rg);
-    const ig = el("radialGradient", { id: "oyuncu-isik", gradientUnits: "userSpaceOnUse", cx: 540, cy: 1027, r: 560, gradientTransform: "translate(0 390) scale(1 .62)" }, defs);
-    el("stop", { offset: 0, "stop-color": RENK.accent2, "stop-opacity": .1 }, ig);
-    el("stop", { offset: 1, "stop-color": RENK.accent2, "stop-opacity": 0 }, ig);
+    const bul = el("filter", { id: "yumusak", x: "-20%", y: "-20%", width: "140%", height: "140%" }, defs);
+    el("feGaussianBlur", { stdDeviation: 34 }, bul);
 
     el("rect", { x: 0, y: 0, width: 1080, height: 1920, fill: RENK.bg }, svg);
 
-    // Üç geçiş: önce hücreler (önden arkaya sıralı), sonra zemine çizilen
+    // Üç geçiş: önce hücreler (uzaktan yakına), sonra zemine çizilen
     // işaretler (koniler, yollar, asansör yuvaları), en son nesneler
-    // (çimen, robot, sandık; yine sıralı). İşaretler hücrelerin arasında
-    // kalsaydı öndeki sıralar onları kırpardı.
-    const hucreler = [], zeminler = [], cizim = [];
-    for (let c = -9; c <= 9; c++) {
-      for (let j = -24; j <= 22; j++) {
-        const m = merkez(c, j);
-        if (m.y < -120 || m.y > 2080) continue;
+    // (çimen, robot, sandık; yine uzaktan yakına).
+    const hucreler = [], zeminler = [], nesneler = [];
+    for (let c = -15; c <= 15; c++) {
+      for (let j = -34; j <= 26; j++) {
+        const w = dunya(c, j);
+        const m = izd(w.x, 0, w.z);
+        if (m.d < 300 || m.y < -260 || m.y > 2200 || m.x < -220 || m.x > 1300) continue;
         const a = arazi(c, j);
-        hucreler.push({ y: m.y, f: function (g) { hucreCiz(g, m.x, m.y, a); } });
+        hucreler.push({ d: m.d, f: function (g) { hucreCiz(g, w.x, w.z, a); } });
         if (CIMEN.has(c + "," + j) && a.tip !== "kaya") {
-          cizim.push({ y: m.y + 6, s: 2, f: function (g) { cimenCiz(g, m.x, m.y, a.h, c * 31 + j * 7); } });
+          nesneler.push({ d: m.d - 6, f: function (g) { cimenCiz(g, w.x, w.z, a.h, c * 31 + j * 7); } });
         }
       }
     }
-    hucreler.sort(function (a, b) { return a.y - b.y; });
-    const zeminEkle = function (f) { zeminler.push({ f: f }); };
+    hucreler.sort(function (a, b) { return b.d - a.d; });
 
-    const P = merkez(0, 1);                       // oyuncu
-    const E1 = merkez(-5, -2), E2 = merkez(4, 5), E3 = merkez(6, -12);
-    const ASN = merkez(-3, -5), LOOT = merkez(3, -1), CIK = merkez(3, -11);
+    const wP = dunya(0, 1), wE1 = dunya(-5, -2), wE2 = dunya(4, 5), wE3 = dunya(6, -12);
+    const wASN = dunya(-3, -5), wLOOT = dunya(3, -1), wCIK = dunya(3, -11);
+    const nesne = function (w, h, f) { const m = izd(w.x, h, w.z); nesneler.push({ d: m.d - 3, f: function (g) { f(g, m); } }); };
 
-    // Zemine çizilenler (hücrelerden hemen sonra, nesnelerden önce)
-    zeminEkle(function (g) { yuvaCiz(g, ASN.x, ASN.y, 0, RENK.accent, RENK.isi2); });
-    zeminEkle(function (g) { yuvaCiz(g, CIK.x, CIK.y, 70, RENK.isi2, RENK.isi2); });
-    zeminEkle(function (g) {
-      el("polyline", { points: nokta([[E1.x, E1.y], [150, 770], [330, 712], [ASN.x - 30, ASN.y + 10]]), fill: "none",
-        stroke: RENK.dusman, "stroke-opacity": .55, "stroke-width": 2.5, "stroke-dasharray": "3 9", "stroke-linecap": "round" }, g);
+    zeminler.push(function (g) { yuvaCiz(g, wASN, 0, RENK.accent, RENK.isi2); });
+    zeminler.push(function (g) { yuvaCiz(g, wCIK, 70, RENK.isi2, RENK.isi2); });
+    zeminler.push(function (g) {
+      const yol = [wE1, dunya(-6, -4), dunya(-4, -6), wASN].map(function (w) { return izd(w.x, 0, w.z); });
+      el("polyline", { points: nokta(yol), fill: "none", stroke: RENK.dusman, "stroke-opacity": .55, "stroke-width": 2.5,
+        "stroke-dasharray": "3 9", "stroke-linecap": "round" }, g);
     });
-    zeminEkle(function (g) { koniCiz(g, defs, E1.x, E1.y, 22, 58, 300, RENK.dusman, "koni1"); });
-    zeminEkle(function (g) { koniCiz(g, defs, E2.x, E2.y, 212, 46, 250, RENK.accent, "koni2"); });
+    zeminler.push(function (g) { koniCiz(g, defs, wE1, 22, 58, 340, RENK.dusman, "koni1"); });
+    zeminler.push(function (g) { koniCiz(g, defs, wE2, 212, 46, 290, RENK.accent, "koni2"); });
 
-    cizim.push({ y: LOOT.y + 2, s: 3, f: function (g) { sandikCiz(g, LOOT.x, LOOT.y); } });
-    cizim.push({ y: E1.y + 3, s: 3, f: function (g) { robotCiz(g, E1.x, E1.y, true, 1); } });
-    cizim.push({ y: E2.y + 3, s: 3, f: function (g) { robotCiz(g, E2.x, E2.y, true, 1); } });
-    cizim.push({ y: E3.y + 3, s: 3, f: function (g) { robotCiz(g, E3.x, E3.y - 70, true, .9); } });
-    cizim.push({ y: P.y + 3, s: 3, f: function (g) { robotCiz(g, P.x, P.y, false, 1.08); } });
+    const P = {}, E1 = {}, E2 = {}, E3 = {}, LOOT = {};
+    nesne(wLOOT, 0, function (g) { Object.assign(LOOT, sandikCiz(g, wLOOT)); });
+    nesne(wE1, 0, function (g, m) { Object.assign(E1, m); E1.k = robotCiz(g, m, true); });
+    nesne(wE2, 0, function (g, m) { Object.assign(E2, m); E2.k = robotCiz(g, m, true); });
+    nesne(wE3, 70, function (g, m) { Object.assign(E3, m); E3.k = robotCiz(g, m, true, .95); });
+    nesne(wP, 0, function (g, m) { Object.assign(P, m); P.k = robotCiz(g, m, false, 1.08); });
 
-    cizim.sort(function (a, b) { return a.y - b.y || a.s - b.s; });
-    const dunya = el("g", {}, svg);
-    hucreler.forEach(function (d) { d.f(dunya); });
-    zeminler.forEach(function (d) { d.f(dunya); });
-    cizim.forEach(function (d) { d.f(dunya); });
+    nesneler.sort(function (a, b) { return b.d - a.d; });
+    const sahne = el("g", {}, svg);
+    hucreler.forEach(function (d) { d.f(sahne); });
+    zeminler.forEach(function (f) { f(sahne); });
+    nesneler.forEach(function (d) { d.f(sahne); });
 
     // Görüş alanının hafif aydınlığı
-    el("rect", { x: 0, y: 0, width: 1080, height: 1920, fill: "url(#oyuncu-isik)" }, svg);
+    el("polygon", { points: nokta(cember(wP.x, wP.z, 560, 72)), fill: RENK.accent2, opacity: .07, filter: "url(#yumusak)" }, svg);
 
     // Çatışma: oyuncudan E2'ye mermi izi, namlu alevi, hasar
     const ust = el("g", {}, svg);
-    el("line", { x1: P.x + 58, y1: P.y - 60, x2: E2.x - 6, y2: E2.y - 52, stroke: "url(#mermi)", "stroke-width": 5, "stroke-linecap": "round" }, ust);
-    el("circle", { cx: P.x + 62, cy: P.y - 60, r: 11, fill: RENK.isi2, opacity: .9 }, ust);
-    el("circle", { cx: P.x + 62, cy: P.y - 60, r: 20, fill: RENK.accent, opacity: .35 }, ust);
-    el("circle", { cx: E2.x - 4, cy: E2.y - 52, r: 16, fill: RENK.isi2, opacity: .6 }, ust);
-    el("text", { x: E2.x + 38, y: E2.y - 128, class: "sv-hasar" }, ust).textContent = "-24";
+    const namlu = { x: P.x + 58 * P.k, y: P.y - 60 * P.k }, hedef = { x: E2.x - 6 * E2.k, y: E2.y - 52 * E2.k };
+    el("line", { x1: namlu.x, y1: namlu.y, x2: hedef.x, y2: hedef.y, stroke: "url(#mermi)", "stroke-width": 5, "stroke-linecap": "round" }, ust);
+    el("circle", { cx: namlu.x + 4, cy: namlu.y, r: 11, fill: RENK.isi2, opacity: .9 }, ust);
+    el("circle", { cx: namlu.x + 4, cy: namlu.y, r: 20, fill: RENK.accent, opacity: .35 }, ust);
+    el("circle", { cx: hedef.x, cy: hedef.y, r: 16 * E2.k, fill: RENK.isi2, opacity: .6 }, ust);
+    el("text", { x: E2.x + 40 * E2.k, y: E2.y - 128 * E2.k, class: "sv-hasar" }, ust).textContent = "-24";
 
     // ---------- Savaş sisi ----------
+    // Görüş alanı dünyada oyuncunun çevresinde bir çember; perspektifte
+    // ekranda yakın tarafı geniş, uzak tarafı dar bir şekle döner.
     const maske = el("mask", { id: "sis-maske", maskUnits: "userSpaceOnUse", x: 0, y: 0, width: 1080, height: 1920 }, defs);
     el("rect", { x: 0, y: 0, width: 1080, height: 1920, fill: "#fff" }, maske);
-    const sg = el("radialGradient", { id: "sis-delik" }, defs);
-    el("stop", { offset: 0, "stop-color": "#000" }, sg);
-    el("stop", { offset: .8, "stop-color": "#000" }, sg);
-    el("stop", { offset: 1, "stop-color": "#fff" }, sg);
-    el("ellipse", { cx: P.x, cy: P.y - 20, rx: 580, ry: 380, fill: "url(#sis-delik)" }, maske);
+    el("polygon", { points: nokta(cember(wP.x, wP.z, 600, 72)), fill: "#000", filter: "url(#yumusak)" }, maske);
     el("rect", { x: 0, y: 0, width: 1080, height: 1920, fill: RENK.bg, opacity: .76, mask: "url(#sis-maske)" }, svg);
-    el("ellipse", { cx: P.x, cy: P.y - 20, rx: 520, ry: 340, fill: "none", stroke: RENK.accent2, "stroke-opacity": .6,
+    const halka = cember(wP.x, wP.z, 560, 96);
+    el("polygon", { points: nokta(halka), fill: "none", stroke: RENK.accent2, "stroke-opacity": .6,
       "stroke-width": 2.5, "stroke-dasharray": "2 12", "stroke-linecap": "round" }, svg);
 
     // Sisin üstünde kalanlar: hedef ışınları, işaretler, can çubukları
     const hud = el("g", {}, svg);
-    isinCiz(hud, ASN.x, ASN.y - 6, 150, RENK.accent, 64);
-    isinCiz(hud, CIK.x, CIK.y - 76, 150, RENK.isi2, 70);
-    etiketCiz(hud, ASN.x, ASN.y - 176, "▲ ASANSÖR · KAT 3", RENK.accent);
-    etiketCiz(hud, CIK.x, CIK.y - 250, "ÇIKIŞ · KAT 3", RENK.isi2, true);
-    etiketCiz(hud, LOOT.x, LOOT.y - 82, "+ LOOTBOX", RENK.accent2);
+    const asnUst = isinCiz(hud, wASN, 0, 200, RENK.accent, 64);
+    const cikUst = isinCiz(hud, wCIK, 70, 300, RENK.isi2, 70);
+    etiketCiz(hud, asnUst.x, asnUst.y - 20, "▲ ASANSÖR · KAT 3", RENK.accent);
+    etiketCiz(hud, cikUst.x, cikUst.y - 20, "ÇIKIŞ · KAT 3", RENK.isi2, true);
+    etiketCiz(hud, LOOT.x, LOOT.y - 86 * LOOT.s * BOY, "+ LOOTBOX", RENK.accent2);
 
     // Sisin içinde tespit edilen düşman
-    el("circle", { cx: E3.x, cy: E3.y - 150, r: 30, fill: "none", stroke: RENK.dusman, "stroke-width": 2, opacity: .5 }, hud);
-    el("circle", { cx: E3.x, cy: E3.y - 150, r: 46, fill: "none", stroke: RENK.dusman, "stroke-width": 1.5, opacity: .25 }, hud);
-    el("polygon", { points: nokta([[E3.x, E3.y - 168], [E3.x + 14, E3.y - 150], [E3.x, E3.y - 132], [E3.x - 14, E3.y - 150]]), fill: RENK.dusman }, hud);
-    etiketCiz(hud, E3.x - 60, E3.y - 205, "TESPİT EDİLDİ", RENK.dusman);
+    const iy = E3.y - 150 * E3.k;
+    el("circle", { cx: E3.x, cy: iy, r: 30, fill: "none", stroke: RENK.dusman, "stroke-width": 2, opacity: .5 }, hud);
+    el("circle", { cx: E3.x, cy: iy, r: 46, fill: "none", stroke: RENK.dusman, "stroke-width": 1.5, opacity: .25 }, hud);
+    el("polygon", { points: nokta([[E3.x, iy - 18], [E3.x + 14, iy], [E3.x, iy + 18], [E3.x - 14, iy]]), fill: RENK.dusman }, hud);
+    etiketCiz(hud, E3.x + 80, iy - 58, "TESPİT EDİLDİ", RENK.dusman);
 
-    barCiz(hud, E1.x, E1.y - 134, 100, RENK.dusman);
-    barCiz(hud, E2.x, E2.y - 134, 40, RENK.dusman);
-    el("text", { x: E2.x - 78, y: E2.y - 120, "text-anchor": "middle", class: "sv-uyari" }, hud).textContent = "!";
-    barCiz(hud, P.x, P.y - 146, 82, "url(#isi)", 64);
-    etiketCiz(hud, P.x - 118, P.y - 112, "◌ GİZLİ", RENK.accent2);
+    barCiz(hud, E1.x, E1.y - 134 * E1.k, 100, RENK.dusman);
+    barCiz(hud, E2.x, E2.y - 134 * E2.k, 40, RENK.dusman);
+    el("text", { x: E2.x - 78, y: E2.y - 120 * E2.k, "text-anchor": "middle", class: "sv-uyari" }, hud).textContent = "!";
+    barCiz(hud, P.x, P.y - 146 * P.k, 82, "url(#isi)", 64);
+    etiketCiz(hud, P.x - 120, P.y - 112 * P.k, "◌ GİZLİ", RENK.accent2);
 
     if (numaralar) {
       const N = el("g", {}, svg);
-      [[1, 150, 1330], [2, 1010, 860], [3, P.x - 200, P.y - 40], [4, ASN.x - 150, ASN.y - 176], [5, LOOT.x + 110, LOOT.y - 82],
-       [6, CIK.x - 120, CIK.y - 250], [7, 470, 225], [8, 312, 80], [9, E1.x + 150, E1.y + 30], [10, E2.x + 120, E2.y - 70]]
+      const arena = hucreNoktasi(-6, 4);
+      const sag = halka[0];
+      [[1, arena.x, arena.y], [2, sag.x - 34, sag.y - 40], [3, P.x - 205, P.y - 40 * P.k], [4, asnUst.x - 155, asnUst.y - 20],
+       [5, LOOT.x + 112, LOOT.y - 86 * LOOT.s * BOY], [6, cikUst.x - 120, cikUst.y - 20], [7, 470, 225], [8, 312, 80],
+       [9, E1.x - 75 * E1.k, E1.y + 40], [10, E2.x + 120 * E2.k, E2.y - 70 * E2.k]]
         .forEach(function (n) { numaraCiz(N, n[1], n[2], n[0]); });
     }
   }
