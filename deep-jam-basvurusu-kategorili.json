@@ -3,11 +3,11 @@
 
   "00_Slide_On_Kapagi": {
     "tip": "kapak",
+    "etkinlik": "GameDev.ist · Deep Jam Başvurusu",
     "baslik": "ZEYOND GAMES",
     "slogan": "MOBILE GAMES STUDIO",
     "aciklama": "",
-    "studyo": "Zeyond Games / Zeyond Team",
-    "etkinlik": "GameDev.ist · Deep Jam Başvurusu"
+    "studyo": "Zeyond Games / Zeyond Team"
   },
 
   "//═══════════════════  01–02 · BÖLÜM 1 · TAKIM BİLGİLERİ  ═══════════════════": "",
@@ -23,6 +23,13 @@
     "tip": "icerik",
     "numara": "1.1",
     "baslik": "Girişim ve İletişim Bilgileri",
+    "basliklar": {
+      "oyunStudyosu": "Oyun Stüdyosu",
+      "projeYoneticisi": "Proje Yöneticisi",
+      "eposta": "E-posta",
+      "telefon": "Telefon",
+      "takimBuyuklugu": "Takım Büyüklüğü"
+    },
     "oyunStudyosu": "Zeyond Games / Zeyond Team",
     "projeYoneticisi": "Harun Kalli",
     "eposta": "info@zeyondgames.com",
@@ -32,14 +39,14 @@
       {
         "ad": "Harun Kalli",
         "rol": "Game Development / Design",
-        "foto": "img/kisiler/harun.jpeg",
-        "hakkinda": ""
+        "hakkinda": "",
+        "foto": "img/kisiler/harun.jpeg"
       },
       {
         "ad": "Nil Neal",
         "rol": "Game Art / Design",
-        "foto": "img/kisiler/nil.jpeg",
-        "hakkinda": ""
+        "hakkinda": "",
+        "foto": "img/kisiler/nil.jpeg"
       }
     ],
     "not": "Küçük ekip bir zayıflık değil, bir kanıt: çalışan çekirdek döngü ve kendi seviye editörümüz, projeyi tek başımıza bitirebildiğimizi gösteriyor."
@@ -59,6 +66,10 @@
     "numara": "2.1",
     "baslik": "Oyunun Adı",
     "ad": "Hexafield",
+    "basliklar": {
+      "alternatifler_0": "Alternatif 1",
+      "alternatifler_1": "Alternatif 2"
+    },
     "alternatifler": [
       "Hexacore",
       "BlueNation"
@@ -70,43 +81,37 @@
     "tip": "icerik",
     "numara": "2.2",
     "baslik": "Oyunun Türü",
-    "anaTur": "Strateji-Aksiyon · Bulmaca destekli",
-    "altTurler": [
-      "Stealth",
-      "Tactical",
-      "Level-Based"
-    ],
-    "perspektif": "İzometrik, hex-grid tabanlı",
-    "platform": "Mobil (iOS + Android)",
+    "anaTur": "Aksiyon-Rol Yapma Oyunu · Simülasyon destekli",
+    "turSkalasiBaslik": "Tür Skalası",
     "turSkalasiNotu": "Başvuru kılavuzundaki tür listesi: her çizgi, oyunun o türe ne kadar yaslandığını gösterir.",
     "turSkalasi": [
       {
         "tur": "Aksiyon",
-        "deger": 70
+        "deger": 100
       },
       {
         "tur": "Macera",
-        "deger": 35
+        "deger": 25
       },
       {
         "tur": "Rol Yapma Oyunu (RYO)",
-        "deger": 20
+        "deger": 85
       },
       {
         "tur": "Strateji",
-        "deger": 80
+        "deger": 35
       },
       {
         "tur": "Simülasyon",
-        "deger": 10
+        "deger": 50
       },
       {
         "tur": "Bulmaca / Mantık",
-        "deger": 65
+        "deger": 15
       },
       {
         "tur": "Platform",
-        "deger": 15
+        "deger": 5
       },
       {
         "tur": "Spor / Yarış",
@@ -117,66 +122,105 @@
         "deger": 25
       }
     ],
-    "denge": "Gizlilik-öncelikli: fark edilmeden geçmek varsayılan yol; çatışma bilinçli bir kaynak-harcama tercihi."
+    "basliklar": {
+      "altTurler": "Alt Türler",
+      "perspektif": "Perspektif",
+      "platform": "Platform"
+    },
+    "altTurler": [
+      "Action RPG",
+      "Robotic Shooter",
+      "Procedural"
+    ],
+    "perspektif": "İzometrik, hex-grid tabanlı",
+    "platform": "Mobil (iOS + Android), ardından Steam",
+    "denge": "Aksiyon ve RYO çekirdekte: gerçek zamanlı çatışma ve robot sınıfları. Keşif, gizlenme ve kaynak yönetimi her arenayı taktik bir karara çevirir."
   },
 
   "06_2_3_Oyunun_Ozeti_ve_Hikayesi": {
     "tip": "icerik",
     "numara": "2.3",
     "baslik": "Oyunun Özeti ve Hikayesi",
-    "hikaye": "Tüm robotlar CORE tarafından programlanır. Hata veren robotlar programının dışına çıkar ve Anomaly olarak sınıflandırılır. Bizim robotumuz bir Anomaly — CORE onu yok etmek için avcı botlar gönderiyor.",
-    "ozet": "Tek başına görev yapan bir robot birimisin. Her seviye, düşman botların devriye gezdiği kompakt bir hex arena — arenayı oku ve çıkış asansörüne ulaş.",
-    "oynanis": "Otları kullanarak görüş hattını kır ve fark edilmeden sız; ya da kıt cephaneni, enerjini ve dayanıklılığını harcayıp yol aç. Oyunun kalbi her karşılaşmada verilen 'sız mı, harca mı' kararıdır."
+    "ozet": "Katman tabanlı, procedural üretilen bir hex-grid arenaya gir, görevini tamamla ve çıkış asansörünü bulup arenadan çık. Tile'ları keşfederken savaş sisinin (FOW) ardındaki düşmanları tespit et, çimenlerde gizlen, asansörlerle katlar arasında geç ve lootbox'ları yağmala. Robotunun Durability, Battery, Stamina ve Mag kaynaklarını yöneterek görevi bitirmeye çalışırsın. Assault, Assassin, Recon, Tank ya da Support: her sınıfın kendine özgü attribute, stat ve silah tipi, her arenada başka bir taktik demek.",
+    "anahtarKelimeBaslik": "Anahtar Kelimeler",
+    "basliklar": {
+      "temelOynanis": "Temel Oynanış",
+      "anaMekanikler": "Ana Mekanikler",
+      "oyuncuDeneyimi": "Oyuncu Deneyimi"
+    },
+    "anahtarKelimeler": {
+      "temelOynanis": "Arenaya gir, görevi tamamla, arenadan çık",
+      "anaMekanikler": "Procedural hex-grid, FOW, çimende gizlenme, katlar arası asansör, lootbox",
+      "oyuncuDeneyimi": "Kaynak yönetimiyle hayatta kalma, sınıfa göre değişen taktik"
+    },
+    "gorseller": [
+      "",
+      "",
+      ""
+    ]
   },
 
   "07_2_4_Proje_Kapsami": {
     "tip": "icerik",
     "numara": "2.4",
     "baslik": "Proje Kapsamı",
+    "uspBaslik": "Benzersiz Satış Teklifi (USP)",
+    "uspOzet": "Procedural hex-grid bir arenada gerçek zamanlı Action RPG ve izometrik perspektifte robotik shooter deneyimi.",
+    "usp": [
+      {
+        "ad": "Procedural Hex Arena",
+        "not": "Katman tabanlı, her girişte yeniden üretilen hex-grid arena"
+      },
+      {
+        "ad": "Gerçek Zamanlı Action RPG",
+        "not": "Beş robot sınıfı; her birinin kendi attribute, stat ve silah tipi"
+      },
+      {
+        "ad": "İzometrik Robotik Shooter",
+        "not": "İzometrik perspektifte, modüler robotlarla çatışma"
+      }
+    ],
     "cekirdekDongu": {
-      "baslik": "Çekirdek Döngü (~60 saniye)",
+      "baslik": "Çekirdek Döngü",
       "adimlar": [
-        "1. Seviyeye gir",
-        "2. Arenayı oku: bot devriyeleri, ot örtüsü, yükselti",
-        "3. Görüş hattını kır — gizlen ya da çatış",
-        "4. Sız ya da harca: Şarjör / Enerji / Dayanıklılık",
-        "5. Çıkış asansörüne ulaş",
-        "6. Skor ve yıldız — sonraki arena daha karmaşık"
+        "1. Arenaya gir",
+        "2. Tile'ları keşfet, FOW'un ardındaki düşmanları tespit et",
+        "3. Çimenlerde gizlen ya da sınıfının taktiğiyle çatış",
+        "4. Asansörlerle katlar arasında geç, lootbox'ları yağmala",
+        "5. Durability / Battery / Stamina / Mag kaynaklarını yönet",
+        "6. Görevi tamamla, çıkış asansörünü bul ve arenadan çık"
       ]
     },
+    "kaynaklarBaslik": "Kaynaklar",
     "kaynaklar": [
       {
-        "ad": "Şarjör",
-        "not": "Çatışmanın bedeli — her atış geri dönüşsüz harcama"
+        "ad": "Durability",
+        "not": "Dayanıklılık: robotun hasar payı"
       },
       {
-        "ad": "Enerji",
-        "not": "Hız ve özel hareketler — bitince sızma yavaşlar"
+        "ad": "Battery",
+        "not": "Batarya: robotun enerjisi"
       },
       {
-        "ad": "Dayanıklılık",
-        "not": "Hata payı — fark edilmenin doğrudan karşılığı"
+        "ad": "Stamina",
+        "not": "Stamina: hareket ve efor"
+      },
+      {
+        "ad": "Mag",
+        "not": "Şarjör: cephane"
       }
     ],
     "hedefKapsam": {
-      "seviyeSayisi": "8 hafta sonunda 20+ el yapımı seviye",
+      "baslik": "Hedef Kapsam",
+      "seviyeSayisi": "Procedural üretilen, katman tabanlı arenalar",
       "seansSuresi": "Seviye başına ~60 saniye",
-      "ekonomi": "Meta para, loot ve kalıcı yükseltme yok"
+      "ekonomi": "Arena içinde lootbox; ücretsiz temel oyun, ücretli içerik (IAP)"
     },
-    "usp": [
-      {
-        "ad": "Saf Taktik",
-        "not": "Kaynak-harcama kararları her turda — meta-ilerleme yok"
-      },
-      {
-        "ad": "Mobil Stealth",
-        "not": "El yapımı hex arenalarda ot temelli görüş-hattı gizliliği"
-      },
-      {
-        "ad": "Derinlik Üzerine",
-        "not": "Zorluk düzen karmaşıklığı ve bot davranışıyla artar"
-      }
-    ]
+    "basliklar": {
+      "hedefKapsam_seviyeSayisi": "Seviye Sayısı",
+      "hedefKapsam_seansSuresi": "Seans Süresi",
+      "hedefKapsam_ekonomi": "Ekonomi"
+    }
   },
 
   "//═══════════════════  08–09 · BÖLÜM 3 · TEKNİK VE PORTFOLYO  ═══════════════════": "",
@@ -192,24 +236,34 @@
     "tip": "icerik",
     "numara": "3.1",
     "baslik": "Proof of Concept (PoC)",
-    "gelistirmeAsamasi": "Vertical Slice — çekirdek döngü çalışıyor",
+    "basliklar": {
+      "gelistirmeAsamasi": "Mevcut Geliştirme Aşaması",
+      "motor_ad": "Motor",
+      "motor_gerekce": "Motor Gerekçesi",
+      "linkler_prototip": "Oynanabilir Prototip",
+      "linkler_video": "Video Pitch",
+      "linkler_portfolyo": "Portfolyo"
+    },
+    "gelistirmeAsamasi": "Prototip",
+    "grafikStili": {
+      "baslik": "Oyunun Grafik Stili",
+      "stil": "Robotik ve stilize: oyunun türüyle uyumlu, mekanik bir robot teması. Modüler karakter yapısı sayesinde robot parçaları karıştırılarak çeşitli robot türleri yaratılır.",
+      "oncelik": "Organik olmayan parçalı yapı, sculpting ve weight painting maliyetini sıfırlar; kusursuz rigging ve animasyon sağlar. İzometrik kamera detaylı texture ve model ihtiyacını azaltır; stilize sanat mobilde optimize ve eskimeyen bir stil sunar."
+    },
     "motor": {
-      "ad": "Unity",
-      "gerekce": "Mobil dağıtım, izometrik render ve hex-grid için olgun araç ve topluluk desteği"
+      "ad": "Unity Engine / C# / Visual Scripting",
+      "gerekce": "Unity: mobil için en çok tercih edilen, optimize, kaynağı bol ve arayüzü anlaşılır bir motor.\nC#: Unity'nin dili; kütüphanesi geniş, öğrenmesi kolay ve sezgisel.\nVisual Scripting: tasarımcı dostu state machine ve node tabanlı akış. İkisini hibrit kullanıyoruz: sınıfları C#'ta yazıyor, algoritma ve state machine yapılarını Visual Scripting'de kuruyoruz."
     },
     "worldBuilder": {
       "ad": "WorldBuilder — kendi seviye editörümüz",
       "icerik": "Başlangıç, çıkış asansörü, botlar, ot örtüsü ve yükselti yerleşimi",
-      "not": "8 haftada 20+ seviye hedefini mümkün kılan şey bu editör: içerik üretimi bizde darboğaz değil."
-    },
-    "grafikStili": {
-      "stil": "İzometrik, stilize düşük-poli sci-fi robot estetiği",
-      "oncelik": "Okunabilirlik: ot örtüsü, yükselti ve bot görüş hatları anında ayırt edilebilir"
+      "not": "Arena içeriğini hızlı üretmemizi sağlayan şey bu editör: içerik üretimi bizde darboğaz değil."
     },
     "linkler": {
+      "baslik": "Linkler",
       "prototip": "",
       "video": "",
-      "portfolyo": ""
+      "portfolyo": "https://www.artstation.com/harunkll\nhttps://www.artstation.com/nilneal"
     },
     "not": "Çalışan prototip, jüri için konsept riskini kaldırmanın en etkili yolu."
   },
@@ -227,59 +281,80 @@
     "tip": "icerik",
     "numara": "4.1",
     "baslik": "Ana Gelir Modeli",
-    "model": "Hibrit: F2P + Ödüllü Reklam + Tek Seferlik Premium",
+    "model": "Free-to-Play (F2P) + Uygulama İçi Satın Alma (IAP)",
     "bilesenler": [
       {
-        "ad": "Serbest Giriş",
-        "not": "İlk seviyeler ücretsiz; kurulum hunisini genişletir"
+        "ad": "Ücretsiz Temel Oyun",
+        "not": "Oyunun temel hali ücretsiz; yeni bir oyun için tanınırlığı büyütür"
       },
       {
-        "ad": "Ödüllü Reklam",
-        "not": "Yalnızca opsiyonel, örn. tekrar denerken ekstra hak — asla zorunlu değil"
+        "ad": "Ücretli İçerik (IAP)",
+        "not": "İçerikler uygulama içi satın almayla sunulur"
       },
       {
-        "ad": "Tek Seferlik Premium",
-        "not": "Reklamsız + tüm seviye paketleri. İçerik satıyoruz, güç değil"
+        "ad": "Steam'de Premium",
+        "not": "6–12. ayda ikinci platform olarak premium satış"
       }
     ],
-    "gerekce": "Meta-ekonomi ve loot olmadığı için abonelik ya da gacha uygun değil; bu hibrit hem erişilebilirlik hem sürdürülebilir gelir sağlıyor."
+    "gerekce": "Yeni ölçekte bir oyun için önce tanınırlık gelir: bu yüzden temel oyunu ücretsiz sunup içerikleri ücretli yapmayı seçtik.",
+    "metrikler": {
+      "baslik": "Hedef Metrikler",
+      "d1": "%35–40 · oyunu indirip ertesi gün geri dönenler",
+      "d7": "%12–15 · 7. günde hâlâ oynayanlar",
+      "d30": "%4–6 · 30. günde hâlâ oynayanlar",
+      "donusum": "%2–3 · en az bir kez ödeme yapan oyuncular"
+    },
+    "basliklar": {
+      "metrikler_d1": "D1 Retention",
+      "metrikler_d7": "D7 Retention",
+      "metrikler_d30": "D30 Retention",
+      "metrikler_donusum": "Conversion",
+      "butce_miktar": "Talep Edilen Bütçe",
+      "butce_kullanim": "Kullanım Alanı"
+    },
+    "butce": {
+      "baslik": "Bütçe",
+      "miktar": "1.500.000 TRY",
+      "kullanim": "LLM aboneliği, Adobe aboneliği, home office giderleri"
+    }
   },
 
   "12_4_2_Pazara_Giris_Stratejisi": {
     "tip": "icerik",
     "numara": "4.2",
     "baslik": "Pazara Giriş Stratejisi",
-    "platform": "Mobil öncelikli (iOS + Android); orta vadede opsiyonel PC / Steam",
-    "plan12Ay": "Soft launch → metrik optimizasyonu (D1 / D7 retention, seans) → global launch → düzenli içerik",
-    "cografya": "Önce düşük CPI test pazarları (TR ve benzeri); doğrulanınca Tier-1'e ölçekleme",
-    "yayincilik": "Başlangıçta self-publishing; doğru şartlarda mobil odaklı yayıncı veya UA ortağına açığız",
+    "basliklar": {
+      "platform": "Platform",
+      "plan12Ay": "12 Aylık Plan",
+      "cografya": "Coğrafya",
+      "yayincilik": "Yayıncılık"
+    },
+    "platform": "Google Play ve App Store (F2P); ardından Steam (Premium)",
+    "plan12Ay": "0–3. ay, lansman: Google Play ve App Store'da F2P çıkış; ilk hedef D1 retention %40.\n3–6. ay, büyüme: güncellemelerle D7 retention %12–15.\n6–12. ay, ölçekleme: ikinci platform olarak Steam'de premium satış.",
+    "cografya": "Global",
+    "yayincilik": "Yayıncı ile çalışmayı hedefliyoruz",
     "yolHaritasi": {
       "baslik": "8 Haftalık Yol Haritası",
       "haftalar": [
         {
           "hafta": "1–2",
-          "baslik": "Vertical Slice",
-          "icerik": "Çekirdek döngü tam sağlam; en az 3 oynanabilir seviye"
+          "baslik": "Çekirdek Mekanik",
+          "icerik": "Core mechanic oynanabilir halde"
         },
         {
           "hafta": "3–4",
-          "baslik": "Derinlik",
-          "icerik": "Bot davranışı (devriye / nöbet / alarm); 10–12 seviye ve zorluk eğrisi"
+          "baslik": "Oyun Testi",
+          "icerik": "100 kişiyle oyun testi; bulgulara göre düzeltme"
         },
         {
           "hafta": "5–6",
-          "baslik": "His & Test",
-          "icerik": "Geri bildirim, ses, kamera, UI; yıldız ve skor; ilk kapalı playtest"
+          "baslik": "Demo & Mağaza",
+          "icerik": "Dikey kesit veya demo; mağaza sayfası yayında"
         },
         {
-          "hafta": "7",
-          "baslik": "Para Kazanma & Mağaza",
-          "icerik": "Reklam ve IAP testi; App Store / Google Play ve ASO hazırlığı; 20+ seviye"
-        },
-        {
-          "hafta": "8",
-          "baslik": "Soft Launch",
-          "icerik": "1–2 ülkede yayın; analytics; 3 dk pitch videosu ve basın kiti"
+          "hafta": "7–8",
+          "baslik": "Fragman & Sunum",
+          "icerik": "Fragman ve sunum dosyası"
         }
       ]
     }
@@ -300,6 +375,7 @@
     "baslik": "Motivasyon Mektubu / Neden Deep Jam",
     "giris": "Deep Jam'e, programın kaynaklarının projemizdeki boşlukları tam olarak tamamladığı için başvuruyoruz.",
     "gucluYanimiz": "Üretim ve sistem tasarımı: çalışan çekirdek döngü, kendi WorldBuilder editörümüz ve hızlı içerik üretme kapasitemiz — yani 'bitirme' becerisi.",
+    "bosluklarBaslik": "Programın Kapatacağı Boşluklar",
     "bosluklar": [
       {
         "ad": "Monetizasyon & UA",
@@ -321,12 +397,12 @@
     "tip": "icerik",
     "numara": "5.2",
     "baslik": "Şartlar ve Gizlilik Politikası",
-    "telifHakki": "Telif Hakkı ve Özgünlük: Bu başvurudaki tüm fikri mülkiyetin, oyun içeriğinin, görsel varlıkların ve kodun ya tamamen ekibimizin özgün yaratımı olduğunu ya da kullanımı için gerekli tüm lisans ve izinlere sahip olduğumuzu beyan ederiz.",
-    "kvkk": "KVKK / GDPR: Sağladığımız kişisel verilerin (Ad, Soyad, E-posta, Telefon) KVKK'ya uygun olarak yalnızca başvuru değerlendirmesi, program yönetimi ve yasal yükümlülükler için işleneceğini okuduk; koşulları anladık ve veri işlenmesine açık rıza gösteriyoruz.",
     "onaylar": [
       "Telif hakkı ve özgünlük beyanını onaylıyorum.",
       "KVKK / GDPR kapsamında veri işlenmesine açık rıza gösteriyorum."
     ],
+    "telifHakki": "Telif Hakkı ve Özgünlük: Bu başvurudaki tüm fikri mülkiyetin, oyun içeriğinin, görsel varlıkların ve kodun ya tamamen ekibimizin özgün yaratımı olduğunu ya da kullanımı için gerekli tüm lisans ve izinlere sahip olduğumuzu beyan ederiz.",
+    "kvkk": "KVKK / GDPR: Sağladığımız kişisel verilerin (Ad, Soyad, E-posta, Telefon) KVKK'ya uygun olarak yalnızca başvuru değerlendirmesi, program yönetimi ve yasal yükümlülükler için işleneceğini okuduk; koşulları anladık ve veri işlenmesine açık rıza gösteriyoruz.",
     "not": "Motor, eklentiler, fontlar, ses / müzik ve üçüncü taraf varlıkların lisanslarının ticari kullanıma uygun olduğundan emin ol."
   },
 
@@ -343,14 +419,16 @@
   "//═══════════════════  ETİKETLER  ═══════════════════": "",
 
   "etiketler": [
-    "Stealth",
-    "Tactical",
-    "Level-Based",
+    "Action RPG",
+    "Shooter",
+    "Procedural",
     "Isometric",
+    "Tactical",
+    "Stealth",
     "Mobile",
     "Sci-fi",
-    "Puzzle",
-    "Shooter",
-    "Robots"
+    "Robots",
+    "onay-telif",
+    "onay-kvkk"
   ]
 }
