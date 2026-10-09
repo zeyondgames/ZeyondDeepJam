@@ -84,7 +84,7 @@
     "tip": "icerik",
     "numara": "2.2",
     "baslik": "Oyunun Türü",
-    "anaTur": "Aksiyon-Rol Yapma Oyunu · Simülasyon destekli",
+    "anaTur": "Aksiyon-RPG · Simülasyon destekli",
     "turSkalasiBaslik": "Tür Skalası",
     "turSkalasiNotu": "Başvuru kılavuzundaki tür listesi: her çizgi, oyunun o türe ne kadar yaslandığını gösterir.",
     "turSkalasi": [
@@ -97,7 +97,7 @@
         "deger": 25
       },
       {
-        "tur": "Rol Yapma Oyunu (RYO)",
+        "tur": "RPG",
         "deger": 85
       },
       {
@@ -135,9 +135,9 @@
       "Robotic Shooter",
       "Procedural"
     ],
-    "perspektif": "İzometrik, hex-grid tabanlı",
+    "perspektif": "3D, sabit açılı, yukarıdan eğik perspektif kamera; hex-grid tabanlı",
     "platform": "Mobil (iOS + Android), ardından Steam",
-    "denge": "Aksiyon ve RYO çekirdekte: gerçek zamanlı çatışma ve robot sınıfları. Keşif, gizlenme ve kaynak yönetimi her arenayı taktik bir karara çevirir."
+    "denge": "Aksiyon ve RPG çekirdekte: gerçek zamanlı çatışma ve robot sınıfları. Keşif, gizlenme ve kaynak yönetimi her arenayı taktik bir karara çevirir."
   },
 
   "06_2_3_Oyunun_Ozeti_ve_Hikayesi": {
@@ -168,7 +168,7 @@
     "numara": "2.4",
     "baslik": "Proje Kapsamı",
     "uspBaslik": "Benzersiz Satış Teklifi (USP)",
-    "uspOzet": "Procedural hex-grid bir arenada gerçek zamanlı Action RPG ve izometrik perspektifte robotik shooter deneyimi.",
+    "uspOzet": "Procedural hex-grid bir arenada gerçek zamanlı Action RPG ve 3D, sabit açılı, yukarıdan eğik perspektif kamerayla robotik shooter deneyimi.",
     "usp": [
       {
         "ad": "Procedural Hex Arena",
@@ -179,8 +179,8 @@
         "not": "Beş robot sınıfı; her birinin kendi attribute, stat ve silah tipi"
       },
       {
-        "ad": "İzometrik Robotik Shooter",
-        "not": "İzometrik perspektifte, modüler robotlarla çatışma"
+        "ad": "Top-Down Robotik Shooter",
+        "not": "3D, sabit açılı, yukarıdan eğik kamerada modüler robotlarla çatışma"
       }
     ],
     "cekirdekDongu": {
@@ -251,7 +251,7 @@
     "grafikStili": {
       "baslik": "Oyunun Grafik Stili",
       "stil": "Robotik ve stilize: oyunun türüyle uyumlu, mekanik bir robot teması. Modüler karakter yapısı sayesinde robot parçaları karıştırılarak çeşitli robot türleri yaratılır.",
-      "oncelik": "Organik olmayan parçalı yapı, sculpting ve weight painting maliyetini sıfırlar; kusursuz rigging ve animasyon sağlar. İzometrik kamera detaylı texture ve model ihtiyacını azaltır; stilize sanat mobilde optimize ve eskimeyen bir stil sunar."
+      "oncelik": "Organik olmayan parçalı yapı, sculpting ve weight painting maliyetini sıfırlar; kusursuz rigging ve animasyon sağlar. Sabit açılı, yukarıdan eğik kamera detaylı texture ve model ihtiyacını azaltır; stilize sanat mobilde optimize ve eskimeyen bir stil sunar."
     },
     "motor": {
       "ad": "Unity Engine / C# / Visual Scripting",
@@ -425,7 +425,7 @@
     "Action RPG",
     "Shooter",
     "Procedural",
-    "Isometric",
+    "Top-Down 3D",
     "Tactical",
     "Stealth",
     "Mobile",

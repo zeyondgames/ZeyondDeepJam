@@ -261,7 +261,7 @@ window.GDD = window.GDD || {};
   const BELIRGIN = 50; // bu değerin altındaki tür başlığa girmez
   const YAKIN = 20;    // ikinci tür birinciye en çok bu kadar uzaksa ortak olur
 
-  // "Bulmaca / Mantık" → "Bulmaca", "Rol Yapma Oyunu (RYO)" → "Rol Yapma Oyunu"
+  // "Bulmaca / Mantık" → "Bulmaca", "Spor / Yarış" → "Spor"
   function kisaAd(s) {
     const satir = s.closest(".skala-satir");
     const ad = satir && satir.querySelector(".skala-ad");

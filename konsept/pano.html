@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hexafield · Konsept art panosu</title>
+  <!-- 2560×1440 konsept art panosu: solda numaralı CPI karesi, sağda renk
+       paleti, tipografi ve görseldeki mekaniklerin açıklaması.
+       PNG: img/konsept/hexafield-konsept-pano.png -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+  <div class="pano">
+    <div class="pano-sol">
+      <div class="pano-cerceve"><div id="kare"></div></div>
+      <p class="pano-not">CPI KREATİFİ · 1080×1920 · 9:16 · OYUN İÇİ GÖRÜNÜM</p>
+    </div>
+
+    <div class="pano-sag">
+      <header class="pano-bas">
+        <p class="pano-kicker">ZEYOND GAMES · KONSEPT ART · CPI TEST KREATİFİ</p>
+        <h1>HEXAFIELD</h1>
+        <p class="pano-alt">Procedural hex arenada gerçek zamanlı robot action RPG. Görsel, oyunun mekaniklerini tek bir oyun içi kare olarak anlatır; renkler ve yazı tipleri başvuru sitesiyle aynıdır.</p>
+      </header>
+
+      <section>
+        <h2><b>01</b>Renk Paleti</h2>
+        <div class="palet">
+          <div class="renk"><i style="background:#05070a"></i><b>Void</b><code>#05070A</code><span>Arka plan, savaş sisi</span></div>
+          <div class="renk"><i style="background:#1b2530"></i><b>Arena Zemini</b><code>#1B2530</code><span>Hex hücreler, Kat 2</span></div>
+          <div class="renk"><i style="background:#2a3848"></i><b>Üst Kat</b><code>#2A3848</code><span>Plato, Kat 3</span></div>
+          <div class="renk"><i style="background:#3f4a5b"></i><b>Kaya / Engel</b><code>#3F4A5B</code><span>Siper, arena sınırı</span></div>
+          <div class="renk"><i style="background:#e9eef3"></i><b>Metin</b><code>#E9EEF3</code><span>HUD sayıları, oyuncu</span></div>
+          <div class="renk"><i style="background:#ff7a1a"></i><b>Vurgu</b><code>#FF7A1A</code><span>Asansör, MAG, alarm</span></div>
+          <div class="renk"><i style="background:linear-gradient(90deg,#ff2a00,#ffb700)"></i><b>Isı Gradyanı</b><code>#FF2A00 → #FFB700</code><span>CTA, Durability, çıkış</span></div>
+          <div class="renk"><i style="background:linear-gradient(180deg,#ffb700,#ff7a1a,#a84600)"></i><b>Çimen</b><code>#FFB700 → #A84600</code><span>Gizlenme alanı</span></div>
+          <div class="renk"><i style="background:#38e8d6"></i><b>Camgöbeği</b><code>#38E8D6</code><span>FOW sınırı, Battery, loot</span></div>
+          <div class="renk"><i style="background:#e5322d"></i><b>Düşman</b><code>#E5322D</code><span>Botlar, görüş konisi</span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>02</b>Tipografi</h2>
+        <div class="tipo">
+          <div class="tip-kart">
+            <p class="tip-ad">CHAKRA PETCH · 600 / 700</p>
+            <p class="tip-ornek baslik">ÇİMENDE SAKLAN.</p>
+            <p class="tip-not">Oyun adı, kanca metni, sınıf adı, HUD sayıları</p>
+          </div>
+          <div class="tip-kart">
+            <p class="tip-ad">JETBRAINS MONO · 500</p>
+            <p class="tip-ornek mono">DURABILITY 82 · SEED 7F3A</p>
+            <p class="tip-not">Etiketler, kaynak adları, seed ve kat bilgisi</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>03</b>Görseldeki Mekanikler</h2>
+        <ol class="mekanik">
+          <li><b>Procedural Hex Arena</b><span>Katman tabanlı, her girişte yeniden üretilen hex-grid; kenarlar kaya sütunları.</span></li>
+          <li><b>Savaş Sisi (FOW)</b><span>Görüş halkasının dışı karanlık; tile'lar keşfedildikçe açılır.</span></li>
+          <li><b>Çimende Gizlenme</b><span>Çimendeki robot GİZLİ; düşman konisi onu göremez.</span></li>
+          <li><b>Asansör</b><span>Katlar arası geçiş: Kat 2'den plato olan Kat 3'e.</span></li>
+          <li><b>Lootbox</b><span>Arenada yağmalanan ganimet sandığı.</span></li>
+          <li><b>Çıkış Asansörü</b><span>Görevi tamamla, çıkışı bul, arenadan çık.</span></li>
+          <li><b>Kaynaklar</b><span>Durability, Battery, Stamina ve Mag yönetimi.</span></li>
+          <li><b>Robot Sınıfı</b><span>Recon; ayrıca Assault, Assassin, Tank, Support.</span></li>
+          <li><b>Görüş Konisi ve Devriye</b><span>Botların konisi ve rotası; sisteki bot TESPİT EDİLDİ.</span></li>
+          <li><b>Gerçek Zamanlı Çatışma</b><span>Mermi izi, hasar sayısı ve alarm işareti.</span></li>
+        </ol>
+      </section>
+
+      <p class="pano-stil">STİL · Robotik, stilize · 3D, sabit açılı, yukarıdan eğik perspektif kamera · Modüler robotlar · Kesik köşeli HUD panelleri · Altıgen ikonlar</p>
+    </div>
+  </div>
+
+  <script src="sahne.js"></script>
+  <script>HexafieldSahne(document.getElementById("kare"), { numaralar: true });</script>
+</body>
+</html>

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=34">
+  <link rel="stylesheet" href="style.css?v=36">
   <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner. Varsayılan karanlık. -->
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-3")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 </head>
@@ -125,7 +125,7 @@
         <button class="chip on" data-tag="Action RPG">Action RPG</button>
         <button class="chip on" data-tag="Shooter">Shooter</button>
         <button class="chip on" data-tag="Procedural">Procedural</button>
-        <button class="chip on" data-tag="Isometric">Isometric</button>
+        <button class="chip on" data-tag="Top-Down 3D">Top-Down 3D</button>
         <button class="chip on" data-tag="Tactical">Tactical</button>
         <button class="chip on" data-tag="Stealth">Stealth</button>
         <button class="chip on" data-tag="Mobile">Mobile</button>
@@ -445,7 +445,7 @@
             karşılığıdır; script çalışmazsa o görünür.
           -->
           <h3 class="altbaslik" id="turAdi" aria-live="polite"
-              data-metin="05_2_2_Oyunun_Turu.anaTur">Aksiyon-Rol Yapma Oyunu · Simülasyon destekli</h3>
+              data-metin="05_2_2_Oyunun_Turu.anaTur">Aksiyon-RPG · Simülasyon destekli</h3>
 
           <!-- Tür haritası: sağdaki kaydıraçlardan çizilen örümcek ağı
                grafiği. İçini js/skala.js doldurur. -->
@@ -476,7 +476,7 @@
             </div>
             <div class="skala-satir">
               <span class="field skala-ad" id="tur-ad-2" contenteditable="true"
-                    data-field="05_2_2_Oyunun_Turu.turSkalasi.2.tur">Rol Yapma Oyunu (RYO)</span>
+                    data-field="05_2_2_Oyunun_Turu.turSkalasi.2.tur">RPG</span>
               <span class="skala-deger" aria-hidden="true">85</span>
               <input class="skala" type="range" min="0" max="100" step="5" value="85"
                      aria-labelledby="tur-ad-2" data-field="05_2_2_Oyunun_Turu.turSkalasi.2.deger">
@@ -544,7 +544,7 @@
           <dt class="field" contenteditable="true"
               data-field="05_2_2_Oyunun_Turu.basliklar.perspektif">Perspektif</dt>
           <dd class="field" contenteditable="true"
-              data-field="05_2_2_Oyunun_Turu.perspektif">İzometrik, hex-grid tabanlı</dd>
+              data-field="05_2_2_Oyunun_Turu.perspektif">3D, sabit açılı, yukarıdan eğik perspektif kamera; hex-grid tabanlı</dd>
         </div>
         <div>
           <dt class="field" contenteditable="true"
@@ -555,7 +555,7 @@
       </dl>
 
       <div class="field note" contenteditable="true"
-           data-field="05_2_2_Oyunun_Turu.denge">Aksiyon ve RYO çekirdekte: gerçek zamanlı çatışma ve robot sınıfları. Keşif, gizlenme ve kaynak yönetimi her arenayı taktik bir karara çevirir.</div>
+           data-field="05_2_2_Oyunun_Turu.denge">Aksiyon ve RPG çekirdekte: gerçek zamanlı çatışma ve robot sınıfları. Keşif, gizlenme ve kaynak yönetimi her arenayı taktik bir karara çevirir.</div>
     </div>
   </section>
 
@@ -659,7 +659,7 @@
             <div class="field" contenteditable="true"
                  data-field="09_3_1_Proof_of_Concept.grafikStili.stil">Robotik ve stilize: oyunun türüyle uyumlu, mekanik bir robot teması. Modüler karakter yapısı sayesinde robot parçaları karıştırılarak çeşitli robot türleri yaratılır.</div>
             <div class="field note" contenteditable="true"
-                 data-field="09_3_1_Proof_of_Concept.grafikStili.oncelik">Organik olmayan parçalı yapı, sculpting ve weight painting maliyetini sıfırlar; kusursuz rigging ve animasyon sağlar. İzometrik kamera detaylı texture ve model ihtiyacını azaltır; stilize sanat mobilde optimize ve eskimeyen bir stil sunar.</div>
+                 data-field="09_3_1_Proof_of_Concept.grafikStili.oncelik">Organik olmayan parçalı yapı, sculpting ve weight painting maliyetini sıfırlar; kusursuz rigging ve animasyon sağlar. Sabit açılı, yukarıdan eğik kamera detaylı texture ve model ihtiyacını azaltır; stilize sanat mobilde optimize ve eskimeyen bir stil sunar.</div>
           </div>
         </li>
         <li>
@@ -667,7 +667,7 @@
             <h3 class="altbaslik field" contenteditable="true"
                 data-field="07_2_4_Proje_Kapsami.uspBaslik">Benzersiz Satış Teklifi (USP)</h3>
             <div class="field" contenteditable="true"
-                 data-field="07_2_4_Proje_Kapsami.uspOzet">Procedural hex-grid bir arenada gerçek zamanlı Action RPG ve izometrik perspektifte robotik shooter deneyimi.</div>
+                 data-field="07_2_4_Proje_Kapsami.uspOzet">Procedural hex-grid bir arenada gerçek zamanlı Action RPG ve 3D, sabit açılı, yukarıdan eğik perspektif kamerayla robotik shooter deneyimi.</div>
             <div class="games">
               <div class="card">
                 <div class="thumb">◆</div>
@@ -686,8 +686,8 @@
               <div class="card">
                 <div class="thumb">▲</div>
                 <div class="body">
-                  <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.ad">İzometrik Robotik Shooter</h3>
-                  <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.not">İzometrik perspektifte, modüler robotlarla çatışma</p>
+                  <h3 class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.ad">Top-Down Robotik Shooter</h3>
+                  <p class="field" contenteditable="true" data-field="07_2_4_Proje_Kapsami.usp.2.not">3D, sabit açılı, yukarıdan eğik kamerada modüler robotlarla çatışma</p>
                 </div>
               </div>
             </div>
@@ -1138,17 +1138,17 @@ https://www.artstation.com/nilneal</dd>
 
 
   <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
-  <script src="js/depo.js?v=34"></script>
-  <script src="js/alanlar.js?v=34"></script>
-  <script src="js/skala.js?v=34"></script>
-  <script src="js/fotolar.js?v=34"></script>
-  <script src="js/etiketler.js?v=34"></script>
-  <script src="js/aktarim.js?v=34"></script>
-  <script src="js/gorunum.js?v=34"></script>
-  <script src="js/gezinme.js?v=34"></script>
-  <script src="js/pencere.js?v=34"></script>
-  <script src="js/kaydirma.js?v=34"></script>
-  <script src="js/hexalan.js?v=34"></script>
-  <script src="js/main.js?v=34"></script>
+  <script src="js/depo.js?v=36"></script>
+  <script src="js/alanlar.js?v=36"></script>
+  <script src="js/skala.js?v=36"></script>
+  <script src="js/fotolar.js?v=36"></script>
+  <script src="js/etiketler.js?v=36"></script>
+  <script src="js/aktarim.js?v=36"></script>
+  <script src="js/gorunum.js?v=36"></script>
+  <script src="js/gezinme.js?v=36"></script>
+  <script src="js/pencere.js?v=36"></script>
+  <script src="js/kaydirma.js?v=36"></script>
+  <script src="js/hexalan.js?v=36"></script>
+  <script src="js/main.js?v=36"></script>
 </body>
 </html>

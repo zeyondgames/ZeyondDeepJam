@@ -10,7 +10,7 @@ window.GDD = window.GDD || {};
   // metinleri değiştiğinde (kapak, bölüm 2, özet sayfası, form yanıtları)
   // anahtar yenilenir: eski kayıt yeni metinlerin üzerine yazılmasın. Eski
   // kayıt silinmez, yalnızca okunmaz.
-  const KEY = "zeyond-basvuru-slayt-4";
+  const KEY = "zeyond-basvuru-slayt-6";
 
   // main.js depoKur() çağırınca doldurulur
   GDD.alanlar = [];
