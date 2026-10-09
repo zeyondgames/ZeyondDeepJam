@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=33">
+  <link rel="stylesheet" href="style.css?v=34">
   <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner. Varsayılan karanlık. -->
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-3")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 </head>
@@ -356,16 +356,49 @@
     geniş ekranda yan yana dizilir. Başlıklar da düzenlenebilir: h2
     slaytın "baslik" alanına, <dt> başlıkları "basliklar" altına yazar.
   -->
-  <!-- 04 · 2.1 Oyunun Adı -->
-  <section class="slide manset" id="s04" data-title="2.1 Oyunun Adı"
+  <!--
+    04 · 2.1 Oyunun Adı. Yalnızca oyunun adı ve yanında procedural hex
+    arena animasyonu: her turda yeni bir tohumla (seed) organik bir arena
+    büyür; zemin, çimen, engel, asansör ve çıkış hücreleri sırayla belirir,
+    kısa bir bekleyişten sonra bir sonraki kat üretilir (js/hexalan.js).
+    Sağ üstteki süs altıgeni bu slaytta gizlidir (.ad-slayt).
+  -->
+  <section class="slide manset ad-slayt" id="s04" data-title="2.1 Oyunun Adı"
            data-slide="04_2_1_Oyunun_Adi" data-tip="icerik"
            data-numara="2.1" data-baslik="Oyunun Adı">
     <div class="panel">
-      <span class="num">2.1 · OYUN KONSEPTİ</span>
-      <!-- lang="en": ad İngilizce; Türkçe büyük harf kuralı "i"yi "İ" yapmasın -->
-      <h2 class="field" lang="en" contenteditable="true"
-          data-field="04_2_1_Oyunun_Adi.ad">Hexafield</h2>
+      <div class="ad-sahne">
+        <div class="ad-metin">
+          <span class="num">2.1 · OYUNUN ADI</span>
+          <!-- lang="en": ad İngilizce; Türkçe büyük harf kuralı "i"yi "İ" yapmasın -->
+          <h2 class="field" lang="en" contenteditable="true"
+              data-field="04_2_1_Oyunun_Adi.ad">Hexafield</h2>
+        </div>
 
+        <figure class="hexalan" id="hexalan" role="img"
+                aria-label="Procedural üretilen hex-grid arena: her katta yeni bir arena hücre hücre oluşuyor">
+          <svg viewBox="-185 -170 370 340" aria-hidden="true">
+            <g class="hx-harita"></g>
+          </svg>
+          <figcaption class="hexalan-alt" aria-hidden="true">
+            <span class="hexalan-seed">PROCEDURAL HEX-GRID · SEED ---- · KAT 1</span>
+            <ul class="hexalan-lejant">
+              <li><i class="lj lj-zemin"></i>Zemin</li>
+              <li><i class="lj lj-cimen"></i>Çimen</li>
+              <li><i class="lj lj-engel"></i>Engel</li>
+              <li><i class="lj lj-asansor"></i>Asansör</li>
+              <li><i class="lj lj-cikis"></i>Çıkış</li>
+            </ul>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!--
+        Alternatif adlar ve not sayfada gösterilmez: "hidden" ile gizlidir.
+        Silinmediler, çünkü JSON dışa aktarımı bu alanları hâlâ buradan
+        okur; geri getirmek için "hidden" özniteliğini kaldırmak yeterli.
+      -->
+      <div hidden>
       <dl class="kv">
         <div>
           <dt class="field" contenteditable="true"
@@ -383,6 +416,7 @@
 
       <div class="field note" contenteditable="true"
            data-field="04_2_1_Oyunun_Adi.not">Ad kesinleşmeden önce ticari marka benzersizliği ve alan adı uygunluğu kontrol edilecek.</div>
+      </div>
     </div>
   </section>
 
@@ -1104,16 +1138,17 @@ https://www.artstation.com/nilneal</dd>
 
 
   <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
-  <script src="js/depo.js?v=33"></script>
-  <script src="js/alanlar.js?v=33"></script>
-  <script src="js/skala.js?v=33"></script>
-  <script src="js/fotolar.js?v=33"></script>
-  <script src="js/etiketler.js?v=33"></script>
-  <script src="js/aktarim.js?v=33"></script>
-  <script src="js/gorunum.js?v=33"></script>
-  <script src="js/gezinme.js?v=33"></script>
-  <script src="js/pencere.js?v=33"></script>
-  <script src="js/kaydirma.js?v=33"></script>
-  <script src="js/main.js?v=33"></script>
+  <script src="js/depo.js?v=34"></script>
+  <script src="js/alanlar.js?v=34"></script>
+  <script src="js/skala.js?v=34"></script>
+  <script src="js/fotolar.js?v=34"></script>
+  <script src="js/etiketler.js?v=34"></script>
+  <script src="js/aktarim.js?v=34"></script>
+  <script src="js/gorunum.js?v=34"></script>
+  <script src="js/gezinme.js?v=34"></script>
+  <script src="js/pencere.js?v=34"></script>
+  <script src="js/kaydirma.js?v=34"></script>
+  <script src="js/hexalan.js?v=34"></script>
+  <script src="js/main.js?v=34"></script>
 </body>
 </html>

@@ -17,5 +17,6 @@
   GDD.gezinmeyiKur();
   GDD.belirmeyiKur();
   GDD.kaydirmayiKur();
+  GDD.hexalaniKur();
 
 })(window.GDD);

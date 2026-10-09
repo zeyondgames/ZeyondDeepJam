@@ -865,6 +865,133 @@ h2 ~ .bloklar ~ .bloklar,
 }
 
 
+/*═══════════════════  BİLEŞEN · OYUNUN ADI VE HEX ARENA  ═══════════════════*/
+/* 2.1: solda büyük oyun adı, sağda procedural hex arena animasyonu
+   (js/hexalan.js). Hücreler küçük ve saydam başlar; harita .acik olunca
+   her biri kendi gecikmesiyle yerine oturur, .soluyor ile topluca söner.
+   Renkler tema değişkenlerinden gelir: zemin nötr, çimen camgöbeği,
+   asansör ve çıkış turuncu. */
+
+.ad-slayt::after { display: none !important; }
+
+.ad-sahne {
+  display: grid;
+  gap: 1.5rem 3rem;
+  align-items: center;
+}
+.ad-sahne > * { min-width: 0; }
+@media (min-width: 900px) {
+  .ad-sahne { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+/* Ad tek satırda kalsın: geniş ekranda sütunun yarısına, dar ekranda
+   sayfa genişliğine göre büyür */
+.ad-sahne h2 {
+  font-size: clamp(2.6rem, 11vw, 5rem);
+  margin-bottom: 0;
+}
+@media (min-width: 900px) {
+  .ad-sahne h2 { font-size: clamp(3rem, 5vw, 5rem); }
+}
+
+.hexalan {
+  width: 100%;
+  max-width: 34rem;
+  justify-self: center;
+  margin: 0;
+}
+.hexalan svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.hx-harita { transition: opacity .65s ease; }
+.hx-harita.soluyor { opacity: 0; }
+
+.hx {
+  opacity: 0;
+  transform: scale(.35);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity .35s ease, transform .5s cubic-bezier(.16, 1, .3, 1);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.hx-harita.acik .hx { opacity: 1; transform: none; }
+
+.hx-zemin,
+.hx-oyuncu {
+  fill: color-mix(in srgb, var(--text) 5%, var(--kati));
+  stroke: color-mix(in srgb, var(--text) 22%, transparent);
+}
+.hx-cimen {
+  fill: color-mix(in srgb, var(--accent2) 26%, var(--kati));
+  stroke: color-mix(in srgb, var(--accent2) 65%, transparent);
+}
+.hx-engel {
+  fill: color-mix(in srgb, var(--text) 24%, var(--kati));
+  stroke: var(--soft);
+}
+.hx-asansor {
+  fill: color-mix(in srgb, var(--accent) 14%, var(--kati));
+  stroke: var(--accent);
+}
+.hx-cikis {
+  fill: color-mix(in srgb, var(--accent) 40%, var(--kati));
+  stroke: var(--isi2);
+  stroke-width: 1.5;
+}
+.hx-oyuncu { stroke: var(--isi2); stroke-width: 1.5; }
+
+/* Hücre ortasındaki işaretler */
+.hx-i-asansor { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+.hx-i-cikis { fill: var(--isi2); stroke: none; }
+.hx-i-oyuncu { fill: var(--text); stroke: none; }
+
+.hexalan-alt {
+  display: grid;
+  justify-items: center;
+  gap: .7rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.hexalan-seed {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .2em;
+  color: var(--accent);
+}
+.hexalan-lejant {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .4rem 1.1rem;
+  font-family: var(--mono);
+  font-size: .64rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hexalan-lejant li { display: flex; align-items: center; gap: .45rem; }
+.lj {
+  width: .7rem; height: .8rem;
+  clip-path: var(--altigen);
+}
+.lj-zemin   { background: color-mix(in srgb, var(--text) 30%, var(--kati)); }
+.lj-cimen   { background: var(--accent2); }
+.lj-engel   { background: color-mix(in srgb, var(--text) 55%, var(--kati)); }
+.lj-asansor { background: var(--accent); }
+.lj-cikis   { background: var(--isi2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hx, .hx-harita { transition: none; }
+}
+
+
 /*═══════════════════  BİLEŞEN · ÖZET SAYFASI  ═══════════════════*/
 /* Başvuru kılavuzunun "Oyunun Özeti" sayfası: solda tek, iri bir özet
    paragrafı ve altında anahtar kelimeler; sağda bir geniş, iki dikey
