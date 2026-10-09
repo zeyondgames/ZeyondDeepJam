@@ -18,19 +18,18 @@
     "numara": "1.1",
     "baslik": "Girişim ve İletişim Bilgileri",
     "basliklar": {
-      "oyunStudyosu": "Oyun Stüdyosu",
+      "oyunStudyosu": "Oyun Stüdyosu / Takım Adı",
+      "takimUyeleri": "Takım Üyeleri ve Rolleri",
+      "takimBuyuklugu": "Takım Büyüklüğü",
       "projeYoneticisi": "Proje Yöneticisi",
       "eposta": "E-posta",
-      "telefon": "Telefon",
-      "takimBuyuklugu": "Takım Büyüklüğü"
+      "telefon": "Telefon"
     },
     "oyunStudyosu": "Zeyond Games / Zeyond Team",
-    "projeYoneticisi": "Harun Kalli",
-    "eposta": "info@zeyondgames.com",
-    "telefon": "05453967663",
     "takimBuyuklugu": "2 kişi",
     "takimUyeleri": [
       {
+        "gorev": "Proje Yöneticisi",
         "ad": "Harun Kalli",
         "rol": "Game Development / Design",
         "hakkinda": "",
@@ -43,6 +42,10 @@
         "foto": "img/kisiler/nil.jpeg"
       }
     ],
+    "projeYoneticisi": "Harun Kalli",
+    "projeYoneticisiGorevi": "Program süresince resmi yazışma, süreç takibi ve iletişimden sorumlu birincil kişi. Bu e-posta ve telefon doğrudan ona ulaşır.",
+    "eposta": "info@zeyondgames.com",
+    "telefon": "05453967663",
     "not": "Küçük ekip bir zayıflık değil, bir kanıt: çalışan çekirdek döngü ve kendi seviye editörümüz, projeyi tek başımıza bitirebildiğimizi gösteriyor."
   },
   "03_2_0_Oyun_Konsepti": {

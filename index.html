@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=28">
+  <link rel="stylesheet" href="style.css?v=33">
   <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner. Varsayılan karanlık. -->
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-3")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 </head>
@@ -168,47 +168,46 @@
           data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.baslik">Girişim ve İletişim Bilgileri</h2>
 
       <!--
-        İletişim satırları sayfada gösterilmez: "hidden" ile gizlidir.
-        Silinmediler, çünkü JSON dışa aktarımı bu alanları hâlâ buradan
-        okur; geri getirmek için "hidden" özniteliğini kaldırmak yeterli.
+        Ekip şeması: kılavuzdaki bilgiler tek bir organizasyon şeması
+        olarak anlatılır. Üstte bir parantez iki kartı bağlar, ortasındaki
+        düğümde takım büyüklüğü durur. Proje yöneticisinin kartından inen
+        çizgi altta proje yöneticisi, e-posta ve telefon panelini bağlar:
+        iletişim bilgilerinin ona ait olduğu böyle görünür. Çizgiler CSS'tedir (style.css · EKİP ŞEMASI); --ara kart
+        aralığıdır.
+
+        01 stüdyo adı sayfada gösterilmez: "hidden" ile gizlidir. Silinmedi,
+        çünkü JSON dışa aktarımı bu alanı hâlâ buradan okur; geri getirmek
+        için "hidden" özniteliğini kaldırmak yeterli.
       -->
-      <dl class="kv" hidden>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.oyunStudyosu">Oyun Stüdyosu</dt>
-          <dd class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.oyunStudyosu"
-              data-placeholder="takımının ticari adı">Zeyond Games / Zeyond Team</dd>
+      <div class="ekip">
+        <div class="ekip-studyo" hidden>
+          <img class="ekip-logo" src="img/logo-maske.png" alt="">
+          <div class="ekip-studyo-metin">
+            <span class="ekip-etiket"><b>01</b><span class="field" contenteditable="true"
+                  data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.oyunStudyosu">Oyun Stüdyosu / Takım Adı</span></span>
+            <span class="field ekip-ad" lang="en" contenteditable="true"
+                  data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.oyunStudyosu"
+                  data-placeholder="takımının ticari adı">Zeyond Games / Zeyond Team</span>
+          </div>
         </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.projeYoneticisi">Proje Yöneticisi</dt>
-          <dd class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.projeYoneticisi"
-              data-placeholder="ad soyad">Harun Kalli</dd>
+
+        <!-- Parantezin ortasındaki düğüm: yalnızca simge ve takım büyüklüğü.
+             06 başlığı ve 05 etiketi görsel olarak gizlidir (.ekip-gizli):
+             ekran okuyucu okur, JSON'a yazılır. -->
+        <div class="ekip-dal">
+          <div class="ekip-dugum">
+            <h3 class="ekip-etiket ekip-gizli"><b>06</b><span class="field" contenteditable="true"
+                data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.takimUyeleri">Takım Üyeleri ve Rolleri</span></h3>
+            <div class="ekip-boyut">
+              <svg viewBox="0 0 40 20" aria-hidden="true"><circle cx="10" cy="6" r="4"/><path d="M2 20c0-5 3.5-8 8-8s8 3 8 8z"/><circle cx="30" cy="6" r="4"/><path d="M22 20c0-5 3.5-8 8-8s8 3 8 8z"/></svg>
+              <span class="ekip-etiket ekip-gizli"><b>05</b><span class="field" contenteditable="true"
+                    data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.takimBuyuklugu">Takım Büyüklüğü</span></span>
+              <span class="field ekip-boyut-deger" contenteditable="true"
+                    data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimBuyuklugu"
+                    data-placeholder="örn. 2 kişi">2 kişi</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.eposta">E-posta</dt>
-          <dd class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.eposta"
-              data-placeholder="aktif adres">info@zeyondgames.com</dd>
-        </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.telefon">Telefon</dt>
-          <dd class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.telefon"
-              data-placeholder="+90 5XX XXX XX XX">05453967663</dd>
-        </div>
-        <div>
-          <dt class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.takimBuyuklugu">Takım Büyüklüğü</dt>
-          <dd class="field" contenteditable="true"
-              data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimBuyuklugu"
-              data-placeholder="örn. 2 kişi">2 kişi</dd>
-        </div>
-      </dl>
 
       <!--
         Kişi kartları: iki köşesi kesik uzun kart, alt kenarda koyu bir
@@ -228,6 +227,8 @@
             <svg viewBox="0 0 100 125" preserveAspectRatio="xMidYMax meet"><circle cx="50" cy="46" r="19"/><path d="M12 125c0-26 16-42 38-42s38 16 38 42z"/></svg>
           </div>
           <figcaption class="kisi-etiket">
+            <span class="field kisi-gorev" contenteditable="true"
+                  data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.0.gorev">Proje Yöneticisi</span>
             <span class="field kisi-ad" contenteditable="true"
                   data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.0.ad">Harun Kalli</span>
             <span class="field kisi-rol" lang="en" contenteditable="true"
@@ -247,6 +248,42 @@
                   data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.1.rol">Game Art / Design</span>
           </figcaption>
         </figure>
+      </div>
+
+        <!-- Proje yöneticisi ve iletişim: Harun'un kartından inen çizgiyle bağlı -->
+        <div class="ekip-pm">
+          <div class="ekip-pm-kim">
+            <span class="ekip-etiket"><span class="field" contenteditable="true"
+                  data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.projeYoneticisi">Proje Yöneticisi</span></span>
+            <span class="field ekip-pm-ad" contenteditable="true"
+                  data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.projeYoneticisi"
+                  data-placeholder="ad soyad">Harun Kalli</span>
+            <span class="field ekip-pm-aciklama" contenteditable="true"
+                  data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.projeYoneticisiGorevi">Program süresince resmi yazışma, süreç takibi ve iletişimden sorumlu birincil kişi. Bu e-posta ve telefon doğrudan ona ulaşır.</span>
+          </div>
+          <ul class="ekip-iletisim">
+            <li>
+              <a class="ekip-ikon" href="mailto:info@zeyondgames.com" aria-label="E-posta gönder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg>
+              </a>
+              <span class="ekip-etiket"><span class="field" contenteditable="true"
+                    data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.eposta">E-posta</span></span>
+              <span class="field ekip-deger" contenteditable="true"
+                    data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.eposta"
+                    data-placeholder="aktif adres">info@zeyondgames.com</span>
+            </li>
+            <li>
+              <a class="ekip-ikon" href="tel:+905453967663" aria-label="Telefonla ara">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+              </a>
+              <span class="ekip-etiket"><span class="field" contenteditable="true"
+                    data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.telefon">Telefon</span></span>
+              <span class="field ekip-deger" contenteditable="true"
+                    data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.telefon"
+                    data-placeholder="+90 5XX XXX XX XX">05453967663</span>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <!--
@@ -1067,16 +1104,16 @@ https://www.artstation.com/nilneal</dd>
 
 
   <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
-  <script src="js/depo.js?v=28"></script>
-  <script src="js/alanlar.js?v=28"></script>
-  <script src="js/skala.js?v=28"></script>
-  <script src="js/fotolar.js?v=28"></script>
-  <script src="js/etiketler.js?v=28"></script>
-  <script src="js/aktarim.js?v=28"></script>
-  <script src="js/gorunum.js?v=28"></script>
-  <script src="js/gezinme.js?v=28"></script>
-  <script src="js/pencere.js?v=28"></script>
-  <script src="js/kaydirma.js?v=28"></script>
-  <script src="js/main.js?v=28"></script>
+  <script src="js/depo.js?v=33"></script>
+  <script src="js/alanlar.js?v=33"></script>
+  <script src="js/skala.js?v=33"></script>
+  <script src="js/fotolar.js?v=33"></script>
+  <script src="js/etiketler.js?v=33"></script>
+  <script src="js/aktarim.js?v=33"></script>
+  <script src="js/gorunum.js?v=33"></script>
+  <script src="js/gezinme.js?v=33"></script>
+  <script src="js/pencere.js?v=33"></script>
+  <script src="js/kaydirma.js?v=33"></script>
+  <script src="js/main.js?v=33"></script>
 </body>
 </html>

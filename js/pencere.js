@@ -16,6 +16,7 @@ window.GDD = window.GDD || {};
 
       const ad = kart.querySelector(".kisi-ad");
       const rol = kart.querySelector(".kisi-rol");
+      const gorev = kart.querySelector(".kisi-gorev");
 
       function doldur() {
         const kutu = pencere.querySelector(".pencere-foto");
@@ -26,7 +27,9 @@ window.GDD = window.GDD || {};
 
         pencere.querySelector(".pencere-no").textContent = "ID · " + String(sira + 1).padStart(2, "0");
         pencere.querySelector(".pencere-ad").textContent = ad ? ad.textContent : "";
-        pencere.querySelector(".pencere-rol").textContent = rol ? rol.textContent : "";
+        // Görev rozeti varsa (örn. Proje Yöneticisi) rolün önüne eklenir
+        const roller = [gorev, rol].map(function (e) { return e ? e.textContent.trim() : ""; });
+        pencere.querySelector(".pencere-rol").textContent = roller.filter(Boolean).join(" · ");
       }
 
       function ac() {
