@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=37">
+  <link rel="stylesheet" href="style.css?v=41">
   <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner. Varsayılan karanlık. -->
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-3")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 </head>
@@ -268,7 +268,7 @@
               </a>
               <span class="ekip-etiket"><span class="field" contenteditable="true"
                     data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.eposta">E-posta</span></span>
-              <span class="field ekip-deger" contenteditable="true"
+              <span class="field ekip-deger" contenteditable="true" data-baglanti="eposta"
                     data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.eposta"
                     data-placeholder="aktif adres">info@zeyondgames.com</span>
             </li>
@@ -278,7 +278,7 @@
               </a>
               <span class="ekip-etiket"><span class="field" contenteditable="true"
                     data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.basliklar.telefon">Telefon</span></span>
-              <span class="field ekip-deger" contenteditable="true"
+              <span class="field ekip-deger" contenteditable="true" data-baglanti="tel"
                     data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.telefon"
                     data-placeholder="+90 5XX XXX XX XX">05453967663</span>
             </li>
@@ -830,21 +830,21 @@ Visual Scripting: tasarımcı dostu state machine ve node tabanlı akış. İkis
         <div>
           <dt class="field" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.basliklar.linkler_prototip">Oynanabilir Prototip</dt>
-          <dd class="field empty" contenteditable="true"
+          <dd class="field empty" contenteditable="true" data-baglanti="url"
               data-field="09_3_1_Proof_of_Concept.linkler.prototip"
               data-placeholder="herkese açık WebGL / itch.io linki"></dd>
         </div>
         <div>
           <dt class="field" lang="en" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.basliklar.linkler_video">Video Pitch</dt>
-          <dd class="field empty" contenteditable="true"
+          <dd class="field empty" contenteditable="true" data-baglanti="url"
               data-field="09_3_1_Proof_of_Concept.linkler.video"
               data-placeholder="en fazla 3 dk, YouTube / Vimeo"></dd>
         </div>
         <div>
           <dt class="field" contenteditable="true"
               data-field="09_3_1_Proof_of_Concept.basliklar.linkler_portfolyo">Portfolyo</dt>
-          <dd class="field" contenteditable="true"
+          <dd class="field" contenteditable="true" data-baglanti="url"
               data-field="09_3_1_Proof_of_Concept.linkler.portfolyo"
               data-placeholder="GitHub / ArtStation / itch.io">https://www.artstation.com/harunkll
 https://www.artstation.com/nilneal</dd>
@@ -1170,24 +1170,30 @@ https://www.artstation.com/nilneal</dd>
     <p class="lead field" contenteditable="true"
        data-field="16_Slide_Arka_Kapagi.mesaj">Küçük bir ekip, net bir fikir ve bitirilmiş bir çekirdek döngü. Deep Jam'de aradığımız şey para değil, bu oyunu pazara taşıyacak yol arkadaşlığı.</p>
 
-    <a class="mail field" contenteditable="true"
-       data-field="16_Slide_Arka_Kapagi.iletisim"
-       data-placeholder="iletisim@ornek.com">info@zeyondgames.com</a>
+    <div class="mail-kap">
+      <a class="ekip-ikon" href="mailto:info@zeyondgames.com" aria-label="E-posta gönder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg>
+      </a>
+      <span class="mail field" contenteditable="true" data-baglanti="eposta"
+            data-field="16_Slide_Arka_Kapagi.iletisim"
+            data-placeholder="iletisim@ornek.com">info@zeyondgames.com</span>
+    </div>
   </section>
 
 
   <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
-  <script src="js/depo.js?v=37"></script>
-  <script src="js/alanlar.js?v=37"></script>
-  <script src="js/skala.js?v=37"></script>
-  <script src="js/fotolar.js?v=37"></script>
-  <script src="js/etiketler.js?v=37"></script>
-  <script src="js/aktarim.js?v=37"></script>
-  <script src="js/gorunum.js?v=37"></script>
-  <script src="js/gezinme.js?v=37"></script>
-  <script src="js/pencere.js?v=37"></script>
-  <script src="js/kaydirma.js?v=37"></script>
-  <script src="js/hexalan.js?v=37"></script>
-  <script src="js/main.js?v=37"></script>
+  <script src="js/depo.js?v=41"></script>
+  <script src="js/alanlar.js?v=41"></script>
+  <script src="js/skala.js?v=41"></script>
+  <script src="js/fotolar.js?v=41"></script>
+  <script src="js/etiketler.js?v=41"></script>
+  <script src="js/aktarim.js?v=41"></script>
+  <script src="js/gorunum.js?v=41"></script>
+  <script src="js/gezinme.js?v=41"></script>
+  <script src="js/pencere.js?v=41"></script>
+  <script src="js/kaydirma.js?v=41"></script>
+  <script src="js/hexalan.js?v=41"></script>
+  <script src="js/baglantilar.js?v=41"></script>
+  <script src="js/main.js?v=41"></script>
 </body>
 </html>

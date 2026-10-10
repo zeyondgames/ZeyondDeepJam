@@ -406,9 +406,15 @@ body[data-zemin="sicak"]::after { opacity: 1; }
 .outro h2::after { display: none; }
 .outro .lead { margin-top: 1.6rem; }
 
+/* Arka kapak iletişimi: solda açılan e-posta düğmesi, yanında düzenlenen adres */
+.mail-kap {
+  display: inline-flex;
+  align-items: center;
+  gap: .9rem;
+  margin-top: 2.4rem;
+}
 .mail {
   display: inline-block;
-  margin-top: 2.4rem;
   padding: .85rem 1.7rem;
   font-family: var(--mono);
   font-size: .9rem;
@@ -780,6 +786,61 @@ h2 + .altbaslik { margin-top: 0; }
   stroke-width: 2;
   stroke-linejoin: round;
 }
+/* Bağlantı alanının altında açılan düğmeler (js/baglantilar.js): ekip
+   iletişimindeki altıgen ikonun aynısı, yanında sitenin adı */
+.baglantilar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem 1.4rem;
+  margin-top: .9rem;
+}
+.baglanti {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .06em;
+  color: var(--accent);
+  text-decoration: none;
+}
+.baglanti .ekip-ikon { flex: none; width: 2.1rem; height: 2.35rem; }
+.baglanti .ekip-ikon svg { width: .95rem; height: .95rem; }
+/* Marka logosu olan siteler kendi renginde: koyu altıgen, mavi işaret */
+.baglanti .ikon-artstation { background: #171717; }
+.baglanti .ikon-artstation svg { width: 1.05rem; height: 1.05rem; fill: #13aff0; stroke: none; }
+.baglanti-ad { overflow-wrap: anywhere; }
+
+/* Linkler düğmeye dönüşünce ham adres metni gizlenir; kalemle açılır */
+.field.baglanti-gizli { display: none; }
+.baglantilar { align-items: center; }
+.field.baglanti-gizli + .baglantilar { margin-top: 0; }
+.baglanti-duzenle {
+  display: grid;
+  place-items: center;
+  width: 2rem; height: 2rem;
+  padding: 0;
+  color: var(--muted);
+  background: none;
+  border: 1px dashed var(--line);
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+.baglanti-duzenle:hover { color: var(--accent); border-color: var(--accent); }
+.baglanti-duzenle:focus-visible { outline: 2px solid var(--isi2); outline-offset: 3px; }
+.baglanti-duzenle svg {
+  width: .9rem; height: .9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.sunum .baglanti-duzenle { display: none; }
+.baglanti:hover .ekip-ikon { filter: brightness(1.15); }
+.baglanti:hover .baglanti-ad { text-decoration: underline; text-underline-offset: .25em; }
+.baglanti:focus-visible { outline: 2px solid var(--isi2); outline-offset: 3px; }
+
 .ekip-deger {
   font-size: 1.05rem;
   line-height: 1.4;
