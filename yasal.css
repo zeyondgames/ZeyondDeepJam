@@ -1,0 +1,290 @@
+/*═══════════════════  YASAL DAYANAKLAR SAYFASI  ═══════════════════*/
+/* yasal.html: başvuru sitesinin tema değişkenlerini, üst çubuğunu,
+   başlık / numara / not / künye ve bağlantı düğmesi bileşenlerini
+   style.css'ten alır. Burada yalnızca okuma sayfasına özel parçalar durur. */
+
+
+/*───── Dil seçimi ─────*/
+/* İki metin de sayfada; görünen dil <html lang> ile seçilir (js/yasal.js) */
+html[lang="tr"] [data-dil-en],
+html[lang="en"] [data-dil-tr] { display: none !important; }
+
+/* Sağ üst köşe: başvuru sayfasındaki araç simgesinin yeri */
+.dil {
+  position: fixed;
+  top: 0; right: 20px;
+  z-index: 21;
+  height: var(--cubuk-boy);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.dil button {
+  min-width: 2.7rem;
+  padding: .45rem .7rem;
+  font-family: var(--mono);
+  font-size: .76rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  color: var(--cubuk-yazi);
+  background: none;
+  border: 1px solid var(--cubuk-cizgi);
+  cursor: pointer;
+  transition: color .2s, background .2s, border-color .2s;
+}
+.dil button:hover { color: var(--accent); background: var(--glow-soft); }
+.dil button[aria-pressed="true"] {
+  color: #05070a;
+  background: linear-gradient(135deg, var(--isi1), var(--isi2));
+  border-color: transparent;
+}
+.dil button:focus-visible { outline: 1px solid var(--cubuk-yazi); outline-offset: 2px; }
+
+/* Üst çubukta başvuruya dönüş bağlantısı */
+.menu .geri {
+  --c1: var(--cubuk-yazi);
+  --c2: var(--cubuk-yazi);
+}
+@media (max-width: 1100px) {
+  .menu .geri { margin-left: .4rem; font-size: .78rem; }
+}
+@media (max-width: 420px) {
+  .menu .geri { letter-spacing: .04em; padding-inline: 6px; }
+}
+
+
+/*───── Sayfa ─────*/
+
+.yasal {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: calc(var(--cubuk-boy) + 3.5rem) 16px 5rem;
+}
+@media (min-width: 700px) {
+  .yasal { padding-inline: clamp(24px, 5vw, 3rem); }
+}
+.yasal p { max-width: 46rem; margin-top: .9rem; font-size: 1.05rem; }
+.yasal h2 { margin-bottom: 1.8rem; overflow-wrap: anywhere; }
+
+.yasal-giris {
+  font-size: 1.25rem !important;
+  line-height: 1.55;
+}
+.kunye { margin-top: 2.4rem; }
+.kunye dd { font-size: 1rem; }
+
+/* İki bölüme atlayan kartlar */
+.ozet {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1rem;
+  margin: 3.4rem 0 1rem;
+}
+.ozet a {
+  position: relative;
+  display: grid;
+  gap: .35rem;
+  padding: 1.3rem 1.4rem 1.4rem;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--yuzey);
+  border: 1px solid var(--line);
+  transition: border-color .2s, background .2s;
+}
+.ozet a::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 3.5rem; height: 2px;
+  background: linear-gradient(90deg, var(--isi1), var(--isi2));
+}
+.ozet a:hover { border-color: var(--accent); background: var(--glow-soft); }
+.ozet a:focus-visible { outline: 2px solid var(--isi2); outline-offset: 3px; }
+.ozet-no {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .28em;
+  color: var(--accent);
+}
+.ozet-ad {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: .03em;
+}
+.ozet-kanun { font-size: .9rem; color: var(--muted); }
+
+/* Bölüm: büyük, içi boş numara ve başlık */
+.yasal-bolum {
+  position: relative;
+  margin-top: 5rem;
+  padding-top: 2.6rem;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: calc(var(--cubuk-boy) + 1rem);
+}
+.yasal-bolum::before {
+  content: "";
+  position: absolute;
+  top: -.4rem; left: 0;
+  width: .7rem; height: .8rem;
+  background: var(--accent);
+  clip-path: var(--altigen);
+}
+.bolum-no {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--soft);
+}
+.yasal-baslik {
+  margin: .6rem 0 1.8rem;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+.yasal .altbaslik { margin-top: 2.8rem; }
+
+/* Onaylanan beyan metni */
+.beyan {
+  max-width: 50rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--yuzey);
+  border-left: 2px solid var(--accent);
+}
+.beyan figcaption {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.beyan blockquote {
+  margin-top: .6rem;
+  font-size: 1.12rem;
+  line-height: 1.6;
+}
+
+/* Madde listeleri: önünde küçük altıgen işaret */
+.liste {
+  max-width: 48rem;
+  margin-top: 1rem;
+  list-style: none;
+  display: grid;
+  gap: .75rem;
+}
+.liste li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 1.02rem;
+}
+.liste li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .6em;
+  width: .45rem; height: .5rem;
+  background: var(--soft);
+  clip-path: var(--altigen);
+}
+.liste b { font-weight: 600; color: var(--text); }
+.liste.kucuk li { font-size: .92rem; color: var(--muted); }
+
+/* Kanun adı ve Resmî Gazete künyesi */
+.yasal .kanun {
+  margin-top: 1.8rem;
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.kanun span {
+  display: block;
+  margin-top: .25rem;
+  letter-spacing: .06em;
+  text-transform: none;
+  color: var(--muted);
+}
+
+/* Madde numarası solda, açıklaması sağda */
+.dayanak {
+  max-width: 54rem;
+  margin-top: .9rem;
+  border-top: 1px solid var(--line);
+}
+.dayanak > div {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: .3rem 1.4rem;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.dayanak dt {
+  font-family: var(--mono);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1.9;
+  color: var(--accent);
+}
+.dayanak dd { font-size: .98rem; line-height: 1.6; }
+@media (max-width: 560px) {
+  .dayanak > div { grid-template-columns: 1fr; }
+}
+
+/* KVKK md. 11 hakları: (a)–(ğ) bentleri */
+.haklar {
+  max-width: 50rem;
+  margin-top: 1rem;
+  list-style: none;
+  counter-reset: bent;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: .6rem 1.6rem;
+}
+.haklar li {
+  counter-increment: bent;
+  position: relative;
+  padding: .7rem .9rem .7rem 3rem;
+  font-size: .96rem;
+  background: var(--yuzey);
+  border: 1px solid var(--line);
+}
+.haklar li::before {
+  position: absolute;
+  left: .9rem; top: .7rem;
+  font-family: var(--mono);
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+/* Kanundaki bent harfleri: a, b, c, ç, d, e, f, g, ğ */
+.haklar li:nth-child(1)::before { content: "a"; }
+.haklar li:nth-child(2)::before { content: "b"; }
+.haklar li:nth-child(3)::before { content: "c"; }
+.haklar li:nth-child(4)::before { content: "ç"; }
+.haklar li:nth-child(5)::before { content: "d"; }
+.haklar li:nth-child(6)::before { content: "e"; }
+.haklar li:nth-child(7)::before { content: "f"; }
+.haklar li:nth-child(8)::before { content: "g"; }
+.haklar li:nth-child(9)::before { content: "ğ"; }
+
+.yasal .baglantilar { margin-top: 1rem; }
+
+.yasal-son {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.yasal-son .kanun { margin-top: 0; }
+.yasal .uyari {
+  margin-top: 2rem;
+  font-size: .88rem;
+  color: var(--muted);
+}

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yasal Dayanaklar · Zeyond Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css?v=44">
+  <link rel="stylesheet" href="yasal.css?v=44">
+  <!-- Tema başvuru sayfasıyla aynı anahtardan; dil ?lang=en ya da kayıtlı tercihten.
+       İkisi de sayfa çizilmeden uygulanır, yanlış dil bir an görünmesin. -->
+  <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem("zeyond-tema-3") || "dark"; }
+    catch (e) { document.documentElement.dataset.theme = "dark"; }
+    (function () {
+      var dil = new URLSearchParams(location.search).get("lang");
+      if (!dil) { try { dil = localStorage.getItem("zeyond-yasal-dil"); } catch (e) {} }
+      document.documentElement.lang = dil === "en" ? "en" : "tr";
+    })();
+  </script>
+</head>
+
+<!--
+  Başvurunun 5.2 slaytındaki iki onayın (telif / özgünlük ve KVKK / GDPR
+  açık rızası) yasal dayanağı. Metnin Türkçesi ve İngilizcesi aynı sırayla
+  iki ayrı <main> içinde durur; dil anahtarı yalnızca hangisinin
+  görüneceğini seçer (js/yasal.js). Bir dilde yapılan değişiklik öteki dile
+  de aynı yerde yapılmalı.
+-->
+
+<body>
+
+  <nav class="menu" aria-label="Zeyond Games">
+    <a class="logo" href="index.html" aria-label="Zeyond Games · Başvuruya dön"><img src="img/logo-maske.png" alt="Zeyond Games"></a>
+    <a class="geri" href="index.html#s15" data-bolum="5">
+      <span data-dil-tr>← Başvuruya dön</span><span data-dil-en>← Back to application</span>
+    </a>
+  </nav>
+
+  <div class="dil" role="group" aria-label="Dil / Language">
+    <button type="button" data-dil="tr" lang="tr">TR</button>
+    <button type="button" data-dil="en" lang="en">EN</button>
+  </div>
+
+
+  <!--═══════════════════  TÜRKÇE  ═══════════════════-->
+
+  <main class="yasal" lang="tr" data-dil-tr>
+    <header class="yasal-bas">
+      <span class="num">5.2 · Taahhüt &amp; Uygunluk · Ek</span>
+      <h2>Şartlar ve Gizlilik: Yasal Dayanaklar</h2>
+      <p class="yasal-giris">Hexafield ile GameDev.ist Deep Jam programına yaptığımız başvuruda iki beyanı onayladık. Bu sayfa, her birinin hangi kanun maddelerine dayandığını ve bizim durumumuzda tam olarak neyi kapsadığını açıklar.</p>
+
+      <dl class="kv kunye">
+        <div><dt>Başvuran</dt><dd>Zeyond Games / Zeyond Team</dd></div>
+        <div><dt>Proje</dt><dd>Hexafield</dd></div>
+        <div><dt>Program</dt><dd>GameDev.ist · Deep Jam</dd></div>
+        <div><dt>Ekip</dt><dd>Harun Kalli, Nil Neal</dd></div>
+        <div><dt>Son güncelleme</dt><dd>10 Ekim 2026</dd></div>
+      </dl>
+    </header>
+
+    <nav class="ozet" aria-label="Bölümler">
+      <a href="#tr-telif">
+        <span class="ozet-no">01</span>
+        <span class="ozet-ad">Telif Hakkı ve Özgünlük Beyanı</span>
+        <span class="ozet-kanun">5846 sayılı Fikir ve Sanat Eserleri Kanunu</span>
+      </a>
+      <a href="#tr-kvkk">
+        <span class="ozet-no">02</span>
+        <span class="ozet-ad">KVKK / GDPR Açık Rıza</span>
+        <span class="ozet-kanun">6698 sayılı KVKK · AB 2016/679 (GDPR)</span>
+      </a>
+    </nav>
+
+    <!-- 01 · TELİF -->
+    <section class="yasal-bolum" id="tr-telif">
+      <span class="bolum-no">01</span>
+      <h3 class="yasal-baslik">Telif Hakkı ve Özgünlük Beyanı</h3>
+
+      <figure class="beyan">
+        <figcaption>Onayladığımız metin</figcaption>
+        <blockquote>Bu başvurudaki tüm fikri mülkiyetin, oyun içeriğinin, görsel varlıkların ve kodun ya tamamen ekibimizin özgün yaratımı olduğunu ya da kullanımı için gerekli tüm lisans ve izinlere sahip olduğumuzu beyan ederiz.</blockquote>
+      </figure>
+
+      <h4 class="altbaslik">Bu beyan bizim için neyi kapsıyor</h4>
+      <ul class="liste">
+        <li><b>Oyun tasarımı:</b> Hexafield'ın procedural hex arenası, çekirdek döngüsü (Durability, Battery, Stamina, Mag), sistem ve seviye tasarımı.</li>
+        <li><b>Kaynak kod:</b> Unity üzerinde yazdığımız C# sınıfları ile state machine ve algoritma akışlarını kurduğumuz Visual Scripting grafikleri.</li>
+        <li><b>WorldBuilder:</b> Arena içeriğini üretmek için kendi geliştirdiğimiz seviye editörü.</li>
+        <li><b>Görsel varlıklar:</b> Konsept görseller, robot ve arayüz tasarımları, logo ve bu başvuru sitesindeki tüm görseller.</li>
+        <li><b>Başvuru sitesi:</b> Bu sitenin kodu, metinleri ve tasarımı.</li>
+      </ul>
+
+      <h4 class="altbaslik">Eser sahipliği</h4>
+      <p>Bu eserler ekibimizin iki üyesinin ortak emeğidir: oyun geliştirme ve tasarımda Harun Kalli, oyun sanatı ve tasarımda Nil Neal. Kanuna göre eser sahibi, eseri meydana getiren kişidir; ayrılamayacak biçimde birlikte üretilen eserlerde sahiplik ekibin birliğine aittir ve haklar birlikte kullanılır. Koruma eserin yaratıldığı anda kendiliğinden doğar, tescil şartı aranmaz.</p>
+      <p>Ekip dışından katkı alınırsa (ör. sipariş üzerine müzik ya da model), o katkının mali hakları kanunun aradığı biçimde yazılı bir sözleşmeyle devralınır ya da lisanslanır.</p>
+
+      <h4 class="altbaslik">Yapay zekâ kullanımı</h4>
+      <p>Geliştirme sürecinde abonelikli yapay zekâ araçlarını yardımcı araç olarak kullanıyoruz: Claude (Anthropic), ChatGPT (OpenAI) ve GitHub Copilot. Bu araçlardan kodda, görsellerde, metinlerde ve bu sitede, ses ve müzik çalışmalarında yararlanıyoruz.</p>
+      <ul class="liste">
+        <li><b>İnsan katkısı:</b> Araçların ürettiği çıktıları biz seçer, düzenler, yeniden yazar ve projeye uyarlarız. Oyunun tasarımına, koduna ve görsel diline ilişkin nihai kararların tamamı ekibimize aittir.</li>
+        <li><b>Çıktıların hakları:</b> Anthropic ve OpenAI'ın kullanım şartları, çıktılar üzerinde sahip oldukları hakları (varsa) kullanıcıya devreder; GitHub, Copilot önerileri üzerinde mülkiyet iddia etmez. Araçları kullanım şartlarına uygun, ücretli aboneliklerle kullanıyoruz.</li>
+        <li><b>Koruma kapsamı:</b> FSEK eseri sahibinin hususiyetini taşıyan ürün olarak tanımlar (md. 1/B) ve eser sahibini eseri meydana getiren kişi olarak belirler (md. 8); kanunda yapay zekâ çıktılarına özgü bir hüküm yoktur. Bu nedenle korumanın dayanağı, çıktıları seçme, düzenleme ve bir araya getirmedeki kendi yaratıcı katkımızdır.</li>
+        <li><b>Yayın:</b> Oyun mağazalara çıktığında yapay zekâ kullanımını mağazaların istediği biçimde (ör. Steam'in içerik anketindeki yapay zekâ beyanı) ayrıca bildireceğiz.</li>
+      </ul>
+
+      <h4 class="altbaslik">Kullandığımız üçüncü taraf araç ve varlıklar</h4>
+      <ul class="liste">
+        <li><b>Unity Engine:</b> Unity'nin hizmet şartları ve lisans planı kapsamında kullanılır. Motorla üretilen oyunun içeriği ve kodu üzerindeki haklar geliştiricide kalır.</li>
+        <li><b>Chakra Petch ve JetBrains Mono yazı tipleri:</b> SIL Open Font License 1.1 ile lisanslıdır; ticari kullanım dahil serbestçe kullanılabilir, yalnızca yazı tipinin kendisi tek başına satılamaz.</li>
+        <li><b>Hazır model, ses ve müzik:</b> Unity Asset Store ya da başka kaynaklardan alınan her varlık, yalnızca ticari kullanıma izin veren bir lisansla (ör. Standard Unity Asset Store EULA) kullanılır.</li>
+      </ul>
+
+      <h4 class="altbaslik">Yasal dayanak</h4>
+      <p class="kanun">5846 sayılı Fikir ve Sanat Eserleri Kanunu (FSEK) <span>Resmî Gazete: 13.12.1951 · Sayı 7981</span></p>
+      <dl class="dayanak">
+        <div><dt>md. 1/B</dt><dd>Eser, eser sahibi ve işleme tanımları. Eserin <i>sahibinin hususiyetini taşıması</i> şartı, özgünlük beyanımızın hukuki karşılığıdır.</dd></div>
+        <div><dt>md. 2</dt><dd>Bilgisayar programları ve hazırlık tasarımları ilim ve edebiyat eseridir: C# kodumuz, Visual Scripting grafiklerimiz ve WorldBuilder.</dd></div>
+        <div><dt>md. 3</dt><dd>Musiki eserleri: oyuna eklenecek özgün müzik ve sesler.</dd></div>
+        <div><dt>md. 4</dt><dd>Güzel sanat eserleri (resim, çizim, grafik, tasarım): konsept görseller, karakter ve arayüz tasarımları, logo.</dd></div>
+        <div><dt>md. 8</dt><dd>Eser sahibi, eseri meydana getirendir.</dd></div>
+        <div><dt>md. 10</dt><dd>Birden fazla kişinin katılımıyla meydana gelen ve kısımlara ayrılamayan eserde eser sahibi, onu meydana getirenlerin birliğidir.</dd></div>
+        <div><dt>md. 14–17</dt><dd>Manevi haklar: umuma arz, adın belirtilmesi, eserde değişiklik yapılmasını önleme.</dd></div>
+        <div><dt>md. 21–25</dt><dd>Mali haklar: işleme, çoğaltma, yayma, temsil ve umuma iletim. Oyunu yayımlama ve dağıtma yetkisi bu haklardan doğar.</dd></div>
+        <div><dt>md. 48</dt><dd>Mali hakların devri ve kullanma izni (lisans).</dd></div>
+        <div><dt>md. 52</dt><dd>Mali haklara ilişkin sözleşmeler yazılı yapılır ve konu olan haklar tek tek gösterilir.</dd></div>
+        <div><dt>md. 66–68</dt><dd>Hak ihlalinde tecavüzün ref'i, men ve tazminat davaları.</dd></div>
+        <div><dt>md. 71</dt><dd>İzinsiz çoğaltma, yayma ve benzeri ihlaller için hapis veya adli para cezası.</dd></div>
+      </dl>
+      <p class="kanun">Uluslararası düzenlemeler</p>
+      <dl class="dayanak">
+        <div><dt>Bern md. 2, 5/2</dt><dd>Edebiyat ve Sanat Eserlerinin Korunmasına İlişkin Bern Sözleşmesi (Türkiye taraftır): korunan eserler ve korumanın hiçbir şekli işleme bağlı olmaması.</dd></div>
+        <div><dt>TRIPS md. 10/1</dt><dd>Bilgisayar programları, kaynak ya da nesne kodu fark etmeksizin Bern Sözleşmesi uyarınca edebiyat eseri olarak korunur.</dd></div>
+      </dl>
+
+      <div class="note">Yanlış beyanın sonucu: program şartlarına göre başvurunun diskalifiye edilmesi; hak sahiplerine karşı ise FSEK md. 66–68 uyarınca hukuki, md. 71 uyarınca cezai sorumluluk.</div>
+    </section>
+
+    <!-- 02 · KVKK -->
+    <section class="yasal-bolum" id="tr-kvkk">
+      <span class="bolum-no">02</span>
+      <h3 class="yasal-baslik">KVKK / GDPR Açık Rıza</h3>
+
+      <figure class="beyan">
+        <figcaption>Onayladığımız metin</figcaption>
+        <blockquote>Sağladığımız kişisel verilerin (Ad, Soyad, E-posta, Telefon) KVKK'ya uygun olarak yalnızca başvuru değerlendirmesi, program yönetimi ve yasal yükümlülükler için işleneceğini okuduk; koşulları anladık ve veri işlenmesine açık rıza gösteriyoruz.</blockquote>
+      </figure>
+
+      <h4 class="altbaslik">Bizim durumumuzda işlenen veriler</h4>
+      <dl class="kv">
+        <div><dt>Kimlik</dt><dd>Ekip üyelerinin adı ve soyadı: Harun Kalli, Nil Neal</dd></div>
+        <div><dt>İletişim</dt><dd>info@zeyondgames.com ve proje yöneticisinin cep telefonu numarası</dd></div>
+        <div><dt>Ekip bilgisi</dt><dd>Ekipteki roller; başvuru sitesinde ayrıca ekip fotoğrafları</dd></div>
+      </dl>
+
+      <h4 class="altbaslik">Taraflar ve amaç</h4>
+      <ul class="liste">
+        <li><b>Veri sorumlusu:</b> Deep Jam programını yürüten kuruluş (GameDev.ist). Verilerin neden ve nasıl işleneceğine o karar verir.</li>
+        <li><b>İlgili kişi:</b> Verileri işlenen ekip üyeleri, yani Harun Kalli ve Nil Neal.</li>
+        <li><b>Alıcılar:</b> Programa bağlı yetkili mentorlar ve ortaklar. Veriler onlarla yalnızca aşağıdaki amaçlar için ve sınırlı olarak paylaşılır.</li>
+        <li><b>Amaçlar:</b> Başvurunun değerlendirilmesi, program yönetimi ve yasal yükümlülükler. Yetkisiz pazarlama faaliyetleri bu kapsamın dışındadır.</li>
+      </ul>
+
+      <h4 class="altbaslik">Yasal dayanak</h4>
+      <p class="kanun">6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) <span>Resmî Gazete: 07.04.2016 · Sayı 29677</span></p>
+      <dl class="dayanak">
+        <div><dt>md. 3/1-a</dt><dd>Açık rıza: belirli bir konuya ilişkin, bilgilendirilmeye dayanan ve özgür iradeyle açıklanan rıza. Onayımız bu sayfada belirtilen veriler ve amaçlarla sınırlıdır.</dd></div>
+        <div><dt>md. 3/1-ı</dt><dd>Veri sorumlusu tanımı: işleme amaçlarını ve vasıtalarını belirleyen kişi ya da kuruluş.</dd></div>
+        <div><dt>md. 4</dt><dd>Genel ilkeler: hukuka ve dürüstlük kurallarına uygunluk, doğruluk ve güncellik, belirli, açık ve meşru amaç, amaçla bağlantılı, sınırlı ve ölçülü olma, gerektiği süre kadar saklama.</dd></div>
+        <div><dt>md. 5/1</dt><dd>Kişisel veriler ilgili kişinin açık rızası ile işlenir. Verdiğimiz onayın dayanağı budur.</dd></div>
+        <div><dt>md. 5/2</dt><dd>Rıza aranmayan hâller; özellikle (c) bir sözleşmenin kurulması veya ifası, (ç) veri sorumlusunun hukuki yükümlülüğü, (f) meşru menfaat. Başvurunun değerlendirilmesi ve yasal yükümlülükler bu bentlere de dayanabilir; açık rızamız bunlara ek olarak verilir.</dd></div>
+        <div><dt>md. 7</dt><dd>İşleme amacı ortadan kalkınca veriler silinir, yok edilir ya da anonim hâle getirilir.</dd></div>
+        <div><dt>md. 8</dt><dd>Yurt içine aktarım: mentorlar ve ortaklarla paylaşım bu madde çerçevesinde yapılır.</dd></div>
+        <div><dt>md. 9</dt><dd>Yurt dışına aktarım. 7499 sayılı Kanunla değişik hâliyle (01.06.2024'ten beri) yeterlilik kararı, uygun güvence (ör. standart sözleşme) ya da arızi aktarım şartlarından birini arar.</dd></div>
+        <div><dt>md. 10</dt><dd>Aydınlatma yükümlülüğü: veri sorumlusu kimliğini, amaçları, alıcıları, toplama yöntemini ve hukuki sebebi bildirir.</dd></div>
+        <div><dt>md. 11</dt><dd>İlgili kişinin hakları (aşağıda).</dd></div>
+        <div><dt>md. 12</dt><dd>Veri güvenliği: hukuka aykırı işlemeyi ve erişimi önleyecek teknik ve idari tedbirler.</dd></div>
+        <div><dt>md. 13</dt><dd>Veri sorumlusuna başvuru: talep en geç otuz gün içinde ve kural olarak ücretsiz sonuçlandırılır.</dd></div>
+        <div><dt>md. 14</dt><dd>Başvurusu reddedilen ya da yanıt alamayan ilgili kişi Kişisel Verileri Koruma Kurulu'na şikâyette bulunabilir.</dd></div>
+      </dl>
+      <p class="kanun">İkincil düzenlemeler</p>
+      <ul class="liste kucuk">
+        <li>Aydınlatma Yükümlülüğünün Yerine Getirilmesinde Uyulacak Usul ve Esaslar Hakkında Tebliğ (RG 10.03.2018 · 30356)</li>
+        <li>Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ (RG 10.03.2018 · 30356)</li>
+        <li>Kişisel Verilerin Silinmesi, Yok Edilmesi veya Anonim Hale Getirilmesi Hakkında Yönetmelik (RG 28.10.2017 · 30224)</li>
+      </ul>
+
+      <p class="kanun">AB Genel Veri Koruma Tüzüğü (GDPR) <span>Tüzük (AB) 2016/679</span></p>
+      <p>Başvuru Türkiye'de yürütülen bir program için yapıldığından esas olarak KVKK uygulanır. GDPR, 3. madde uyarınca veri sorumlusu ya da verileri işleyen ortaklar Avrupa Birliği'nde bulunuyorsa devreye girer.</p>
+      <dl class="dayanak">
+        <div><dt>md. 4(11)</dt><dd>Rıza tanımı: özgür, belirli, bilgilendirilmiş ve açık bir irade beyanı.</dd></div>
+        <div><dt>md. 6(1)(a)</dt><dd>Rızaya dayalı işleme.</dd></div>
+        <div><dt>md. 7(3)</dt><dd>Rıza her zaman geri alınabilir; geri alma, öncesinde yapılan işlemenin hukuka uygunluğunu etkilemez.</dd></div>
+        <div><dt>md. 13</dt><dd>Veri toplanırken verilecek bilgiler.</dd></div>
+        <div><dt>md. 15–22</dt><dd>Erişim, düzeltme, silme, kısıtlama, taşınabilirlik ve itiraz hakları.</dd></div>
+        <div><dt>md. 44–49</dt><dd>Üçüncü ülkelere aktarım.</dd></div>
+      </dl>
+
+      <h4 class="altbaslik">Haklarımız (KVKK md. 11)</h4>
+      <ol class="haklar">
+        <li>Kişisel verilerimizin işlenip işlenmediğini öğrenme</li>
+        <li>İşlenmişse buna ilişkin bilgi talep etme</li>
+        <li>İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme</li>
+        <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme</li>
+        <li>Eksik veya yanlış işlenmişse düzeltilmesini isteme</li>
+        <li>7. madde çerçevesinde silinmesini veya yok edilmesini isteme</li>
+        <li>Düzeltme, silme ve yok etme işlemlerinin aktarılan üçüncü kişilere bildirilmesini isteme</li>
+        <li>Yalnızca otomatik sistemlerle analiz edilerek aleyhimize çıkan bir sonuca itiraz etme</li>
+        <li>Kanuna aykırı işleme nedeniyle zarara uğrarsak zararın giderilmesini talep etme</li>
+      </ol>
+      <div class="note">Açık rıza her zaman geri alınabilir ve geri alma ileriye dönük sonuç doğurur. GDPR bunu md. 7(3)'te açıkça düzenler; Kurul'un uygulaması da KVKK açısından bu yöndedir.</div>
+
+      <h4 class="altbaslik">Bu başvuru sitesi</h4>
+      <p>Ekip üyelerinin adları, rolleri, fotoğrafları ve iletişim bilgileri kendi rızalarıyla ve yalnızca bu başvuruyu tanıtmak için yayımlanır. Site çerez kullanmaz ve ziyaretçiden veri toplamaz. Tema ve dil tercihi ile düzenleme taslağı yalnızca ziyaretçinin kendi tarayıcısında (localStorage) tutulur, hiçbir sunucuya gönderilmez. Yazı tipleri Google Fonts üzerinden yüklenir; bu sırada tarayıcı Google sunucularına bağlanır.</p>
+
+      <h4 class="altbaslik">İletişim</h4>
+      <p>Bu sayfa ya da kişisel verilerimizle ilgili her soru için:</p>
+      <div class="baglantilar">
+        <a class="baglanti" href="mailto:info@zeyondgames.com">
+          <span class="ekip-ikon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>
+          <span class="baglanti-ad">info@zeyondgames.com</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="yasal-son">
+      <p class="kanun">Kaynaklar</p>
+      <div class="baglantilar">
+        <a class="baglanti" href="https://www.mevzuat.gov.tr/mevzuatmetin/1.3.5846.pdf" target="_blank" rel="noopener noreferrer">
+          <span class="ekip-ikon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.9 12A3.1 3.1 0 0 1 7 8.9h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/></svg></span>
+          <span class="baglanti-ad">FSEK · mevzuat.gov.tr</span>
+        </a>
+        <a class="baglanti" href="https://www.mevzuat.gov.tr/mevzuatmetin/1.5.6698.pdf" target="_blank" rel="noopener noreferrer">
+          <span class="ekip-ikon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.9 12A3.1 3.1 0 0 1 7 8.9h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/></svg></span>
+          <span class="baglanti-ad">KVKK · mevzuat.gov.tr</span>
+        </a>
+        <a class="baglanti" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener noreferrer">
+          <span class="ekip-ikon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.9 12A3.1 3.1 0 0 1 7 8.9h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/></svg></span>
+          <span class="baglanti-ad">GDPR · eur-lex.europa.eu</span>
+        </a>
+      </div>
+      <p class="uyari">Bu sayfa, başvurumuzdaki beyanların dayanağını açıklamak için hazırlanmıştır ve hukuki görüş yerine geçmez. Kanun metinlerinin güncel hâli için yukarıdaki resmî kaynaklar esas alınmalıdır.</p>
+    </footer>
+  </main>
+
+
+  <!--═══════════════════  ENGLISH  ═══════════════════-->
+
+  <main class="yasal" lang="en" data-dil-en>
+    <header class="yasal-bas">
+      <span class="num">5.2 · Commitment &amp; Eligibility · Annex</span>
+      <h2>Terms and Privacy: Legal Basis</h2>
+      <p class="yasal-giris">In our application to the GameDev.ist Deep Jam programme with Hexafield, we accepted two declarations. This page explains which statutory provisions each one rests on and exactly what it covers in our case.</p>
+
+      <dl class="kv kunye">
+        <div><dt>Applicant</dt><dd>Zeyond Games / Zeyond Team</dd></div>
+        <div><dt>Project</dt><dd>Hexafield</dd></div>
+        <div><dt>Programme</dt><dd>GameDev.ist · Deep Jam</dd></div>
+        <div><dt>Team</dt><dd>Harun Kalli, Nil Neal</dd></div>
+        <div><dt>Last updated</dt><dd>10 October 2026</dd></div>
+      </dl>
+    </header>
+
+    <nav class="ozet" aria-label="Sections">
+      <a href="#en-telif">
+        <span class="ozet-no">01</span>
+        <span class="ozet-ad">Copyright and Originality Declaration</span>
+        <span class="ozet-kanun">Law No. 5846 on Intellectual and Artistic Works</span>
+      </a>
+      <a href="#en-kvkk">
+        <span class="ozet-no">02</span>
+        <span class="ozet-ad">KVKK / GDPR Explicit Consent</span>
+        <span class="ozet-kanun">Law No. 6698 (KVKK) · EU 2016/679 (GDPR)</span>
+      </a>
+    </nav>
+
+    <!-- 01 · COPYRIGHT -->
+    <section class="yasal-bolum" id="en-telif">
+      <span class="bolum-no">01</span>
+      <h3 class="yasal-baslik">Copyright and Originality Declaration</h3>
+
+      <figure class="beyan">
+        <figcaption>The text we accepted</figcaption>
+        <blockquote>We declare that all intellectual property, game content, visual assets and code in this application are either entirely the original creation of our team or that we hold all licences and permissions required for their use.</blockquote>
+      </figure>
+
+      <h4 class="altbaslik">What this declaration covers for us</h4>
+      <ul class="liste">
+        <li><b>Game design:</b> Hexafield's procedural hex arena, its core loop (Durability, Battery, Stamina, Mag), and its system and level design.</li>
+        <li><b>Source code:</b> the C# classes we write in Unity and the Visual Scripting graphs in which we build our state machine and algorithm flows.</li>
+        <li><b>WorldBuilder:</b> the level editor we developed ourselves to produce arena content.</li>
+        <li><b>Visual assets:</b> concept art, robot and interface designs, the logo and every image on this application site.</li>
+        <li><b>Application site:</b> the code, copy and design of this website.</li>
+      </ul>
+
+      <h4 class="altbaslik">Authorship</h4>
+      <p>These works are the joint effort of our two team members: Harun Kalli in game development and design, and Nil Neal in game art and design. Under the law, the author is the person who creates the work; for a work created jointly that cannot be divided into parts, authorship belongs to the team as a whole and the rights are exercised jointly. Protection arises automatically when the work is created; no registration is required.</p>
+      <p>Where a contribution comes from outside the team (for example commissioned music or models), the economic rights in that contribution are acquired or licensed through a written contract in the form the law requires.</p>
+
+      <h4 class="altbaslik">Use of artificial intelligence</h4>
+      <p>During development we use subscription-based AI tools as assistive tools: Claude (Anthropic), ChatGPT (OpenAI) and GitHub Copilot. We draw on these tools for code, visuals, copy and this website, and for sound and music work.</p>
+      <ul class="liste">
+        <li><b>Human contribution:</b> we select, edit, rewrite and adapt the outputs these tools produce to fit the project. All final decisions on the game's design, code and visual language rest with our team.</li>
+        <li><b>Rights in outputs:</b> the terms of use of Anthropic and OpenAI assign to the user whatever rights they hold in the outputs (if any); GitHub does not claim ownership of Copilot suggestions. We use the tools through paid subscriptions in line with their terms of use.</li>
+        <li><b>Scope of protection:</b> FSEK defines a work as a product bearing the characteristics of its author (Art. 1/B) and identifies the author as the person who creates the work (Art. 8); the law contains no provision specific to AI outputs. Protection therefore rests on our own creative contribution in selecting, editing and combining the outputs.</li>
+        <li><b>Release:</b> when the game is released on stores, we will separately disclose our use of AI in the form the stores require (e.g. the AI disclosure in Steam's content survey).</li>
+      </ul>
+
+      <h4 class="altbaslik">Third-party tools and assets we use</h4>
+      <ul class="liste">
+        <li><b>Unity Engine:</b> used under Unity's terms of service and licence plan. Rights in the content and code of a game made with the engine remain with the developer.</li>
+        <li><b>Chakra Petch and JetBrains Mono typefaces:</b> licensed under the SIL Open Font License 1.1; they may be used freely, including commercially, only the fonts themselves may not be sold on their own.</li>
+        <li><b>Ready-made models, sound and music:</b> any asset obtained from the Unity Asset Store or another source is used only under a licence that permits commercial use (e.g. the Standard Unity Asset Store EULA).</li>
+      </ul>
+
+      <h4 class="altbaslik">Legal basis</h4>
+      <p class="kanun">Law No. 5846 on Intellectual and Artistic Works (FSEK) <span>Official Gazette: 13.12.1951 · No. 7981</span></p>
+      <dl class="dayanak">
+        <div><dt>Art. 1/B</dt><dd>Definitions of work, author and adaptation. The requirement that a work <i>bear the characteristics of its author</i> is the legal counterpart of our originality declaration.</dd></div>
+        <div><dt>Art. 2</dt><dd>Computer programs and their preparatory designs are scientific and literary works: our C# code, our Visual Scripting graphs and WorldBuilder.</dd></div>
+        <div><dt>Art. 3</dt><dd>Musical works: original music and sound to be added to the game.</dd></div>
+        <div><dt>Art. 4</dt><dd>Works of fine art (painting, drawing, graphics, design): concept art, character and interface designs, the logo.</dd></div>
+        <div><dt>Art. 8</dt><dd>The author is the person who creates the work.</dd></div>
+        <div><dt>Art. 10</dt><dd>Where a work is created with the participation of more than one person and cannot be divided into parts, the author is the community of those who created it.</dd></div>
+        <div><dt>Art. 14–17</dt><dd>Moral rights: disclosure to the public, attribution of name, and preventing alterations to the work.</dd></div>
+        <div><dt>Art. 21–25</dt><dd>Economic rights: adaptation, reproduction, distribution, performance and communication to the public. The authority to publish and distribute the game derives from these rights.</dd></div>
+        <div><dt>Art. 48</dt><dd>Transfer of economic rights and permission to use (licence).</dd></div>
+        <div><dt>Art. 52</dt><dd>Contracts concerning economic rights must be in writing and must list each right concerned individually.</dd></div>
+        <div><dt>Art. 66–68</dt><dd>Actions to stop infringement, to prevent infringement, and for compensation.</dd></div>
+        <div><dt>Art. 71</dt><dd>Imprisonment or a judicial fine for unauthorised reproduction, distribution and similar infringements.</dd></div>
+      </dl>
+      <p class="kanun">International instruments</p>
+      <dl class="dayanak">
+        <div><dt>Berne Art. 2, 5(2)</dt><dd>Berne Convention for the Protection of Literary and Artistic Works (Türkiye is a party): protected works, and protection not being subject to any formality.</dd></div>
+        <div><dt>TRIPS Art. 10(1)</dt><dd>Computer programs, whether in source or object code, are protected as literary works under the Berne Convention.</dd></div>
+      </dl>
+
+      <div class="note">Consequence of a false declaration: disqualification of the application under the programme terms; and towards the right holders, civil liability under FSEK Art. 66–68 and criminal liability under Art. 71.</div>
+    </section>
+
+    <!-- 02 · KVKK -->
+    <section class="yasal-bolum" id="en-kvkk">
+      <span class="bolum-no">02</span>
+      <h3 class="yasal-baslik">KVKK / GDPR Explicit Consent</h3>
+
+      <figure class="beyan">
+        <figcaption>The text we accepted</figcaption>
+        <blockquote>We have read that the personal data we provide (first name, surname, e-mail, telephone) will be processed in accordance with the KVKK solely for evaluating the application, managing the programme and meeting legal obligations; we have understood the conditions and give our explicit consent to the processing of our data.</blockquote>
+      </figure>
+
+      <h4 class="altbaslik">The data processed in our case</h4>
+      <dl class="kv">
+        <div><dt>Identity</dt><dd>First names and surnames of the team members: Harun Kalli, Nil Neal</dd></div>
+        <div><dt>Contact</dt><dd>info@zeyondgames.com and the project manager's mobile number</dd></div>
+        <div><dt>Team details</dt><dd>Roles within the team; team photos on the application site</dd></div>
+      </dl>
+
+      <h4 class="altbaslik">Parties and purpose</h4>
+      <ul class="liste">
+        <li><b>Data controller:</b> the organisation running the Deep Jam programme (GameDev.ist). It decides why and how the data is processed.</li>
+        <li><b>Data subjects:</b> the team members whose data is processed, namely Harun Kalli and Nil Neal.</li>
+        <li><b>Recipients:</b> authorised mentors and partners affiliated with the programme. The data is shared with them only for the purposes below, and only to a limited extent.</li>
+        <li><b>Purposes:</b> evaluating the application, managing the programme and meeting legal obligations. Unauthorised marketing activities fall outside this scope.</li>
+      </ul>
+
+      <h4 class="altbaslik">Legal basis</h4>
+      <p class="kanun">Law No. 6698 on the Protection of Personal Data (KVKK) <span>Official Gazette: 07.04.2016 · No. 29677</span></p>
+      <dl class="dayanak">
+        <div><dt>Art. 3/1-a</dt><dd>Explicit consent: consent relating to a specific matter, based on information and given with free will. Our consent is limited to the data and purposes stated on this page.</dd></div>
+        <div><dt>Art. 3/1-ı</dt><dd>Definition of data controller: the person or organisation that determines the purposes and means of processing.</dd></div>
+        <div><dt>Art. 4</dt><dd>General principles: lawfulness and fairness, accuracy and being up to date, specific, explicit and legitimate purposes, being relevant, limited and proportionate to the purpose, and retention only as long as necessary.</dd></div>
+        <div><dt>Art. 5/1</dt><dd>Personal data is processed with the explicit consent of the data subject. This is the basis of the consent we gave.</dd></div>
+        <div><dt>Art. 5/2</dt><dd>Cases where consent is not required; in particular (c) the formation or performance of a contract, (ç) a legal obligation of the controller, (f) legitimate interest. Evaluating the application and meeting legal obligations may also rest on these grounds; our explicit consent is given in addition to them.</dd></div>
+        <div><dt>Art. 7</dt><dd>Once the purpose of processing no longer exists, the data is erased, destroyed or anonymised.</dd></div>
+        <div><dt>Art. 8</dt><dd>Domestic transfer: sharing with mentors and partners takes place within the framework of this article.</dd></div>
+        <div><dt>Art. 9</dt><dd>Transfer abroad. As amended by Law No. 7499 (since 01.06.2024), it requires an adequacy decision, appropriate safeguards (e.g. standard contracts) or one of the conditions for occasional transfer.</dd></div>
+        <div><dt>Art. 10</dt><dd>Duty to inform: the controller discloses its identity, the purposes, the recipients, the method of collection and the legal ground.</dd></div>
+        <div><dt>Art. 11</dt><dd>Rights of the data subject (below).</dd></div>
+        <div><dt>Art. 12</dt><dd>Data security: technical and administrative measures to prevent unlawful processing and access.</dd></div>
+        <div><dt>Art. 13</dt><dd>Application to the controller: requests are concluded within thirty days at the latest and, as a rule, free of charge.</dd></div>
+        <div><dt>Art. 14</dt><dd>A data subject whose application is rejected or unanswered may lodge a complaint with the Personal Data Protection Board.</dd></div>
+      </dl>
+      <p class="kanun">Secondary legislation</p>
+      <ul class="liste kucuk">
+        <li>Communiqué on the Procedures and Principles to Be Followed in Fulfilling the Duty to Inform (OG 10.03.2018 · 30356)</li>
+        <li>Communiqué on the Procedures and Principles of Application to the Data Controller (OG 10.03.2018 · 30356)</li>
+        <li>Regulation on the Erasure, Destruction or Anonymisation of Personal Data (OG 28.10.2017 · 30224)</li>
+      </ul>
+
+      <p class="kanun">EU General Data Protection Regulation (GDPR) <span>Regulation (EU) 2016/679</span></p>
+      <p>Since the application is made to a programme run in Türkiye, the KVKK primarily applies. Under Article 3, the GDPR comes into play if the controller or the partners processing the data are established in the European Union.</p>
+      <dl class="dayanak">
+        <div><dt>Art. 4(11)</dt><dd>Definition of consent: a freely given, specific, informed and unambiguous indication of wishes.</dd></div>
+        <div><dt>Art. 6(1)(a)</dt><dd>Processing based on consent.</dd></div>
+        <div><dt>Art. 7(3)</dt><dd>Consent may be withdrawn at any time; withdrawal does not affect the lawfulness of processing carried out before it.</dd></div>
+        <div><dt>Art. 13</dt><dd>Information to be provided when data is collected.</dd></div>
+        <div><dt>Art. 15–22</dt><dd>Rights of access, rectification, erasure, restriction, portability and objection.</dd></div>
+        <div><dt>Art. 44–49</dt><dd>Transfers to third countries.</dd></div>
+      </dl>
+
+      <h4 class="altbaslik">Our rights (KVKK Art. 11)</h4>
+      <ol class="haklar">
+        <li>To learn whether our personal data is processed</li>
+        <li>To request information if it has been processed</li>
+        <li>To learn the purpose of processing and whether the data is used in line with that purpose</li>
+        <li>To know the third parties to whom it is transferred in Türkiye or abroad</li>
+        <li>To request rectification if it is incomplete or inaccurate</li>
+        <li>To request erasure or destruction within the framework of Article 7</li>
+        <li>To request that rectification, erasure and destruction be notified to the third parties to whom the data was transferred</li>
+        <li>To object to an outcome against us arising solely from analysis by automated systems</li>
+        <li>To claim compensation if we suffer damage due to unlawful processing</li>
+      </ol>
+      <div class="note">Explicit consent may be withdrawn at any time, and withdrawal has effect for the future. The GDPR sets this out expressly in Art. 7(3); the Board's practice under the KVKK follows the same approach.</div>
+
+      <h4 class="altbaslik">This application site</h4>
+      <p>The names, roles, photos and contact details of the team members are published with their own consent and solely to present this application. The site uses no cookies and collects no data from visitors. Theme and language preferences and the editing draft are kept only in the visitor's own browser (localStorage) and are never sent to any server. Fonts are loaded from Google Fonts, during which the browser connects to Google's servers.</p>
+
+      <h4 class="altbaslik">Contact</h4>
+      <p>For any question about this page or about our personal data:</p>
+      <div class="baglantilar">
+        <a class="baglanti" href="mailto:info@zeyondgames.com">
+          <span class="ekip-ikon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>
+          <span class="baglanti-ad">info@zeyondgames.com</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="yasal-son">
+      <p class="kanun">Sources</p>
+      <div class="baglantilar">
+        <a class="baglanti" href="https://www.mevzuat.gov.tr/mevzuatmetin/1.3.5846.pdf" target="_blank" rel="noopener noreferrer">
+          <span class="ekip-ikon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.9 12A3.1 3.1 0 0 1 7 8.9h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/></svg></span>
+          <span class="baglanti-ad">FSEK · mevzuat.gov.tr</span>
+        </a>
+        <a class="baglanti" href="https://www.mevzuat.gov.tr/mevzuatmetin/1.5.6698.pdf" target="_blank" rel="noopener noreferrer">
+          <span class="ekip-ikon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.9 12A3.1 3.1 0 0 1 7 8.9h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/></svg></span>
+          <span class="baglanti-ad">KVKK · mevzuat.gov.tr</span>
+        </a>
+        <a class="baglanti" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener noreferrer">
+          <span class="ekip-ikon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.9 12A3.1 3.1 0 0 1 7 8.9h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/></svg></span>
+          <span class="baglanti-ad">GDPR · eur-lex.europa.eu</span>
+        </a>
+      </div>
+      <p class="uyari">This page has been prepared to explain the basis of the declarations in our application and does not constitute legal advice. The official sources above should be relied on for the current text of the legislation.</p>
+    </footer>
+  </main>
+
+  <script src="js/yasal.js?v=44"></script>
+</body>
+</html>
