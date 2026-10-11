@@ -1162,7 +1162,9 @@ h2 ~ .bloklar ~ .bloklar,
 
 /* Motor bölümü: Visual Scripting state machine ekran görüntüsü */
 .motor-gorsel { margin: 2.2rem 0 2.6rem; }
-.gorsel-motor { aspect-ratio: 2100 / 1489; max-width: 60rem; }
+/* Oyun görsellerinden (~29rem) biraz büyük; görsel oranı korunur, slota sığar */
+.gorsel-motor { aspect-ratio: 2100 / 1489; width: 100%; max-width: 34rem; }
+.gorsel-motor .gorsel-foto img { object-fit: contain; }
 .motor-gorsel-not {
   margin-top: .7rem;
   font-family: var(--mono);
