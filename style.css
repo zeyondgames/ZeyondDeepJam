@@ -809,12 +809,14 @@ h2 + .altbaslik { margin-top: 0; }
 .baglanti .ikon-youtube,
 .baglanti .ikon-vimeo,
 .baglanti .ikon-github,
+.baglanti .ikon-googleplay,
 .baglanti .ikon-itch { background: #171717; }
 .baglanti .ikon-artstation svg { fill: #13aff0; }
 .baglanti .ikon-youtube svg { fill: #ff0033; }
 .baglanti .ikon-vimeo svg { fill: #1ab7ea; }
 .baglanti .ikon-github svg { fill: #f0f6fc; }
 .baglanti .ikon-itch svg { fill: #fa5c5c; }
+.baglanti .ikon-googleplay svg { fill: #34a853; }
 .baglanti-ad { overflow-wrap: anywhere; }
 
 /* 5.2 slaytında onayların altındaki yasal dayanak bağlantısı */
