@@ -83,23 +83,23 @@
       },
       {
         "tur": "Macera",
-        "deger": 25
+        "deger": 30
       },
       {
         "tur": "RPG",
-        "deger": 65
+        "deger": 55
       },
       {
         "tur": "Strateji",
-        "deger": 25
-      },
-      {
-        "tur": "Simülasyon",
         "deger": 50
       },
       {
+        "tur": "Simülasyon",
+        "deger": 25
+      },
+      {
         "tur": "Bulmaca / Mantık",
-        "deger": 15
+        "deger": 10
       },
       {
         "tur": "Platform",
@@ -111,7 +111,7 @@
       },
       {
         "tur": "Hyper-Casual",
-        "deger": 25
+        "deger": 30
       }
     ],
     "basliklar": {
@@ -141,8 +141,8 @@
     },
     "anahtarKelimeler": {
       "temelOynanis": "Arenaya gir, görevi tamamla, arenadan çık",
-      "anaMekanikler": "Procedural hex-grid, FOW, çimende gizlenme, katlar arası asansör, lootbox",
-      "oyuncuDeneyimi": "Kaynak yönetimiyle hayatta kalma, sınıfa göre değişen taktik"
+      "anaMekanikler": "Auto-Aim, Auto Fire, Procedural hex-grid, FOW, çimenlerde gizlenme, katlar arası asansör, lootbox",
+      "oyuncuDeneyimi": "Kaynak yönetimiyle hayatta kalma, sınıfa göre değişen taktik, procedural arenaya göre strategy."
     },
     "gorseller": [
       "",
