@@ -338,9 +338,9 @@
     },
     "finansman": {
       "baslik": "Program Sonrası Finansman Gereklilikleri",
-      "miktar": "3.200.000 TRY · 12 ay",
-      "kullanim": "Ekip, 2 kişi × 12 ay tam zamanlı · 1.680.000 TRY (%53)\nSoft launch ve UA testleri · 400.000 TRY (%12)\nDış kaynak: ses, müzik, VFX · 300.000 TRY (%9)\nDonanım ve test cihazları · 200.000 TRY (%6)\nYazılım ve araçlar · 120.000 TRY (%4)\nŞirket, hukuk, muhasebe · 120.000 TRY (%4)\nPazarlama varlıkları · 100.000 TRY (%3)\nÖngörülmeyen giderler · 280.000 TRY (%9)",
-      "etki": "Fon, ekibin 12 ay tam zamanlı çalışmasını sağlar ve oyunu programdan global lansmana taşır.\n1–4. ay, üretim: içerik, ekonomi ve IAP; beta sürüm.\n5–7. ay, soft launch: yayıncıyla test pazarlarında yayın; hedef D1 %30, D7 %10.\n8. ay, global lansman: Google Play ve App Store.\n9–12. ay, LiveOps: güncellemeler ve Steam hazırlığı.\nUA ve pazarlama yükü yayıncıda; fon üretimi ve ekibi ayakta tutar."
+      "miktar": "1.250.000 TRY · 12 ay",
+      "kullanim": "Ekip: 2 kişi × 40.000 TRY × 12 ay · 960.000 TRY\nSes ve müzik (dış kaynak) · 80.000 TRY\nTest telefonları (iOS + Android) · 80.000 TRY\nYazılım abonelikleri (Adobe, LLM, Unity) · 70.000 TRY\nMuhasebe, şirket ve mağaza hesapları · 60.000 TRY",
+      "etki": "Fonun %77'si ekibin geçimine gider: iki kişi 12 ay başka işe bakmadan yalnızca bu oyunu geliştirir. UA, pazarlama ve yayın masrafları yayıncıda.\n1–4. ay, üretim: içerik, ekonomi ve IAP; beta sürüm.\n5–7. ay, soft launch: yayıncıyla test pazarlarında yayın; hedef D1 %30, D7 %10.\n8. ay, global lansman: Google Play ve App Store.\n9–12. ay, LiveOps: güncellemeler ve Steam hazırlığı."
     },
     "yayincilik": "Yayıncı ile çalışma: mobil (Google Play, App Store) ve Steam dahil tüm platformlarda.\nSoft launch'tan global lansmana kadar yayını yayıncıyla birlikte yapıyoruz. F2P'de büyümeyi UA bütçesi belirler; bu sermayeyi ve uzmanlığı yayıncı getirir. Biz üretime ve canlı içerik güncellemelerine odaklanıyoruz.",
     "yayincilikOrtak": "Global yayın yapan, mobil F2P midcore / aksiyon portföyü olan ve PC'de (Steam) de yayın yapabilen bir yayıncı.\nBeklentimiz: soft launch ve global lansman UA bütçesini üstlenmesi; LiveOps, monetizasyon ve A/B test desteği; analitik altyapısı, mağaza öne çıkarma ve Steam sürümünün yayını.\nModel: gelir paylaşımı; IP stüdyoda kalır."
