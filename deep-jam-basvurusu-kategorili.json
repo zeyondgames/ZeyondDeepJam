@@ -387,18 +387,18 @@
     "bosluklar": [
       {
         "ad": "Topluluk ve İçerik Üreticileri",
-        "not": "Gaziantep ile ekosistem arasında köprü olmak istiyoruz: geliştirme sürecini devlog'larla açıkça paylaşıyor, öğrendiklerimizi bölgedeki geliştiricilere aktarıyoruz. Her girişte değişen arenalar ve ~60 saniyelik turlar, yayın ve kısa video için kendiliğinden içerik üretir."
+        "not": "Geliştirme sürecimizi devlog'larla açıkça paylaşıyor; WorldBuilder ve procedural üretim üzerine edindiğimiz deneyimi diğer geliştiricilerle paylaşmaya hazırız. Her girişte yeniden üretilen arenalar ve ~60 saniyelik turlar, canlı yayın ve kısa video üreticilerine her seferinde farklı, paylaşılabilir anlar sunar."
       },
       {
         "ad": "Yayıncılar",
-        "not": "Modüler robot parçaları ve WorldBuilder sayesinde yeni içerik hızlı ve düşük maliyetle üretilir; her yeni parça bir IAP ve LiveOps fırsatıdır. Metrik odaklı geliştiriyor, CPI testine hazır kreatiflerle soft launch'a hazırlanıyoruz."
+        "not": "Hızlı ve düşük maliyetli içerik üretimi: modüler robot parçaları ve WorldBuilder ile yeni içerik kısa sürede eklenir; LiveOps takvimi ve IAP içeriği sürdürülebilir şekilde beslenir. Kararlarımızı retention ve dönüşüm metrikleriyle veriyor, CPI testine hazır kreatiflerle pazar testlerine hazırlanıyoruz."
       },
       {
         "ad": "Yatırımcılar",
-        "not": "Yalın ekip, düşük maliyet: 12 aylık plan 1.165.000 TRY ile ölçülebilir kilometre taşlarına bağlı. WorldBuilder ve modüler üretim hattı yalnızca bu oyuna değil, stüdyonun sonraki oyunlarına da hizmet eder."
+        "not": "Sermaye verimliliği: iki kişilik ekip, düşük aylık maliyet ve ölçülebilir kilometre taşlarına bağlı 12 aylık plan. WorldBuilder ve modüler üretim hattı tek bir oyuna bağlı değil; stüdyonun sonraki projelerinde de yeniden kullanılabilir bir varlık."
       }
     ],
-    "kapanis": "Deep Jam'i bir hızlandırma programından çok, parçası olmak istediğimiz ekosistemin kapısı olarak görüyoruz. Program sonunda core loop'u tamamlanmış, oynanabilir bir build ile demo gününe çıkmayı taahhüt ediyoruz; ardından bir yayıncıyla soft launch ve global lansmana ilerlemek istiyoruz. Aldığımız desteği, Gaziantep'ten çıkan bir oyunla ve büyüttüğümüz toplulukla ekosisteme geri döndüreceğiz."
+    "kapanis": "Deep Jam'i bir hızlandırma programından çok, parçası olmak istediğimiz ekosistemin kapısı olarak görüyoruz. Program sonunda core loop'u tamamlanmış, oynanabilir bir build ile demo gününe çıkmayı taahhüt ediyoruz; ardından bir yayıncıyla soft launch ve global lansmana ilerlemek istiyoruz. Aldığımız desteği Hexafield'ın başarısıyla ve büyüttüğümüz toplulukla ekosisteme geri döndüreceğiz."
   },
 
   "15_5_2_Sartlar_ve_Gizlilik_Politikasi": {
