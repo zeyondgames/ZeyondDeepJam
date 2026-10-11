@@ -131,9 +131,9 @@
       "platform": "Platform"
     },
     "altTurler": [
-      "Action RPG",
-      "Robotic Shooter",
-      "Procedural"
+      "Top-Down Shooter",
+      "Roguelite",
+      "Dungeon Crawler"
     ],
     "perspektif": "3D, sabit açılı, yukarıdan eğik perspektif kamera; hex-grid tabanlı",
     "platform": "Mobil (iOS + Android), ardından Steam",
