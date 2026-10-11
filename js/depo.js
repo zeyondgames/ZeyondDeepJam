@@ -6,11 +6,20 @@ window.GDD = window.GDD || {};
 
 (function (GDD) {
 
-  // Tarayıcıdaki kayıt sayfadaki metinlerin önüne geçer. Sayfanın kendi
-  // metinleri değiştiğinde (kapak, bölüm 2, özet sayfası, form yanıtları)
-  // anahtar yenilenir: eski kayıt yeni metinlerin üzerine yazılmasın. Eski
-  // kayıt silinmez, yalnızca okunmaz.
-  const KEY = "zeyond-basvuru-slayt-7";
+  // Tarayıcıdaki kayıt sayfadaki metinlerin önüne geçer. Anahtar, sayfanın
+  // kendi metinlerinden üretilen bir parmak izi taşır: repodaki metinler
+  // değişince anahtar da kendiliğinden değişir, eski kayıt yeni metinlerin
+  // üzerine yazılmaz. Eski kayıt silinmez, yalnızca okunmaz.
+  const KEY_ON = "zeyond-basvuru-";
+  let KEY; // depoKur() kurar
+
+  // Basit ve hızlı metin özeti (djb2); güvenlik için değil, değişikliği
+  // fark etmek için
+  function parmakIzi(metin) {
+    let h = 5381;
+    for (let i = 0; i < metin.length; i++) h = ((h << 5) + h + metin.charCodeAt(i)) | 0;
+    return (h >>> 0).toString(36);
+  }
 
   // main.js depoKur() çağırınca doldurulur
   GDD.alanlar = [];
@@ -23,6 +32,9 @@ window.GDD = window.GDD || {};
     GDD.cipler = document.querySelectorAll(".chip");
     GDD.skalalar = document.querySelectorAll(".skala");
     GDD.fotolar = document.querySelectorAll("[data-foto]");
+
+    // Kayıt uygulanmadan önce sayfanın kendi hali
+    KEY = KEY_ON + parmakIzi(JSON.stringify(GDD.topla()));
 
     try {
       const kayit = localStorage.getItem(KEY);
