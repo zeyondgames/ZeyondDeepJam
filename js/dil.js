@@ -190,6 +190,15 @@ window.GDD = window.GDD || {};
     "Oyun görseli · 02": "Game visual · 02",
     "Oyun görseli · 03": "Game visual · 03",
     "Oyun görseli · 04": "Game visual · 04",
+    // Kapak düğmeleri ve kapalı test uyarısı
+    "ANDROID · Google Play kapalı test": "ANDROID · Google Play closed test",
+    "Kapalı test": "Closed test",
+    "Oyunu denemek için önce bize yazın": "Email us first to try the game",
+    "Hexafield şu anda Google Play'de kapalı test aşamasında ve yalnızca Android cihazlarda oynanabiliyor. iOS ve Steam sürümleri henüz test edilemiyor.": "Hexafield is currently in closed testing on Google Play and can only be played on Android devices. iOS and Steam versions can't be tested yet.",
+    "Google Play hesabınızın e-posta adresini bize gönderin.": "Send us the email address of your Google Play account.",
+    "Sizi test kullanıcısı olarak ekleyelim.": "We'll add you as a test user.",
+    "Kapalı test bağlantısından oyunu indirip oynayın.": "Download and play the game from the closed test link.",
+    "Google Play'e git": "Go to Google Play",
     "Unity Visual Scripting: oyuncu karakterinin state machine grafiği": "Unity Visual Scripting: the player character's state machine graph",
     "WorldBuilder: Unity'de hex arena düzenleme modu": "WorldBuilder: hex arena editing mode in Unity",
     // öznitelikler

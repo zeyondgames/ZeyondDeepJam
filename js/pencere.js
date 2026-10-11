@@ -8,7 +8,18 @@ window.GDD = window.GDD || {};
 
 (function (GDD) {
 
+  // Kapak: Play Now kapalı test uyarısını açar
+  function testUyarisiniKur() {
+    const dugme = document.getElementById("playBtn");
+    const uyari = document.getElementById("testUyari");
+    if (!dugme || !uyari || !uyari.showModal) return;
+    dugme.addEventListener("click", function () { uyari.showModal(); uyari.focus(); });
+    uyari.querySelector(".pencere-kapat").addEventListener("click", function () { uyari.close(); });
+    uyari.addEventListener("click", function (e) { if (e.target === uyari) uyari.close(); });
+  }
+
   GDD.pencereleriKur = function () {
+    testUyarisiniKur();
     document.querySelectorAll(".kisi[data-pencere]").forEach(function (kart, sira) {
       const pencere = document.getElementById(kart.dataset.pencere);
       // Eski tarayıcıda <dialog> yoksa kartlar eskisi gibi kalır
