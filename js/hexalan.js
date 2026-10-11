@@ -143,7 +143,7 @@ window.GDD = window.GDD || {};
 
     function etiket() {
       yazi.textContent = "PROCEDURAL HEX-GRID · SEED " +
-        (tohum & 0xffff).toString(16).toUpperCase().padStart(4, "0") + " · KAT " + kat;
+        (tohum & 0xffff).toString(16).toUpperCase().padStart(4, "0") + " · " + (GDD.t ? GDD.t("KAT", "FLOOR") : "KAT") + " " + kat;
     }
 
     function tur() {

@@ -33,13 +33,9 @@ window.GDD = window.GDD || {};
     GDD.skalalar = document.querySelectorAll(".skala");
     GDD.fotolar = document.querySelectorAll("[data-foto]");
 
-    // Kayıt uygulanmadan önce sayfanın kendi hali
+    // Site salt okunur: tarayıcıda kalmış eski düzenleme kayıtları
+    // sayfadaki (repodaki) metnin önüne geçmesin diye okunmaz.
     KEY = KEY_ON + parmakIzi(JSON.stringify(GDD.topla()));
-
-    try {
-      const kayit = localStorage.getItem(KEY);
-      if (kayit) GDD.uygula(JSON.parse(kayit));
-    } catch (e) {}
   };
 
   // ---------- Nokta ayraçlı yol yardımcıları ----------
@@ -109,9 +105,8 @@ window.GDD = window.GDD || {};
     return veri;
   };
 
-  GDD.kaydet = function () {
-    try { localStorage.setItem(KEY, JSON.stringify(GDD.topla())); } catch (e) {}
-  };
+  // Düzenleme kaldırıldı; kaydedilecek bir şey yok
+  GDD.kaydet = function () {};
 
   GDD.uygula = function (veri) {
     if (!veri) return;

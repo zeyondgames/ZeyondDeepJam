@@ -1,44 +1,22 @@
-// Görünüm anahtarları: tema ve sunum modu.
+// Tema anahtarı: köşedeki güneş / ay düğmesi aydınlık ve karanlık tema arasında geçer.
+// Site her zaman sunum görünümündedir (body.sunum); düzenleme modu yoktur.
 
 window.GDD = window.GDD || {};
 
 (function (GDD) {
 
-  // Varsayılan karanlık görünüme geçince anahtar yenilendi: eski kayıtlı
-  // aydınlık tercih yeni varsayılanı gizlemesin. index.html'in başındaki
-  // satır da aynı anahtarı okur.
+  // index.html'in başındaki satır da aynı anahtarı okur
   const TEMA_KEY = "zeyond-tema-3";
 
   GDD.temayiKur = function () {
     const dugme = document.getElementById("themeBtn");
+    if (!dugme) return;
 
-    // Açılışta tema zaten <head>'deki satırla uygulandı; burada sadece
-    // düğme yazısı güncellenir ve tıklamada tercih kaydedilir.
-    function uygula(tema, kaydetsinMi) {
+    // Açılışta tema zaten <head>'deki satırla uygulandı; ikon CSS'te temaya göre değişir
+    dugme.addEventListener("click", function () {
+      const tema = document.documentElement.dataset.theme === "light" ? "dark" : "light";
       document.documentElement.dataset.theme = tema;
-      dugme.textContent = tema === "light" ? "Karanlık tema" : "Aydınlık tema";
-      if (kaydetsinMi) {
-        try { localStorage.setItem(TEMA_KEY, tema); } catch (e) {}
-      }
-    }
-
-    // false: kullanıcı henüz seçim yapmadıysa varsayılan kaydedilmesin.
-    uygula(document.documentElement.dataset.theme || "dark", false);
-
-    dugme.addEventListener("click", function () {
-      uygula(document.documentElement.dataset.theme === "light" ? "dark" : "light", true);
-    });
-  };
-
-  GDD.sunumuKur = function () {
-    const dugme = document.getElementById("modeBtn");
-
-    dugme.addEventListener("click", function () {
-      const sunum = document.body.classList.toggle("sunum");
-      GDD.alanlar.forEach(function (f) { GDD.duzenlenebilir(f, !sunum); });
-      // Sunumda kaydıraçlar salt okunur bir grafiğe dönüşür
-      GDD.skalalar.forEach(function (s) { s.disabled = sunum; });
-      dugme.textContent = sunum ? "Düzenleme modu" : "Sunum modu";
+      try { localStorage.setItem(TEMA_KEY, tema); } catch (e) {}
     });
   };
 

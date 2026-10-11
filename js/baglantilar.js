@@ -78,7 +78,7 @@ window.GDD = window.GDD || {};
   function etiket(adres, bilgi) {
     if (youtubeVideoMu(adres)) return bilgi.ad;
     // Google Play: kapalı test daveti ya da mağaza sayfası (paket adı akılda kalmaz)
-    if (bilgi.ikon === "googleplay") return /^\/apps\/testing\//.test(adres.pathname) ? "Kapalı Test" : bilgi.ad;
+    if (bilgi.ikon === "googleplay") return /^\/apps\/testing\//.test(adres.pathname) ? GDD.t("Kapalı Test", "Closed Test") : bilgi.ad;
     const yol = adres.pathname.split("/").filter(Boolean);
     let son = yol.length ? decodeURIComponent(yol[yol.length - 1]) : "";
     if (!son && adres.hostname.endsWith("itch.io") && adres.hostname.split(".").length > 2) {
@@ -155,7 +155,7 @@ window.GDD = window.GDD || {};
   function metniLinkYap(f) {
     let bekleyen = null;
     f.classList.add("baglanti-metin");
-    f.title = "Açmak için tıkla · düzenlemek için çift tıkla";
+    f.title = GDD.t("Açmak için tıkla", "Click to open");
 
     f.addEventListener("mousedown", function (e) {
       // Düzenlenirken imleç normal çalışsın; ilk tıklama odak almasın

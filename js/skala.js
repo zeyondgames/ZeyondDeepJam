@@ -276,7 +276,7 @@ window.GDD = window.GDD || {};
       .filter(function (t) { return t.ad; })
       .sort(function (a, b) { return b.deger - a.deger || a.sira - b.sira; });
 
-    if (!sirali.length || sirali[0].deger === 0) return { metin: "Tür belirlenmedi", secili: [] };
+    if (!sirali.length || sirali[0].deger === 0) return { metin: GDD.t("Tür belirlenmedi", "Genre not set"), secili: [] };
 
     let metin = sirali[0].ad;
     let sonraki = 1;
@@ -291,7 +291,7 @@ window.GDD = window.GDD || {};
 
     const destek = sirali[sonraki];
     if (destek && destek.deger >= BELIRGIN) {
-      metin += " · " + destek.ad + " destekli";
+      metin += " · " + GDD.t(destek.ad + " destekli", "with " + destek.ad + " elements");
       secili.push(destek.sira);
     }
 

@@ -1281,6 +1281,8 @@ h2 ~ .bloklar ~ .bloklar,
   color: var(--muted);
   opacity: .6;
 }
+/* Site salt okunur: boş alanda düzenleme ipucu gösterilmez */
+body.sunum .field.empty::before { content: ""; }
 
 /* Düzenleme çerçevesi yalnızca alanın üzerine gelince ya da içine
    girince görünür; sayfa dururken temiz kalır. */
@@ -2192,15 +2194,12 @@ body.sunum .check .chip:not(.on) { display: block; }
 :root[data-theme="light"] .menu,
 :root[data-theme="light"] .toolbar { --ikon-filtre: invert(0); }
 
-.menu .logo img,
-.arac img {
+.menu .logo img {
   display: block;
   filter: var(--ikon-filtre) drop-shadow(0 0 0 transparent);
   transition: filter .2s;
 }
-.menu .logo:hover img,
-.toolbar:hover .arac img,
-.toolbar:focus-within .arac img {
+.menu .logo:hover img {
   filter: var(--ikon-filtre) drop-shadow(0 0 .5rem var(--isi2)) drop-shadow(0 0 .2rem var(--isi1));
 }
 
@@ -2222,68 +2221,47 @@ body.sunum .check .chip:not(.on) { display: block; }
   height: var(--cubuk-boy);
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
-/* Simge: araç menüsünü açan tek görünür parça */
-.arac {
+/* Köşedeki iki düğme: dil (TR / EN) ve tema (güneş / ay) */
+.ust-dugme {
   display: flex;
-  padding: 10px;
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-.arac img { width: 1.5rem; height: 1.5rem; }
-.arac:focus-visible { outline: 1px solid var(--cubuk-yazi); outline-offset: 1px; }
-
-/* Liste çubuğun hemen altına yapışık açılır; arada boşluk olsaydı
-   fare simgeden listeye inerken menü kapanırdı. */
-.arac-liste {
-  position: absolute;
-  top: 100%; right: 0;
-  display: grid;
-  gap: 2px;
-  min-width: 13rem;
-  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  height: 34px;
+  min-width: 34px;
+  padding: 0 9px;
   border: 1px solid var(--cubuk-cizgi);
-  border-top: 2px solid var(--accent);
-  background: var(--kati);
-  box-shadow: 0 1rem 2rem var(--golge);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity .15s, transform .15s, visibility .15s;
-}
-.toolbar:hover .arac-liste,
-.toolbar:focus-within .arac-liste {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .arac-liste { transition: none; }
-}
-
-/* Açılır menü satırları: üzerine gelince zemin hafifçe aydınlanır ve
-   yazı vurgu rengini alır. Sunum modu açıkken o satır renkli kalır. */
-.btn {
-  font-family: var(--mono);
-  font-size: .76rem;
-  font-weight: 500;
-  /* "JSON yükle" bir label; gövdenin satır yüksekliğini almasın */
-  line-height: 1.3;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  text-align: left;
-  padding: 11px 14px;
-  border: 0;
   background: none;
   color: var(--cubuk-yazi);
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .12em;
   cursor: pointer;
-  transition: color .2s, background .2s;
+  transition: color .2s, border-color .2s, background .2s;
 }
-.btn:hover { color: var(--accent); background: var(--glow-soft); }
-body.sunum #modeBtn { color: var(--accent); }
-.btn:focus-visible { outline: 1px solid var(--cubuk-yazi); outline-offset: -2px; }
+.ust-dugme:hover { color: var(--accent); border-color: var(--accent); background: var(--glow-soft); }
+.ust-dugme:focus-visible { outline: 1px solid var(--cubuk-yazi); outline-offset: 2px; }
+.ust-dugme svg {
+  width: 17px; height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Karanlık temada güneş (aydınlığa geç), aydınlık temada ay görünür */
+.tema-dugme .ay { display: none; }
+:root[data-theme="light"] .tema-dugme .gunes { display: none; }
+:root[data-theme="light"] .tema-dugme .ay { display: block; }
+/* Dil: seçili dil vurgu renginde, diğeri soluk */
+.dil-dugme [data-dil] { opacity: .45; transition: opacity .2s, color .2s; }
+.dil-dugme .ayrac { opacity: .35; }
+:root[lang="tr"] .dil-dugme [data-dil="tr"],
+:root[lang="en"] .dil-dugme [data-dil="en"] { opacity: 1; color: var(--accent); }
 
 /* Bölüm menüsünü açan düğme: yalnızca dar ekranda görünür. Üç çizgi
    tek bir <span> ve iki sözde öğesinden çizilir; açıkken çarpıya döner. */
