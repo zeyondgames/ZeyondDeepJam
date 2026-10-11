@@ -84,7 +84,7 @@
     "tip": "icerik",
     "numara": "2.2",
     "baslik": "Oyunun Türü",
-    "anaTur": "Aksiyon · RPG destekli",
+    "anaTur": "Aksiyon-RPG · Strateji destekli",
     "turSkalasiBaslik": "Tür Skalası",
     "turSkalasiNotu": "Başvuru kılavuzundaki tür listesi: her çizgi, oyunun o türe ne kadar yaslandığını gösterir.",
     "turSkalasi": [
@@ -94,19 +94,19 @@
       },
       {
         "tur": "Macera",
-        "deger": 30
+        "deger": 40
       },
       {
         "tur": "RPG",
-        "deger": 55
+        "deger": 85
       },
       {
         "tur": "Strateji",
-        "deger": 50
+        "deger": 55
       },
       {
         "tur": "Simülasyon",
-        "deger": 25
+        "deger": 35
       },
       {
         "tur": "Bulmaca / Mantık",
@@ -157,9 +157,9 @@
       "oyuncuDeneyimi": "Kaynak yönetimiyle hayatta kalma, sınıfa göre değişen taktik, procedural arenaya göre strategy."
     },
     "gorseller": [
-      "",
-      "",
-      ""
+      "img/oyun/gorsel-1.jpg",
+      "img/oyun/gorsel-2.jpg",
+      "img/oyun/gorsel-3.jpg"
     ]
   },
 
