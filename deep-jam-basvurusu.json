@@ -73,7 +73,7 @@
     "tip": "icerik",
     "numara": "2.2",
     "baslik": "Oyunun Türü",
-    "anaTur": "Aksiyon-RPG · Simülasyon destekli",
+    "anaTur": "Aksiyon · RPG destekli",
     "turSkalasiBaslik": "Tür Skalası",
     "turSkalasiNotu": "Başvuru kılavuzundaki tür listesi: her çizgi, oyunun o türe ne kadar yaslandığını gösterir.",
     "turSkalasi": [
@@ -87,7 +87,7 @@
       },
       {
         "tur": "RPG",
-        "deger": 85
+        "deger": 65
       },
       {
         "tur": "Strateji",
@@ -316,23 +316,23 @@
       "haftalar": [
         {
           "hafta": "1–2",
-          "baslik": "Arena & Keşif",
-          "icerik": "Her girişte yeniden üretilen katman tabanlı hex arena; robot hareketi ve sabit eğik kamera; tile keşfi ve FOW. Ölçüt: başlangıçtan çıkış asansörüne yürünebiliyor."
+          "baslik": "Arena - Exploration",
+          "icerik": "Her girişte yeniden üretilen, katman tabanlı procedural hex arena; tile keşfi ve FOW; robot hareketi ve sabit eğik kamera. Ölçüt: başlangıçtan çıkış asansörüne keşfederek ulaşılıyor."
         },
         {
           "hafta": "3–4",
-          "baslik": "Çatışma & Gizlenme",
-          "icerik": "Tek robot sınıfı (Assault) ve silahı; devriye gezen, tespit eden ve saldıran düşman botlar; çimende gizlenme. Ölçüt: bir düşmanla baştan sona çatışma oynanıyor."
+          "baslik": "Combat - Stealth",
+          "icerik": "Silah mekanikleri: multishot, headshot, piercing, knockback. Düşman AI: patrol ve trace. Çimende stealth. Ölçüt: oyuncu çatışmaya girmeyi ya da gizlenip geçmeyi seçebiliyor."
         },
         {
           "hafta": "5–6",
-          "baslik": "Kaynaklar & Görev",
-          "icerik": "Durability, Battery, Stamina ve Mag; asansörle katlar arası geçiş; lootbox; görev hedefi ve çıkış. Ölçüt: gir, görevi bitir, çık döngüsü uçtan uca oynanıyor."
+          "baslik": "Resource Economy",
+          "icerik": "Durability, Battery, Stamina ve Mag tüketimi ve yenilenmesi; lootbox ödülleri; asansörle katlar arası geçiş; görev hedefi ve çıkış. Ölçüt: gir, görevi bitir, çık döngüsü uçtan uca oynanıyor."
         },
         {
           "hafta": "7–8",
-          "baslik": "Test & Core Loop Teslimi",
-          "icerik": "Temel HUD; 30 kişiyle oyun testi; seviye başına ~60 saniye hedefine göre denge ve hata düzeltme. Ölçüt: core loop'u tamamlanmış, oynanabilir Android build."
+          "baslik": "Sound & Polish",
+          "icerik": "Silah, robot ve ortam sesleri; VFX ve vuruş geri bildirimi; temel HUD; oyun testi ve ~60 saniyelik seans dengesi. Ölçüt: core loop'u tamamlanmış, cilalı ve oynanabilir build."
         }
       ]
     },
@@ -340,10 +340,10 @@
       "baslik": "Program Sonrası Finansman Gereklilikleri",
       "miktar": "3.200.000 TRY · 12 ay",
       "kullanim": "Ekip, 2 kişi × 12 ay tam zamanlı · 1.680.000 TRY (%53)\nSoft launch ve UA testleri · 400.000 TRY (%12)\nDış kaynak: ses, müzik, VFX · 300.000 TRY (%9)\nDonanım ve test cihazları · 200.000 TRY (%6)\nYazılım ve araçlar · 120.000 TRY (%4)\nŞirket, hukuk, muhasebe · 120.000 TRY (%4)\nPazarlama varlıkları · 100.000 TRY (%3)\nÖngörülmeyen giderler · 280.000 TRY (%9)",
-      "etki": "Fon, ekibin 12 ay tam zamanlı çalışmasını sağlar ve oyunu programdan global lansmana taşır.\n1–4. ay, üretim: içerik, ekonomi ve IAP; beta sürüm.\n5–7. ay, soft launch: test pazarlarında yayın; hedef D1 %30, D7 %10.\n8. ay, global lansman: Google Play ve App Store.\n9–12. ay, LiveOps: güncellemeler ve Steam hazırlığı.\nSoft launch verisiyle yayıncıya ölçülmüş bir oyun götürür, anlaşmada pazarlık gücümüzü artırırız."
+      "etki": "Fon, ekibin 12 ay tam zamanlı çalışmasını sağlar ve oyunu programdan global lansmana taşır.\n1–4. ay, üretim: içerik, ekonomi ve IAP; beta sürüm.\n5–7. ay, soft launch: yayıncıyla test pazarlarında yayın; hedef D1 %30, D7 %10.\n8. ay, global lansman: Google Play ve App Store.\n9–12. ay, LiveOps: güncellemeler ve Steam hazırlığı.\nUA ve pazarlama yükü yayıncıda; fon üretimi ve ekibi ayakta tutar."
     },
-    "yayincilik": "Hibrit: mobilde yayıncı, Steam'de self-publishing.\nSoft launch'ı kendi fonumuzla yapıp metrikleri kanıtlıyor, global mobil lansmanı yayıncıyla yapıyoruz. F2P'de büyümeyi UA bütçesi belirler; bu sermayeyi ve uzmanlığı yayıncı getirir. Steam'deki premium sürümü topluluğumuzla kendimiz yayınlıyoruz.",
-    "yayincilikOrtak": "Global yayın yapan, mobil F2P midcore / aksiyon portföyü olan bir yayıncı.\nBeklentimiz: global lansman UA bütçesini üstlenmesi; LiveOps, monetizasyon ve A/B test desteği; analitik altyapısı ve mağaza öne çıkarma ilişkileri.\nModel: gelir paylaşımı; IP ve Steam hakları stüdyoda kalır."
+    "yayincilik": "Yayıncı ile çalışma: mobil (Google Play, App Store) ve Steam dahil tüm platformlarda.\nSoft launch'tan global lansmana kadar yayını yayıncıyla birlikte yapıyoruz. F2P'de büyümeyi UA bütçesi belirler; bu sermayeyi ve uzmanlığı yayıncı getirir. Biz üretime ve canlı içerik güncellemelerine odaklanıyoruz.",
+    "yayincilikOrtak": "Global yayın yapan, mobil F2P midcore / aksiyon portföyü olan ve PC'de (Steam) de yayın yapabilen bir yayıncı.\nBeklentimiz: soft launch ve global lansman UA bütçesini üstlenmesi; LiveOps, monetizasyon ve A/B test desteği; analitik altyapısı, mağaza öne çıkarma ve Steam sürümünün yayını.\nModel: gelir paylaşımı; IP stüdyoda kalır."
   },
   "13_5_0_Taahhut_ve_Uygunluk": {
     "tip": "bolumKapagi",
@@ -372,7 +372,7 @@
         "not": "8 haftalık yoğun sprintte dış takip ve mentorluk"
       }
     ],
-    "kapanis": "Bu fırsatı finansal bir işlemden çok stratejik bir ortaklık olarak görüyoruz. Amacımız, program sonunda core loop'u tamamlanmış, oynanabilir bir build ile demo gününe çıkmak; ardından soft launch ile metrikleri kanıtlayıp global lansmana ilerlemek."
+    "kapanis": "Bu fırsatı finansal bir işlemden çok stratejik bir ortaklık olarak görüyoruz. Amacımız, program sonunda core loop'u tamamlanmış, oynanabilir bir build ile demo gününe çıkmak; ardından yayıncımızla soft launch ve global lansmana ilerlemek."
   },
   "15_5_2_Sartlar_ve_Gizlilik_Politikasi": {
     "tip": "icerik",
