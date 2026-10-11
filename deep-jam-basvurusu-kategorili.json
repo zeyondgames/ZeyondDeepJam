@@ -381,24 +381,24 @@
     "tip": "icerik",
     "numara": "5.1",
     "baslik": "Motivasyon Mektubu / Neden Deep Jam",
-    "giris": "Deep Jam'e, programın kaynaklarının projemizdeki boşlukları tam olarak tamamladığı için başvuruyoruz.",
-    "gucluYanimiz": "Üretim ve sistem tasarımı: çalışan çekirdek döngü, kendi WorldBuilder editörümüz ve hızlı içerik üretme kapasitemiz — yani 'bitirme' becerisi.",
-    "bosluklarBaslik": "Programın Kapatacağı Boşluklar",
+    "giris": "Gaziantep'te oyun geliştiriyoruz. Türkiye'nin oyun ekosistemi hızla büyürken bu büyümeyi çoğu zaman uzaktan izlediğimizi fark ettik: topluluk, yayıncılar ve yatırımcılar birkaç şehirde toplanıyor. Bu mesafeyi kapatmanın yolunun beklemek değil, üretmek olduğuna karar verdik ve Hexafield'ı geliştirmeye başladık.\n\nTürkiye'den çıkan mobil oyunların çoğu casual ve puzzle türlerinde; midcore action RPG'de ise az örnek görüyoruz. Hexafield ile bu türün buradan da çıkabileceğini göstermek ve pazara yeni bir soluk getirmek istiyoruz.\n\nDeep Jam'e yalnızca öğrenmek için değil, bu ekosistemin bir parçası olmak ve öğrendiklerimizi geri vermek için başvuruyoruz. Monetizasyon, kullanıcı edinme ve yayıncılıkta deneyimli insanlardan öğrenmeye ihtiyacımız var; karşılığında masaya koyabileceklerimiz aşağıda.",
+    "gucluYanimiz": "Elimizde çalışan bir çekirdek döngü, kendi seviye editörümüz WorldBuilder ve iki kişiyle hızlı içerik üretebilen bir üretim hattı var. Kısacası, başladığı işi bitirebilen bir ekibiz.",
+    "bosluklarBaslik": "Bu Ekosisteme Ne Katabiliriz?",
     "bosluklar": [
       {
-        "ad": "Monetizasyon & UA",
-        "not": "Mobil para kazanma ve kullanıcı edinme deneyimi → Hafta 7 mentorluğuna bağlanacak"
+        "ad": "Topluluk ve İçerik Üreticileri",
+        "not": "Gaziantep ile ekosistem arasında köprü olmak istiyoruz: geliştirme sürecini devlog'larla açıkça paylaşıyor, öğrendiklerimizi bölgedeki geliştiricilere aktarıyoruz. Her girişte değişen arenalar ve ~60 saniyelik turlar, yayın ve kısa video için kendiliğinden içerik üretir."
       },
       {
-        "ad": "Pazara Giriş Ağı",
-        "not": "Yayıncı ve UA ortağı bağlantıları → demo gününde yayıncı ve yatırımcı görüşmelerine bağlanacak"
+        "ad": "Yayıncılar",
+        "not": "Modüler robot parçaları ve WorldBuilder sayesinde yeni içerik hızlı ve düşük maliyetle üretilir; her yeni parça bir IAP ve LiveOps fırsatıdır. Metrik odaklı geliştiriyor, CPI testine hazır kreatiflerle soft launch'a hazırlanıyoruz."
       },
       {
-        "ad": "Üretim Disiplini",
-        "not": "8 haftalık yoğun sprintte dış takip ve mentorluk"
+        "ad": "Yatırımcılar",
+        "not": "Yalın ekip, düşük maliyet: 12 aylık plan 1.165.000 TRY ile ölçülebilir kilometre taşlarına bağlı. WorldBuilder ve modüler üretim hattı yalnızca bu oyuna değil, stüdyonun sonraki oyunlarına da hizmet eder."
       }
     ],
-    "kapanis": "Bu fırsatı finansal bir işlemden çok stratejik bir ortaklık olarak görüyoruz. Amacımız, program sonunda core loop'u tamamlanmış, oynanabilir bir build ile demo gününe çıkmak; ardından yayıncımızla soft launch ve global lansmana ilerlemek."
+    "kapanis": "Deep Jam'i bir hızlandırma programından çok, parçası olmak istediğimiz ekosistemin kapısı olarak görüyoruz. Program sonunda core loop'u tamamlanmış, oynanabilir bir build ile demo gününe çıkmayı taahhüt ediyoruz; ardından bir yayıncıyla soft launch ve global lansmana ilerlemek istiyoruz. Aldığımız desteği, Gaziantep'ten çıkan bir oyunla ve büyüttüğümüz toplulukla ekosisteme geri döndüreceğiz."
   },
 
   "15_5_2_Sartlar_ve_Gizlilik_Politikasi": {
