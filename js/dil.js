@@ -191,6 +191,7 @@ window.GDD = window.GDD || {};
     "Oyun görseli · 03": "Game visual · 03",
     "Oyun görseli · 04": "Game visual · 04",
     "Unity Visual Scripting: oyuncu karakterinin state machine grafiği": "Unity Visual Scripting: the player character's state machine graph",
+    "WorldBuilder: Unity'de hex arena düzenleme modu": "WorldBuilder: hex arena editing mode in Unity",
     // öznitelikler
     "Bölümler": "Sections",
     "Zeyond Games · Sayfanın başına dön": "Zeyond Games · Back to top",

@@ -1160,11 +1160,23 @@ h2 ~ .bloklar ~ .bloklar,
 /* Class Hex Planner ekran görüntüsü neredeyse kare; kendi oranında, kırpılmadan */
 .gorsel-planlayici { aspect-ratio: 1342 / 1240; }
 
-/* Motor bölümü: Visual Scripting state machine ekran görüntüsü */
-.motor-gorsel { margin: 2.2rem 0 2.6rem; }
-/* Oyun görsellerinden (~29rem) biraz büyük; görsel oranı korunur, slota sığar */
-.gorsel-motor { aspect-ratio: 2100 / 1489; width: 100%; max-width: 34rem; }
-.gorsel-motor .gorsel-foto img { object-fit: contain; }
+/* PoC bölümü: solda metin, sağda ilgili ekran görüntüsü (Visual Scripting,
+   WorldBuilder). Görseller oranını korur ve slotuna sığar. */
+.metin-gorsel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 34rem);
+  gap: 2.6rem;
+  align-items: start;
+}
+.metin-gorsel + .metin-gorsel { margin-top: 3rem; }
+.metin-gorsel .kv-tek { grid-template-columns: 1fr; }
+.motor-gorsel { margin: 0; }
+.gorsel-motor { aspect-ratio: 2100 / 1489; width: 100%; }
+.gorsel-worldbuilder { aspect-ratio: 1800 / 1030; width: 100%; }
+.motor-gorsel .gorsel-foto img { object-fit: contain; }
+@media (max-width: 899px) {
+  .metin-gorsel { grid-template-columns: 1fr; gap: 1.6rem; }
+}
 .motor-gorsel-not {
   margin-top: .7rem;
   font-family: var(--mono);
