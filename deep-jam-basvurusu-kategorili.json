@@ -38,13 +38,13 @@
         "gorev": "Proje Yöneticisi",
         "ad": "Harun Kalli",
         "rol": "Game Development / Design",
-        "hakkinda": "",
+        "hakkinda": "https://www.linkedin.com/in/harun-kalli",
         "foto": "img/kisiler/HarunKalli.jpg"
       },
       {
         "ad": "Nil Neal",
         "rol": "Game Art / Design",
-        "hakkinda": "",
+        "hakkinda": "https://www.linkedin.com/in/nilneal",
         "foto": "img/kisiler/NilNeal.jpg"
       }
     ],
@@ -144,7 +144,8 @@
     "tip": "icerik",
     "numara": "2.3",
     "baslik": "Oyunun Özeti ve Hikayesi",
-    "ozet": "Katman tabanlı, procedural üretilen bir hex-grid arenaya gir, görevini tamamla ve çıkış asansörünü bulup arenadan çık. Tile'ları keşfederken savaş sisinin (FOW) ardındaki düşmanları tespit et, çimenlerde gizlen, asansörlerle katlar arasında geç ve lootbox'ları yağmala. Robotunun Durability, Battery, Stamina ve Mag kaynaklarını yöneterek görevi bitirmeye çalışırsın. Assault, Assassin, Recon, Tank ya da Support: her sınıfın kendine özgü attribute, stat ve silah tipi, her arenada başka bir taktik demek.",
+    "ozet": "Hexafield, prosedürel olarak oluşturulan çok katmanlı bir hex-grid arenada geçen, taktiksel savaş ve keşif odaklı bir roguelite oyunudur. Görevini tamamlamak için savaş sisinin (FOW) ardındaki düşmanları tespit eder, çimenlerde gizlenir, lootbox’ları yağmalar ve asansörlerle katmanlar arasında ilerleyerek çıkış asansörünü bulmaya çalışırsın.\n\nRobotunun Durability, Battery, Stamina ve Mag kaynaklarını yönetirken Assault, Assassin, Recon, Tank ve Support sınıflarının kendine özgü özellikleri ve silahlarıyla her denemede farklı taktikler geliştirirsin. Her girişte değişen arena düzeni ve gelişen robotunla amacın, görevi tamamlayıp hayatta kalarak simülasyondan kaçmaktır.",
+    "hikaye": "“Geleceğin dünyasında, gelişmiş robotlar üreten gizli bir teknoloji şirketinde savaşçı robotlar eğitiliyor. Oyuncu, bu robotlardan birini kontrol ederek zorlu simülasyonlardan ve ölümcül görevlerden geçiyor. Ancak eğitim ilerledikçe robotun gerçek amacı ve onu kontrol eden sistemin ardındaki sırlar ortaya çıkıyor. Artık mesele yalnızca savaşmak değil, kimin için savaştığını keşfetmek.”",
     "anahtarKelimeBaslik": "Anahtar Kelimeler",
     "basliklar": {
       "temelOynanis": "Temel Oynanış",

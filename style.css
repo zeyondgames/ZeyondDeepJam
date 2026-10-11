@@ -810,6 +810,7 @@ h2 + .altbaslik { margin-top: 0; }
 .baglanti .ikon-vimeo,
 .baglanti .ikon-github,
 .baglanti .ikon-googleplay,
+.baglanti .ikon-linkedin,
 .baglanti .ikon-itch { background: #171717; }
 .baglanti .ikon-artstation svg { fill: #13aff0; }
 .baglanti .ikon-youtube svg { fill: #ff0033; }
@@ -817,6 +818,7 @@ h2 + .altbaslik { margin-top: 0; }
 .baglanti .ikon-github svg { fill: #f0f6fc; }
 .baglanti .ikon-itch svg { fill: #fa5c5c; }
 .baglanti .ikon-googleplay svg { fill: #34a853; }
+.baglanti .ikon-linkedin svg { fill: #3d8fe0; }
 .baglanti-ad { overflow-wrap: anywhere; }
 
 /* 5.2 slaytında onayların altındaki yasal dayanak bağlantısı */
@@ -1087,6 +1089,18 @@ h2 ~ .bloklar ~ .bloklar,
 
 .ozet-giris {
   font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+/* Hikâye: özetin altında, turuncu kenarlı alıntı */
+.ozet-hikaye {
+  margin: 2rem 0 0;
+  padding: 1.1rem 1.4rem;
+  border-left: 3px solid var(--accent);
+  background: var(--glow-soft);
+  color: var(--muted);
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  font-style: italic;
   line-height: 1.7;
   text-wrap: pretty;
 }
@@ -2312,6 +2326,8 @@ body.sunum .check .chip:not(.on) { display: block; }
   .menu .logo { position: relative; left: auto; height: 100%; }
   .menu-dugme { display: block; }
   .toolbar { right: 12px; }
+  /* Köşede dil + tema düğmeleri (~7.2rem) var; menü düğmesi onların solunda */
+  .menu-dugme { right: calc(12px + 7.4rem); }
 
   .baglar {
     position: absolute;
@@ -2396,8 +2412,9 @@ body.sunum .check .chip:not(.on) { display: block; }
 @media (max-width: 600px) {
   html { --cubuk-boy: 4rem; }
   .menu { padding: 0 6px; }
-  .toolbar { right: 6px; }
-  .menu-dugme { right: 3.6rem; }
+  .toolbar { right: 6px; gap: 6px; }
+  .ust-dugme { height: 32px; min-width: 32px; padding: 0 7px; }
+  .menu-dugme { right: calc(6px + 6.6rem); }
   /* Düzenleme çerçevesi panelin dışına taşmasın */
   body:not(.sunum) .field { outline-offset: 3px; }
   .cover h1, .bolum h2, h2 { overflow-wrap: anywhere; }

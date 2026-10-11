@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=46">
+  <link rel="stylesheet" href="style.css?v=47">
   <!-- Temayı sayfa çizilmeden uygular; aksi halde aydınlık temada bir an karanlık yanıp söner. Varsayılan karanlık. -->
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("zeyond-tema-3")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 </head>
@@ -296,9 +296,9 @@
           <p class="pencere-rol" lang="en"></p>
           <div class="pencere-bolum">
             <h4 class="pencere-etiket">Hakkında</h4>
-            <div class="field empty"
+            <div class="field" data-baglanti="url"
                  data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.0.hakkinda"
-                 data-placeholder="kısa tanıtım: deneyim, projedeki görev, kullandığı araçlar"></div>
+                 data-placeholder="kısa tanıtım: deneyim, projedeki görev, kullandığı araçlar">https://www.linkedin.com/in/harun-kalli</div>
           </div>
         </div>
         <button class="pencere-kapat" type="button" aria-label="Kapat"></button>
@@ -311,9 +311,9 @@
           <p class="pencere-rol" lang="en"></p>
           <div class="pencere-bolum">
             <h4 class="pencere-etiket">Hakkında</h4>
-            <div class="field empty"
+            <div class="field" data-baglanti="url"
                  data-field="02_1_1_Girisim_ve_Iletisim_Bilgileri.takimUyeleri.1.hakkinda"
-                 data-placeholder="kısa tanıtım: deneyim, projedeki görev, kullandığı araçlar"></div>
+                 data-placeholder="kısa tanıtım: deneyim, projedeki görev, kullandığı araçlar">https://www.linkedin.com/in/nilneal</div>
           </div>
         </div>
         <button class="pencere-kapat" type="button" aria-label="Kapat"></button>
@@ -574,7 +574,12 @@
       <div class="ozet-duzen">
         <div class="ozet-metin">
           <div class="field ozet-giris"
-               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozet">Katman tabanlı, procedural üretilen bir hex-grid arenaya gir, görevini tamamla ve çıkış asansörünü bulup arenadan çık. Tile'ları keşfederken savaş sisinin (FOW) ardındaki düşmanları tespit et, çimenlerde gizlen, asansörlerle katlar arasında geç ve lootbox'ları yağmala. Robotunun Durability, Battery, Stamina ve Mag kaynaklarını yöneterek görevi bitirmeye çalışırsın. Assault, Assassin, Recon, Tank ya da Support: her sınıfın kendine özgü attribute, stat ve silah tipi, her arenada başka bir taktik demek.</div>
+               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.ozet">Hexafield, prosedürel olarak oluşturulan çok katmanlı bir hex-grid arenada geçen, taktiksel savaş ve keşif odaklı bir roguelite oyunudur. Görevini tamamlamak için savaş sisinin (FOW) ardındaki düşmanları tespit eder, çimenlerde gizlenir, lootbox’ları yağmalar ve asansörlerle katmanlar arasında ilerleyerek çıkış asansörünü bulmaya çalışırsın.
+
+Robotunun Durability, Battery, Stamina ve Mag kaynaklarını yönetirken Assault, Assassin, Recon, Tank ve Support sınıflarının kendine özgü özellikleri ve silahlarıyla her denemede farklı taktikler geliştirirsin. Her girişte değişen arena düzeni ve gelişen robotunla amacın, görevi tamamlayıp hayatta kalarak simülasyondan kaçmaktır.</div>
+
+          <blockquote class="field ozet-hikaye"
+               data-field="06_2_3_Oyunun_Ozeti_ve_Hikayesi.hikaye">“Geleceğin dünyasında, gelişmiş robotlar üreten gizli bir teknoloji şirketinde savaşçı robotlar eğitiliyor. Oyuncu, bu robotlardan birini kontrol ederek zorlu simülasyonlardan ve ölümcül görevlerden geçiyor. Ancak eğitim ilerledikçe robotun gerçek amacı ve onu kontrol eden sistemin ardındaki sırlar ortaya çıkıyor. Artık mesele yalnızca savaşmak değil, kimin için savaştığını keşfetmek.”</blockquote>
 
           <div class="anahtar">
             <p class="field anahtar-baslik"
@@ -1205,18 +1210,18 @@ Deep Jam'e yalnızca öğrenmek için değil, bu ekosistemin bir parçası olmak
 
 
   <!-- Modüller. main.js en sonda olmalı, hepsini o başlatır. -->
-  <script src="js/depo.js?v=46"></script>
-  <script src="js/alanlar.js?v=46"></script>
-  <script src="js/skala.js?v=46"></script>
-  <script src="js/fotolar.js?v=46"></script>
-  <script src="js/etiketler.js?v=46"></script>
-  <script src="js/gorunum.js?v=46"></script>
-  <script src="js/gezinme.js?v=46"></script>
-  <script src="js/pencere.js?v=46"></script>
-  <script src="js/kaydirma.js?v=46"></script>
-  <script src="js/hexalan.js?v=46"></script>
-  <script src="js/baglantilar.js?v=46"></script>
-  <script src="js/dil.js?v=46"></script>
-  <script src="js/main.js?v=46"></script>
+  <script src="js/depo.js?v=47"></script>
+  <script src="js/alanlar.js?v=47"></script>
+  <script src="js/skala.js?v=47"></script>
+  <script src="js/fotolar.js?v=47"></script>
+  <script src="js/etiketler.js?v=47"></script>
+  <script src="js/gorunum.js?v=47"></script>
+  <script src="js/gezinme.js?v=47"></script>
+  <script src="js/pencere.js?v=47"></script>
+  <script src="js/kaydirma.js?v=47"></script>
+  <script src="js/hexalan.js?v=47"></script>
+  <script src="js/baglantilar.js?v=47"></script>
+  <script src="js/dil.js?v=47"></script>
+  <script src="js/main.js?v=47"></script>
 </body>
 </html>
