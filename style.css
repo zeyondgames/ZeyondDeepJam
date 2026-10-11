@@ -1157,6 +1157,20 @@ h2 ~ .bloklar ~ .bloklar,
   clip-path: var(--kesik);
 }
 .gorsel-genis { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+/* Class Hex Planner ekran görüntüsü neredeyse kare; kendi oranında, kırpılmadan */
+.gorsel-planlayici { aspect-ratio: 1342 / 1240; }
+
+/* Motor bölümü: Visual Scripting state machine ekran görüntüsü */
+.motor-gorsel { margin: 2.2rem 0 2.6rem; }
+.gorsel-motor { aspect-ratio: 2100 / 1489; max-width: 60rem; }
+.motor-gorsel-not {
+  margin-top: .7rem;
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 
 .gorsel-foto {
   position: absolute;

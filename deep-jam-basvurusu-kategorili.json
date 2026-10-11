@@ -160,7 +160,8 @@
     "gorseller": [
       "img/oyun/gorsel-1.jpg",
       "img/oyun/gorsel-2.jpg",
-      "img/oyun/gorsel-3.jpg"
+      "img/oyun/gorsel-3.jpg",
+      "img/oyun/gorsel-4.jpg"
     ]
   },
 
@@ -361,9 +362,9 @@
     },
     "finansman": {
       "baslik": "Program Sonrası Finansman Gereklilikleri",
-      "miktar": "1.165.000 TRY · 12 ay",
-      "kullanim": "Ekip: 2 kişi × 40.000 TRY × 12 ay · 960.000 TRY\nYazılım: 4 abonelik × 1.000 TRY × 12 ay · 48.000 TRY\nMac mini (iOS build için) · 45.000 TRY\niPhone (test cihazı) · 40.000 TRY\nMuhasebe ve mağaza hesapları · 42.000 TRY\nHazır asset paketleri (ses, particle) · 30.000 TRY",
-      "etki": "Fonun %82'si ekibin geçimine gider: iki kişi 12 ay başka işe bakmadan yalnızca bu oyunu geliştirir. UA, pazarlama ve yayın masrafları yayıncıda.\n1–4. ay, üretim: içerik, ekonomi ve IAP; beta sürüm.\n5–7. ay, soft launch: yayıncıyla test pazarlarında yayın; hedef D1 %30, D7 %10.\n8. ay, global lansman: Google Play ve App Store.\n9–12. ay, LiveOps: güncellemeler ve Steam hazırlığı."
+      "miktar": "1.400.000 TRY · 12 ay",
+      "kullanim": "Ekip: 2 kişi × 40.000 TRY × 12 ay · 960.000 TRY\nYazılım: 4 abonelik × 1.000 TRY × 12 ay · 48.000 TRY\nMac mini (iOS build için) · 45.000 TRY\niPhone (test cihazı) · 40.000 TRY\nMuhasebe ve mağaza hesapları · 42.000 TRY\nHazır asset paketleri (ses, particle) · 30.000 TRY\nBeklenmeyen Giderler %20 · 233.000 TRY",
+      "etki": "Fonun %69'u ekibin geçimine gider: iki kişi 12 ay başka işe bakmadan yalnızca bu oyunu geliştirir. UA, pazarlama ve yayın masrafları yayıncıda.\n1–4. ay, üretim: içerik, ekonomi ve IAP; beta sürüm.\n5–7. ay, soft launch: yayıncıyla test pazarlarında yayın; hedef D1 %30, D7 %10.\n8. ay, global lansman: Google Play ve App Store.\n9–12. ay, LiveOps: güncellemeler ve Steam hazırlığı."
     },
     "yayincilik": "Yayıncı ile çalışma: mobil (Google Play, App Store) ve Steam dahil tüm platformlarda.\nSoft launch'tan global lansmana kadar yayını yayıncıyla birlikte yapıyoruz. F2P'de büyümeyi UA bütçesi belirler; bu sermayeyi ve uzmanlığı yayıncı getirir. Biz üretime ve canlı içerik güncellemelerine odaklanıyoruz.",
     "yayincilikOrtak": "Global yayın yapan, mobil F2P midcore / aksiyon portföyü olan ve PC'de (Steam) de yayın yapabilen bir yayıncı.\nBeklentimiz: soft launch ve global lansman UA bütçesini üstlenmesi; LiveOps, monetizasyon ve A/B test desteği; analitik altyapısı, mağaza öne çıkarma ve Steam sürümünün yayını.\nModel: gelir paylaşımı; IP stüdyoda kalır."
@@ -437,6 +438,7 @@
     "Mobile",
     "Sci-fi",
     "Robots",
+    "Roguelite",
     "onay-telif",
     "onay-kvkk"
   ]
