@@ -315,24 +315,24 @@
       "baslik": "8 Haftalık Yol Haritası (Kilometre Taşları)",
       "haftalar": [
         {
-          "hafta": "1–4",
-          "baslik": "Core Mekanik",
-          "icerik": "Core mechanic oynanabilir halde"
+          "hafta": "1–2",
+          "baslik": "Arena & Keşif",
+          "icerik": "Her girişte yeniden üretilen katman tabanlı hex arena; robot hareketi ve sabit eğik kamera; tile keşfi ve FOW. Ölçüt: başlangıçtan çıkış asansörüne yürünebiliyor."
         },
         {
-          "hafta": "4–6",
-          "baslik": "Content Üretimi",
-          "icerik": "Yeni silahlar, yeni hextilelar, yeni karakter parçaları, yeni oyun modları ve haritalar."
+          "hafta": "3–4",
+          "baslik": "Çatışma & Gizlenme",
+          "icerik": "Tek robot sınıfı (Assault) ve silahı; devriye gezen, tespit eden ve saldıran düşman botlar; çimende gizlenme. Ölçüt: bir düşmanla baştan sona çatışma oynanıyor."
         },
         {
-          "hafta": "6-7",
-          "baslik": "Demo & Mağaza",
-          "icerik": "Dikey kesit veya demo; mağaza sayfası yayında"
+          "hafta": "5–6",
+          "baslik": "Kaynaklar & Görev",
+          "icerik": "Durability, Battery, Stamina ve Mag; asansörle katlar arası geçiş; lootbox; görev hedefi ve çıkış. Ölçüt: gir, görevi bitir, çık döngüsü uçtan uca oynanıyor."
         },
         {
           "hafta": "7–8",
-          "baslik": "Fragman & Sunum",
-          "icerik": "Fragman ve sunum dosyası"
+          "baslik": "Test & Core Loop Teslimi",
+          "icerik": "Temel HUD; 30 kişiyle oyun testi; seviye başına ~60 saniye hedefine göre denge ve hata düzeltme. Ölçüt: core loop'u tamamlanmış, oynanabilir Android build."
         }
       ]
     },
@@ -372,7 +372,7 @@
         "not": "8 haftalık yoğun sprintte dış takip ve mentorluk"
       }
     ],
-    "kapanis": "Bu fırsatı finansal bir işlemden çok stratejik bir ortaklık olarak görüyoruz. Amacımız, program sonunda oynanabilir demo, yayında bir mağaza sayfası ve fragmanla demo gününe çıkmak; ardından soft launch ile metrikleri kanıtlayıp global lansmana ilerlemek."
+    "kapanis": "Bu fırsatı finansal bir işlemden çok stratejik bir ortaklık olarak görüyoruz. Amacımız, program sonunda core loop'u tamamlanmış, oynanabilir bir build ile demo gününe çıkmak; ardından soft launch ile metrikleri kanıtlayıp global lansmana ilerlemek."
   },
   "15_5_2_Sartlar_ve_Gizlilik_Politikasi": {
     "tip": "icerik",
